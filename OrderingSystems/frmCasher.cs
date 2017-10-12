@@ -25,7 +25,7 @@ namespace OrderingSystems
         private void LoadQueues()
         {
             string mysql = "SELECT * FROM TBLQUEUE WHERE STATUS = 1" ;
-            DataSet ds = DB.LoadSQL(mysql, "TBLQUEUE");
+            DataSet ds = Database.LoadSQL(mysql, "TBLQUEUE");
 
             LVQueue.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
@@ -47,14 +47,14 @@ namespace OrderingSystems
         private void ViewOrder()
         {
             string mysql = "SELECT * FROM tblQueueInfo WHERE QueueID = " + LVQueue.SelectedItems[0].Tag;
-            DataSet ds = DB.LoadSQL(mysql, "tblQueueInfo");
+            DataSet ds = Database.LoadSQL(mysql, "tblQueueInfo");
 
             lvListOrder.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
 
                 string mysql1 = "SELECT * FROM tblMenu WHERE ID = " + dr[0].ToString();
-                DataSet ds1 = DB.LoadSQL(mysql1, "tblMenu");
+                DataSet ds1 = Database.LoadSQL(mysql1, "tblMenu");
 
                 string Name = ds1.Tables[0].Rows[0][1].ToString();
                 string Desc = ds1.Tables[0].Rows[0][2].ToString();

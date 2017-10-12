@@ -73,7 +73,7 @@
       <DependentUpon>frmCasher.cs</DependentUpon>
     </Compile>
     <Compile Include="Module\Interface1.cs" />
-    <Compile Include="Module\DB.cs" />
+    <Compile Include="Module\Database.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form\frmClient.resx">

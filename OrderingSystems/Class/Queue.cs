@@ -68,7 +68,7 @@ namespace OrderingSystems.Class
         public void LoadQueue(int id)
         {
             string mySql = string.Format("SELECT * FROM " + MainTable + " WHERE ID = {0}", id);
-            DataSet ds = DB.LoadSQL(mySql, MainTable);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
 
             if (ds.Tables[0].Rows.Count != 1)
             {
@@ -84,7 +84,7 @@ namespace OrderingSystems.Class
 
             mySql = string.Format("SELECT * FROM {0} WHERE QUEUEID = {1} ORDER BY ID", SubTable, _ID);
             ds.Clear();
-            ds = DB.LoadSQL(mySql, SubTable);
+            ds = Database.LoadSQL(mySql, SubTable);
 
             _QueueColl = new QueueCol();
             foreach (DataRow dr in ds.Tables[SubTable].Rows)
