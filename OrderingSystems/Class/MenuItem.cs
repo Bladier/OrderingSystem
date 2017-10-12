@@ -81,6 +81,38 @@ namespace OrderingSystems
                 _status = dr["Status"].ToString();
 
             }
+
+            internal void SaveMenu()
+            {
+                string mysql = "Select * From tblMenu Where Upper(MenuName) =Upper('"+ _menuName +"') And Upper(MenuType) = Upper('"+ _menuType +"')";
+                DataSet ds = Database.LoadSQL(mysql, "tblMenu");
+
+                if (ds.Tables[0].Rows.Count == 0)
+                {
+                    DataRow dsNewRow = null;
+                    dsNewRow = ds.Tables[0].NewRow();
+                    var with = dsNewRow;
+                    with["MenuName"] = _menuName;
+                    with["MenuType"] = _menuType;
+                    with["MenuSize"] = _menuSize;
+                    with["Price"] = _price;
+                    with["Status"] = _status;
+                    ds.Tables[0].Rows.Add(dsNewRow);
+                    Database.SaveEntry(ds, true);
+
+                }
+                else
+                {
+                    var with = ds.Tables[0].Rows[0];
+                         with["MenuName"] = _menuName;
+                        with["MenuType"] = _menuType;
+                        with["MenuSize"] = _menuSize;
+                        with["Price"] = _price;
+                        with["Status"] = _status;
+                        Database.SaveEntry(ds, false);
+                }
+            }
+
         #endregion
     }
 }
