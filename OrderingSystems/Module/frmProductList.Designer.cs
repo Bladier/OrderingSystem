@@ -126,6 +126,7 @@
             this.Controls.Add(this.btnSearch);
             this.Name = "frmProductList";
             this.Text = "Product List";
+            this.Load += new System.EventHandler(this.frmProductList_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

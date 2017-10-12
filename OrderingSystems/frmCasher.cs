@@ -107,7 +107,9 @@ namespace OrderingSystems
         }
 
 
-        private void btnAdd_Click(object sender, EventArgs e)
+      
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }
@@ -117,11 +119,8 @@ namespace OrderingSystems
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+       
+       
         ////private void button1_Click(object sender, EventArgs e)
         ////{
         ////    string input = Microsoft.VisualBasic.Interaction.InputBox("Title", "Prompt", "Default", 0, 0);

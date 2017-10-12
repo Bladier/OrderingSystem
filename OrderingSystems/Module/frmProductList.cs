@@ -16,10 +16,19 @@ namespace OrderingSystems.Module
             InitializeComponent();
         }
 
-    
+        private void frmProductList_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoadMenu(string mysql = "SELECT * FROM TBLMENU WHERE STATUS = 1 ORDER BY ID ASC")
+        {
+            DataSet ds = Database.LoadSQL(mysql, "tblMenu");
+
+        }
 
        
-
+       // privte void addMenu(
      
     }
 }
