@@ -1,0 +1,9 @@
+E:\OrderingSystem\OSys\OSys\bin\Debug\OSys.exe
+E:\OrderingSystem\OSys\OSys\bin\Debug\OSys.pdb
+E:\OrderingSystem\OSys\OSys\bin\Debug\DeathCodez.dll
+E:\OrderingSystem\OSys\OSys\obj\x86\Debug\OSys.Form1.resources
+E:\OrderingSystem\OSys\OSys\obj\x86\Debug\POSMainForm.frmLogin.resources
+E:\OrderingSystem\OSys\OSys\obj\x86\Debug\OSys.Properties.Resources.resources
+E:\OrderingSystem\OSys\OSys\obj\x86\Debug\OSys.csproj.GenerateResource.Cache
+E:\OrderingSystem\OSys\OSys\obj\x86\Debug\OSys.exe
+E:\OrderingSystem\OSys\OSys\obj\x86\Debug\OSys.pdb
