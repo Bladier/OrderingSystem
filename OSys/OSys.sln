@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSys", "OSys\OSys.csproj", "{A3765DB2-082C-45A8-9283-C61C4F02D9F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderingSystems", "..\..\Dalton\Pawnshop\OrderingSystems\OrderingSystems.csproj", "{BB87F914-9AD4-4482-B6E0-8C8E6682E3EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderingSystems", "..\OrderingSystems\OrderingSystems.csproj", "{BB87F914-9AD4-4482-B6E0-8C8E6682E3EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

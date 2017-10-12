@@ -9,5 +9,3 @@ E:\Dalton\Pawnshop\OrderingSystems\obj\x86\Debug\OrderingSystems.exe
 E:\Dalton\Pawnshop\OrderingSystems\obj\x86\Debug\OrderingSystems.pdb
 E:\Dalton\Pawnshop\OrderingSystems\obj\x86\Debug\OrderingSystems.csprojResolveAssemblyReference.cache
 E:\Dalton\Pawnshop\OrderingSystems\obj\x86\Debug\OrderingSystems.frmClient.resources
-E:\github\OrderingSystem\OrderingSystems\obj\x86\Debug\OrderingSystems.exe
-E:\github\OrderingSystem\OrderingSystems\obj\x86\Debug\OrderingSystems.pdb

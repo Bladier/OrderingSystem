@@ -18,15 +18,16 @@ namespace OrderingSystems
 
         private void frmCasher_Load(object sender, EventArgs e)
         {
-            LoadBorrowings();
+            LoadQueues();
 
         }
 
-        private void LoadBorrowings()
+        private void LoadQueues()
         {
             string mysql = "SELECT * FROM TBLQUEUE WHERE STATUS = 1" ;
             DataSet ds = DB.LoadSQL(mysql, "TBLQUEUE");
 
+            LVQueue.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 string output = String.Format("#0000{0}", dr[1].ToString());
@@ -70,6 +71,11 @@ namespace OrderingSystems
                 Application.DoEvents();
             }
 
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadQueues();
         }
 
     }

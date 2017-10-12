@@ -28,17 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ColumnHeader columnHeader1;
             this.panel1 = new System.Windows.Forms.Panel();
-            this.LVQueue = new System.Windows.Forms.ListView();
             this.lvListOrder = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.LVQueue = new System.Windows.Forms.ListView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // columnHeader1
@@ -49,27 +53,13 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Blue;
+            this.panel1.ContextMenuStrip = this.contextMenuStrip1;
             this.panel1.Controls.Add(this.lvListOrder);
             this.panel1.Controls.Add(this.LVQueue);
             this.panel1.Location = new System.Drawing.Point(26, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1205, 599);
             this.panel1.TabIndex = 1;
-            // 
-            // LVQueue
-            // 
-            this.LVQueue.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            columnHeader1});
-            this.LVQueue.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LVQueue.FullRowSelect = true;
-            this.LVQueue.GridLines = true;
-            this.LVQueue.Location = new System.Drawing.Point(16, 3);
-            this.LVQueue.Name = "LVQueue";
-            this.LVQueue.Size = new System.Drawing.Size(435, 593);
-            this.LVQueue.TabIndex = 0;
-            this.LVQueue.UseCompatibleStateImageBehavior = false;
-            this.LVQueue.View = System.Windows.Forms.View.Details;
-            this.LVQueue.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LVQueue_MouseClick);
             // 
             // lvListOrder
             // 
@@ -113,6 +103,35 @@
             // 
             this.columnHeader6.Text = "QTY";
             // 
+            // LVQueue
+            // 
+            this.LVQueue.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            columnHeader1});
+            this.LVQueue.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LVQueue.FullRowSelect = true;
+            this.LVQueue.GridLines = true;
+            this.LVQueue.Location = new System.Drawing.Point(16, 3);
+            this.LVQueue.Name = "LVQueue";
+            this.LVQueue.Size = new System.Drawing.Size(435, 593);
+            this.LVQueue.TabIndex = 0;
+            this.LVQueue.UseCompatibleStateImageBehavior = false;
+            this.LVQueue.View = System.Windows.Forms.View.Details;
+            this.LVQueue.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LVQueue_MouseClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(114, 26);
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.refreshToolStripMenuItem.Text = "&Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
             // frmCasher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -123,6 +142,7 @@
             this.Text = "Casher";
             this.Load += new System.EventHandler(this.frmCasher_Load);
             this.panel1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -137,5 +157,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
     }
 }

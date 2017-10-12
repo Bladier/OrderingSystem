@@ -7,5 +7,3 @@ E:\OrderingSystem\OSys\OSys\obj\x86\Debug\OSys.Properties.Resources.resources
 E:\OrderingSystem\OSys\OSys\obj\x86\Debug\OSys.csproj.GenerateResource.Cache
 E:\OrderingSystem\OSys\OSys\obj\x86\Debug\OSys.exe
 E:\OrderingSystem\OSys\OSys\obj\x86\Debug\OSys.pdb
-E:\github\OrderingSystem\OSys\OSys\obj\x86\Debug\OSys.exe
-E:\github\OrderingSystem\OSys\OSys\obj\x86\Debug\OSys.pdb
