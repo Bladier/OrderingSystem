@@ -106,17 +106,30 @@ namespace OrderingSystems
             } 
         }
 
+        internal void AddMenuItem(MenuItem mItem)
+    {
 
-      
+        ListViewItem lv1 = lvListOrder.Items.Add(mItem.MenuName);
 
-        private void button1_Click(object sender, EventArgs e)
+        lv1.SubItems.Add(mItem.MenuType);
+        lv1.SubItems.Add(mItem.MenuSize);
+        lv1.SubItems.Add(mItem.Price.ToString());
+        lv1.SubItems.Add(mItem.Qty.ToString());
+
+        lv1.Tag = mItem.ID;
+    }
+
+
+        
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            Form frm  = new frmProductList();
+            frm.Show();
         }
 
        
