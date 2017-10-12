@@ -51,7 +51,7 @@ namespace OrderingSystems
         private void btnSoftDrink_Click(object sender, EventArgs e)
         {
             string mysql = "Select * From tblMenu Where MenuName = 'Softdrinks'";
-            DataSet ds =DB.LoadSQL(mysql, "tblMenu");
+            DataSet ds =Database.LoadSQL(mysql, "tblMenu");
 
             lvDisplay.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
@@ -64,7 +64,7 @@ namespace OrderingSystems
         private void btnPizza_Click(object sender, EventArgs e)
         {
             string mysql = "Select * From tblMenu Where MenuName = 'Pizza'";
-            DataSet ds = DB.LoadSQL(mysql, "tblMenu");
+            DataSet ds = Database.LoadSQL(mysql, "tblMenu");
 
             lvDisplay.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
@@ -76,7 +76,7 @@ namespace OrderingSystems
         private void btnPasta_Click(object sender, EventArgs e)
         {
             string mysql = "Select * From tblMenu Where MenuName = 'Pasta'";
-            DataSet ds = DB.LoadSQL(mysql, "tblMenu");
+            DataSet ds = Database.LoadSQL(mysql, "tblMenu");
 
             lvDisplay.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
@@ -88,7 +88,7 @@ namespace OrderingSystems
         private void btnBurger_Click(object sender, EventArgs e)
         {
             string mysql = "Select * From tblMenu Where MenuName = 'Burger'";
-            DataSet ds = DB.LoadSQL(mysql, "tblMenu");
+            DataSet ds = Database.LoadSQL(mysql, "tblMenu");
 
             lvDisplay.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
@@ -100,7 +100,7 @@ namespace OrderingSystems
         private void btnHaloHalo_Click(object sender, EventArgs e)
         {
             string mysql = "Select * From tblMenu Where MenuName = 'Halo- Halo'";
-            DataSet ds = DB.LoadSQL(mysql, "tblMenu");
+            DataSet ds = Database.LoadSQL(mysql, "tblMenu");
 
             lvDisplay.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
