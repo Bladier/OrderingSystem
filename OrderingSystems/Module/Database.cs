@@ -18,9 +18,9 @@ namespace OrderingSystems
         public static MySqlConnection ReaderCon;
         //Final
         static internal string dbName = "os";
-        static internal string uid = "blade";
-        static internal string fbPass = "blade";
-        static internal string server = "BLADE";
+        static internal string uid = "ellie";
+        static internal string fbPass = "ellie123";
+        static internal string server = "MISGwapohon-PC";
         static internal DataSet fbDataSet = new DataSet();
 
         static internal string conStr = string.Empty;

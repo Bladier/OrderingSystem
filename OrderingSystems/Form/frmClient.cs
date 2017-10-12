@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace OrderingSystems
 {
@@ -14,11 +15,6 @@ namespace OrderingSystems
         public frmClient()
         {
             InitializeComponent();
-        }
-
-        private void btnClearOrder_Click(object sender, EventArgs e)
-        {
-            lvOrderList.Items.Clear();
         }
 
         private void frmClient_Load(object sender, EventArgs e)
@@ -37,15 +33,18 @@ namespace OrderingSystems
             ListViewItem lv = lvDisplay.Items.Add(dr["MenuType"].ToString());
              lv.SubItems.Add(dr["MenuSize"].ToString());
              lv.SubItems.Add(dr["Price"].ToString());
-             lv.Tag = dr["MenuName"].ToString();
+             lv.Tag = dr["ID"].ToString();
         }
 
-        private void AddItemOrder(DataRow dr)
+        private void AddItemOrder(MenuItem tmpItem)
         {
-            ListViewItem lv = lvOrderList.Items.Add(dr["MenuType"].ToString());
-            lv.SubItems.Add(dr["MenuSize"].ToString());
-            lv.SubItems.Add(dr["Price"].ToString());
-            lv.Tag = dr["MenuName"].ToString();
+            ListViewItem lv = lvOrderList.Items.Add(tmpItem.MenuName);
+            lv.SubItems.Add(tmpItem.MenuType);
+            lv.SubItems.Add(tmpItem.MenuSize);
+            double tmpPrice = Convert.ToDouble(tmpItem.Price.ToString());
+            lv.SubItems.Add(tmpItem.Price.ToString());
+            lv.SubItems.Add(tmpItem.Qty.ToString());
+            lv.Tag = tmpItem.ID ;
         }
 
         private void btnSoftDrink_Click(object sender, EventArgs e)
@@ -112,7 +111,36 @@ namespace OrderingSystems
         private void btnPick_Click(object sender, EventArgs e)
         {
             if (lvDisplay.SelectedItems.Count < 1){return;}
-            MessageBox.Show( lvDisplay.FocusedItem.Text);
+
+            int idx = Convert.ToInt32(lvDisplay.FocusedItem.Tag.ToString());
+
+            int tmpQty = Convert.ToInt32(Interaction.InputBox("Enter Qty", "Order", ""));
+
+            MenuItem tmpMenu = new MenuItem();
+            tmpMenu.ID = idx;
+            tmpMenu.LoadMenuItem();
+            tmpMenu.Qty = tmpQty;
+            AddItemOrder(tmpMenu);
+        }
+
+        private void btnClearOrder_Click(object sender, EventArgs e)
+        {
+            lvOrderList.Items.Clear();
+        }
+
+        private void lvOrderList_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (lvOrderList.SelectedItems.Count == 0) { return; }
+            int idx = lvOrderList.FocusedItem.Index;
+            DialogResult DeleteResult = MessageBox.Show("Do you want to delete this?", "Information", MessageBoxButtons.YesNo);
+           if (DeleteResult == DialogResult.No) { return; }
+
+           lvOrderList.Items[idx].Remove();
+        }
+
+        private void lvDisplay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
         }
 
     }

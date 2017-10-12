@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Sabon sa plato",
             "Regular",
             "1500"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "May Sabon",
             "Sabon Sa Plato",
-            "",
+            "Regular",
             "1500",
             "6"}, -1);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -46,17 +46,17 @@
             this.btnSoftDrink = new System.Windows.Forms.Button();
             this.btnPick = new System.Windows.Forms.Button();
             this.lvDisplay = new System.Windows.Forms.ListView();
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvOrderList = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnOrder = new System.Windows.Forms.Button();
+            this.btnClearOrder = new System.Windows.Forms.Button();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnOrder = new System.Windows.Forms.Button();
-            this.btnClearOrder = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,35 +145,21 @@
             // lvDisplay
             // 
             this.lvDisplay.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader5,
             this.columnHeader6,
-            this.columnHeader7});
+            this.columnHeader7,
+            this.columnHeader8});
             this.lvDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvDisplay.FullRowSelect = true;
             this.lvDisplay.GridLines = true;
             this.lvDisplay.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem11});
+            listViewItem1});
             this.lvDisplay.Location = new System.Drawing.Point(396, 19);
             this.lvDisplay.Name = "lvDisplay";
             this.lvDisplay.Size = new System.Drawing.Size(837, 317);
             this.lvDisplay.TabIndex = 1;
             this.lvDisplay.UseCompatibleStateImageBehavior = false;
             this.lvDisplay.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Type";
-            this.columnHeader5.Width = 409;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Size";
-            this.columnHeader6.Width = 309;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Price";
-            this.columnHeader7.Width = 130;
+            this.lvDisplay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvDisplay_KeyPress);
             // 
             // lvOrderList
             // 
@@ -182,43 +168,24 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
-            this.columnHeader8});
+            this.columnHeader5});
             this.lvOrderList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvOrderList.FullRowSelect = true;
             this.lvOrderList.GridLines = true;
             this.lvOrderList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem12});
+            listViewItem2});
             this.lvOrderList.Location = new System.Drawing.Point(12, 351);
             this.lvOrderList.Name = "lvOrderList";
             this.lvOrderList.Size = new System.Drawing.Size(1233, 357);
             this.lvOrderList.TabIndex = 1;
             this.lvOrderList.UseCompatibleStateImageBehavior = false;
             this.lvOrderList.View = System.Windows.Forms.View.Details;
+            this.lvOrderList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvOrderList_KeyDown);
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Name";
+            this.columnHeader1.Text = "Category";
             this.columnHeader1.Width = 382;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Type";
-            this.columnHeader2.Width = 330;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Size";
-            this.columnHeader3.Width = 252;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Price";
-            this.columnHeader4.Width = 182;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Qty";
-            this.columnHeader8.Width = 84;
             // 
             // btnOrder
             // 
@@ -239,6 +206,42 @@
             this.btnClearOrder.TabIndex = 5;
             this.btnClearOrder.Text = "&Clear Order";
             this.btnClearOrder.UseVisualStyleBackColor = true;
+            this.btnClearOrder.Click += new System.EventHandler(this.btnClearOrder_Click);
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Product Name";
+            this.columnHeader2.Width = 338;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Size";
+            this.columnHeader3.Width = 203;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Price";
+            this.columnHeader4.Width = 204;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Qty";
+            this.columnHeader5.Width = 105;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Name";
+            this.columnHeader6.Width = 401;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Size";
+            this.columnHeader7.Width = 210;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Price";
+            this.columnHeader8.Width = 226;
             // 
             // frmClient
             // 
@@ -263,15 +266,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListView lvOrderList;
         private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ListView lvDisplay;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button btnPick;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.Button btnOrder;
         private System.Windows.Forms.Button btnHaloHalo;
         private System.Windows.Forms.Button btnBurger;
@@ -279,5 +275,12 @@
         private System.Windows.Forms.Button btnPizza;
         private System.Windows.Forms.Button btnSoftDrink;
         private System.Windows.Forms.Button btnClearOrder;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }
