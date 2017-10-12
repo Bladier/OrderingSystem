@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace OrderingSystems
 {
-    public partial class frmClient : Form
+    public partial class frmCleint : Form
     {
-        public frmClient()
+        public frmCleint()
         {
             InitializeComponent();
         }
@@ -113,6 +113,11 @@ namespace OrderingSystems
         {
             if (lvDisplay.SelectedItems.Count < 1){return;}
             MessageBox.Show( lvDisplay.FocusedItem.Text);
+        }
+
+        private void lvDisplay_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

@@ -56,17 +56,17 @@ namespace OrderingSystems
                 string mysql1 = "SELECT * FROM tblMenu WHERE ID = " + dr[0].ToString();
                 DataSet ds1 = Database.LoadSQL(mysql1, "tblMenu");
 
-                string Name = ds1.Tables[0].Rows[0][1].ToString();
-                string Desc = ds1.Tables[0].Rows[0][2].ToString();
-                string Size = ds1.Tables[0].Rows[0][3].ToString();
-
+                string Name = ds1.Tables[0].Rows[0]["MenuName"].ToString();
+                string Desc = ds1.Tables[0].Rows[0]["MenuType"].ToString();
+                string Size = ds1.Tables[0].Rows[0]["MenuSize"].ToString();
+           
                 ListViewItem lv = lvListOrder.Items.Add(Name);
                 lv.SubItems.Add(Desc);
                 lv.SubItems.Add(Size);
-                lv.SubItems.Add(ds1.Tables[0].Rows[0][4].ToString());
+                lv.SubItems.Add(ds1.Tables[0].Rows[0]["Price"].ToString());
                 lv.SubItems.Add(dr[3].ToString());
 
-                lv.Tag = Convert.ToInt32(ds1.Tables[0].Rows[0][0].ToString());
+                lv.Tag = Convert.ToInt32(dr["ID"]);
 
                 Application.DoEvents();
             }
@@ -77,6 +77,58 @@ namespace OrderingSystems
         {
             LoadQueues();
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (lvListOrder.SelectedItems.Count == 0) { return; }
+
+            DialogResult result = MessageBox.Show("Do you want to remove this item?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            else
+            {
+                string mysql = "SELECT * FROM tblQueueInfo WHERE ID = " + lvListOrder.SelectedItems[0].Tag;
+                DataSet ds = Database.LoadSQL(mysql, "tblQueueInfo");
+
+                var with = ds.Tables[0].Rows[0];
+                with["Status"] = 0;
+                Database.SaveEntry(ds, false);
+
+                lvListOrder.SelectedItems[0].Remove();
+               
+            } 
+        }
+
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        ////private void button1_Click(object sender, EventArgs e)
+        ////{
+        ////    string input = Microsoft.VisualBasic.Interaction.InputBox("Title", "Prompt", "Default", 0, 0);
+        ////}
+       
+
+     
 
     }
 }

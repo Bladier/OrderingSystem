@@ -1,6 +1,6 @@
 ﻿namespace OrderingSystems
 {
-    partial class frmClient
+    partial class frmCleint
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Sabon sa plato",
             "Regular",
             "1500"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "May Sabon",
             "Sabon Sa Plato",
             "",
@@ -152,13 +152,14 @@
             this.lvDisplay.FullRowSelect = true;
             this.lvDisplay.GridLines = true;
             this.lvDisplay.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem11});
+            listViewItem1});
             this.lvDisplay.Location = new System.Drawing.Point(396, 19);
             this.lvDisplay.Name = "lvDisplay";
             this.lvDisplay.Size = new System.Drawing.Size(837, 317);
             this.lvDisplay.TabIndex = 1;
             this.lvDisplay.UseCompatibleStateImageBehavior = false;
             this.lvDisplay.View = System.Windows.Forms.View.Details;
+            this.lvDisplay.SelectedIndexChanged += new System.EventHandler(this.lvDisplay_SelectedIndexChanged);
             // 
             // columnHeader5
             // 
@@ -187,7 +188,7 @@
             this.lvOrderList.FullRowSelect = true;
             this.lvOrderList.GridLines = true;
             this.lvOrderList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem12});
+            listViewItem2});
             this.lvOrderList.Location = new System.Drawing.Point(12, 351);
             this.lvOrderList.Name = "lvOrderList";
             this.lvOrderList.Size = new System.Drawing.Size(1233, 357);
@@ -244,7 +245,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 750);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.btnClearOrder);
             this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.lvOrderList);
