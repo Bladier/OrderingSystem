@@ -121,9 +121,13 @@ namespace OrderingSystems
                 tmpQty = Interaction.InputBox("Enter Qty", "Order", "");
                 if (tmpQty == "") { return; }
                 if (tmpQty == "0") { return; }
-                if (Convert.ToInt32(tmpQty) < 0) { return; }
+
                 retNum = Information.IsNumeric(tmpQty);
-                
+
+                if (retNum == true)
+                {
+                    if (Convert.ToInt32(tmpQty) < 0) { return; }
+                }
             }
            
             User tmpMenu = new User();
