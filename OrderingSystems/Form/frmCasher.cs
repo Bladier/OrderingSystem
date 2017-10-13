@@ -30,7 +30,7 @@ namespace OrderingSystems
             LVQueue.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
-                string output = String.Format("#0000{0}", dr[1].ToString());
+                string output = String.Format("ORDER # 0000{0}", dr[1].ToString());
                 ListViewItem lv = LVQueue.Items.Add(output);
                 lv.Tag = dr[0].ToString();
 
@@ -103,10 +103,11 @@ namespace OrderingSystems
 
                 lvListOrder.SelectedItems[0].Remove();
                
-            } 
+            }
         }
 
-        internal void AddMenuItem(MenuItem mItem)
+
+        internal void AddMenuItem(User mItem)
     {
 
         ListViewItem lv1 = lvListOrder.Items.Add(mItem.MenuName);
@@ -116,7 +117,9 @@ namespace OrderingSystems
         lv1.SubItems.Add(mItem.Price.ToString());
         lv1.SubItems.Add(mItem.Qty.ToString());
 
+        Application.DoEvents();
         lv1.Tag = mItem.ID;
+        
     }
 
 

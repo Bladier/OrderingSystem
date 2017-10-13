@@ -6,16 +6,18 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using Microsoft.VisualBasic;
 namespace OrderingSystems
 {
     public partial class frmProductList : Form
     {
+        string tmpQty;
+
         frmCasher tmpFrm;
         public frmProductList()
         {
             InitializeComponent();
-            this.tmpFrm = new frmCasher();
+           this.tmpFrm = new frmCasher();
         }
 
         private void frmProductList_Load(object sender, EventArgs e)
@@ -30,14 +32,14 @@ namespace OrderingSystems
             lvmenu.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
-                MenuItem selectedmenu = new MenuItem();
+                User selectedmenu = new User();
                 selectedmenu.LoadbyRows(dr);
                 addMenu(selectedmenu);
             }
         }
 
        
-        private void addMenu(MenuItem mitem)
+        private void addMenu(User mitem)
         {
             if (mitem.MenuName == "")
             {
@@ -56,25 +58,33 @@ namespace OrderingSystems
             if (lvmenu.SelectedItems.Count == 0) { return; }
 
             int idx = Convert.ToInt32(lvmenu.SelectedItems[0].Tag);
-            MenuItem sMenu = new MenuItem();
+            User sMenu = new User();
             sMenu.ID = idx;
-            string tmpQty;
+        
+            bool retNum = false;
 
-         //   while (tmpQty =="")
-           // {
-                tmpQty = Microsoft.VisualBasic.Interaction.InputBox("Quantity", "Enter Quantity", "0");
-           // }
+            while (retNum == false)
+            {
+                tmpQty = Interaction.InputBox("Enter Qty", "Order", "");
+                if (tmpQty == "") { return; }
+                if (tmpQty == "0") { return; }
+
+                retNum = Information.IsNumeric(tmpQty);
+                if (retNum == true)
+                {
+                    if (Convert.ToInt32(tmpQty) < 0) { return; }
+                }
+            }
 
             sMenu.Qty = Convert.ToInt32(tmpQty);
             sMenu.LoadMenuItem();
 
-
-           // Form frmc = new frmCasher();
-            
+          // Form frmc = frmCasher();
             tmpFrm.AddMenuItem(sMenu);
-
+            this.Close();
         }
 
+     
     
     }
 }

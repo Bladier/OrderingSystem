@@ -6,22 +6,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace OrderingSystems
 {
-    public partial class frmCleint : Form
+    public partial class frmClient : Form
     {
-
-  
         string tmpQty ;
         public frmClient()
         {
             InitializeComponent();
-        }
-
-        private void btnClearOrder_Click(object sender, EventArgs e)
-        {
-            lvOrderList.Items.Clear();
         }
 
         private void frmClient_Load(object sender, EventArgs e)
@@ -40,15 +34,18 @@ namespace OrderingSystems
             ListViewItem lv = lvDisplay.Items.Add(dr["MenuType"].ToString());
              lv.SubItems.Add(dr["MenuSize"].ToString());
              lv.SubItems.Add(dr["Price"].ToString());
-             lv.Tag = dr["MenuName"].ToString();
+             lv.Tag = dr["ID"].ToString();
         }
 
-        private void AddItemOrder(DataRow dr)
+        private void AddItemOrder(User tmpItem)
         {
-            ListViewItem lv = lvOrderList.Items.Add(dr["MenuType"].ToString());
-            lv.SubItems.Add(dr["MenuSize"].ToString());
-            lv.SubItems.Add(dr["Price"].ToString());
-            lv.Tag = dr["MenuName"].ToString();
+            ListViewItem lv = lvOrderList.Items.Add(tmpItem.MenuName);
+            lv.SubItems.Add(tmpItem.MenuType);
+            lv.SubItems.Add(tmpItem.MenuSize);
+            double tmpPrice = Convert.ToDouble(tmpItem.Price.ToString());
+            lv.SubItems.Add(tmpItem.Price.ToString());
+            lv.SubItems.Add(tmpItem.Qty.ToString());
+            lv.Tag = tmpItem.ID ;
         }
 
         private void btnSoftDrink_Click(object sender, EventArgs e)
@@ -129,17 +126,20 @@ namespace OrderingSystems
                 
             }
            
-            MenuItem tmpMenu = new MenuItem();
+            User tmpMenu = new User();
             tmpMenu.ID = idx;
             tmpMenu.LoadMenuItem();
             tmpMenu.Qty = Convert.ToInt32(tmpQty);
             AddItemOrder(tmpMenu);
-
         }
 
-        private void lvDisplay_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnClearOrder_Click(object sender, EventArgs e)
         {
+            lvOrderList.Items.Clear();
+        }
 
+        private void lvOrderList_KeyDown(object sender, KeyEventArgs e)
+        {
             if (lvOrderList.SelectedItems.Count == 0) { return; }
             int idx = lvOrderList.FocusedItem.Index;
             if (e.KeyCode == Keys.Delete)
@@ -150,9 +150,6 @@ namespace OrderingSystems
                 lvOrderList.Items[idx].Remove();
             }
            
-        }
-
-
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
