@@ -56,6 +56,7 @@
     <Compile Include="Class\Queue.cs" />
     <Compile Include="Class\QueueCol.cs" />
     <Compile Include="Class\QueueLines.cs" />
+    <Compile Include="Class\User.cs" />
     <Compile Include="Form\frmClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,11 +69,17 @@
     <Compile Include="Form\frmLogin.designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCasher.cs">
+    <Compile Include="Form\frmCasher.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCasher.Designer.cs">
+    <Compile Include="Form\frmCasher.Designer.cs">
       <DependentUpon>frmCasher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmProductList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmProductList.Designer.cs">
+      <DependentUpon>frmProductList.cs</DependentUpon>
     </Compile>
     <Compile Include="Module\Interface1.cs" />
     <Compile Include="Module\Database.cs" />
@@ -84,8 +91,11 @@
     <EmbeddedResource Include="Form\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCasher.resx">
+    <EmbeddedResource Include="Form\frmCasher.resx">
       <DependentUpon>frmCasher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmProductList.resx">
+      <DependentUpon>frmProductList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

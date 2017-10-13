@@ -71,7 +71,23 @@ namespace OrderingSystems.Class
             {
                 _Status =false;
             }
-            }   
+            }
+
+        internal void SaveInfo()
+        {
+            string mysql = "Select * From tblQueueInfo Where QueueID = " + _QueueID ;
+            DataSet ds = Database.LoadSQL(mysql, "tblQueueInfo");
+
+            DataRow dsNewRow = null;
+            dsNewRow = ds.Tables[0].NewRow();
+            var _with2 = dsNewRow;
+            _with2["QueueID"] = _QueueID ;
+            _with2["MenuID"] = _MenuID ;
+            _with2["Qty"] = _QTY ;
+            _with2["Status"] = _Status;
+            ds.Tables[0].Rows.Add(dsNewRow);
+            Database.SaveEntry(ds);
+        }
         }
 
         #endregion

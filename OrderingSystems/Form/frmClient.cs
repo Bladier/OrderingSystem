@@ -12,6 +12,7 @@ namespace OrderingSystems
 {
     public partial class frmClient : Form
     {
+        string tmpQty ;
         public frmClient()
         {
             InitializeComponent();
@@ -36,7 +37,7 @@ namespace OrderingSystems
              lv.Tag = dr["ID"].ToString();
         }
 
-        private void AddItemOrder(MenuItem tmpItem)
+        private void AddItemOrder(User tmpItem)
         {
             ListViewItem lv = lvOrderList.Items.Add(tmpItem.MenuName);
             lv.SubItems.Add(tmpItem.MenuType);
@@ -113,13 +114,26 @@ namespace OrderingSystems
             if (lvDisplay.SelectedItems.Count < 1){return;}
 
             int idx = Convert.ToInt32(lvDisplay.FocusedItem.Tag.ToString());
+            bool retNum = false;
+            
+            while (retNum == false)
+            {
+                tmpQty = Interaction.InputBox("Enter Qty", "Order", "");
+                if (tmpQty == "") { return; }
+                if (tmpQty == "0") { return; }
 
-            int tmpQty = Convert.ToInt32(Interaction.InputBox("Enter Qty", "Order", ""));
+                retNum = Information.IsNumeric(tmpQty);
 
-            MenuItem tmpMenu = new MenuItem();
+                if (retNum == true)
+                {
+                    if (Convert.ToInt32(tmpQty) < 0) { return; }
+                }
+            }
+           
+            User tmpMenu = new User();
             tmpMenu.ID = idx;
             tmpMenu.LoadMenuItem();
-            tmpMenu.Qty = tmpQty;
+            tmpMenu.Qty = Convert.ToInt32(tmpQty);
             AddItemOrder(tmpMenu);
         }
 
@@ -132,15 +146,19 @@ namespace OrderingSystems
         {
             if (lvOrderList.SelectedItems.Count == 0) { return; }
             int idx = lvOrderList.FocusedItem.Index;
-            DialogResult DeleteResult = MessageBox.Show("Do you want to delete this?", "Information", MessageBoxButtons.YesNo);
-           if (DeleteResult == DialogResult.No) { return; }
+            if (e.KeyCode == Keys.Delete)
+            {
+                DialogResult DeleteResult = MessageBox.Show("Do you want to delete this?", "Information", MessageBoxButtons.YesNo);
+                if (DeleteResult == DialogResult.No) { return; }
 
-           lvOrderList.Items[idx].Remove();
+                lvOrderList.Items[idx].Remove();
+            }
+           
         }
 
-        private void lvDisplay_KeyPress(object sender, KeyPressEventArgs e)
+        private void btnOrder_Click(object sender, EventArgs e)
         {
-           
+
         }
 
     }

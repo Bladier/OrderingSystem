@@ -33,8 +33,8 @@ namespace OrderingSystems.Class
         }
 
 
-        private System.DateTime OrderDate;
-        public System.DateTime _OrderDate
+        private System.DateTime _OrderDate;
+        public System.DateTime OrderDate
         {
             get { return _OrderDate; }
             set { _OrderDate = value; }
@@ -96,45 +96,20 @@ namespace OrderingSystems.Class
             }
         }
 
-        //    public void Save_ItemClass()
-        //    {
-        //        string mySql = string.Format("SELECT * FROM tblItem WHERE ItemClass = '%{0}%'", _itemClassName);
-        //        DataSet ds = LoadSQL(mySql, MainTable);
+        public void Save_ItemClass()
+        {
+            string mySql = "Select * From tblQueue Limit 1";
+            DataSet ds = Database.LoadSQL(mySql, "tblQueue");
 
-        //        if (ds.Tables[0].Rows.Count == 1)
-        //        {
-        //            Interaction.MsgBox("Class already existed", MsgBoxStyle.Critical);
-        //            return;
-        //        }
-
-        //        DataRow dsNewRow = null;
-        //        dsNewRow = ds.Tables[0].NewRow();
-        //        var _with2 = dsNewRow;
-        //        _with2.Item("ItemClass") = _itemClassName;
-        //        _with2.Item("ItemCategory") = _category;
-        //        _with2.Item("Description") = _desc;
-        //        _with2.Item("isRenew") = (_isRenew ? 1 : 0);
-        //        _with2.Item("onHold") = (_onHold ? 1 : 0);
-        //        _with2.Item("Print_Layout") = _printLayout;
-        //        _with2.Item("Renewal_Cnt") = _Count;
-        //        _with2.Item("Created_At") = DateAndTime.Now;
-
-        //        _with2.Item("Scheme_ID") = _interestScheme.SchemeID;
-
-        //        ds.Tables[0].Rows.Add(dsNewRow);
-        //        database.SaveEntry(ds);
-
-
-        //        mySql = "SELECT * FROM tblItem ORDER BY ItemID DESC ROWS 1";
-        //        ds = LoadSQL(mySql, MainTable);
-        //        _itemID = ds.Tables[MainTable].Rows[0]["ItemID"];
-
-        //        foreach (ItemSpecs ItemSpec in ItemSpecifications)
-        //        {
-        //            ItemSpec.ItemID = _itemID;
-        //            ItemSpec.SaveSpecs();
-        //        }
-        //    }
+            DataRow dsNewRow = null;
+            dsNewRow = ds.Tables[0].NewRow();
+            var _with2 = dsNewRow;
+            _with2["OrderNum"] = _OrderNum;
+            _with2["ItemCategory"] = _OrderDate ;
+            _with2["Status"] = _Status ;
+            ds.Tables[0].Rows.Add(dsNewRow);
+            Database.SaveEntry(ds);
+        }
 
         public void LoadByRow(DataRow dr)
         {
