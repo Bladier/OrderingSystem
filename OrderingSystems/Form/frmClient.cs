@@ -12,6 +12,7 @@ namespace OrderingSystems
 {
     public partial class frmClient : Form
     {
+        string tmpQty ;
         public frmClient()
         {
             InitializeComponent();
@@ -113,13 +114,18 @@ namespace OrderingSystems
             if (lvDisplay.SelectedItems.Count < 1){return;}
 
             int idx = Convert.ToInt32(lvDisplay.FocusedItem.Tag.ToString());
-
-            int tmpQty = Convert.ToInt32(Interaction.InputBox("Enter Qty", "Order", ""));
+            bool retNum = false;
+            while (retNum == false)
+            {
+                 tmpQty = Interaction.InputBox("Enter Qty", "Order", "");
+                 retNum = Information.IsNumeric(tmpQty);
+            }
+           
 
             MenuItem tmpMenu = new MenuItem();
             tmpMenu.ID = idx;
             tmpMenu.LoadMenuItem();
-            tmpMenu.Qty = tmpQty;
+            tmpMenu.Qty = Convert.ToInt32(tmpQty);
             AddItemOrder(tmpMenu);
         }
 
@@ -141,6 +147,11 @@ namespace OrderingSystems
         private void lvDisplay_KeyPress(object sender, KeyPressEventArgs e)
         {
            
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+
         }
 
     }
