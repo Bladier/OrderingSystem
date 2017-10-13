@@ -115,10 +115,15 @@ namespace OrderingSystems
 
             int idx = Convert.ToInt32(lvDisplay.FocusedItem.Tag.ToString());
             bool retNum = false;
+            
             while (retNum == false)
             {
-                 tmpQty = Interaction.InputBox("Enter Qty", "Order", "");
-                 retNum = Information.IsNumeric(tmpQty);
+                tmpQty = Interaction.InputBox("Enter Qty", "Order", "");
+                if (tmpQty == "") { return; }
+                if (tmpQty == "0") { return; }
+                if (Convert.ToInt32(tmpQty) < 0) { return; }
+                retNum = Information.IsNumeric(tmpQty);
+                
             }
            
 
