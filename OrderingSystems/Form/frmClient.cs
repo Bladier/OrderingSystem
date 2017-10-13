@@ -126,7 +126,6 @@ namespace OrderingSystems
                 
             }
            
-
             MenuItem tmpMenu = new MenuItem();
             tmpMenu.ID = idx;
             tmpMenu.LoadMenuItem();
@@ -143,10 +142,14 @@ namespace OrderingSystems
         {
             if (lvOrderList.SelectedItems.Count == 0) { return; }
             int idx = lvOrderList.FocusedItem.Index;
-            DialogResult DeleteResult = MessageBox.Show("Do you want to delete this?", "Information", MessageBoxButtons.YesNo);
-           if (DeleteResult == DialogResult.No) { return; }
+            if (e.KeyCode == Keys.Delete)
+            {
+                DialogResult DeleteResult = MessageBox.Show("Do you want to delete this?", "Information", MessageBoxButtons.YesNo);
+                if (DeleteResult == DialogResult.No) { return; }
 
-           lvOrderList.Items[idx].Remove();
+                lvOrderList.Items[idx].Remove();
+            }
+           
         }
 
         private void lvDisplay_KeyPress(object sender, KeyPressEventArgs e)
