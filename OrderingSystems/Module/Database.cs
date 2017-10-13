@@ -17,6 +17,10 @@ namespace OrderingSystems
         public static MySqlConnection con;
         public static MySqlConnection ReaderCon;
         //Final
+        //static internal string dbName = "os";
+        //static internal string uid = "blade";
+        //static internal string fbPass = "blade";
+        //static internal string server = "BLADE";
         static internal string dbName = "os";
         static internal string uid = "ellie";
         static internal string fbPass = "ellie123";

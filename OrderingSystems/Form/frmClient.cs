@@ -37,7 +37,7 @@ namespace OrderingSystems
              lv.Tag = dr["ID"].ToString();
         }
 
-        private void AddItemOrder(MenuItem tmpItem)
+        private void AddItemOrder(User tmpItem)
         {
             ListViewItem lv = lvOrderList.Items.Add(tmpItem.MenuName);
             lv.SubItems.Add(tmpItem.MenuType);
@@ -126,7 +126,7 @@ namespace OrderingSystems
                 
             }
            
-            MenuItem tmpMenu = new MenuItem();
+            User tmpMenu = new User();
             tmpMenu.ID = idx;
             tmpMenu.LoadMenuItem();
             tmpMenu.Qty = Convert.ToInt32(tmpQty);
