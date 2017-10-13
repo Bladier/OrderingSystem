@@ -11,7 +11,10 @@ namespace OrderingSystems
 {
     public partial class frmCleint : Form
     {
-        public frmCleint()
+
+  
+        string tmpQty ;
+        public frmClient()
         {
             InitializeComponent();
         }
@@ -112,10 +115,47 @@ namespace OrderingSystems
         private void btnPick_Click(object sender, EventArgs e)
         {
             if (lvDisplay.SelectedItems.Count < 1){return;}
-            MessageBox.Show( lvDisplay.FocusedItem.Text);
+
+            int idx = Convert.ToInt32(lvDisplay.FocusedItem.Tag.ToString());
+            bool retNum = false;
+            
+            while (retNum == false)
+            {
+                tmpQty = Interaction.InputBox("Enter Qty", "Order", "");
+                if (tmpQty == "") { return; }
+                if (tmpQty == "0") { return; }
+                if (Convert.ToInt32(tmpQty) < 0) { return; }
+                retNum = Information.IsNumeric(tmpQty);
+                
+            }
+           
+            MenuItem tmpMenu = new MenuItem();
+            tmpMenu.ID = idx;
+            tmpMenu.LoadMenuItem();
+            tmpMenu.Qty = Convert.ToInt32(tmpQty);
+            AddItemOrder(tmpMenu);
+
         }
 
         private void lvDisplay_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (lvOrderList.SelectedItems.Count == 0) { return; }
+            int idx = lvOrderList.FocusedItem.Index;
+            if (e.KeyCode == Keys.Delete)
+            {
+                DialogResult DeleteResult = MessageBox.Show("Do you want to delete this?", "Information", MessageBoxButtons.YesNo);
+                if (DeleteResult == DialogResult.No) { return; }
+
+                lvOrderList.Items[idx].Remove();
+            }
+           
+        }
+
+
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
         {
 
         }

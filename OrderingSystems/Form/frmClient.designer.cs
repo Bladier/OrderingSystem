@@ -46,15 +46,18 @@
             this.btnSoftDrink = new System.Windows.Forms.Button();
             this.btnPick = new System.Windows.Forms.Button();
             this.lvDisplay = new System.Windows.Forms.ListView();
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+
             this.lvOrderList = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+
             this.btnOrder = new System.Windows.Forms.Button();
             this.btnClearOrder = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -176,6 +179,21 @@
             this.columnHeader7.Text = "Price";
             this.columnHeader7.Width = 130;
             // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Name";
+            this.columnHeader6.Width = 401;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Size";
+            this.columnHeader7.Width = 210;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Price";
+            this.columnHeader8.Width = 226;
+            // 
             // lvOrderList
             // 
             this.lvOrderList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -203,23 +221,26 @@
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Type";
-            this.columnHeader2.Width = 330;
+
+            this.columnHeader2.Text = "Product Name";
+            this.columnHeader2.Width = 338;
+
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Size";
-            this.columnHeader3.Width = 252;
+            this.columnHeader3.Width = 203;
+
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Price";
-            this.columnHeader4.Width = 182;
+            this.columnHeader4.Width = 204;
             // 
-            // columnHeader8
+            // columnHeader5
             // 
-            this.columnHeader8.Text = "Qty";
-            this.columnHeader8.Width = 84;
+            this.columnHeader5.Text = "Qty";
+            this.columnHeader5.Width = 105;
             // 
             // btnOrder
             // 
@@ -230,6 +251,9 @@
             this.btnOrder.TabIndex = 3;
             this.btnOrder.Text = "&Order";
             this.btnOrder.UseVisualStyleBackColor = true;
+
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
+
             // 
             // btnClearOrder
             // 
@@ -240,6 +264,8 @@
             this.btnClearOrder.TabIndex = 5;
             this.btnClearOrder.Text = "&Clear Order";
             this.btnClearOrder.UseVisualStyleBackColor = true;
+
+            this.btnClearOrder.Click += new System.EventHandler(this.btnClearOrder_Click);
             // 
             // frmClient
             // 
