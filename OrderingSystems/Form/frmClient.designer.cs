@@ -159,7 +159,6 @@
             this.lvDisplay.TabIndex = 1;
             this.lvDisplay.UseCompatibleStateImageBehavior = false;
             this.lvDisplay.View = System.Windows.Forms.View.Details;
-            this.lvDisplay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvDisplay_KeyPress);
             // 
             // columnHeader6
             // 

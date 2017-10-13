@@ -152,11 +152,6 @@ namespace OrderingSystems
            
         }
 
-        private void lvDisplay_KeyPress(object sender, KeyPressEventArgs e)
-        {
-           
-        }
-
         private void btnOrder_Click(object sender, EventArgs e)
         {
 
