@@ -6,16 +6,20 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using Microsoft.VisualBasic;
 namespace OrderingSystems
 {
     public partial class frmProductList : Form
     {
+
         int Qidx;
         public frmProductList(int qID)
+        string tmpQty;
+
         {
             Qidx = qID;
             InitializeComponent();
+
         }
 
         private void frmProductList_Load(object sender, EventArgs e)
@@ -32,13 +36,15 @@ namespace OrderingSystems
             {
                 
                 MenuItem selectedmenu = new MenuItem();
+                User selectedmenu = new User();
+
                 selectedmenu.LoadbyRows(dr);
                 addMenu(selectedmenu);
             }
         }
 
        
-        private void addMenu(MenuItem mitem)
+        private void addMenu(User mitem)
         {
             if (mitem.MenuName == "")
             {
@@ -57,11 +63,26 @@ namespace OrderingSystems
             if (lvmenu.SelectedItems.Count == 0) { return; }
 
             int idx = Convert.ToInt32(lvmenu.SelectedItems[0].Tag);
-            MenuItem sMenu = new MenuItem();
+            User sMenu = new User();
             sMenu.ID = idx;
-            string tmpQty;
+        
+            bool retNum = false;
+
 
              tmpQty = Microsoft.VisualBasic.Interaction.InputBox("Quantity", "Enter Quantity", "0");
+            while (retNum == false)
+            {
+                tmpQty = Interaction.InputBox("Enter Qty", "Order", "");
+                if (tmpQty == "") { return; }
+                if (tmpQty == "0") { return; }
+
+                retNum = Information.IsNumeric(tmpQty);
+                if (retNum == true)
+                {
+                    if (Convert.ToInt32(tmpQty) < 0) { return; }
+                }
+            }
+
 
           //Saving to queue info
              //QueueLines ql = new QueueLines();
@@ -96,5 +117,10 @@ namespace OrderingSystems
         {
             if (mod_system.isEnter(e)) {btnSearch.PerformClick();}
         }
+            tmpFrm.AddMenuItem(sMenu);
+            this.Close();
+        }
+
+     
     }
 }

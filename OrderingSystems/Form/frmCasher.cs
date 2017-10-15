@@ -33,7 +33,7 @@ namespace OrderingSystems
             LVQueue.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
-                string output = String.Format("#0000{0}", dr[1].ToString());
+                string output = String.Format("ORDER # 0000{0}", dr[1].ToString());
                 ListViewItem lv = LVQueue.Items.Add(output);
                 lv.Tag = dr[0].ToString();
 
@@ -112,11 +112,15 @@ namespace OrderingSystems
                 Database.SaveEntry(ds, false);
 
                 lvListOrder.SelectedItems[0].Remove();
+<<<<<<< HEAD:OrderingSystems/frmCasher.cs
                 ReCalCulate();
             } 
+               
+            }
         }
 
-        internal void AddMenuItem(MenuItem mItem)
+
+        internal void AddMenuItem(User mItem)
     {
         //double tprice;
         //int tQty;
@@ -159,6 +163,10 @@ namespace OrderingSystems
             Form frm  = new frmProductList(tmpQID);
             frm.Show();
         }
+        Application.DoEvents();
+        lv1.Tag = mItem.ID;
+        
+    }
 
         private void txtCash_Leave(object sender, EventArgs e)
         {
