@@ -6,11 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using Microsoft.VisualBasic;
 namespace OrderingSystems
 {
     public partial class frmCasher : Form
     {
+        protected double Total_Amount = 0.0;
+        int tmpQID = 0;
+        public bool isNew=false;
         public frmCasher()
         {
             InitializeComponent();
@@ -46,10 +49,10 @@ namespace OrderingSystems
 
         private void ViewOrder()
         {
-            string mysql = "SELECT * FROM tblQueueInfo WHERE QueueID = " + LVQueue.SelectedItems[0].Tag;
+            string mysql = "SELECT * FROM tblQueueInfo WHERE QueueID = " + LVQueue.SelectedItems[0].Tag + " and status =1";
             DataSet ds = Database.LoadSQL(mysql, "tblQueueInfo");
 
-            lvListOrder.Items.Clear();
+            lvListOrder.Items.Clear(); Total_Amount = 0.0;
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
 
@@ -59,7 +62,7 @@ namespace OrderingSystems
                 string Name = ds1.Tables[0].Rows[0]["MenuName"].ToString();
                 string Desc = ds1.Tables[0].Rows[0]["MenuType"].ToString();
                 string Size = ds1.Tables[0].Rows[0]["MenuSize"].ToString();
-           
+            
                 ListViewItem lv = lvListOrder.Items.Add(Name);
                 lv.SubItems.Add(Desc);
                 lv.SubItems.Add(Size);
@@ -68,9 +71,12 @@ namespace OrderingSystems
 
                 lv.Tag = Convert.ToInt32(dr["ID"]);
 
+                Total_Amount += Convert.ToDouble(ds1.Tables[0].Rows[0]["Price"]);
                 Application.DoEvents();
+                
             }
-
+            tmpQID = Convert.ToInt32(LVQueue.SelectedItems[0].Tag);
+            lblAmountDue.Text = string.Format("{0:#,##0.00}", Total_Amount);
         }
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
@@ -94,6 +100,10 @@ namespace OrderingSystems
             }
             else
             {
+                //if new order
+                if (isNew) { lvListOrder.SelectedItems[0].Remove(); isNew = false; ReCalCulate(); return; }
+
+                //Old order
                 string mysql = "SELECT * FROM tblQueueInfo WHERE ID = " + lvListOrder.SelectedItems[0].Tag;
                 DataSet ds = Database.LoadSQL(mysql, "tblQueueInfo");
 
@@ -102,45 +112,86 @@ namespace OrderingSystems
                 Database.SaveEntry(ds, false);
 
                 lvListOrder.SelectedItems[0].Remove();
-               
+                ReCalCulate();
             } 
         }
 
         internal void AddMenuItem(MenuItem mItem)
     {
+        //double tprice;
+        //int tQty;
+        //    int i;
+        //    for (i = 0; i <= lvListOrder.Items.Count - 1; i++) {
+        //    if (lvListOrder.Items[i].Text == mItem.MenuName) {
+        //        ListViewItem lv = lvListOrder.Items[i];
+        //        if (lv.SubItems[1].Text == mItem.MenuType) {
+        //            if (lv.SubItems[2].Text == mItem.MenuSize)
+        //            {
+        //                tprice =Convert.ToDouble(lv.SubItems[3].Text);
+        //                tQty = Convert.ToInt32(lv.SubItems[4].Text);
+        //                tprice = tprice + mItem.Price;
+        //                tQty = tQty + mItem.Qty;
+        //                lv.SubItems[3].Text = tprice.ToString();
+        //                lv.SubItems[4].Text = tQty.ToString() ;
+        //                return;
+        //            }
+        //        }
+        //    }
 
-        ListViewItem lv1 = lvListOrder.Items.Add(mItem.MenuName);
 
-        lv1.SubItems.Add(mItem.MenuType);
-        lv1.SubItems.Add(mItem.MenuSize);
-        lv1.SubItems.Add(mItem.Price.ToString());
-        lv1.SubItems.Add(mItem.Qty.ToString());
+            //}
+            ListViewItem lv1 = lvListOrder.Items.Add(mItem.MenuName);
 
-        lv1.Tag = mItem.ID;
+            lv1.SubItems.Add(mItem.MenuType);
+            lv1.SubItems.Add(mItem.MenuSize);
+            lv1.SubItems.Add(mItem.Price.ToString());
+            lv1.SubItems.Add(mItem.Qty.ToString());
+
+            QueueLines ql = new QueueLines();
+            lv1.Tag = ql.LoadLastID();
+       
     }
-
-
-        
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Form frm  = new frmProductList();
+            if (tmpQID == 0) { Interaction.MsgBox("Please select client Order Number.", Constants.vbCritical, "Tagging Order"); return; }
+
+            Form frm  = new frmProductList(tmpQID);
             frm.Show();
         }
 
-       
-       
-        ////private void button1_Click(object sender, EventArgs e)
-        ////{
-        ////    string input = Microsoft.VisualBasic.Interaction.InputBox("Title", "Prompt", "Default", 0, 0);
-        ////}
-       
+        private void txtCash_Leave(object sender, EventArgs e)
+        {
+            if (txtCash.Text != "")
+            { CalcChange(); }
+        }
 
-     
+        private void CalcChange()
+        {
+            if (lvListOrder.Items.Count == 0) { return; }
+
+            double tmpchange = Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lblAmountDue.Text);
+            lblChange.Text = string.Format("{0:#,##0.00}", tmpchange);
+        }
+
+        private void ReCalCulate()
+        {
+
+            int i = 0;
+            for (i = 0; i <= lvListOrder.Items.Count - 1; i++)
+            {
+                Total_Amount += Convert.ToDouble(lvListOrder.Items[i].SubItems[3].Text);
+            }
+            lblAmountDue.Text = string.Format("{0:#,##0.00}", Total_Amount);
+
+            if (txtCash.Text != "")
+            { CalcChange(); }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
+        }
 
     }
 }

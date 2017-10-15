@@ -65,6 +65,7 @@
             this.lvmenu.TabIndex = 1;
             this.lvmenu.UseCompatibleStateImageBehavior = false;
             this.lvmenu.View = System.Windows.Forms.View.Details;
+            this.lvmenu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvmenu_KeyPress);
             // 
             // columnHeader1
             // 
@@ -93,6 +94,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(654, 22);
             this.txtSearch.TabIndex = 2;
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
             // btnCancel
             // 

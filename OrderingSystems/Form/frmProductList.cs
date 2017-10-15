@@ -11,11 +11,11 @@ namespace OrderingSystems
 {
     public partial class frmProductList : Form
     {
-        frmCasher tmpFrm;
-        public frmProductList()
+        int Qidx;
+        public frmProductList(int qID)
         {
+            Qidx = qID;
             InitializeComponent();
-            this.tmpFrm = new frmCasher();
         }
 
         private void frmProductList_Load(object sender, EventArgs e)
@@ -30,6 +30,7 @@ namespace OrderingSystems
             lvmenu.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
+                
                 MenuItem selectedmenu = new MenuItem();
                 selectedmenu.LoadbyRows(dr);
                 addMenu(selectedmenu);
@@ -60,21 +61,40 @@ namespace OrderingSystems
             sMenu.ID = idx;
             string tmpQty;
 
-         //   while (tmpQty =="")
-           // {
-                tmpQty = Microsoft.VisualBasic.Interaction.InputBox("Quantity", "Enter Quantity", "0");
-           // }
+             tmpQty = Microsoft.VisualBasic.Interaction.InputBox("Quantity", "Enter Quantity", "0");
 
+          //Saving to queue info
+             //QueueLines ql = new QueueLines();
+             //var with = ql;
+             //with.QueueID = Qidx;
+             //with.MenuID = sMenu.ID;
+             //with.QTY = Convert.ToDouble(tmpQty);
+             //with.saveQLines();
+
+                    
             sMenu.Qty = Convert.ToInt32(tmpQty);
             sMenu.LoadMenuItem();
 
+            if (Application.OpenForms["frmCasher"] != null)
+            {
+                (Application.OpenForms["frmCasher"] as frmCasher).AddMenuItem(sMenu);
+                (Application.OpenForms["frmCasher"] as frmCasher).isNew=true;
+            }
 
-           // Form frmc = new frmCasher();
-            
-            tmpFrm.AddMenuItem(sMenu);
-
+            this.Close();
         }
 
-    
+        private void lvmenu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (mod_system.isEnter(e))
+            {
+                btnSelect.PerformClick();
+            }
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (mod_system.isEnter(e)) {btnSearch.PerformClick();}
+        }
     }
 }

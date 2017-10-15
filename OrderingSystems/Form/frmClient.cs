@@ -112,9 +112,32 @@ namespace OrderingSystems
         private void btnPick_Click(object sender, EventArgs e)
         {
             if (lvDisplay.SelectedItems.Count < 1){return;}
-            MessageBox.Show( lvDisplay.FocusedItem.Text);
+           // MessageBox.Show( lvDisplay.FocusedItem.Text);
+
+
+            if (lvDisplay.SelectedItems.Count < 1) { return; }
+
+            int idx = Convert.ToInt32(lvDisplay.FocusedItem.Tag.ToString());
+
+            string tmpQty = Microsoft.VisualBasic.Interaction.InputBox("Enter Qty", "Order", "");
+
+            MenuItem tmpMenu = new MenuItem();
+            tmpMenu.ID = idx;
+            tmpMenu.LoadMenuItem();
+            tmpMenu.Qty = 1;
+            AddItemOrder(tmpMenu);
         }
 
+        private void AddItemOrder(MenuItem tmpItem)
+        {
+            ListViewItem lv = lvOrderList.Items.Add(tmpItem.MenuName);
+            lv.SubItems.Add(tmpItem.MenuType);
+            lv.SubItems.Add(tmpItem.MenuSize);
+            double tmpPrice = Convert.ToDouble(tmpItem.Price.ToString());
+            lv.SubItems.Add(tmpItem.Price.ToString());
+            lv.SubItems.Add(tmpItem.Qty.ToString());
+            lv.Tag = tmpItem.ID;
+        }
         private void lvDisplay_SelectedIndexChanged(object sender, EventArgs e)
         {
 

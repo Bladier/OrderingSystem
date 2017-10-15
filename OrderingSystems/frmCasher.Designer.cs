@@ -33,6 +33,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblAmountDue = new System.Windows.Forms.Label();
+            this.lblChange = new System.Windows.Forms.Label();
+            this.txtCash = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -47,6 +54,7 @@
             columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // columnHeader1
@@ -56,15 +64,19 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Blue;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.ContextMenuStrip = this.contextMenuStrip1;
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.btnRemove);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.btnPrint);
             this.panel1.Controls.Add(this.lvListOrder);
             this.panel1.Controls.Add(this.LVQueue);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1243, 749);
@@ -84,11 +96,93 @@
             this.refreshToolStripMenuItem.Text = "&Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.lblAmountDue);
+            this.groupBox1.Controls.Add(this.lblChange);
+            this.groupBox1.Controls.Add(this.txtCash);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.groupBox1.Location = new System.Drawing.Point(458, 414);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(773, 200);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Payment Info";
+            // 
+            // lblAmountDue
+            // 
+            this.lblAmountDue.AutoSize = true;
+            this.lblAmountDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAmountDue.ForeColor = System.Drawing.Color.Red;
+            this.lblAmountDue.Location = new System.Drawing.Point(215, 140);
+            this.lblAmountDue.Name = "lblAmountDue";
+            this.lblAmountDue.Size = new System.Drawing.Size(75, 33);
+            this.lblAmountDue.TabIndex = 5;
+            this.lblAmountDue.Text = "0.00";
+            // 
+            // lblChange
+            // 
+            this.lblChange.AutoSize = true;
+            this.lblChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChange.ForeColor = System.Drawing.Color.White;
+            this.lblChange.Location = new System.Drawing.Point(215, 90);
+            this.lblChange.Name = "lblChange";
+            this.lblChange.Size = new System.Drawing.Size(75, 33);
+            this.lblChange.TabIndex = 4;
+            this.lblChange.Text = "0.00";
+            // 
+            // txtCash
+            // 
+            this.txtCash.Location = new System.Drawing.Point(221, 44);
+            this.txtCash.Name = "txtCash";
+            this.txtCash.Size = new System.Drawing.Size(198, 31);
+            this.txtCash.TabIndex = 3;
+            this.txtCash.Leave += new System.EventHandler(this.txtCash_Leave);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(19, 140);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(195, 33);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Amount Due:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(83, 90);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(131, 33);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Change:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label1.Location = new System.Drawing.Point(118, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 33);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Cash:";
+            // 
             // btnAdd
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(945, 88);
+            this.btnAdd.Location = new System.Drawing.Point(979, 45);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(114, 43);
             this.btnAdd.TabIndex = 5;
@@ -98,9 +192,9 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemove.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemove.Location = new System.Drawing.Point(1081, 88);
+            this.btnRemove.Location = new System.Drawing.Point(1115, 45);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(114, 43);
             this.btnRemove.TabIndex = 4;
@@ -112,7 +206,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(1119, 675);
+            this.btnCancel.Location = new System.Drawing.Point(1117, 660);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(114, 43);
             this.btnCancel.TabIndex = 3;
@@ -124,16 +218,18 @@
             // 
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(983, 675);
+            this.btnPrint.Location = new System.Drawing.Point(981, 660);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(114, 43);
             this.btnPrint.TabIndex = 2;
-            this.btnPrint.Text = "&Bill";
+            this.btnPrint.Text = "&Post";
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // lvListOrder
             // 
-            this.lvListOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.lvListOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.lvListOrder.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2,
@@ -143,10 +239,9 @@
             this.columnHeader6});
             this.lvListOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvListOrder.FullRowSelect = true;
-            this.lvListOrder.GridLines = true;
-            this.lvListOrder.Location = new System.Drawing.Point(460, 137);
+            this.lvListOrder.Location = new System.Drawing.Point(458, 94);
             this.lvListOrder.Name = "lvListOrder";
-            this.lvListOrder.Size = new System.Drawing.Size(773, 518);
+            this.lvListOrder.Size = new System.Drawing.Size(771, 312);
             this.lvListOrder.TabIndex = 1;
             this.lvListOrder.UseCompatibleStateImageBehavior = false;
             this.lvListOrder.View = System.Windows.Forms.View.Details;
@@ -183,11 +278,10 @@
             columnHeader1});
             this.LVQueue.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LVQueue.FullRowSelect = true;
-            this.LVQueue.GridLines = true;
             this.LVQueue.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.LVQueue.Location = new System.Drawing.Point(12, 12);
             this.LVQueue.Name = "LVQueue";
-            this.LVQueue.Size = new System.Drawing.Size(435, 725);
+            this.LVQueue.Size = new System.Drawing.Size(435, 691);
             this.LVQueue.TabIndex = 0;
             this.LVQueue.UseCompatibleStateImageBehavior = false;
             this.LVQueue.View = System.Windows.Forms.View.Details;
@@ -199,12 +293,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1243, 749);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "frmCasher";
             this.Text = "Casher";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmCasher_Load);
             this.panel1.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -225,5 +322,12 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblAmountDue;
+        private System.Windows.Forms.Label lblChange;
+        private System.Windows.Forms.TextBox txtCash;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
