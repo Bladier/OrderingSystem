@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace OrderingSystems.Class
+namespace OrderingSystems
 {
     class QueueLines
     {
@@ -49,9 +49,28 @@ namespace OrderingSystems.Class
             get { return _Status; }
             set { _Status = value; }
         }
+
+        private double _price;
+        public double Price
+        {
+            get { return _price; }
+            set { _price = value; }
+        }
+
         #endregion
 
         #region "Properties"
+        internal void LoadLines()
+        {
+            string mysql = "Select * From tblqueueinfo Where QueueID = " + _QueueID ;
+            DataSet ds = Database.LoadSQL(mysql, "tblqueueinfo");
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                LoadByRow(dr);
+            }
+        }
+
         public void LoadByRow(DataRow dr)
         {
             DataSet ds = new DataSet();
@@ -61,6 +80,7 @@ namespace OrderingSystems.Class
              _QueueID =Convert.ToInt32(_with3["QUEUEID"]);
             _MenuID =Convert.ToInt32(_with3["MenuID"]);
             _QTY = Convert.ToDouble(_with3["QTY"]);
+            _price = Convert.ToDouble(_with3["Price"]);
             
             string tmpqty = _with3["Status"].ToString();
             if (tmpqty =="1")
@@ -84,6 +104,7 @@ namespace OrderingSystems.Class
             _with2["QueueID"] = _QueueID ;
             _with2["MenuID"] = _MenuID ;
             _with2["Qty"] = _QTY ;
+            _with2["Price"] = _price;
             _with2["Status"] = _Status;
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);

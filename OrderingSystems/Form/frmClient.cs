@@ -13,6 +13,7 @@ namespace OrderingSystems
     public partial class frmClient : Form
     {
         string tmpQty ;
+        Queue QueOrder;
         public frmClient()
         {
             InitializeComponent();
@@ -158,7 +159,25 @@ namespace OrderingSystems
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
+            QueOrder = new Queue();
+            var with = QueOrder;
+            with.OrderNum = "1"; //Queue Number from table Maintenance
+            with.OrderDate = DateAndTime.Now;
+            with.Status = true;
+            with.SaveQueue();
 
+            foreach (ListViewItem lv in lvOrderList.Items)
+            {
+                QueueLines tmpLines = new QueueLines();
+                tmpLines.QueueID = QueOrder.GetLastID();
+                tmpLines.MenuID = Convert.ToInt32(lv.Tag);
+                tmpLines.QTY = Convert.ToDouble(lv.SubItems[4].Text.ToString());
+                tmpLines.Price = Convert.ToDouble(lv.SubItems[3].Text.ToString());
+                tmpLines.Status = true;
+                tmpLines.SaveInfo();
+
+            }
+            MessageBox.Show("Order Post", "Information");
         }
 
     }

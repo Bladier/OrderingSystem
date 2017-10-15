@@ -8,8 +8,9 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.Linq;
 using System.Xml.Linq;
+using OrderingSystems.Class;
 
-namespace OrderingSystems.Class
+namespace OrderingSystems
 {
     class Queue
     {
@@ -96,7 +97,7 @@ namespace OrderingSystems.Class
             }
         }
 
-        public void Save_ItemClass()
+        public void SaveQueue()
         {
             string mySql = "Select * From tblQueue Limit 1";
             DataSet ds = Database.LoadSQL(mySql, "tblQueue");
@@ -105,12 +106,19 @@ namespace OrderingSystems.Class
             dsNewRow = ds.Tables[0].NewRow();
             var _with2 = dsNewRow;
             _with2["OrderNum"] = _OrderNum;
-            _with2["ItemCategory"] = _OrderDate ;
+            _with2["OrdeDate"] = _OrderDate ;
             _with2["Status"] = _Status ;
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
 
+        internal int GetLastID()
+        {
+            string mysql = "Select * From tblQueue Order By ID Desc";
+            DataSet ds = Database.LoadSQL(mysql, "tblQueue");
+
+            return Convert.ToInt32(ds.Tables[0].Rows[0]["ID"].ToString());
+        }
         public void LoadByRow(DataRow dr)
         {
             DataSet ds = new DataSet();

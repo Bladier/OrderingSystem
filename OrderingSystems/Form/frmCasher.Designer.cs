@@ -130,6 +130,7 @@
             this.btnPrint.TabIndex = 2;
             this.btnPrint.Text = "&Bill";
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // lvListOrder
             // 
