@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\function.cs" />
     <Compile Include="Class\MenuItem.cs" />
     <Compile Include="Class\Queue.cs" />
     <Compile Include="Class\QueueCol.cs" />

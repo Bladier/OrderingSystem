@@ -121,7 +121,7 @@ namespace OrderingSystems
         lv1.Tag = mItem.ID;
         
     }
-
+         
 
         
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -133,6 +133,11 @@ namespace OrderingSystems
         {
             Form frm  = new frmProductList();
             frm.Show();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
         }
 
        
