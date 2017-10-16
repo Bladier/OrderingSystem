@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.Linq;
 using System.Xml.Linq;
-using OrderingSystems.Class;
 
 namespace OrderingSystems
 {

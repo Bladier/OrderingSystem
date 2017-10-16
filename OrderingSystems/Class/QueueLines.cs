@@ -59,7 +59,9 @@ namespace OrderingSystems
 
         #endregion
 
-        #region "Properties"
+
+        #region "Functions"
+
         internal void LoadLines()
         {
             string mysql = "Select * From tblqueueinfo Where QueueID = " + _QueueID ;
@@ -71,32 +73,35 @@ namespace OrderingSystems
             }
         }
 
+
         public void LoadByRow(DataRow dr)
         {
             DataSet ds = new DataSet();
             var _with3 = dr;
 
             _ID = Convert.ToInt32(_with3["ID"]);
-             _QueueID =Convert.ToInt32(_with3["QUEUEID"]);
-            _MenuID =Convert.ToInt32(_with3["MenuID"]);
+            _QueueID = Convert.ToInt32(_with3["QUEUEID"]);
+            _MenuID = Convert.ToInt32(_with3["MenuID"]);
             _QTY = Convert.ToDouble(_with3["QTY"]);
+
             _price = Convert.ToDouble(_with3["Price"]);
             
+
             string tmpqty = _with3["Status"].ToString();
-            if (tmpqty =="1")
+            if (tmpqty == "1")
             {
-                _Status =true;
+                _Status = true;
             }
             else
             {
-                _Status =false;
+                _Status = false;
             }
-            }
+        }
 
-        internal void SaveInfo()
+        public void SaveInfo()
         {
-            string mysql = "Select * From tblQueueInfo Where QueueID = " + _QueueID ;
-            DataSet ds = Database.LoadSQL(mysql, "tblQueueInfo");
+           string mysql = "SELECT * FROM tblQueueInfo limit 0";
+           DataSet ds = Database.LoadSQL(mysql, "tblQueueInfo");
 
             DataRow dsNewRow = null;
             dsNewRow = ds.Tables[0].NewRow();
@@ -109,7 +114,21 @@ namespace OrderingSystems
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
-        }
+        
 
+        public int LoadLastID()
+        {
+            System.Threading.Thread.Sleep(1000);
+            string mySql = "SELECT * FROM tblQueueInfo ORDER BY ID DESC LIMIT 1";
+            DataSet ds = Database.LoadSQL(mySql, SubTable);
+
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return 0;
+            }
+            return Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]);
+        }
         #endregion
     }
+
+}
