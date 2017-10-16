@@ -6,11 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using Microsoft.VisualBasic;
 namespace OrderingSystems
 {
     public partial class frmProductList : Form
     {
+        string tmpQty;
         int Qidx;
         public frmProductList(int qID)
         {
@@ -59,9 +60,23 @@ namespace OrderingSystems
             int idx = Convert.ToInt32(lvmenu.SelectedItems[0].Tag);
             MenuItem sMenu = new MenuItem();
             sMenu.ID = idx;
-            string tmpQty;
 
-             tmpQty = Microsoft.VisualBasic.Interaction.InputBox("Quantity", "Enter Quantity", "0");
+            bool retnum = false;
+
+            while (retnum == false)
+            {
+                tmpQty = Interaction.InputBox("Quantity", "Enter Quantity", "0");
+                if (tmpQty == "") { return; }
+                if (tmpQty == "0") { return; }
+
+                retnum = Information.IsNumeric(tmpQty);
+                if (retnum == true)
+                {
+                    if (Convert.ToInt32(tmpQty) < 0) { return; }
+                }
+            }
+
+            
 
           //Saving to queue info
              //QueueLines ql = new QueueLines();
@@ -79,6 +94,7 @@ namespace OrderingSystems
             {
                 (Application.OpenForms["frmCasher"] as frmCasher).AddMenuItem(sMenu);
                 (Application.OpenForms["frmCasher"] as frmCasher).isNew=true;
+                (Application.OpenForms["frmCasher"] as frmCasher).Show();
             }
 
             this.Close();
