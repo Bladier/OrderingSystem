@@ -159,6 +159,7 @@
             this.lvDisplay.TabIndex = 1;
             this.lvDisplay.UseCompatibleStateImageBehavior = false;
             this.lvDisplay.View = System.Windows.Forms.View.Details;
+            this.lvDisplay.DoubleClick += new System.EventHandler(this.lvDisplay_DoubleClick);
             // 
             // columnHeader6
             // 
