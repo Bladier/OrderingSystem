@@ -23,7 +23,7 @@ namespace OrderingSystems.Report
         {
         }
 
-        internal void ReportInit(string mySql, string dsName, string rptUrl, Dictionary<string, string> addPara = null, bool hasUser = true)
+        public void ReportInit(string mySql, string dsName, string rptUrl, Dictionary<string, string> addPara = null, bool hasUser = true)
         {
             try
             {
@@ -45,29 +45,30 @@ namespace OrderingSystems.Report
                 //{
                 //    ReportParameter myPara = new ReportParameter();
                 //    myPara.Name = "txtUsername";
-                //    if (mod_system.POSuser.UserName == null)
-                //        mod_system.POSuser.UserName = "Sample Eskie";
-                //    myPara.Values.Add(mod_system.POSuser.UserName);
+                //    if (mod_system.SystemUser.USERNAME == null)
+                //        mod_system.SystemUser.USERNAME = "Sample Eskie";
+                //    myPara.Values.Add(mod_system.SystemUser.USERNAME);
                 //    _with2.LocalReport.SetParameters(new ReportParameter[] { myPara });
                 //}
 
-                //if ((addPara != null))
-                //{
-                //    foreach (KeyValuePair<string, string> nPara_loopVariable in addPara)
-                //    {
-                //        nPara = nPara_loopVariable;
-                //        ReportParameter tmpPara = new ReportParameter();
-                //        tmpPara.Name = nPara.Key;
-                //        tmpPara.Values.Add(nPara.Value);
-                //        _with2.LocalReport.SetParameters(new ReportParameter[] { tmpPara });
-                //    }
-                //}
+                if ((addPara != null))
+                {
+                    foreach (KeyValuePair<string, string> nPara_loopVariable in addPara)
+                    {
+                        var nPara = nPara_loopVariable;
+                        ReportParameter tmpPara = new ReportParameter();
+                        tmpPara.Name = nPara.Key;
+                        tmpPara.Values.Add(nPara.Value);
+                        _with2.LocalReport.SetParameters(new ReportParameter[] { tmpPara });
+                    }
+                }
 
                 _with2.RefreshReport();
             }
             catch (Exception ex)
             {
-                Interaction.MsgBox(ex.ToString(), MsgBoxStyle.Critical, "REPORT GENERATE ERROR");
+                // Interaction.MsgBox(ex.ToString(), MsgBoxStyle.Critical, "REPORT GENERATE ERROR");
+                // Log_Report("REPORT - " + ex.ToString());
             }
         }
     }
