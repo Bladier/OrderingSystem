@@ -94,6 +94,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(170, 21);
             this.txtPassword.TabIndex = 1;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // txtusername
             // 
@@ -101,6 +102,7 @@
             this.txtusername.Name = "txtusername";
             this.txtusername.Size = new System.Drawing.Size(170, 21);
             this.txtusername.TabIndex = 0;
+            this.txtusername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtusername_KeyDown);
             // 
             // panel2
             // 
@@ -170,6 +172,7 @@
             this.KeyPreview = true;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
