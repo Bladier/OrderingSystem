@@ -162,8 +162,8 @@ namespace OrderingSystems
             QueOrder = new Queue();
             var with = QueOrder;
             with.OrderNum = "1"; //Queue Number from table Maintenance
-            with.OrderDate = DateTime.Today;
-            with.Status = true;
+            with.OrderDate = DateTime.Now;
+            //with.Status = true;
             with.SaveQueue();
 
             foreach (ListViewItem lv in lvOrderList.Items)
@@ -178,6 +178,11 @@ namespace OrderingSystems
 
             }
             MessageBox.Show("Order Post", "Information");
+        }
+
+        private void lvDisplay_DoubleClick(object sender, EventArgs e)
+        {
+            btnPick.PerformClick();
         }
 
     }

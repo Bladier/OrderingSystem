@@ -41,8 +41,8 @@ namespace OrderingSystems
             set { _OrderDate = value; }
         }
 
-        private bool _Status;
-        public bool Status
+        private string _Status;
+        public string Status
         {
             get { return _Status; }
             set { _Status = value; }
@@ -106,8 +106,8 @@ namespace OrderingSystems
             dsNewRow = ds.Tables[0].NewRow();
             var _with2 = dsNewRow;
             _with2["OrderNum"] = _OrderNum;
-            _with2["OrderDate"] = Convert.ToDateTime(_OrderDate);
-            _with2["Status"] = 1;
+            _with2["OrderDate"] = _OrderDate;
+            _with2["Status"] = "P";
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
@@ -125,18 +125,9 @@ namespace OrderingSystems
             var _with3 = dr;
             _ID =Convert.ToInt32(_with3["ID"]);
             _OrderNum = _with3["OrderNum"].ToString();
-            _OrderDate = Convert.ToDateTime(_with3["Date"]);
-
-             string tmpqty = _with3["Status"].ToString();
-            if (tmpqty =="1")
-            {
-                _Status =true;
-            }
-            else
-            {
-                _Status =false;
-            }
-         
+            _OrderDate = Convert.ToDateTime(_with3["OrderDate"]);
+            _Status  = _with3["Status"].ToString();
+        
             }
         }
 
