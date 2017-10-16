@@ -32,14 +32,14 @@ namespace OrderingSystems
             lvmenu.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
-                User selectedmenu = new User();
+                MenuItem selectedmenu = new MenuItem();
                 selectedmenu.LoadbyRows(dr);
                 addMenu(selectedmenu);
             }
         }
 
        
-        private void addMenu(User mitem)
+        private void addMenu(MenuItem mitem)
         {
             if (mitem.MenuName == "")
             {
@@ -58,7 +58,7 @@ namespace OrderingSystems
             if (lvmenu.SelectedItems.Count == 0) { return; }
 
             int idx = Convert.ToInt32(lvmenu.SelectedItems[0].Tag);
-            User sMenu = new User();
+            MenuItem sMenu = new MenuItem();
             sMenu.ID = idx;
         
             bool retNum = false;

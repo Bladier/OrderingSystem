@@ -38,7 +38,7 @@ namespace OrderingSystems
              lv.Tag = dr["ID"].ToString();
         }
 
-        private void AddItemOrder(User tmpItem)
+        private void AddItemOrder(MenuItem tmpItem)
         {
             ListViewItem lv = lvOrderList.Items.Add(tmpItem.MenuName);
             lv.SubItems.Add(tmpItem.MenuType);
@@ -131,7 +131,7 @@ namespace OrderingSystems
                 }
             }
            
-            User tmpMenu = new User();
+            MenuItem tmpMenu = new MenuItem();
             tmpMenu.ID = idx;
             tmpMenu.LoadMenuItem();
             tmpMenu.Qty = Convert.ToInt32(tmpQty);
@@ -162,7 +162,7 @@ namespace OrderingSystems
             QueOrder = new Queue();
             var with = QueOrder;
             with.OrderNum = "1"; //Queue Number from table Maintenance
-            with.OrderDate = DateAndTime.Now;
+            with.OrderDate = DateTime.Today;
             with.Status = true;
             with.SaveQueue();
 

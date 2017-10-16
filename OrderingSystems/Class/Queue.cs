@@ -34,8 +34,8 @@ namespace OrderingSystems
         }
 
 
-        private System.DateTime _OrderDate;
-        public System.DateTime OrderDate
+        private DateTime _OrderDate;
+        public DateTime OrderDate
         {
             get { return _OrderDate; }
             set { _OrderDate = value; }
@@ -106,8 +106,8 @@ namespace OrderingSystems
             dsNewRow = ds.Tables[0].NewRow();
             var _with2 = dsNewRow;
             _with2["OrderNum"] = _OrderNum;
-            _with2["OrdeDate"] = _OrderDate ;
-            _with2["Status"] = _Status ;
+            _with2["OrderDate"] = Convert.ToDateTime(_OrderDate);
+            _with2["Status"] = 1;
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
