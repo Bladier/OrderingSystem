@@ -64,7 +64,6 @@
             // 
             // panel1
             // 
-
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
@@ -144,7 +143,6 @@
             this.txtCash.Name = "txtCash";
             this.txtCash.Size = new System.Drawing.Size(198, 31);
             this.txtCash.TabIndex = 3;
-            this.txtCash.Leave += new System.EventHandler(this.txtCash_Leave);
             // 
             // label3
             // 
@@ -225,7 +223,6 @@
             this.btnPrint.TabIndex = 2;
             this.btnPrint.Text = "&Post";
             this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // lvListOrder
             // 

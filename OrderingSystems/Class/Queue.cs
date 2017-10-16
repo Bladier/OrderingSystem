@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace OrderingSystems.Class
+namespace OrderingSystems
 {
     class Queue
     {

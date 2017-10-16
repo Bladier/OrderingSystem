@@ -13,6 +13,7 @@ namespace OrderingSystems
     public partial class frmClient : Form
     {
         string tmpQty ;
+        Queue QueOrder;
         public frmClient()
         {
             InitializeComponent();
@@ -37,7 +38,7 @@ namespace OrderingSystems
              lv.Tag = dr["ID"].ToString();
         }
 
-        private void AddItemOrder(User tmpItem)
+        private void AddItemOrder(MenuItem tmpItem)
         {
             ListViewItem lv = lvOrderList.Items.Add(tmpItem.MenuName);
             lv.SubItems.Add(tmpItem.MenuType);
@@ -113,34 +114,6 @@ namespace OrderingSystems
         {
             if (lvDisplay.SelectedItems.Count < 1){return;}
 
-           // MessageBox.Show( lvDisplay.FocusedItem.Text);
-
-
-            if (lvDisplay.SelectedItems.Count < 1) { return; }
-
-            int idx = Convert.ToInt32(lvDisplay.FocusedItem.Tag.ToString());
-
-            string tmpQty = Microsoft.VisualBasic.Interaction.InputBox("Enter Qty", "Order", "");
-
-            MenuItem tmpMenu = new MenuItem();
-            tmpMenu.ID = idx;
-            tmpMenu.LoadMenuItem();
-            tmpMenu.Qty = 1;
-            AddItemOrder(tmpMenu);
-        }
-
-        private void AddItemOrder(MenuItem tmpItem)
-        {
-            ListViewItem lv = lvOrderList.Items.Add(tmpItem.MenuName);
-            lv.SubItems.Add(tmpItem.MenuType);
-            lv.SubItems.Add(tmpItem.MenuSize);
-            double tmpPrice = Convert.ToDouble(tmpItem.Price.ToString());
-            lv.SubItems.Add(tmpItem.Price.ToString());
-            lv.SubItems.Add(tmpItem.Qty.ToString());
-            lv.Tag = tmpItem.ID;
-        }
-        private void lvDisplay_SelectedIndexChanged(object sender, EventArgs e)
-
             int idx = Convert.ToInt32(lvDisplay.FocusedItem.Tag.ToString());
             bool retNum = false;
             
@@ -158,7 +131,7 @@ namespace OrderingSystems
                 }
             }
            
-            User tmpMenu = new User();
+            MenuItem tmpMenu = new MenuItem();
             tmpMenu.ID = idx;
             tmpMenu.LoadMenuItem();
             tmpMenu.Qty = Convert.ToInt32(tmpQty);
@@ -185,9 +158,31 @@ namespace OrderingSystems
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
-
         {
+            QueOrder = new Queue();
+            var with = QueOrder;
+            with.OrderNum = "1"; //Queue Number from table Maintenance
+            with.OrderDate = DateTime.Now;
+            //with.Status = true;
+            with.SaveQueue();
 
+            foreach (ListViewItem lv in lvOrderList.Items)
+            {
+                QueueLines tmpLines = new QueueLines();
+                tmpLines.QueueID = QueOrder.GetLastID();
+                tmpLines.MenuID = Convert.ToInt32(lv.Tag);
+                tmpLines.QTY = Convert.ToDouble(lv.SubItems[4].Text.ToString());
+                tmpLines.Price = Convert.ToDouble(lv.SubItems[3].Text.ToString());
+                tmpLines.Status = true;
+                tmpLines.SaveInfo();
+
+            }
+            MessageBox.Show("Order Post", "Information");
+        }
+
+        private void lvDisplay_DoubleClick(object sender, EventArgs e)
+        {
+            btnPick.PerformClick();
         }
 
     }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+
 namespace OrderingSystems
 {
     public partial class frmProductList : Form
@@ -14,9 +15,8 @@ namespace OrderingSystems
 
         string tmpQty;
         int Qidx;
-        public frmProductList(int qID)
-        string tmpQty;
 
+        public frmProductList(int qID)
         {
             Qidx = qID;
             InitializeComponent();
@@ -35,9 +35,8 @@ namespace OrderingSystems
             lvmenu.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
-                
+
                 MenuItem selectedmenu = new MenuItem();
-                User selectedmenu = new User();
 
                 selectedmenu.LoadbyRows(dr);
                 addMenu(selectedmenu);
@@ -45,7 +44,7 @@ namespace OrderingSystems
         }
 
        
-        private void addMenu(User mitem)
+        private void addMenu(MenuItem mitem)
         {
             if (mitem.MenuName == "")
             {
@@ -64,11 +63,10 @@ namespace OrderingSystems
             if (lvmenu.SelectedItems.Count == 0) { return; }
 
             int idx = Convert.ToInt32(lvmenu.SelectedItems[0].Tag);
-            User sMenu = new User();
+            MenuItem sMenu = new MenuItem();
             sMenu.ID = idx;
 
-
-            bool retnum = false;
+            bool retNum;
 
              tmpQty = Microsoft.VisualBasic.Interaction.InputBox("Quantity", "Enter Quantity", "0");
             while (retNum == false)
@@ -100,7 +98,6 @@ namespace OrderingSystems
             {
                 (Application.OpenForms["frmCasher"] as frmCasher).AddMenuItem(sMenu);
                 (Application.OpenForms["frmCasher"] as frmCasher).isNew=true;
-                (Application.OpenForms["frmCasher"] as frmCasher).Show();
             }
 
             this.Close();
@@ -118,10 +115,10 @@ namespace OrderingSystems
         {
             if (mod_system.isEnter(e)) {btnSearch.PerformClick();}
         }
-            tmpFrm.AddMenuItem(sMenu);
-            this.Close();
+            //tmpFrm.AddMenuItem(sMenu);
+            //this.Close();
         }
 
      
     }
-}
+
