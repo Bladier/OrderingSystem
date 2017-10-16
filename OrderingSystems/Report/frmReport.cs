@@ -41,7 +41,9 @@ namespace OrderingSystems
                     ReportParameter myPara = new ReportParameter();
                     myPara.Name = "txtUsername";
                     if (mod_system.ORuser.Username == null)
+                    {
                         mod_system.ORuser.Username = "Atcheche";
+                    }
                     myPara.Values.Add(mod_system.ORuser.Username);
                     _with2.LocalReport.SetParameters(new ReportParameter[] { myPara });
                 }
