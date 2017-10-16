@@ -222,6 +222,7 @@
             this.btnPrint.TabIndex = 2;
             this.btnPrint.Text = "&Post";
             this.btnPrint.UseVisualStyleBackColor = true;
+
             // 
             // lvListOrder
             // 

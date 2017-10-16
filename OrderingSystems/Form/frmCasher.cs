@@ -155,9 +155,6 @@ namespace OrderingSystems
             lv1.Tag = ql.LoadLastID();
      
             }
-        
-
-
        
         private void txtCash_Leave(object sender, EventArgs e)
         {
@@ -173,15 +170,7 @@ namespace OrderingSystems
             lblChange.Text = string.Format("{0:#,##0.00}", tmpchange);
         }
 
-     
-  
-       
-        ////private void button1_Click(object sender, EventArgs e)
-        ////{
-        ////    string input = Microsoft.VisualBasic.Interaction.InputBox("Title", "Prompt", "Default", 0, 0);
-        ////}
-
-
+   
 
         private void ReCalCulate()
         {
@@ -197,6 +186,7 @@ namespace OrderingSystems
             { CalcChange(); }
         }
 
+       
     
     }
 }
