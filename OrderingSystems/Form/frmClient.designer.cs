@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "Sabon sa plato",
             "Regular",
             "1500"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             "May Sabon",
             "Sabon Sa Plato",
             "Regular",
@@ -152,7 +152,7 @@
             this.lvDisplay.FullRowSelect = true;
             this.lvDisplay.GridLines = true;
             this.lvDisplay.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem3});
             this.lvDisplay.Location = new System.Drawing.Point(396, 19);
             this.lvDisplay.Name = "lvDisplay";
             this.lvDisplay.Size = new System.Drawing.Size(837, 317);
@@ -160,6 +160,7 @@
             this.lvDisplay.UseCompatibleStateImageBehavior = false;
             this.lvDisplay.View = System.Windows.Forms.View.Details;
             this.lvDisplay.DoubleClick += new System.EventHandler(this.lvDisplay_DoubleClick);
+            this.lvDisplay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvDisplay_KeyPress);
             // 
             // columnHeader6
             // 
@@ -188,7 +189,7 @@
             this.lvOrderList.FullRowSelect = true;
             this.lvOrderList.GridLines = true;
             this.lvOrderList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem4});
             this.lvOrderList.Location = new System.Drawing.Point(12, 351);
             this.lvOrderList.Name = "lvOrderList";
             this.lvOrderList.Size = new System.Drawing.Size(1233, 357);
@@ -229,7 +230,7 @@
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(101, 78);
             this.btnOrder.TabIndex = 3;
-            this.btnOrder.Text = "&Order";
+            this.btnOrder.Text = "Post &Order";
             this.btnOrder.UseVisualStyleBackColor = true;
             this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 

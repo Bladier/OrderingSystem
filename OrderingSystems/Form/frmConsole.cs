@@ -12,6 +12,7 @@ namespace OrderingSystems
     public partial class frmConsole : Form
     {
         MenuItem tmpMenu;
+        Maintenance tmpMaintenance;
         public frmConsole()
         {
             InitializeComponent();
@@ -21,6 +22,7 @@ namespace OrderingSystems
         {
             LoadMenu();
             LoadCategory();
+            LoadMaintenance();
         }
 
         private void LoadCategory()
@@ -47,6 +49,18 @@ namespace OrderingSystems
             }
         }
 
+        private void LoadMaintenance()
+        {
+            string mysql = "Select * From tblMaintenance";
+            DataSet ds = Database.LoadSQL(mysql, "tblMaintenance");
+
+            lvMaintenance.Items.Clear();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                AddMaintenanceItem(dr);
+            }
+        }
+
         private void AddMenuItem(DataRow dr)
         {
             ListViewItem lv = lvMenu.Items.Add(dr["ID"].ToString());
@@ -64,6 +78,14 @@ namespace OrderingSystems
                 lv.SubItems.Add("In Active");
             }
             
+        }
+
+        private void AddMaintenanceItem(DataRow dr)
+        {
+            ListViewItem lv = lvMaintenance.Items.Add(dr["ID"].ToString());
+            lv.SubItems.Add(dr["M_Key"].ToString());
+            lv.SubItems.Add(dr["M_Value"].ToString());
+            lv.SubItems.Add(dr["Remarks"].ToString());
         }
 
         private void lvMenu_DoubleClick(object sender, EventArgs e)
@@ -96,7 +118,6 @@ namespace OrderingSystems
 
         private void btnSaveMenu_Click(object sender, EventArgs e)
         {
-            if (isValid() == false) { return; }
             if (btnSaveMenu.Text == "&Update")
             {
                 tmpMenu.Price = Convert.ToDouble(txtPrice.Text);
@@ -112,6 +133,8 @@ namespace OrderingSystems
             }
             else
             {
+                if (isValidMenu() == false) { return; }
+
                 tmpMenu = new MenuItem();
                 tmpMenu.MenuName = cboCategory.Text;
                 tmpMenu.MenuType = txtName.Text;
@@ -132,13 +155,63 @@ namespace OrderingSystems
             LoadMenu();
         }
 
-        private bool isValid()
+        private bool isValidMenu()
         {
             if (cboCategory.Text == "") { return false; }
             if (txtName.Text == "") { return false; }
             if (txtPrice.Text == "") { return false; }
 
             return true ;
+        }
+
+        private bool isValidMaintenance()
+        {
+            if (txtKey.Text == "") { return false; }
+            if (txtValue.Text == "") { return false; }
+
+            return true;
+        }
+
+
+        private void lvMaintenance_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvMaintenance.SelectedItems.Count == 0) { return; }
+            int idx = Convert.ToInt32(lvMaintenance.FocusedItem.Text.ToString());
+
+
+            tmpMaintenance = new Maintenance();
+            
+            tmpMaintenance.ID = idx;
+            tmpMaintenance.LoadMaintenance();
+
+            txtKey.Text = tmpMaintenance.MaintenanceKey;
+            txtValue.Text = tmpMaintenance.MaintenanceValue;
+            txtRemarks.Text = tmpMaintenance.Remarks ;
+
+            txtKey.Enabled = false;
+            btnSaveMaintenance.Text = "&Update";
+        }
+
+        private void btnSaveMaintenance_Click(object sender, EventArgs e)
+        {
+            if (btnSaveMaintenance.Text == "&Update")
+            {
+                tmpMaintenance.MaintenanceValue = txtValue.Text;
+                tmpMaintenance.Remarks = txtRemarks.Text;
+                tmpMaintenance.SaveMaintenance();
+
+            }
+            else 
+            {
+                if (isValidMaintenance() == false) { return; }
+                tmpMaintenance = new Maintenance();
+                var with = tmpMaintenance;
+                with.MaintenanceKey = txtKey.Text;
+                with.MaintenanceValue = txtValue.Text;
+                with.Remarks = txtRemarks.Text;
+            }
+            MessageBox.Show("Data Save");
+            LoadMaintenance();
         }
 
     }
