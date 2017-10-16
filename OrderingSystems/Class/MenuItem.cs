@@ -82,10 +82,11 @@ namespace OrderingSystems
 
         }
 
-        internal void SaveMenu()
-        {
-            string mysql = "Select * From tblMenu Where Upper(MenuName) =Upper('" + _menuName + "') And Upper(MenuType) = Upper('" + _menuType + "')";
-            DataSet ds = Database.LoadSQL(mysql, "tblMenu");
+
+            internal void SaveMenu()
+            {
+                string mysql = "Select * From tblMenu Where ID =" + _id;
+                DataSet ds = Database.LoadSQL(mysql, "tblMenu");
 
             if (ds.Tables[0].Rows.Count == 0)
             {
