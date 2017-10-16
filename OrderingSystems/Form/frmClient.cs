@@ -160,8 +160,10 @@ namespace OrderingSystems
         private void btnOrder_Click(object sender, EventArgs e)
         {
             QueOrder = new Queue();
+            Maintenance tmpMain = new Maintenance();
+
             var with = QueOrder;
-            with.OrderNum = "1"; //Queue Number from table Maintenance
+            with.OrderNum = tmpMain.GetValue("ORDERNUM"); //Queue Number from table Maintenance
             with.OrderDate = DateTime.Now;
             //with.Status = true;
             with.SaveQueue();
@@ -178,11 +180,22 @@ namespace OrderingSystems
 
             }
             MessageBox.Show("Order Post", "Information");
+            lvDisplay.Items.Clear();
+            lvOrderList.Items.Clear();
         }
 
         private void lvDisplay_DoubleClick(object sender, EventArgs e)
         {
             btnPick.PerformClick();
+        }
+
+        private void lvDisplay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (mod_system.isEnter(e))
+            {
+                btnPick.PerformClick();
+            }
+
         }
 
     }
