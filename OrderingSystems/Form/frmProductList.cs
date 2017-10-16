@@ -14,11 +14,9 @@ namespace OrderingSystems
     {
 
         string tmpQty;
-        int Qidx;
-
-        public frmProductList(int qID)
+   
+        public frmProductList()
         {
-            Qidx = qID;
             InitializeComponent();
 
         }
