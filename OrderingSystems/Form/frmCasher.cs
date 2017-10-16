@@ -27,7 +27,7 @@ namespace OrderingSystems
 
         private void LoadQueues()
         {
-            string mysql = "SELECT * FROM TBLQUEUE WHERE STATUS = 1" ;
+            string mysql = "SELECT * FROM TBLQUEUE WHERE STATUS = 'P'" ;
             DataSet ds = Database.LoadSQL(mysql, "TBLQUEUE");
 
             LVQueue.Items.Clear();
@@ -44,7 +44,8 @@ namespace OrderingSystems
 
         private void LVQueue_MouseClick(object sender, MouseEventArgs e)
         {
-            ViewOrder();
+            lvListOrder.Items.Clear();
+            if (LVQueue.SelectedIndices[0] == 0) { ViewOrder(); }
         }
 
         private void ViewOrder()
@@ -117,9 +118,7 @@ namespace OrderingSystems
                
             }
 
-  
-
-
+ 
         internal void AddMenuItem(MenuItem mItem)
     {
         //double tprice;
@@ -171,7 +170,6 @@ namespace OrderingSystems
         }
 
    
-
         private void ReCalCulate()
         {
 
@@ -184,6 +182,13 @@ namespace OrderingSystems
 
             if (txtCash.Text != "")
             { CalcChange(); }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (LVQueue.Items.Count == 0) { return; }
+            frmProductList frm = new frmProductList();
+            frm.Show();
         }
 
        
