@@ -61,7 +61,9 @@
     <Compile Include="Class\QueueCol.cs" />
     <Compile Include="Class\QueueLines.cs" />
     <Compile Include="Class\User.cs" />
-    <Compile Include="Form\frmClient.cs" />
+    <Compile Include="Form\frmClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\frmClient.designer.cs">
       <DependentUpon>frmClient.cs</DependentUpon>
     </Compile>

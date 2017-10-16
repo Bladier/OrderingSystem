@@ -89,75 +89,73 @@ namespace OrderingSystems
 
         }
 
-     //    private void btnRemove_Click(object sender, EventArgs e)
-       //   {
-          //   if (lvListOrder.SelectedItems.Count == 0) { return; }
+         private void btnRemove_Click(object sender, EventArgs e)
+          {
+             if (lvListOrder.SelectedItems.Count == 0) { return; }
 
-         //   DialogResult result = MessageBox.Show("Do you want to remove this item?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("Do you want to remove this item?", "Confirmation", MessageBoxButtons.YesNo);
            if (result == DialogResult.No)
-        ///  /    {
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        //if new order
-        //        if (isNew) { lvListOrder.SelectedItems[0].Remove(); isNew = false; ReCalCulate(); return; }
+             {
+                return;
+            }
+            else
+            {
+                //if new order
+                if (isNew) { lvListOrder.SelectedItems[0].Remove(); isNew = false; ReCalCulate(); return; }
 
-        //        //Old order
-        //        string mysql = "SELECT * FROM tblQueueInfo WHERE ID = " + lvListOrder.SelectedItems[0].Tag;
-        //        DataSet ds = Database.LoadSQL(mysql, "tblQueueInfo");
+                //Old order
+                string mysql = "SELECT * FROM tblQueueInfo WHERE ID = " + lvListOrder.SelectedItems[0].Tag;
+                DataSet ds = Database.LoadSQL(mysql, "tblQueueInfo");
 
-        //        var with = ds.Tables[0].Rows[0];
-        //        with["Status"] = 0;
-        //        Database.SaveEntry(ds, false);
+                var with = ds.Tables[0].Rows[0];
+                with["Status"] = 0;
+                Database.SaveEntry(ds, false);
 
-        //        lvListOrder.SelectedItems[0].Remove();
-        //        ReCalCulate();
-        //    } 
+                lvListOrder.SelectedItems[0].Remove();
+                ReCalCulate();
+            } 
                
-        //    }
+            }
 
   
 
 
-    //    internal void AddMenuItem(User mItem)
-    //{
-    //    //double tprice;
-    //    //int tQty;
-    //    //    int i;
-    //    //    for (i = 0; i <= lvListOrder.Items.Count - 1; i++) {
-    //    //    if (lvListOrder.Items[i].Text == mItem.MenuName) {
-    //    //        ListViewItem lv = lvListOrder.Items[i];
-    //    //        if (lv.SubItems[1].Text == mItem.MenuType) {
-    //    //            if (lv.SubItems[2].Text == mItem.MenuSize)
-    //    //            {
-    //    //                tprice =Convert.ToDouble(lv.SubItems[3].Text);
-    //    //                tQty = Convert.ToInt32(lv.SubItems[4].Text);
-    //    //                tprice = tprice + mItem.Price;
-    //    //                tQty = tQty + mItem.Qty;
-    //    //                lv.SubItems[3].Text = tprice.ToString();
-    //    //                lv.SubItems[4].Text = tQty.ToString() ;
-    //    //                return;
-    //    //            }
-    //    //        }
-    //    //    }
+        internal void AddMenuItem(MenuItem mItem)
+    {
+        //double tprice;
+        //int tQty;
+        //    int i;
+        //    for (i = 0; i <= lvListOrder.Items.Count - 1; i++) {
+        //    if (lvListOrder.Items[i].Text == mItem.MenuName) {
+        //        ListViewItem lv = lvListOrder.Items[i];
+        //        if (lv.SubItems[1].Text == mItem.MenuType) {
+        //            if (lv.SubItems[2].Text == mItem.MenuSize)
+        //            {
+        //                tprice =Convert.ToDouble(lv.SubItems[3].Text);
+        //                tQty = Convert.ToInt32(lv.SubItems[4].Text);
+        //                tprice = tprice + mItem.Price;
+        //                tQty = tQty + mItem.Qty;
+        //                lv.SubItems[3].Text = tprice.ToString();
+        //                lv.SubItems[4].Text = tQty.ToString() ;
+        //                return;
+        //            }
+        //        }
+        //    }
 
 
-    //        //}
-    //        ListViewItem lv1 = lvListOrder.Items.Add(mItem.MenuName);
+            //}
+            ListViewItem lv1 = lvListOrder.Items.Add(mItem.MenuName);
 
-    //        lv1.SubItems.Add(mItem.MenuType);
-    //        lv1.SubItems.Add(mItem.MenuSize);
-    //        lv1.SubItems.Add(mItem.Price.ToString());
-    //        lv1.SubItems.Add(mItem.Qty.ToString());
+            lv1.SubItems.Add(mItem.MenuType);
+            lv1.SubItems.Add(mItem.MenuSize);
+            lv1.SubItems.Add(mItem.Price.ToString());
+            lv1.SubItems.Add(mItem.Qty.ToString());
 
-    //        QueueLines ql = new QueueLines();
-    //        lv1.Tag = ql.LoadLastID();
-       
-    //}
-
+            QueueLines ql = new QueueLines();
+            lv1.Tag = ql.LoadLastID();
+     
             }
-        }
+        
 
 
        
@@ -182,22 +180,22 @@ namespace OrderingSystems
         ////{
         ////    string input = Microsoft.VisualBasic.Interaction.InputBox("Title", "Prompt", "Default", 0, 0);
         ////}
-       
 
 
-        //private void ReCalCulate()
-        //{
 
-        //    int i = 0;
-        //    for (i = 0; i <= lvListOrder.Items.Count - 1; i++)
-        //    {
-        //        Total_Amount += Convert.ToDouble(lvListOrder.Items[i].SubItems[3].Text);
-        //    }
-        //    lblAmountDue.Text = string.Format("{0:#,##0.00}", Total_Amount);
+        private void ReCalCulate()
+        {
 
-        //    if (txtCash.Text != "")
-        //    { CalcChange(); }
-        //}
+            int i = 0;
+            for (i = 0; i <= lvListOrder.Items.Count - 1; i++)
+            {
+                Total_Amount += Convert.ToDouble(lvListOrder.Items[i].SubItems[3].Text);
+            }
+            lblAmountDue.Text = string.Format("{0:#,##0.00}", Total_Amount);
+
+            if (txtCash.Text != "")
+            { CalcChange(); }
+        }
 
     
     }

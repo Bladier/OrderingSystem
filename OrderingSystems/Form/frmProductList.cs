@@ -67,9 +67,8 @@ namespace OrderingSystems
             MenuItem sMenu = new MenuItem();
             sMenu.ID = idx;
 
-            bool retNum;
+            bool retNum = false;
 
-             tmpQty = Microsoft.VisualBasic.Interaction.InputBox("Quantity", "Enter Quantity", "0");
             while (retNum == false)
             {
                 tmpQty = Interaction.InputBox("Enter Qty", "Order", "");
@@ -77,20 +76,13 @@ namespace OrderingSystems
                 if (tmpQty == "0") { return; }
 
                 retNum = Information.IsNumeric(tmpQty);
+
                 if (retNum == true)
                 {
                     if (Convert.ToInt32(tmpQty) < 0) { return; }
                 }
             }
-
-          //Saving to queue info
-             //QueueLines ql = new QueueLines();
-             //var with = ql;
-             //with.QueueID = Qidx;
-             //with.MenuID = sMenu.ID;
-             //with.QTY = Convert.ToDouble(tmpQty);
-             //with.saveQLines();
-
+          
                     
             sMenu.Qty = Convert.ToInt32(tmpQty);
             sMenu.LoadMenuItem();

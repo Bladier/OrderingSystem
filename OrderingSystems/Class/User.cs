@@ -155,8 +155,8 @@ namespace OrderingSystems
 
         public bool LoginUser(string user, string password)
         {
-           string mySql = "SELECT ID, LOWER(Username) FROM " + " tblUser";
-            mySql += Constants.vbCrLf + string.Format(" WHERE LOWER(Username) = LOWER('{0}') AND UserPass = '{1}' AND STATUS <> '0'", user, DeathCodez.Security.Encrypt(password));
+            string mySql = "SELECT ID, LOWER(Username) FROM tblUser ";
+            mySql +=  string.Format(" WHERE LOWER(Username) = LOWER('{0}') AND UserPass = '{1}' AND STATUS <> '0'", user, DeathCodez.Security.Encrypt(password));
             DataSet ds = null;
 
             ds = Database.LoadSQL(mySql);

@@ -98,7 +98,7 @@ namespace OrderingSystems
             }
         }
 
-        public void saveQLines()
+        public void SaveInfo()
         {
            string mysql = "SELECT * FROM tblQueueInfo limit 0";
            DataSet ds = Database.LoadSQL(mysql, "tblQueueInfo");
