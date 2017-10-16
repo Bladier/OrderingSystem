@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.Linq;
 using System.Xml.Linq;
+using OrderingSystems.Class;
 
 namespace OrderingSystems
 {
@@ -33,15 +34,15 @@ namespace OrderingSystems
         }
 
 
-        private System.DateTime _OrderDate;
-        public System.DateTime OrderDate
+        private DateTime _OrderDate;
+        public DateTime OrderDate
         {
             get { return _OrderDate; }
             set { _OrderDate = value; }
         }
 
-        private bool _Status;
-        public bool Status
+        private string _Status;
+        public string Status
         {
             get { return _Status; }
             set { _Status = value; }
@@ -96,7 +97,7 @@ namespace OrderingSystems
             }
         }
 
-        public void Save_ItemClass()
+        public void SaveQueue()
         {
             string mySql = "Select * From tblQueue Limit 1";
             DataSet ds = Database.LoadSQL(mySql, "tblQueue");
@@ -105,30 +106,28 @@ namespace OrderingSystems
             dsNewRow = ds.Tables[0].NewRow();
             var _with2 = dsNewRow;
             _with2["OrderNum"] = _OrderNum;
-            _with2["ItemCategory"] = _OrderDate ;
-            _with2["Status"] = _Status ;
+            _with2["OrderDate"] = _OrderDate;
+            _with2["Status"] = "P";
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
 
+        internal int GetLastID()
+        {
+            string mysql = "Select * From tblQueue Order By ID Desc";
+            DataSet ds = Database.LoadSQL(mysql, "tblQueue");
+
+            return Convert.ToInt32(ds.Tables[0].Rows[0]["ID"].ToString());
+        }
         public void LoadByRow(DataRow dr)
         {
             DataSet ds = new DataSet();
             var _with3 = dr;
             _ID =Convert.ToInt32(_with3["ID"]);
             _OrderNum = _with3["OrderNum"].ToString();
-            _OrderDate = Convert.ToDateTime(_with3["Date"]);
-
-             string tmpqty = _with3["Status"].ToString();
-            if (tmpqty =="1")
-            {
-                _Status =true;
-            }
-            else
-            {
-                _Status =false;
-            }
-         
+            _OrderDate = Convert.ToDateTime(_with3["OrderDate"]);
+            _Status  = _with3["Status"].ToString();
+        
             }
         }
 

@@ -89,13 +89,13 @@ namespace OrderingSystems
 
         }
 
-        //private void btnRemove_Click(object sender, EventArgs e)
-        //{
-        //    if (lvListOrder.SelectedItems.Count == 0) { return; }
+     //    private void btnRemove_Click(object sender, EventArgs e)
+       //   {
+          //   if (lvListOrder.SelectedItems.Count == 0) { return; }
 
-        //    DialogResult result = MessageBox.Show("Do you want to remove this item?", "Confirmation", MessageBoxButtons.YesNo);
-        //    if (result == DialogResult.No)
-        //    {
+         //   DialogResult result = MessageBox.Show("Do you want to remove this item?", "Confirmation", MessageBoxButtons.YesNo);
+           if (result == DialogResult.No)
+        ///  /    {
         //        return;
         //    }
         //    else
@@ -156,18 +156,11 @@ namespace OrderingSystems
        
     //}
 
-        //private void btnAdd_Click(object sender, EventArgs e)
-        //{
-        //    if (tmpQID == 0) { Interaction.MsgBox("Please select client Order Number.", Constants.vbCritical, "Tagging Order"); return; }
+            }
+        }
 
-        //    Form frm  = new frmProductList(tmpQID);
-        //    frm.Show();
-        
-        //Application.DoEvents();
-        //lv1.Tag = mItem.ID;
-        
-        //}
 
+       
         private void txtCash_Leave(object sender, EventArgs e)
         {
             if (txtCash.Text != "")
@@ -181,6 +174,15 @@ namespace OrderingSystems
             double tmpchange = Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lblAmountDue.Text);
             lblChange.Text = string.Format("{0:#,##0.00}", tmpchange);
         }
+
+     
+  
+       
+        ////private void button1_Click(object sender, EventArgs e)
+        ////{
+        ////    string input = Microsoft.VisualBasic.Interaction.InputBox("Title", "Prompt", "Default", 0, 0);
+        ////}
+       
 
 
         //private void ReCalCulate()

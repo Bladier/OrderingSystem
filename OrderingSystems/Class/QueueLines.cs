@@ -49,9 +49,31 @@ namespace OrderingSystems
             get { return _Status; }
             set { _Status = value; }
         }
+
+        private double _price;
+        public double Price
+        {
+            get { return _price; }
+            set { _price = value; }
+        }
+
         #endregion
 
+
         #region "Functions"
+
+        internal void LoadLines()
+        {
+            string mysql = "Select * From tblqueueinfo Where QueueID = " + _QueueID ;
+            DataSet ds = Database.LoadSQL(mysql, "tblqueueinfo");
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                LoadByRow(dr);
+            }
+        }
+
+
         public void LoadByRow(DataRow dr)
         {
             DataSet ds = new DataSet();
@@ -61,6 +83,9 @@ namespace OrderingSystems
             _QueueID = Convert.ToInt32(_with3["QUEUEID"]);
             _MenuID = Convert.ToInt32(_with3["MenuID"]);
             _QTY = Convert.ToDouble(_with3["QTY"]);
+
+            _price = Convert.ToDouble(_with3["Price"]);
+            
 
             string tmpqty = _with3["Status"].ToString();
             if (tmpqty == "1")
@@ -78,16 +103,18 @@ namespace OrderingSystems
            string mysql = "SELECT * FROM tblQueueInfo limit 0";
            DataSet ds = Database.LoadSQL(mysql, "tblQueueInfo");
 
-           DataRow dsNewRow = null;
-           dsNewRow = ds.Tables[SubTable].NewRow();
-           var _with3 = dsNewRow;
-           _with3["QueueID"] = Convert.ToInt32(_QueueID);
-           _with3["MenuID"] = Convert.ToInt32(_MenuID);
-           _with3["qty"] = Convert.ToDouble(_QTY);
-           _with3["status"] = 1;
-           ds.Tables[SubTable].Rows.Add(dsNewRow);
-           Database.SaveEntry(ds);
+            DataRow dsNewRow = null;
+            dsNewRow = ds.Tables[0].NewRow();
+            var _with2 = dsNewRow;
+            _with2["QueueID"] = _QueueID ;
+            _with2["MenuID"] = _MenuID ;
+            _with2["Qty"] = _QTY ;
+            _with2["Price"] = _price;
+            _with2["Status"] = 1;
+            ds.Tables[0].Rows.Add(dsNewRow);
+            Database.SaveEntry(ds);
         }
+        
 
         public int LoadLastID()
         {
