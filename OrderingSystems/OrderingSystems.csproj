@@ -90,6 +90,7 @@
     </Compile>
     <Compile Include="Module\Interface1.cs" />
     <Compile Include="Module\Database.cs" />
+    <Compile Include="Module\Mod.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form\frmClient.resx">
