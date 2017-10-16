@@ -107,7 +107,7 @@ namespace OrderingSystems
         }
 
 
-        internal void AddMenuItem(User mItem)
+        internal void AddMenuItem(MenuItem mItem)
     {
 
         ListViewItem lv1 = lvListOrder.Items.Add(mItem.MenuName);

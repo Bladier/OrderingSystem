@@ -105,7 +105,7 @@ namespace OrderingSystems
             _with2["MenuID"] = _MenuID ;
             _with2["Qty"] = _QTY ;
             _with2["Price"] = _price;
-            _with2["Status"] = _Status;
+            _with2["Status"] = 1;
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }

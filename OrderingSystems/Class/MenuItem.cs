@@ -6,7 +6,7 @@ using System.Data;
 
 namespace OrderingSystems
 {
-    class User
+    class MenuItem
     {
         #region Properties
             private int _id;
