@@ -187,6 +187,7 @@
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnRemove
             // 
@@ -222,7 +223,6 @@
             this.btnPrint.TabIndex = 2;
             this.btnPrint.Text = "&Post";
             this.btnPrint.UseVisualStyleBackColor = true;
-
             // 
             // lvListOrder
             // 
