@@ -64,6 +64,7 @@
     <Compile Include="Class\Queue.cs" />
     <Compile Include="Class\QueueCol.cs" />
     <Compile Include="Class\QueueLines.cs" />
+    <Compile Include="Class\Reporting.cs" />
     <Compile Include="Class\User.cs" />
     <Compile Include="Form\frmClient.cs">
       <SubType>Form</SubType>
@@ -148,6 +149,9 @@
       <DependentUpon>frmReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rpt_Menu.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpt_OrderPrint.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="Properties\DataSources\OrderingSystems.Report.dsReport.datasource" />
