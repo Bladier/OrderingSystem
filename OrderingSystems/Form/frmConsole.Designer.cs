@@ -49,22 +49,28 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnSaveMaintenance = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtRemarks = new System.Windows.Forms.TextBox();
+            this.txtValue = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtKey = new System.Windows.Forms.TextBox();
             this.lvMaintenance = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.txtKey = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtValue = new System.Windows.Forms.TextBox();
-            this.txtRemarks = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnSaveMaintenance = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnSavePrinter = new System.Windows.Forms.Button();
+            this.cboOrderNum = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cboReciept = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -275,15 +281,71 @@
             this.tabPage2.Text = "Maintenance";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // btnSaveMaintenance
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(821, 399);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "User Management";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.btnSaveMaintenance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveMaintenance.Location = new System.Drawing.Point(709, 31);
+            this.btnSaveMaintenance.Name = "btnSaveMaintenance";
+            this.btnSaveMaintenance.Size = new System.Drawing.Size(106, 62);
+            this.btnSaveMaintenance.TabIndex = 7;
+            this.btnSaveMaintenance.Text = "S&ave";
+            this.btnSaveMaintenance.UseVisualStyleBackColor = true;
+            this.btnSaveMaintenance.Click += new System.EventHandler(this.btnSaveMaintenance_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(296, 29);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(73, 20);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Remarks";
+            // 
+            // txtRemarks
+            // 
+            this.txtRemarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRemarks.Location = new System.Drawing.Point(375, 26);
+            this.txtRemarks.Multiline = true;
+            this.txtRemarks.Name = "txtRemarks";
+            this.txtRemarks.Size = new System.Drawing.Size(328, 76);
+            this.txtRemarks.TabIndex = 5;
+            // 
+            // txtValue
+            // 
+            this.txtValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValue.Location = new System.Drawing.Point(84, 76);
+            this.txtValue.Name = "txtValue";
+            this.txtValue.Size = new System.Drawing.Size(192, 26);
+            this.txtValue.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(6, 79);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(50, 20);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Value";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(6, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 20);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Key";
+            // 
+            // txtKey
+            // 
+            this.txtKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKey.Location = new System.Drawing.Point(84, 26);
+            this.txtKey.Name = "txtKey";
+            this.txtKey.Size = new System.Drawing.Size(192, 26);
+            this.txtKey.TabIndex = 1;
             // 
             // lvMaintenance
             // 
@@ -322,71 +384,71 @@
             this.columnHeader10.Text = "Remarks";
             this.columnHeader10.Width = 218;
             // 
-            // txtKey
+            // tabPage3
             // 
-            this.txtKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKey.Location = new System.Drawing.Point(84, 26);
-            this.txtKey.Name = "txtKey";
-            this.txtKey.Size = new System.Drawing.Size(192, 26);
-            this.txtKey.TabIndex = 1;
+            this.tabPage3.Controls.Add(this.cboReciept);
+            this.tabPage3.Controls.Add(this.label10);
+            this.tabPage3.Controls.Add(this.label9);
+            this.tabPage3.Controls.Add(this.cboOrderNum);
+            this.tabPage3.Controls.Add(this.btnSavePrinter);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(821, 399);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Printer";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // btnSavePrinter
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 29);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 20);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Key";
+            this.btnSavePrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSavePrinter.Location = new System.Drawing.Point(411, 54);
+            this.btnSavePrinter.Name = "btnSavePrinter";
+            this.btnSavePrinter.Size = new System.Drawing.Size(124, 53);
+            this.btnSavePrinter.TabIndex = 0;
+            this.btnSavePrinter.Text = "&Save";
+            this.btnSavePrinter.UseVisualStyleBackColor = true;
+            this.btnSavePrinter.Click += new System.EventHandler(this.btnSavePrinter_Click);
             // 
-            // label7
+            // cboOrderNum
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(6, 79);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 20);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Value";
+            this.cboOrderNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboOrderNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboOrderNum.FormattingEnabled = true;
+            this.cboOrderNum.Location = new System.Drawing.Point(145, 32);
+            this.cboOrderNum.Name = "cboOrderNum";
+            this.cboOrderNum.Size = new System.Drawing.Size(218, 28);
+            this.cboOrderNum.TabIndex = 1;
             // 
-            // txtValue
+            // label9
             // 
-            this.txtValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValue.Location = new System.Drawing.Point(84, 76);
-            this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(192, 26);
-            this.txtValue.TabIndex = 4;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(6, 35);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(109, 20);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Order Number";
             // 
-            // txtRemarks
+            // label10
             // 
-            this.txtRemarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRemarks.Location = new System.Drawing.Point(375, 26);
-            this.txtRemarks.Multiline = true;
-            this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(328, 76);
-            this.txtRemarks.TabIndex = 5;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(6, 102);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(64, 20);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Reciept";
             // 
-            // label8
+            // cboReciept
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(296, 29);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 20);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Remarks";
-            // 
-            // btnSaveMaintenance
-            // 
-            this.btnSaveMaintenance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveMaintenance.Location = new System.Drawing.Point(709, 31);
-            this.btnSaveMaintenance.Name = "btnSaveMaintenance";
-            this.btnSaveMaintenance.Size = new System.Drawing.Size(106, 62);
-            this.btnSaveMaintenance.TabIndex = 7;
-            this.btnSaveMaintenance.Text = "S&ave";
-            this.btnSaveMaintenance.UseVisualStyleBackColor = true;
-            this.btnSaveMaintenance.Click += new System.EventHandler(this.btnSaveMaintenance_Click);
+            this.cboReciept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboReciept.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboReciept.FormattingEnabled = true;
+            this.cboReciept.Location = new System.Drawing.Point(145, 99);
+            this.cboReciept.Name = "cboReciept";
+            this.cboReciept.Size = new System.Drawing.Size(218, 28);
+            this.cboReciept.TabIndex = 4;
             // 
             // frmConsole
             // 
@@ -402,6 +464,8 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -442,5 +506,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtKey;
         private System.Windows.Forms.Button btnSaveMaintenance;
+        private System.Windows.Forms.ComboBox cboReciept;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cboOrderNum;
+        private System.Windows.Forms.Button btnSavePrinter;
     }
 }
