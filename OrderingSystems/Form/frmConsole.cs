@@ -209,6 +209,7 @@ namespace OrderingSystems
                 with.MaintenanceKey = txtKey.Text;
                 with.MaintenanceValue = txtValue.Text;
                 with.Remarks = txtRemarks.Text;
+                with.SaveMaintenance();
             }
             MessageBox.Show("Data Save");
             LoadMaintenance();

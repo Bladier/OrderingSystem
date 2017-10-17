@@ -188,6 +188,8 @@ namespace OrderingSystems
 
             lvDisplay.Items.Clear();
             lvOrderList.Items.Clear();
+
+
         }
 
         private void lvDisplay_DoubleClick(object sender, EventArgs e)
