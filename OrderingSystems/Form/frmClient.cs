@@ -189,7 +189,11 @@ namespace OrderingSystems
             lvDisplay.Items.Clear();
             lvOrderList.Items.Clear();
 
+            string optPrint = tmpMain.GetValue("ORDERPRINT");
+            if (optPrint == "YES") 
+            {
 
+            }
         }
 
         private void lvDisplay_DoubleClick(object sender, EventArgs e)
