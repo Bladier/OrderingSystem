@@ -118,6 +118,7 @@ namespace OrderingSystems
 
             return Convert.ToInt32(ds.Tables[0].Rows[0]["ID"].ToString());
         }
+
         public void LoadByRow(DataRow dr)
         {
             DataSet ds = new DataSet();
@@ -128,8 +129,16 @@ namespace OrderingSystems
             _Status  = _with3["Status"].ToString();
         
             }
-        }
+        
 
+        public void Set_Served(int idx)
+        {
+            string mySql  = "SELECT * FROM tblQueue Where ID = " + idx;
+            DataSet ds = Database.LoadSQL(mySql, "tblQueue");
+
+            ds.Tables["tblQueue"].Rows[0]["Status"] = "S";
+            Database.SaveEntry(ds, false);
+        }
         //    public void Update()
         //    {
         //        string mySql = string.Format("SELECT * FROM {0} WHERE ItemID = {1}", MainTable, _itemID);
@@ -170,3 +179,4 @@ namespace OrderingSystems
       #endregion
 
     }
+}

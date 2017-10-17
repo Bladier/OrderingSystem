@@ -51,6 +51,7 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LVQueue = new System.Windows.Forms.ListView();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -67,7 +68,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.Blue;
+            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.ContextMenuStrip = this.contextMenuStrip1;
             this.panel1.Controls.Add(this.groupBox1);
@@ -100,12 +101,14 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.BackColor = System.Drawing.Color.DimGray;
             this.groupBox1.Controls.Add(this.lblAmountDue);
             this.groupBox1.Controls.Add(this.lblChange);
             this.groupBox1.Controls.Add(this.txtCash);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.groupBox1.Location = new System.Drawing.Point(458, 414);
@@ -143,6 +146,7 @@
             this.txtCash.Name = "txtCash";
             this.txtCash.Size = new System.Drawing.Size(198, 31);
             this.txtCash.TabIndex = 3;
+            this.txtCash.Leave += new System.EventHandler(this.txtCash_Leave);
             // 
             // label3
             // 
@@ -180,6 +184,7 @@
             // btnAdd
             // 
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Location = new System.Drawing.Point(979, 45);
             this.btnAdd.Name = "btnAdd";
@@ -192,6 +197,7 @@
             // btnRemove
             // 
             this.btnRemove.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemove.Location = new System.Drawing.Point(1115, 45);
             this.btnRemove.Name = "btnRemove";
@@ -204,6 +210,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(1117, 660);
             this.btnCancel.Name = "btnCancel";
@@ -216,6 +223,7 @@
             // btnPrint
             // 
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.Location = new System.Drawing.Point(981, 660);
             this.btnPrint.Name = "btnPrint";
@@ -223,18 +231,21 @@
             this.btnPrint.TabIndex = 2;
             this.btnPrint.Text = "&Post";
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // lvListOrder
             // 
             this.lvListOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvListOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvListOrder.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5,
-            this.columnHeader6});
+            this.columnHeader6,
+            this.columnHeader7});
             this.lvListOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvListOrder.FullRowSelect = true;
             this.lvListOrder.Location = new System.Drawing.Point(458, 94);
@@ -272,6 +283,7 @@
             // 
             this.LVQueue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
+            this.LVQueue.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.LVQueue.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             columnHeader1});
             this.LVQueue.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -283,7 +295,13 @@
             this.LVQueue.TabIndex = 0;
             this.LVQueue.UseCompatibleStateImageBehavior = false;
             this.LVQueue.View = System.Windows.Forms.View.Details;
+            this.LVQueue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LVQueue_KeyDown);
             this.LVQueue.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LVQueue_MouseClick);
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "MenuID";
+            this.columnHeader7.Width = 0;
             // 
             // frmCasher
             // 
@@ -327,5 +345,6 @@
         private System.Windows.Forms.TextBox txtCash;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
     }
 }
