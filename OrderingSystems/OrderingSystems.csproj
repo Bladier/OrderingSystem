@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\ClientOrder.cs" />
     <Compile Include="Class\function.cs" />
     <Compile Include="Class\Maintenance.cs" />
     <Compile Include="Class\MenuItem.cs" />
@@ -96,12 +97,6 @@
     <Compile Include="Form\frmProductList.Designer.cs">
       <DependentUpon>frmProductList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\frmSample.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form\frmSample.Designer.cs">
-      <DependentUpon>frmSample.cs</DependentUpon>
-    </Compile>
     <Compile Include="Module\Interface1.cs" />
     <Compile Include="Module\Database.cs" />
     <Compile Include="Module\mod_system.cs" />
@@ -133,9 +128,6 @@
     <EmbeddedResource Include="Form\frmProductList.resx">
       <DependentUpon>frmProductList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\frmSample.resx">
-      <DependentUpon>frmSample.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -148,13 +140,8 @@
     <EmbeddedResource Include="Report\frmReport.resx">
       <DependentUpon>frmReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\rpt_Menu.rdlc">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\rpt_OrderPrint.rdlc">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <None Include="Properties\DataSources\OrderingSystems.Report.dsReport.datasource" />
+    <EmbeddedResource Include="Report\rpt_Menu.rdlc" />
+    <EmbeddedResource Include="Report\rpt_OrderPrint.rdlc" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
