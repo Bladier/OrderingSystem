@@ -1,4 +1,4 @@
-﻿namespace OrderingSystems.Report
+﻿namespace OrderingSystems
 {
     partial class frmReport
     {
@@ -33,17 +33,16 @@
             // 
             // rv_display
             // 
-            this.rv_display.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rv_display.Location = new System.Drawing.Point(0, 0);
+            this.rv_display.Location = new System.Drawing.Point(12, 12);
             this.rv_display.Name = "rv_display";
-            this.rv_display.Size = new System.Drawing.Size(818, 474);
+            this.rv_display.Size = new System.Drawing.Size(895, 492);
             this.rv_display.TabIndex = 0;
             // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(818, 474);
+            this.ClientSize = new System.Drawing.Size(919, 516);
             this.Controls.Add(this.rv_display);
             this.Name = "frmReport";
             this.Text = "frmReport";

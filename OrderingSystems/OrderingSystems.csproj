@@ -65,6 +65,7 @@
     <Compile Include="Class\Queue.cs" />
     <Compile Include="Class\QueueCol.cs" />
     <Compile Include="Class\QueueLines.cs" />
+    <Compile Include="Class\Reporting.cs" />
     <Compile Include="Class\User.cs" />
     <Compile Include="Form\frmClient.cs">
       <SubType>Form</SubType>
@@ -139,7 +140,8 @@
     <EmbeddedResource Include="Report\frmReport.resx">
       <DependentUpon>frmReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\rptMaintenance.rdlc" />
+    <EmbeddedResource Include="Report\rpt_Menu.rdlc" />
+    <EmbeddedResource Include="Report\rpt_OrderPrint.rdlc" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
