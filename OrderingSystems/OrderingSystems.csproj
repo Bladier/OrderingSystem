@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\ClientOrder.cs" />
     <Compile Include="Class\function.cs" />
     <Compile Include="Class\Maintenance.cs" />
     <Compile Include="Class\MenuItem.cs" />
