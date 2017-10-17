@@ -140,8 +140,12 @@
     <EmbeddedResource Include="Report\frmReport.resx">
       <DependentUpon>frmReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\rpt_Menu.rdlc" />
-    <EmbeddedResource Include="Report\rpt_OrderPrint.rdlc" />
+    <EmbeddedResource Include="Report\rpt_Menu.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpt_OrderPrint.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
