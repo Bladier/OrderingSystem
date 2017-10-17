@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Drawing.Printing;
 
 namespace OrderingSystems
 {
@@ -23,6 +24,12 @@ namespace OrderingSystems
             LoadMenu();
             LoadCategory();
             LoadMaintenance();
+
+            foreach (string tmpPrinterName in PrinterSettings.InstalledPrinters)
+            {
+                cboOrderNum.Items.Add(tmpPrinterName);
+                cboReciept.Items.Add(tmpPrinterName);
+            }
         }
 
         private void LoadCategory()
@@ -213,6 +220,16 @@ namespace OrderingSystems
             }
             MessageBox.Show("Data Save");
             LoadMaintenance();
+        }
+
+        private void btnSavePrinter_Click(object sender, EventArgs e)
+        {
+            tmpMaintenance = new Maintenance();
+            var with = tmpMaintenance;
+            with.UpdateOption("PrinterOrder",cboOrderNum.Text);
+            with.UpdateOption("PrinterReciept",cboReciept.Text);
+
+            MessageBox.Show("Printer Set","Information");
         }
 
     }
