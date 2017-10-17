@@ -161,9 +161,10 @@ namespace OrderingSystems
         {
             QueOrder = new Queue();
             Maintenance tmpMain = new Maintenance();
+            string tmpOrderNum = tmpMain.GetValue("ORDERNUM");
 
             var with = QueOrder;
-            with.OrderNum = tmpMain.GetValue("ORDERNUM"); //Queue Number from table Maintenance
+            with.OrderNum = tmpOrderNum ; //Queue Number from table Maintenance
             with.OrderDate = DateTime.Now;
             //with.Status = true;
             with.SaveQueue();
@@ -180,6 +181,11 @@ namespace OrderingSystems
 
             }
             MessageBox.Show("Order Post", "Information");
+
+            int tmpNum = Convert.ToInt32(tmpOrderNum) + 1;
+            string finalNum = Convert.ToString(tmpNum);
+            tmpMain.UpdateOption("ORDERNUM", finalNum);
+
             lvDisplay.Items.Clear();
             lvOrderList.Items.Clear();
         }
