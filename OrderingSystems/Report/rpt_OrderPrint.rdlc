@@ -53,7 +53,7 @@
                             <TextRun>
                               <Value>=Fields!OrderNum.Value</Value>
                               <Style>
-                                <FontSize>18pt</FontSize>
+                                <FontSize>36pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -144,14 +144,16 @@
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
         <Top>1.16334in</Top>
         <Left>0.14583in</Left>
         <Height>0.25in</Height>
-        <Width>1.55208in</Width>
+        <Width>2.25in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
