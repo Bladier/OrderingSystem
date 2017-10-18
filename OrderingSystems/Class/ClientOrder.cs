@@ -148,7 +148,14 @@ namespace OrderingSystems
             Database.SaveEntry(ds);
         }
 
-       
+        internal void Void_ClientOrder(int idx)
+        {
+            mysql = "SELECT * FROM " + tblOrder + " WHERE QUEUEID = " + idx;
+            DataSet ds = Database.LoadSQL(mysql, tblOrder);
+            ds.Tables[0].Rows[0]["QueueID"] = 0;
+            Database.SaveEntry(ds, false);
+        }
+
         #endregion
     }
 }

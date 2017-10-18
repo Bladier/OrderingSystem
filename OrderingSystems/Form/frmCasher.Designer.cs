@@ -50,8 +50,9 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.LVQueue = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.LVQueue = new System.Windows.Forms.ListView();
+            this.btnVoid = new System.Windows.Forms.Button();
             columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -71,6 +72,7 @@
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.ContextMenuStrip = this.contextMenuStrip1;
+            this.panel1.Controls.Add(this.btnVoid);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.btnRemove);
@@ -254,6 +256,8 @@
             this.lvListOrder.TabIndex = 1;
             this.lvListOrder.UseCompatibleStateImageBehavior = false;
             this.lvListOrder.View = System.Windows.Forms.View.Details;
+            this.lvListOrder.DoubleClick += new System.EventHandler(this.lvListOrder_DoubleClick);
+            this.lvListOrder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvListOrder_KeyDown);
             // 
             // columnHeader2
             // 
@@ -279,6 +283,11 @@
             // 
             this.columnHeader6.Text = "QTY";
             // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "MenuID";
+            this.columnHeader7.Width = 0;
+            // 
             // LVQueue
             // 
             this.LVQueue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -298,10 +307,18 @@
             this.LVQueue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LVQueue_KeyDown);
             this.LVQueue.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LVQueue_MouseClick);
             // 
-            // columnHeader7
+            // btnVoid
             // 
-            this.columnHeader7.Text = "MenuID";
-            this.columnHeader7.Width = 0;
+            this.btnVoid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVoid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoid.Location = new System.Drawing.Point(462, 648);
+            this.btnVoid.Name = "btnVoid";
+            this.btnVoid.Size = new System.Drawing.Size(114, 43);
+            this.btnVoid.TabIndex = 7;
+            this.btnVoid.Text = "&Void";
+            this.btnVoid.UseVisualStyleBackColor = true;
+            this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
             // frmCasher
             // 
@@ -346,5 +363,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.Button btnVoid;
     }
 }

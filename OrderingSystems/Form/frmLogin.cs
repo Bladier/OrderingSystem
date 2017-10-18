@@ -44,9 +44,19 @@ namespace OrderingSystems
 		mod_system.UserID = mod_system.ORuser.ID;
 		Interaction.MsgBox("Welcome " + mod_system.ORuser.Username + " " + mod_system.ORuser.Lastname);
 
-        frmCasher frm = new frmCasher();
-        frm.Show();
-        this.Hide();
+
+        if (loginUser.Userrule == "Admin")
+        {
+            frmMain frm = new frmMain();
+            frm.Show();
+            this.Hide();
+        }
+        else
+        {
+            frmCasher frm = new frmCasher();
+            frm.Show();
+            this.Hide();
+        }
 	}
 
         private void frmLogin_Load(object sender, EventArgs e)

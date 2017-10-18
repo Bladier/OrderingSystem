@@ -1,20 +1,24 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 using System.Windows.Forms;
-using Microsoft.VisualBasic;
+using System.Linq;
+using System.Xml.Linq;
+using Microsoft.Reporting.WinForms;
+
 namespace OrderingSystems
 {
     public partial class frmCasher : Form
     {
-
+        string AddQTY;
         protected double Total_Amount = 0.0;
         int tmpQID = 0;
         public bool isNew=false;
+        private string Printer = Database.GetOption("PrinterReciept");
         public frmCasher()
         {
             InitializeComponent();
@@ -36,7 +40,7 @@ namespace OrderingSystems
             LVQueue.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
-                string output = String.Format("ORDER # 0000{0}", dr[1].ToString());
+                string output = String.Format("ODR#0000{0}", dr[1].ToString());
                 ListViewItem lv = LVQueue.Items.Add(output);
                 lv.Tag = dr[0].ToString();
 
@@ -127,42 +131,44 @@ namespace OrderingSystems
                
             }
 
- 
-        internal void AddMenuItem(MenuItem mItem)
-    {
-        //double tprice;
-        //int tQty;
-        //    int i;
-        //    for (i = 0; i <= lvListOrder.Items.Count - 1; i++) {
-        //    if (lvListOrder.Items[i].Text == mItem.MenuName) {
-        //        ListViewItem lv = lvListOrder.Items[i];
-        //        if (lv.SubItems[1].Text == mItem.MenuType) {
-        //            if (lv.SubItems[2].Text == mItem.MenuSize)
-        //            {
-        //                tprice =Convert.ToDouble(lv.SubItems[3].Text);
-        //                tQty = Convert.ToInt32(lv.SubItems[4].Text);
-        //                tprice = tprice + mItem.Price;
-        //                tQty = tQty + mItem.Qty;
-        //                lv.SubItems[3].Text = tprice.ToString();
-        //                lv.SubItems[4].Text = tQty.ToString() ;
-        //                return;
-        //            }
-        //        }
-        //    }
 
+         internal void AddMenuItem(MenuItem mItem)
+         {
+             double tprice;
+             int tQty;
+             int i;
+             for (i = 0; i <= lvListOrder.Items.Count - 1; i++)
+             {
+                 if (lvListOrder.Items[i].Text == mItem.MenuName)
+                 {
+                     ListViewItem lv = lvListOrder.Items[i];
+                     if (lv.SubItems[1].Text == mItem.MenuType)
+                     {
+                         if (lv.SubItems[2].Text == mItem.MenuSize)
+                         {
+                             tprice = Convert.ToDouble(lv.SubItems[3].Text);
+                             tQty = Convert.ToInt32(lv.SubItems[4].Text);
+                             tprice = tprice + mItem.Price;
+                             tQty = tQty + mItem.Qty;
+                             lv.SubItems[3].Text = tprice.ToString();
+                             lv.SubItems[4].Text = tQty.ToString();
+                             return;
+                         }
+                     }
+                 }
+             }
+             ListViewItem lv1 = lvListOrder.Items.Add(mItem.MenuName);
 
-            //}
-            ListViewItem lv1 = lvListOrder.Items.Add(mItem.MenuName);
+             lv1.SubItems.Add(mItem.MenuType);
+             lv1.SubItems.Add(mItem.MenuSize);
+             lv1.SubItems.Add(mItem.Price.ToString());
+             lv1.SubItems.Add(mItem.Qty.ToString());
+             lv1.SubItems.Add(mItem.ID.ToString());
 
-            lv1.SubItems.Add(mItem.MenuType);
-            lv1.SubItems.Add(mItem.MenuSize);
-            lv1.SubItems.Add(mItem.Price.ToString());
-            lv1.SubItems.Add(mItem.Qty.ToString());
-            lv1.SubItems.Add(mItem.ID.ToString());
-
-            QueueLines ql = new QueueLines();
-            lv1.Tag = ql.LoadLastID();
-            }
+             QueueLines ql = new QueueLines();
+             lv1.Tag = ql.LoadLastID();
+             ReCalCulate();
+         }
      
       
 
@@ -177,7 +183,7 @@ namespace OrderingSystems
    
         private void ReCalCulate()
         {
-
+            Total_Amount = 0.0;
             int i = 0;
             for (i = 0; i <= lvListOrder.Items.Count - 1; i++)
             {
@@ -240,8 +246,7 @@ namespace OrderingSystems
                         _with.SaveInfo();
                     }
 
-
-
+              PrintOR(tmpQID);
             MessageBox.Show("Order POSTED", "Post",
                                  MessageBoxButtons.OK,
                                  MessageBoxIcon.Information);
@@ -264,6 +269,83 @@ namespace OrderingSystems
             }
         }
 
+        private void PrintOR(int queueID)
+        {
+            System.Threading.Thread.Sleep(3000);
+            // Check if able to print
+            if (!canPrint(Printer))
+                return;
+
+            // Execute SQL
+            //string mySql = "SELECT Q.ID,Q.ORDERNUM,ORDERDATE,Q.STATUS AS QSTATUS,";
+            //mySql += "  QI.MENUID,SUM(QI.QTY)AS QTY ,M.MENUNAME,M.MENUTYPE,M.MENUSIZE,SUM(M.PRICE)AS PRICE";
+            //mySql += " FROM TBLQUEUE Q";
+            //mySql += " INNER JOIN TBLQUEUEINFO QI ON QI.QUEUEID = Q.ID";
+            //mySql += " INNER JOIN TBLMENU M ON M.ID = QI.MENUID";
+            //mySql += " WHERE Q.ID =" + queueID + " AND QI.STATUS <> 0";
+            //mySql += " GROUP BY M.MENUTYPE";
+
+            string mysql = "SELECT * FROM customer_order WHERE QUEUEID = " + queueID + " QIStatus =1";
+
+            DataSet ds = null;
+            string fillData = "TBLQUEUE";
+            ds = Database.LoadSQL(mysql, fillData);
+
+            string OrderNum = String.Format("ORDER # 0000{0}", ds.Tables[0].Rows[0]["ORDERNUM"].ToString());
+            DateTime DocDate= Convert.ToDateTime(System.DateTime.Now);
+
+            // Declare AutoPrint
+            Reporting autoPrint = null;
+            LocalReport report = new LocalReport();
+            autoPrint = new Reporting();
+
+            // Initialize Auto Print
+            report.ReportPath = @"Report\rptReciept.rdlc";
+            report.DataSources.Add(new ReportDataSource(fillData, ds.Tables[fillData]));
+
+            // Assign Parameters
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+
+            dic.Add("txtUsername", mod_system.ORuser.Username);
+
+            // Importer Parameters
+            if ((dic != null))
+            {
+                foreach (KeyValuePair<string, string> param in dic)
+                {
+                    var nPara = param;
+                    ReportParameter tmpPara = new ReportParameter();
+                    tmpPara.Name = nPara.Key;
+                    tmpPara.Values.Add(nPara.Value);
+                    report.SetParameters(new ReportParameter[] { tmpPara });
+                    Console.WriteLine(string.Format("{0}: {1}", nPara.Key, nPara.Value));
+                }
+            }
+
+            //// Executing Auto Print
+            //autoPrint.Export(report);
+            //autoPrint.m_currentPageIndex = 0;
+            //autoPrint.Print(Printer);
+
+            frmReport frm = new frmReport();
+            frm.ReportInit(mysql, "dsORPRINT", @"Report\rptReciept.rdlc", dic);
+            frm.Show();
+        }
+
+        private bool canPrint(string printerName)
+        {
+            try
+            {
+                System.Drawing.Printing.PrintDocument printDocument = new System.Drawing.Printing.PrintDocument();
+                printDocument.PrinterSettings.PrinterName = printerName;
+                return printDocument.PrinterSettings.IsValid;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
 
         #region "Clear"
         private void ClearField()
@@ -274,6 +356,51 @@ namespace OrderingSystems
 
         }
         #endregion
+
+        private void lvListOrder_DoubleClick(object sender, EventArgs e)
+        {
+            UpdateOrder();
+        }
+
+        private void UpdateOrder()
+        {
+            int lv_item = lvListOrder.SelectedIndices[0];
+
+            bool retNum = false;
+
+            while (retNum == false)
+            {
+                AddQTY = Interaction.InputBox("Enter Qty", "Order", "");
+                if (AddQTY == "") { return; }
+                if (AddQTY == "0") { return; }
+                if (AddQTY.Contains(".")) { return; }
+                retNum = Information.IsNumeric(AddQTY);
+
+                if (retNum == true)
+                {
+                    if (Convert.ToInt32(AddQTY) < 0) { return; }
+                }
+            }
+
+            int NewQty = Convert.ToInt32(lvListOrder.Items[lv_item].SubItems[4].Text) + Convert.ToInt32(AddQTY);
+            double oldPrice = Convert.ToDouble(lvListOrder.Items[lv_item].SubItems[3].Text) * Convert.ToInt32(NewQty);
+
+            lvListOrder.Items[lv_item].SubItems[4].Text = Convert.ToString(NewQty);
+            lvListOrder.Items[lv_item].SubItems[3].Text = Convert.ToString(oldPrice);
+            ReCalCulate();
+        }
+
+        private void lvListOrder_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            { UpdateOrder(); }
+        }
+
+        private void btnVoid_Click(object sender, EventArgs e)
+        {
+            frmAutorize frm = new frmAutorize();
+            frm.ShowDialog();
+        }
 
         /////////////////Break////////////////////
 

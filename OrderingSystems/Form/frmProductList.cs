@@ -72,7 +72,7 @@ namespace OrderingSystems
                 tmpQty = Interaction.InputBox("Enter Qty", "Order", "");
                 if (tmpQty == "") { return; }
                 if (tmpQty == "0") { return; }
-
+                if (tmpQty.Contains(".")) { return; }
                 retNum = Information.IsNumeric(tmpQty);
 
                 if (retNum == true)
