@@ -11,6 +11,7 @@ namespace OrderingSystems
 {
     public partial class frmCasher : Form
     {
+
         protected double Total_Amount = 0.0;
         int tmpQID = 0;
         public bool isNew=false;
@@ -22,12 +23,14 @@ namespace OrderingSystems
         private void frmCasher_Load(object sender, EventArgs e)
         {
             LoadQueues();
-
+            LVQueue.Items[0].Selected = true;
+            LVQueue.Select();
+            ViewOrder();
         }
 
         private void LoadQueues()
         {
-            string mysql = "SELECT * FROM TBLQUEUE WHERE STATUS = 'P'" ;
+            string mysql = "SELECT * FROM TBLQUEUE WHERE STATUS = 'P' ORDER BY ID ASC " ;
             DataSet ds = Database.LoadSQL(mysql, "TBLQUEUE");
 
             LVQueue.Items.Clear();
@@ -45,12 +48,18 @@ namespace OrderingSystems
         private void LVQueue_MouseClick(object sender, MouseEventArgs e)
         {
             lvListOrder.Items.Clear();
-            if (LVQueue.SelectedIndices[0] == 0) { ViewOrder(); }
+            if (LVQueue.SelectedIndices[0] == 0) 
+            { 
+                ViewOrder();
+                LVQueue.Items[0].Selected = true;
+                LVQueue.Select();
+            }
+
         }
 
         private void ViewOrder()
         {
-            string mysql = "SELECT * FROM tblQueueInfo WHERE QueueID = " + LVQueue.SelectedItems[0].Tag + " and status =1";
+            string mysql = "SELECT * FROM tblQueueInfo WHERE QueueID = " + LVQueue.SelectedItems[0].Tag + " and status ='1' ORDER BY ID ASC";
             DataSet ds = Database.LoadSQL(mysql, "tblQueueInfo");
 
             lvListOrder.Items.Clear(); Total_Amount = 0.0;
@@ -69,9 +78,9 @@ namespace OrderingSystems
                 lv.SubItems.Add(Size);
                 lv.SubItems.Add(ds1.Tables[0].Rows[0]["Price"].ToString());
                 lv.SubItems.Add(dr[3].ToString());
-
+                lv.SubItems.Add(dr[0].ToString());
+             
                 lv.Tag = Convert.ToInt32(dr["ID"]);
-
                 Total_Amount += Convert.ToDouble(ds1.Tables[0].Rows[0]["Price"]);
                 Application.DoEvents();
                 
@@ -105,7 +114,7 @@ namespace OrderingSystems
                 if (isNew) { lvListOrder.SelectedItems[0].Remove(); isNew = false; ReCalCulate(); return; }
 
                 //Old order
-                string mysql = "SELECT * FROM tblQueueInfo WHERE ID = " + lvListOrder.SelectedItems[0].Tag;
+                string mysql = "SELECT * FROM tblQueueInfo WHERE ID = " + lvListOrder.SelectedItems[0].Tag + " and status =1";
                 DataSet ds = Database.LoadSQL(mysql, "tblQueueInfo");
 
                 var with = ds.Tables[0].Rows[0];
@@ -149,17 +158,13 @@ namespace OrderingSystems
             lv1.SubItems.Add(mItem.MenuSize);
             lv1.SubItems.Add(mItem.Price.ToString());
             lv1.SubItems.Add(mItem.Qty.ToString());
+            lv1.SubItems.Add(mItem.ID.ToString());
 
             QueueLines ql = new QueueLines();
             lv1.Tag = ql.LoadLastID();
-     
             }
-       
-        private void txtCash_Leave(object sender, EventArgs e)
-        {
-            if (txtCash.Text != "")
-            { CalcChange(); }
-        }
+     
+      
 
         private void CalcChange()
         {
@@ -191,7 +196,88 @@ namespace OrderingSystems
             frm.Show();
         }
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (lvListOrder.Items.Count ==0) 
+            {MessageBox.Show("Nothing to POST!", "Posting",
+                                 MessageBoxButtons.OK,
+                                 MessageBoxIcon.Information);
+            return ;
+            }
+
+            if (txtCash.Text == "") { txtCash.Focus(); return; }
+            if (Convert.ToDouble(txtCash.Text) < Convert.ToDouble(lblAmountDue.Text))
+            {
+                MessageBox.Show("Cash: {" + txtCash.Text + "} must not less than to Amount Due: {" + lblAmountDue.Text + "}", "Cash",
+                                 MessageBoxButtons.OK,
+                                 MessageBoxIcon.Error); return;
+            }
+
+
+            ClientOrder co = new ClientOrder();
+                    var with = co;
+                    with.QID = tmpQID;
+                    with.status = true;
+                    with.Cash = Convert.ToDouble(txtCash.Text);
+                    with.AmountDue = Convert.ToDouble(lblAmountDue.Text);
+                    with.Change = Convert.ToDouble(lblChange.Text);
+                    with.DocDate = Convert.ToDateTime(System.DateTime.Now);
+                    with.savebill();
+
+              Queue q = new Queue();
+                    q.Set_Served(with.QID);
+
+              int i;
+              for (i = 0; i <= lvListOrder.Items.Count - 1; i++)
+                    {
+
+                        QueueLines ql = new QueueLines();
+                        var _with = ql;
+                        _with.QueueID = tmpQID;
+                        _with.MenuID = Convert.ToInt32(lvListOrder.Items[i].SubItems[5].Text);
+                        _with.QTY = Convert.ToDouble(lvListOrder.Items[i].SubItems[4].Text);
+                        _with.Price = Convert.ToDouble(lvListOrder.Items[i].SubItems[3].Text);
+                        _with.SaveInfo();
+                    }
+
+
+
+            MessageBox.Show("Order POSTED", "Post",
+                                 MessageBoxButtons.OK,
+                                 MessageBoxIcon.Information);
+                    ClearField();
+                frmCasher_Load(sender, e);
+            }
+         
        
+        private void txtCash_Leave(object sender, EventArgs e)
+        {
+            if (txtCash.Text != "")
+            { CalcChange(); }
+        }
+
+        private void LVQueue_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ViewOrder();
+            }
+        }
+
+
+        #region "Clear"
+        private void ClearField()
+        {
+            txtCash.Clear();
+            lblAmountDue.Text = "0.00";
+            lblChange.Text = "0.00";
+
+        }
+        #endregion
+
+        /////////////////Break////////////////////
+
+        }
     
     }
-}
+

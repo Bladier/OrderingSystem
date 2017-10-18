@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using Microsoft.Reporting.WinForms;
 
 namespace OrderingSystems
 {
@@ -122,6 +123,7 @@ namespace OrderingSystems
                 tmpQty = Interaction.InputBox("Enter Qty", "Order", "");
                 if (tmpQty == "") { return; }
                 if (tmpQty == "0") { return; }
+                if (tmpQty.Contains(".")) { return; }
 
                 retNum = Information.IsNumeric(tmpQty);
 
@@ -192,8 +194,63 @@ namespace OrderingSystems
             string optPrint = tmpMain.GetValue("ORDERPRINT");
             if (optPrint == "YES") 
             {
+                Reporting AutoPrint = new Reporting();
+                string printerName = tmpMain.GetValue("PrinterOrder");
+                if (canPrint(printerName)==false) {return ;}
+                LocalReport report = new LocalReport();
+                String dsName = "dsOrderPrint";
 
+                string mysql = "Select OrderNum From tblQueue Where ID = '" + QueOrder.GetLastID() +"'";
+                DataSet ds = Database.LoadSQL(mysql,"tblQueue");
+
+    
+               
+                report.ReportPath = @"Report\rpt_OrderPrint.rdlc";
+                report.DataSources.Clear();
+                report.DataSources.Add(new ReportDataSource(dsName, ds.Tables[0]));
+
+                Dictionary<string, string> addParameters = new Dictionary<string, string>();
+
+                if ((addParameters != null))
+                {
+                    foreach (KeyValuePair<string, string> nPara_loopVariable in addParameters)
+                    {
+                        var nPara = nPara_loopVariable;
+                        ReportParameter tmpPara = new ReportParameter();
+                        tmpPara.Name = nPara.Key;
+                        tmpPara.Values.Add(nPara.Value);
+                        report.SetParameters(new ReportParameter[] { tmpPara });
+                    }
+                }
+
+                Dictionary<string, double> paperSize = new Dictionary<string,double>();
+                paperSize.Add("width", 3.5);
+                paperSize.Add("height", 2.5);
+
+
+                try
+                {
+                    AutoPrint.Export(report, paperSize);
+                    AutoPrint.m_currentPageIndex = 0;
+                    AutoPrint.Print(printerName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "PRINT FAILED");
+                }
             }
+        }
+
+        private bool canPrint(string printerName)
+        {
+            try
+            {
+                System.Drawing.Printing.PrintDocument printDocument = new System.Drawing.Printing.PrintDocument();
+                printDocument.PrinterSettings.PrinterName = printerName;
+                return printDocument.PrinterSettings.IsValid;
+            }
+            catch
+            { return false; }
         }
 
         private void lvDisplay_DoubleClick(object sender, EventArgs e)
