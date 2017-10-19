@@ -115,6 +115,12 @@
     <Compile Include="Form\frmProductList.Designer.cs">
       <DependentUpon>frmProductList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\frmTransactionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmTransactionList.Designer.cs">
+      <DependentUpon>frmTransactionList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Module\Interface1.cs" />
     <Compile Include="Module\Database.cs" />
     <Compile Include="Module\mod_system.cs" />
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\frmProductList.resx">
       <DependentUpon>frmProductList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmTransactionList.resx">
+      <DependentUpon>frmTransactionList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

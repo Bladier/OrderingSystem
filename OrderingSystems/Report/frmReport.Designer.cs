@@ -33,9 +33,10 @@
             // 
             // rv_display
             // 
-            this.rv_display.Location = new System.Drawing.Point(12, 12);
+            this.rv_display.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rv_display.Location = new System.Drawing.Point(0, 0);
             this.rv_display.Name = "rv_display";
-            this.rv_display.Size = new System.Drawing.Size(895, 492);
+            this.rv_display.Size = new System.Drawing.Size(919, 516);
             this.rv_display.TabIndex = 0;
             // 
             // frmReport
@@ -46,6 +47,7 @@
             this.Controls.Add(this.rv_display);
             this.Name = "frmReport";
             this.Text = "frmReport";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReport_Load);
             this.ResumeLayout(false);
 

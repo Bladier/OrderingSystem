@@ -65,7 +65,7 @@
             this.btnSearch.Location = new System.Drawing.Point(791, 14);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(92, 47);
-            this.btnSearch.TabIndex = 0;
+            this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "&Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -86,7 +86,8 @@
             this.txtSearch.Location = new System.Drawing.Point(68, 28);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(717, 22);
-            this.txtSearch.TabIndex = 2;
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // lvOrderHist
             // 
@@ -103,7 +104,7 @@
             this.lvOrderHist.Location = new System.Drawing.Point(14, 76);
             this.lvOrderHist.Name = "lvOrderHist";
             this.lvOrderHist.Size = new System.Drawing.Size(869, 246);
-            this.lvOrderHist.TabIndex = 3;
+            this.lvOrderHist.TabIndex = 2;
             this.lvOrderHist.UseCompatibleStateImageBehavior = false;
             this.lvOrderHist.View = System.Windows.Forms.View.Details;
             // 
@@ -142,7 +143,7 @@
             this.btnVoid.Location = new System.Drawing.Point(791, 328);
             this.btnVoid.Name = "btnVoid";
             this.btnVoid.Size = new System.Drawing.Size(92, 51);
-            this.btnVoid.TabIndex = 4;
+            this.btnVoid.TabIndex = 3;
             this.btnVoid.Text = "&Void";
             this.btnVoid.UseVisualStyleBackColor = true;
             this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
@@ -198,7 +199,7 @@
             this.lvOrderNum.Location = new System.Drawing.Point(8, 66);
             this.lvOrderNum.Name = "lvOrderNum";
             this.lvOrderNum.Size = new System.Drawing.Size(202, 256);
-            this.lvOrderNum.TabIndex = 13;
+            this.lvOrderNum.TabIndex = 2;
             this.lvOrderNum.UseCompatibleStateImageBehavior = false;
             this.lvOrderNum.View = System.Windows.Forms.View.Details;
             this.lvOrderNum.Click += new System.EventHandler(this.lvOrderNum_Click);
@@ -222,7 +223,7 @@
             this.lvWholeOrder.Location = new System.Drawing.Point(216, 66);
             this.lvWholeOrder.Name = "lvWholeOrder";
             this.lvWholeOrder.Size = new System.Drawing.Size(661, 256);
-            this.lvWholeOrder.TabIndex = 12;
+            this.lvWholeOrder.TabIndex = 3;
             this.lvWholeOrder.UseCompatibleStateImageBehavior = false;
             this.lvWholeOrder.View = System.Windows.Forms.View.Details;
             // 
@@ -257,7 +258,8 @@
             this.txtSearchWholeOrder.Location = new System.Drawing.Point(62, 27);
             this.txtSearchWholeOrder.Name = "txtSearchWholeOrder";
             this.txtSearchWholeOrder.Size = new System.Drawing.Size(717, 22);
-            this.txtSearchWholeOrder.TabIndex = 11;
+            this.txtSearchWholeOrder.TabIndex = 0;
+            this.txtSearchWholeOrder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchWholeOrder_KeyDown);
             // 
             // label2
             // 
@@ -275,7 +277,7 @@
             this.btnVoidWO.Location = new System.Drawing.Point(791, 328);
             this.btnVoidWO.Name = "btnVoidWO";
             this.btnVoidWO.Size = new System.Drawing.Size(92, 51);
-            this.btnVoidWO.TabIndex = 9;
+            this.btnVoidWO.TabIndex = 4;
             this.btnVoidWO.Text = "&Void";
             this.btnVoidWO.UseVisualStyleBackColor = true;
             this.btnVoidWO.Click += new System.EventHandler(this.btnVoidWO_Click);
@@ -286,7 +288,7 @@
             this.btnSearchWO.Location = new System.Drawing.Point(785, 13);
             this.btnSearchWO.Name = "btnSearchWO";
             this.btnSearchWO.Size = new System.Drawing.Size(92, 47);
-            this.btnSearchWO.TabIndex = 5;
+            this.btnSearchWO.TabIndex = 1;
             this.btnSearchWO.Text = "&Search";
             this.btnSearchWO.UseVisualStyleBackColor = true;
             this.btnSearchWO.Click += new System.EventHandler(this.btnSearchWO_Click);

@@ -19,7 +19,7 @@ namespace OrderingSystems
 
         private void frmOrderHistory_Load(object sender, EventArgs e)
         {
-            //this.TopMost = true;
+            this.TopMost = true;
             LoadOrder();
            LoadWholeOder();
         }
@@ -175,6 +175,7 @@ namespace OrderingSystems
 
             MessageBox.Show("Successfully voided.", "Void", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             LoadWholeOder();
+            lvWholeOrder.Items.Clear();
         }
         #endregion
 
@@ -189,6 +190,16 @@ namespace OrderingSystems
                 string mysql = "SELECT * FROM tblqueue WHERE ORDERNUM = '" + txtSearchWholeOrder.Text + "'";
                 LoadWholeOder(mysql);
             }
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) { btnSearch.PerformClick(); }
+        }
+
+        private void txtSearchWholeOrder_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) { btnSearchWO.PerformClick(); }
         }
 
        

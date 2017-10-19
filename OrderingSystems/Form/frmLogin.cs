@@ -53,7 +53,7 @@ namespace OrderingSystems
         }
         else
         {
-            frmCasher frm = new frmCasher();
+            frmTransactionList frm = new frmTransactionList();
             frm.Show();
             this.Hide();
         }

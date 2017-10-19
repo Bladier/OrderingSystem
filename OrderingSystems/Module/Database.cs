@@ -169,8 +169,9 @@ namespace OrderingSystems
         /// <remarks></remarks>
         static internal bool DBCompatibilityCheck()
         {
+            Maintenance m = new Maintenance();
             Console.WriteLine("Checking database compatibility...");
-            string strDB = GetOption("DBVersion");
+            string strDB = m.GetValue("DBVersion");
 
             if (DBversion == strDB)
             {
@@ -268,22 +269,7 @@ namespace OrderingSystems
         /// <param name="keys">keys is the parameter </param>
         /// <returns>return ret after reading the dataset.</returns>
         /// <remarks></remarks>
-        static internal string GetOption(string keys)
-        {
-            string mySql = "SELECT * FROM tblmaintenance WHERE opt_keys = '" + keys + "'";
-            string ret = null;
-            try
-            {
-                DataSet ds = LoadSQL(mySql);
-                // ret = ds.Tables[0].Rows[0]["opt_values"];
-            }
-            catch (Exception ex)
-            {
-                ret = " ";
-            }
-
-            return ret;
-        }
+        
        
 	}
 }

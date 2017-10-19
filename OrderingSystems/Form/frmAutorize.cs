@@ -47,10 +47,16 @@ namespace OrderingSystems
             if (!u.LoginUser(un,up))
             {
                 Interaction.MsgBox("Invalid Username and password", MsgBoxStyle.Critical);
+                txtPassword.Clear();
+                txtUsername.Clear();
                 return;
             }
 
-            if (u.Userrule != "Admin") { return; }
+            if (u.Userrule != "Admin") 
+            {
+                Interaction.MsgBox("Your not authorized in this module!", MsgBoxStyle.Critical);
+                return; 
+            }
 
             frmOrderHistory frm = new frmOrderHistory();
             frm.Show();

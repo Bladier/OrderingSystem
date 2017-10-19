@@ -14,11 +14,16 @@ namespace OrderingSystems
 {
     public partial class frmCasher : Form
     {
+        internal bool isView = false;
         string AddQTY;
         protected double Total_Amount = 0.0;
         int tmpQID = 0;
         public bool isNew=false;
-        private string Printer = Database.GetOption("PrinterReciept");
+
+        Maintenance tmpMaintenance = new Maintenance();
+        private string Printer;
+        private string IsPrint;
+
         public frmCasher()
         {
             InitializeComponent();
@@ -26,10 +31,27 @@ namespace OrderingSystems
 
         private void frmCasher_Load(object sender, EventArgs e)
         {
+
+            if (isView)
+            {
+                ReViewOrder(false);
+                return;
+            }
+
             LoadQueues();
+            if (LVQueue.Items.Count == 0) { return; }
             LVQueue.Items[0].Selected = true;
             LVQueue.Select();
             ViewOrder();
+        }
+
+        private void ReViewOrder(bool st =true)
+        {
+            LVQueue.Enabled = !st ;
+            btnAdd.Enabled = !st;
+            btnPrint.Enabled = !st;
+            btnRemove.Enabled = !st;
+            btnVoid.Enabled = !st;
         }
 
         private void LoadQueues()
@@ -96,11 +118,18 @@ namespace OrderingSystems
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadQueues();
+            ReViewOrder();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            DialogResult result = MessageBox.Show("Do you want to Cancel?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            ReViewOrder();
+            ClearField();
         }
 
          private void btnRemove_Click(object sender, EventArgs e)
@@ -233,18 +262,18 @@ namespace OrderingSystems
               Queue q = new Queue();
                     q.Set_Served(with.QID);
 
-              int i;
-              for (i = 0; i <= lvListOrder.Items.Count - 1; i++)
-                    {
+              //int i;
+              //for (i = 0; i <= lvListOrder.Items.Count - 1; i++)
+              //      {
 
-                        QueueLines ql = new QueueLines();
-                        var _with = ql;
-                        _with.QueueID = tmpQID;
-                        _with.MenuID = Convert.ToInt32(lvListOrder.Items[i].SubItems[5].Text);
-                        _with.QTY = Convert.ToDouble(lvListOrder.Items[i].SubItems[4].Text);
-                        _with.Price = Convert.ToDouble(lvListOrder.Items[i].SubItems[3].Text);
-                        _with.SaveInfo();
-                    }
+              //          QueueLines ql = new QueueLines();
+              //          var _with = ql;
+              //          _with.QueueID = tmpQID;
+              //          _with.MenuID = Convert.ToInt32(lvListOrder.Items[i].SubItems[5].Text);
+              //          _with.QTY = Convert.ToDouble(lvListOrder.Items[i].SubItems[4].Text);
+              //          _with.Price = Convert.ToDouble(lvListOrder.Items[i].SubItems[3].Text);
+              //          _with.SaveInfo();
+              //      }
 
               PrintOR(tmpQID);
             MessageBox.Show("Order POSTED", "Post",
@@ -271,8 +300,10 @@ namespace OrderingSystems
 
         private void PrintOR(int queueID)
         {
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(2000);
             // Check if able to print
+            Printer = tmpMaintenance.GetValue("PrinterReciept");
+            IsPrint = tmpMaintenance.GetValue("IsRecieptPrint");
             if (!canPrint(Printer))
                 return;
 
@@ -285,7 +316,7 @@ namespace OrderingSystems
             //mySql += " WHERE Q.ID =" + queueID + " AND QI.STATUS <> 0";
             //mySql += " GROUP BY M.MENUTYPE";
 
-            string mysql = "SELECT * FROM customer_order WHERE QUEUEID = " + queueID + " QIStatus =1";
+            string mysql = "SELECT * FROM customer_order WHERE QUEUEID = " + queueID + " and QIStatus =1";
 
             DataSet ds = null;
             string fillData = "TBLQUEUE";
@@ -322,14 +353,19 @@ namespace OrderingSystems
                 }
             }
 
-            //// Executing Auto Print
-            //autoPrint.Export(report);
-            //autoPrint.m_currentPageIndex = 0;
-            //autoPrint.Print(Printer);
-
-            frmReport frm = new frmReport();
-            frm.ReportInit(mysql, "dsORPRINT", @"Report\rptReciept.rdlc", dic);
-            frm.Show();
+            if (IsPrint == "YES")
+            {
+                frmReport frm = new frmReport();
+                frm.ReportInit(mysql, "dsORPRINT", @"Report\rptReciept.rdlc", dic);
+                frm.Show();
+            }
+            else
+            {
+                // Executing Auto Print
+                autoPrint.Export(report);
+                autoPrint.m_currentPageIndex = 0;
+                autoPrint.Print(Printer);
+            }
         }
 
         private bool canPrint(string printerName)
@@ -399,6 +435,18 @@ namespace OrderingSystems
         private void btnVoid_Click(object sender, EventArgs e)
         {
             frmAutorize frm = new frmAutorize();
+            frm.ShowDialog();
+        }
+
+        private void txtCash_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) { btnPrint.PerformClick(); }
+
+        }
+
+        private void btnTransList_Click(object sender, EventArgs e)
+        {
+            frmTransactionList frm = new frmTransactionList();
             frm.ShowDialog();
         }
 
