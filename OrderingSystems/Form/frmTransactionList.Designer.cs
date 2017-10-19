@@ -39,7 +39,6 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
             this.btnReprint = new System.Windows.Forms.Button();
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnSearch
@@ -48,9 +47,10 @@
             this.btnSearch.Location = new System.Drawing.Point(560, 10);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 0;
+            this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "&Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearch
             // 
@@ -59,7 +59,8 @@
             this.txtSearch.Location = new System.Drawing.Point(12, 12);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(542, 20);
-            this.txtSearch.TabIndex = 1;
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // lvTransactionList
             // 
@@ -71,8 +72,7 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
+            this.columnHeader5});
             this.lvTransactionList.FullRowSelect = true;
             this.lvTransactionList.GridLines = true;
             this.lvTransactionList.Location = new System.Drawing.Point(12, 38);
@@ -113,7 +113,7 @@
             this.btnCancel.Location = new System.Drawing.Point(560, 333);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -124,7 +124,7 @@
             this.btnView.Location = new System.Drawing.Point(12, 329);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(75, 34);
-            this.btnView.TabIndex = 4;
+            this.btnView.TabIndex = 3;
             this.btnView.Text = "&View";
             this.btnView.UseVisualStyleBackColor = true;
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
@@ -135,15 +135,10 @@
             this.btnReprint.Location = new System.Drawing.Point(469, 333);
             this.btnReprint.Name = "btnReprint";
             this.btnReprint.Size = new System.Drawing.Size(75, 30);
-            this.btnReprint.TabIndex = 5;
+            this.btnReprint.TabIndex = 4;
             this.btnReprint.Text = "&Print";
             this.btnReprint.UseVisualStyleBackColor = true;
             this.btnReprint.Click += new System.EventHandler(this.btnReprint_Click);
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "MeneID";
-            this.columnHeader6.Width = 0;
             // 
             // frmTransactionList
             // 
@@ -177,6 +172,5 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }

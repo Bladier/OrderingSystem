@@ -33,6 +33,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnTransList = new System.Windows.Forms.Button();
             this.btnVoid = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblAmountDue = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LVQueue = new System.Windows.Forms.ListView();
-            this.btnTransList = new System.Windows.Forms.Button();
             columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -86,6 +86,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1243, 749);
             this.panel1.TabIndex = 0;
+      
             // 
             // contextMenuStrip1
             // 
@@ -100,6 +101,19 @@
             this.refreshToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.refreshToolStripMenuItem.Text = "&Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
+            // btnTransList
+            // 
+            this.btnTransList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTransList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTransList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTransList.Location = new System.Drawing.Point(582, 648);
+            this.btnTransList.Name = "btnTransList";
+            this.btnTransList.Size = new System.Drawing.Size(114, 43);
+            this.btnTransList.TabIndex = 8;
+            this.btnTransList.Text = "&Transaction";
+            this.btnTransList.UseVisualStyleBackColor = true;
+            this.btnTransList.Click += new System.EventHandler(this.btnTransList_Click);
             // 
             // btnVoid
             // 
@@ -322,19 +336,6 @@
             this.LVQueue.View = System.Windows.Forms.View.Details;
             this.LVQueue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LVQueue_KeyDown);
             this.LVQueue.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LVQueue_MouseClick);
-            // 
-            // btnTransList
-            // 
-            this.btnTransList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTransList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTransList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTransList.Location = new System.Drawing.Point(582, 648);
-            this.btnTransList.Name = "btnTransList";
-            this.btnTransList.Size = new System.Drawing.Size(114, 43);
-            this.btnTransList.TabIndex = 8;
-            this.btnTransList.Text = "&Transaction";
-            this.btnTransList.UseVisualStyleBackColor = true;
-            this.btnTransList.Click += new System.EventHandler(this.btnTransList_Click);
             // 
             // frmCasher
             // 

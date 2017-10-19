@@ -14,6 +14,9 @@ namespace OrderingSystems
 {
     public partial class frmCasher : Form
     {
+        internal string OrderNumber="";
+       
+
         internal bool isView = false;
         string AddQTY;
         protected double Total_Amount = 0.0;
@@ -31,13 +34,6 @@ namespace OrderingSystems
 
         private void frmCasher_Load(object sender, EventArgs e)
         {
-
-            if (isView)
-            {
-                ReViewOrder(false);
-                return;
-            }
-
             LoadQueues();
             if (LVQueue.Items.Count == 0) { return; }
             LVQueue.Items[0].Selected = true;
@@ -47,11 +43,15 @@ namespace OrderingSystems
 
         private void ReViewOrder(bool st =true)
         {
-            LVQueue.Enabled = !st ;
-            btnAdd.Enabled = !st;
-            btnPrint.Enabled = !st;
-            btnRemove.Enabled = !st;
-            btnVoid.Enabled = !st;
+            LVQueue.Enabled = st;
+            btnAdd.Enabled = st;
+            btnPrint.Enabled = st;
+            btnRemove.Enabled = st;
+            btnVoid.Enabled = st;
+            lvListOrder.Enabled = st;
+            txtCash.Enabled = st;
+
+            LVQueue.Items.Clear();
         }
 
         private void LoadQueues()
@@ -85,6 +85,7 @@ namespace OrderingSystems
 
         private void ViewOrder()
         {
+
             string mysql = "SELECT * FROM tblQueueInfo WHERE QueueID = " + LVQueue.SelectedItems[0].Tag + " and status ='1' ORDER BY ID ASC";
             DataSet ds = Database.LoadSQL(mysql, "tblQueueInfo");
 
@@ -130,6 +131,13 @@ namespace OrderingSystems
             }
             ReViewOrder();
             ClearField();
+            lvListOrder.Items.Clear();
+            LoadQueues();
+
+            if (LVQueue.Items.Count == 0) { return; }
+            LVQueue.Items[0].Selected = true;
+            LVQueue.Select();
+            ViewOrder();
         }
 
          private void btnRemove_Click(object sender, EventArgs e)
@@ -163,29 +171,41 @@ namespace OrderingSystems
 
          internal void AddMenuItem(MenuItem mItem)
          {
+             if (isView)
+             {
+                 ReViewOrder(false);
+                ListViewItem lv=LVQueue.Items.Add(OrderNumber);
+             }
+
+
              double tprice;
              int tQty;
              int i;
-             for (i = 0; i <= lvListOrder.Items.Count - 1; i++)
+
+             if (!isView)
              {
-                 if (lvListOrder.Items[i].Text == mItem.MenuName)
+                 for (i = 0; i <= lvListOrder.Items.Count - 1; i++)
                  {
-                     ListViewItem lv = lvListOrder.Items[i];
-                     if (lv.SubItems[1].Text == mItem.MenuType)
+                     if (lvListOrder.Items[i].Text == mItem.MenuName)
                      {
-                         if (lv.SubItems[2].Text == mItem.MenuSize)
+                         ListViewItem lv = lvListOrder.Items[i];
+                         if (lv.SubItems[1].Text == mItem.MenuType)
                          {
-                             tprice = Convert.ToDouble(lv.SubItems[3].Text);
-                             tQty = Convert.ToInt32(lv.SubItems[4].Text);
-                             tprice = tprice + mItem.Price;
-                             tQty = tQty + mItem.Qty;
-                             lv.SubItems[3].Text = tprice.ToString();
-                             lv.SubItems[4].Text = tQty.ToString();
-                             return;
+                             if (lv.SubItems[2].Text == mItem.MenuSize)
+                             {
+                                 tprice = Convert.ToDouble(lv.SubItems[3].Text);
+                                 tQty = Convert.ToInt32(lv.SubItems[4].Text);
+                                 tprice = tprice + mItem.Price;
+                                 tQty = tQty + mItem.Qty;
+                                 lv.SubItems[3].Text = tprice.ToString();
+                                 lv.SubItems[4].Text = tQty.ToString();
+                                 return;
+                             }
                          }
                      }
                  }
              }
+
              ListViewItem lv1 = lvListOrder.Items.Add(mItem.MenuName);
 
              lv1.SubItems.Add(mItem.MenuType);
@@ -197,7 +217,10 @@ namespace OrderingSystems
              QueueLines ql = new QueueLines();
              lv1.Tag = ql.LoadLastID();
              ReCalCulate();
-         }
+
+             isView = false;
+             OrderNumber = "";
+          }
      
       
 
@@ -446,9 +469,15 @@ namespace OrderingSystems
 
         private void btnTransList_Click(object sender, EventArgs e)
         {
+            lvListOrder.Items.Clear();
+            LVQueue.Items.Clear();
+            ReViewOrder();
+            ClearField();
             frmTransactionList frm = new frmTransactionList();
             frm.ShowDialog();
         }
+
+   
 
         /////////////////Break////////////////////
 

@@ -74,7 +74,6 @@ namespace OrderingSystems
                         lv.SubItems.Add(itm["Cash"].ToString());
                         lv.SubItems.Add(itm["Change"].ToString());
                         lv.SubItems.Add(itm["AmountDue"].ToString());
-                        lv.SubItems.Add(itm["MenuID"].ToString());
 
                         lv.Tag = Convert.ToInt32(itm["QUEUEID"]);
                     }
@@ -177,19 +176,40 @@ namespace OrderingSystems
             if (lvTransactionList.SelectedItems.Count == 0) { return; }
 
             int idx = Convert.ToInt32(lvTransactionList.SelectedItems[0].Tag);
-            MenuItem sMenu = new MenuItem();
+            Queue q = new Queue();
 
-            sMenu.ID = idx;
-            sMenu.LoadMenuItem();
+            q.LoadQueue(idx);
 
-            if (Application.OpenForms["frmCasher"] != null)
+            (Application.OpenForms["frmCasher"] as frmCasher).isView = true;
+            (Application.OpenForms["frmCasher"] as frmCasher).OrderNumber = lvTransactionList.SelectedItems[0].Text;
+  
+            foreach (QueueLines orders in q.QueueColl)
             {
-                (Application.OpenForms["frmCasher"] as frmCasher).AddMenuItem(sMenu);
-                (Application.OpenForms["frmCasher"] as frmCasher).isView = true;
-                (Application.OpenForms["frmCasher"] as frmCasher).Show();
+                MenuItem smenu = new MenuItem();
+
+                smenu.ID = orders.MenuID;
+                smenu.LoadMenuItem();
+
+                if (Application.OpenForms["frmCasher"] != null)
+                {
+                    (Application.OpenForms["frmCasher"] as frmCasher).AddMenuItem(smenu);
+                  
+                }
             }
 
-           // this.Close();
+           this.Close();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == "") { LoadWholeOder(); }
+            string mysql = "SELECT * FROM customer_order where ORDERNUM like '%" + txtSearch.Text + "%' and BOStatus = '1' ORDER BY ID ASC";
+            LoadWholeOder(mysql);
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) { btnSearch.PerformClick(); }
         }
 
     }
