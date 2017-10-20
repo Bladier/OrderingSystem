@@ -19,7 +19,7 @@ namespace OrderingSystems
 
         private void frmOrderHistory_Load(object sender, EventArgs e)
         {
-            this.TopMost = true;
+            //this.TopMost = true;
             LoadOrder();
            LoadWholeOder();
         }
@@ -39,6 +39,13 @@ namespace OrderingSystems
                 lv.SubItems.Add(itm["MenuSize"].ToString());
                 lv.SubItems.Add(itm["Price"].ToString());
                 lv.SubItems.Add(itm["QTY"].ToString());
+                lv.SubItems.Add(itm["QueueID"].ToString());
+
+                if (itm["QIStatus"].ToString()=="0")
+                {
+                    lv.BackColor = Color.Red;
+                }
+
 
                 lv.Tag = Convert.ToInt32(itm["QIID"]);
             }
@@ -67,8 +74,16 @@ namespace OrderingSystems
             }
      
             QueueLines qi = new QueueLines();
+
+            qi.ID = Convert.ToInt32(lvOrderHist.SelectedItems[0].Tag);
+            qi.LoadLines();
             qi.voidOrder(Convert.ToInt32(lvOrderHist.SelectedItems[0].Tag));
-            MessageBox.Show("Successfully voided.", "Void", MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+
+            ClientOrder cl = new ClientOrder();
+            cl.AmountDue = Convert.ToDouble(lvOrderHist.SelectedItems[0].SubItems[4].Text);
+            cl.UpdateAmountDue(Convert.ToInt32(lvOrderHist.SelectedItems[0].SubItems[6].Text));
+            
+            MessageBox.Show("Successfully voided.", "Void", MessageBoxButtons.OK,MessageBoxIcon.Information);
             LoadOrder();
         }
         #endregion

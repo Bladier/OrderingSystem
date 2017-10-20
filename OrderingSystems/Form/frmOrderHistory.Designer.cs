@@ -54,6 +54,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnVoidWO = new System.Windows.Forms.Button();
             this.btnSearchWO = new System.Windows.Forms.Button();
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -104,7 +105,8 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
-            this.columnHeader5});
+            this.columnHeader5,
+            this.columnHeader13});
             this.lvOrderHist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvOrderHist.FullRowSelect = true;
             this.lvOrderHist.GridLines = true;
@@ -141,7 +143,7 @@
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "Price";
+            this.columnHeader5.Text = "QTY";
             this.columnHeader5.Width = 75;
             // 
             // btnVoid
@@ -313,6 +315,11 @@
             this.btnSearchWO.UseVisualStyleBackColor = true;
             this.btnSearchWO.Click += new System.EventHandler(this.btnSearchWO_Click);
             // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "QueueID";
+            this.columnHeader13.Width = 0;
+            // 
             // frmOrderHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,5 +368,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ListView lvOrderNum;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
     }
 }

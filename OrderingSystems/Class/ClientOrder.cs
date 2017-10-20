@@ -156,6 +156,18 @@ namespace OrderingSystems
             Database.SaveEntry(ds, false);
         }
 
+        internal void UpdateAmountDue(int idx)
+        {
+            mysql = "SELECT * FROM " + tblOrder + " WHERE QUEUEID = " + idx;
+            DataSet ds = Database.LoadSQL(mysql, tblOrder);
+
+            double Old= Convert.ToDouble(ds.Tables[0].Rows[0]["AmountDue"]);
+
+            Old = Old - _AmountDue;
+
+            ds.Tables[0].Rows[0]["AmountDue"] = Old;
+            Database.SaveEntry(ds, false);
+        }
         #endregion
     }
 }
