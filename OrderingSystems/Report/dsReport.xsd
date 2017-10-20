@@ -49,6 +49,9 @@
               <xs:element name="CHANGE" msprop:Generator_ColumnVarNameInTable="columnCHANGE" msprop:Generator_ColumnPropNameInRow="CHANGE" msprop:Generator_ColumnPropNameInTable="CHANGEColumn" msprop:Generator_UserColumnName="CHANGE" type="xs:string" minOccurs="0" />
               <xs:element name="DOCDATE" msprop:Generator_ColumnVarNameInTable="columnDOCDATE" msprop:Generator_ColumnPropNameInRow="DOCDATE" msprop:Generator_ColumnPropNameInTable="DOCDATEColumn" msprop:Generator_UserColumnName="DOCDATE" type="xs:string" minOccurs="0" />
               <xs:element name="QIID" msprop:Generator_ColumnVarNameInTable="columnQIID" msprop:Generator_ColumnPropNameInRow="QIID" msprop:Generator_ColumnPropNameInTable="QIIDColumn" msprop:Generator_UserColumnName="QIID" type="xs:string" minOccurs="0" />
+              <xs:element name="QIStatus" msprop:Generator_ColumnVarNameInTable="columnQIStatus" msprop:Generator_ColumnPropNameInRow="QIStatus" msprop:Generator_ColumnPropNameInTable="QIStatusColumn" msprop:Generator_UserColumnName="QIStatus" type="xs:string" minOccurs="0" />
+              <xs:element name="BOStatus" msprop:Generator_ColumnVarNameInTable="columnBOStatus" msprop:Generator_ColumnPropNameInRow="BOStatus" msprop:Generator_ColumnPropNameInTable="BOStatusColumn" msprop:Generator_UserColumnName="BOStatus" type="xs:string" minOccurs="0" />
+              <xs:element name="CASH" msprop:Generator_ColumnVarNameInTable="columnCASH" msprop:Generator_ColumnPropNameInRow="CASH" msprop:Generator_ColumnPropNameInTable="CASHColumn" msprop:Generator_UserColumnName="CASH" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

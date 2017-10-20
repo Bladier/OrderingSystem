@@ -330,66 +330,60 @@ namespace OrderingSystems
             Printer = tmpMaintenance.GetValue("PrinterReciept");
             IsPrint = tmpMaintenance.GetValue("IsRecieptPrint");
             if (!canPrint(Printer))
-                return;
+            { return; }
 
-            // Execute SQL
-            //string mySql = "SELECT Q.ID,Q.ORDERNUM,ORDERDATE,Q.STATUS AS QSTATUS,";
-            //mySql += "  QI.MENUID,SUM(QI.QTY)AS QTY ,M.MENUNAME,M.MENUTYPE,M.MENUSIZE,SUM(M.PRICE)AS PRICE";
-            //mySql += " FROM TBLQUEUE Q";
-            //mySql += " INNER JOIN TBLQUEUEINFO QI ON QI.QUEUEID = Q.ID";
-            //mySql += " INNER JOIN TBLMENU M ON M.ID = QI.MENUID";
-            //mySql += " WHERE Q.ID =" + queueID + " AND QI.STATUS <> 0";
-            //mySql += " GROUP BY M.MENUTYPE";
-
-            string mysql = "SELECT * FROM customer_order WHERE QUEUEID = " + queueID + " and QIStatus =1";
-
-            DataSet ds = null;
-            string fillData = "TBLQUEUE";
-            ds = Database.LoadSQL(mysql, fillData);
-
-            string OrderNum = String.Format("ORDER # 0000{0}", ds.Tables[0].Rows[0]["ORDERNUM"].ToString());
-            DateTime DocDate= Convert.ToDateTime(System.DateTime.Now);
-
-            // Declare AutoPrint
-            Reporting autoPrint = null;
-            LocalReport report = new LocalReport();
-            autoPrint = new Reporting();
-
-            // Initialize Auto Print
-            report.ReportPath = @"Report\rptReciept.rdlc";
-            report.DataSources.Add(new ReportDataSource(fillData, ds.Tables[fillData]));
-
-            // Assign Parameters
-            Dictionary<string, string> dic = new Dictionary<string, string>();
-
-            dic.Add("txtUsername", mod_system.ORuser.Username);
-
-            // Importer Parameters
-            if ((dic != null))
-            {
-                foreach (KeyValuePair<string, string> param in dic)
-                {
-                    var nPara = param;
-                    ReportParameter tmpPara = new ReportParameter();
-                    tmpPara.Name = nPara.Key;
-                    tmpPara.Values.Add(nPara.Value);
-                    report.SetParameters(new ReportParameter[] { tmpPara });
-                    Console.WriteLine(string.Format("{0}: {1}", nPara.Key, nPara.Value));
-                }
-            }
-
-            if (IsPrint == "YES")
-            {
-                frmReport frm = new frmReport();
-                frm.ReportInit(mysql, "dsORPRINT", @"Report\rptReciept.rdlc", dic);
-                frm.Show();
-            }
             else
             {
-                // Executing Auto Print
-                autoPrint.Export(report);
-                autoPrint.m_currentPageIndex = 0;
-                autoPrint.Print(Printer);
+                string mysql = "SELECT * FROM customer_order WHERE QUEUEID = " + queueID + " and QIStatus =1";
+
+                DataSet ds = null;
+                string fillData = "TBLQUEUE";
+                ds = Database.LoadSQL(mysql, fillData);
+
+                string OrderNum = String.Format("ORDER # 0000{0}", ds.Tables[0].Rows[0]["ORDERNUM"].ToString());
+                DateTime DocDate = Convert.ToDateTime(System.DateTime.Now);
+
+                // Declare AutoPrint
+                Reporting autoPrint = null;
+                LocalReport report = new LocalReport();
+                autoPrint = new Reporting();
+
+                // Initialize Auto Print
+                report.ReportPath = @"Report\rptReciept.rdlc";
+                report.DataSources.Add(new ReportDataSource(fillData, ds.Tables[fillData]));
+
+                // Assign Parameters
+                Dictionary<string, string> dic = new Dictionary<string, string>();
+
+                dic.Add("txtUsername", mod_system.ORuser.Username);
+
+                // Importer Parameters
+                if ((dic != null))
+                {
+                    foreach (KeyValuePair<string, string> param in dic)
+                    {
+                        var nPara = param;
+                        ReportParameter tmpPara = new ReportParameter();
+                        tmpPara.Name = nPara.Key;
+                        tmpPara.Values.Add(nPara.Value);
+                        report.SetParameters(new ReportParameter[] { tmpPara });
+                        Console.WriteLine(string.Format("{0}: {1}", nPara.Key, nPara.Value));
+                    }
+                }
+
+                if (IsPrint == "YES")
+                {
+                    frmReport frm = new frmReport();
+                    frm.ReportInit(mysql, "dsORPRINT", @"Report\rptReciept.rdlc", dic);
+                    frm.Show();
+                }
+                else
+                {
+                    // Executing Auto Print
+                    autoPrint.Export(report);
+                    autoPrint.m_currentPageIndex = 0;
+                    autoPrint.Print(Printer);
+                }
             }
         }
 
@@ -484,6 +478,21 @@ namespace OrderingSystems
             ClearField();
             frmTransactionList frm = new frmTransactionList();
             frm.ShowDialog();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to Close?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            if (Application.OpenForms["frmCasher"] != null)
+            {
+                (Application.OpenForms["frmCasher"] as frmCasher).Show();
+            }
+            this.Close();
         }
 
    

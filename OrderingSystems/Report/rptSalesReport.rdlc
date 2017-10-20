@@ -72,6 +72,18 @@
           <DataField>QIID</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="QIStatus">
+          <DataField>QIStatus</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BOStatus">
+          <DataField>BOStatus</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CASH">
+          <DataField>CASH</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>OrderingSystemsReport</DataSourceName>

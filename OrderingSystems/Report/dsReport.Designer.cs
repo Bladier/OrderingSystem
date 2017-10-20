@@ -943,6 +943,12 @@ namespace OrderingSystems.Report {
             
             private global::System.Data.DataColumn columnQIID;
             
+            private global::System.Data.DataColumn columnQIStatus;
+            
+            private global::System.Data.DataColumn columnBOStatus;
+            
+            private global::System.Data.DataColumn columnCASH;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PrintDataTable() {
@@ -1098,6 +1104,30 @@ namespace OrderingSystems.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn QIStatusColumn {
+                get {
+                    return this.columnQIStatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BOStatusColumn {
+                get {
+                    return this.columnBOStatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CASHColumn {
+                get {
+                    return this.columnCASH;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1133,7 +1163,25 @@ namespace OrderingSystems.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PrintRow AddPrintRow(string ID, string ORDERNUM, string ORDERDATE, string QSTATUS, string QUEUEID, string MENUID, string QTY, string MENUNAME, string MENUTYPE, string MENUSIZE, string PRICE, string AMOUNTDUE, string CHANGE, string DOCDATE, string QIID) {
+            public PrintRow AddPrintRow(
+                        string ID, 
+                        string ORDERNUM, 
+                        string ORDERDATE, 
+                        string QSTATUS, 
+                        string QUEUEID, 
+                        string MENUID, 
+                        string QTY, 
+                        string MENUNAME, 
+                        string MENUTYPE, 
+                        string MENUSIZE, 
+                        string PRICE, 
+                        string AMOUNTDUE, 
+                        string CHANGE, 
+                        string DOCDATE, 
+                        string QIID, 
+                        string QIStatus, 
+                        string BOStatus, 
+                        string CASH) {
                 PrintRow rowPrintRow = ((PrintRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -1150,7 +1198,10 @@ namespace OrderingSystems.Report {
                         AMOUNTDUE,
                         CHANGE,
                         DOCDATE,
-                        QIID};
+                        QIID,
+                        QIStatus,
+                        BOStatus,
+                        CASH};
                 rowPrintRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPrintRow);
                 return rowPrintRow;
@@ -1188,6 +1239,9 @@ namespace OrderingSystems.Report {
                 this.columnCHANGE = base.Columns["CHANGE"];
                 this.columnDOCDATE = base.Columns["DOCDATE"];
                 this.columnQIID = base.Columns["QIID"];
+                this.columnQIStatus = base.Columns["QIStatus"];
+                this.columnBOStatus = base.Columns["BOStatus"];
+                this.columnCASH = base.Columns["CASH"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1223,6 +1277,12 @@ namespace OrderingSystems.Report {
                 base.Columns.Add(this.columnDOCDATE);
                 this.columnQIID = new global::System.Data.DataColumn("QIID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQIID);
+                this.columnQIStatus = new global::System.Data.DataColumn("QIStatus", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQIStatus);
+                this.columnBOStatus = new global::System.Data.DataColumn("BOStatus", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBOStatus);
+                this.columnCASH = new global::System.Data.DataColumn("CASH", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCASH);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1831,6 +1891,54 @@ namespace OrderingSystems.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string QIStatus {
+                get {
+                    try {
+                        return ((string)(this[this.tablePrint.QIStatusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QIStatus\' in table \'Print\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePrint.QIStatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string BOStatus {
+                get {
+                    try {
+                        return ((string)(this[this.tablePrint.BOStatusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BOStatus\' in table \'Print\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePrint.BOStatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CASH {
+                get {
+                    try {
+                        return ((string)(this[this.tablePrint.CASHColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CASH\' in table \'Print\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePrint.CASHColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIDNull() {
                 return this.IsNull(this.tablePrint.IDColumn);
             }
@@ -2007,6 +2115,42 @@ namespace OrderingSystems.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetQIIDNull() {
                 this[this.tablePrint.QIIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsQIStatusNull() {
+                return this.IsNull(this.tablePrint.QIStatusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetQIStatusNull() {
+                this[this.tablePrint.QIStatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBOStatusNull() {
+                return this.IsNull(this.tablePrint.BOStatusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBOStatusNull() {
+                this[this.tablePrint.BOStatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCASHNull() {
+                return this.IsNull(this.tablePrint.CASHColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCASHNull() {
+                this[this.tablePrint.CASHColumn] = global::System.Convert.DBNull;
             }
         }
         

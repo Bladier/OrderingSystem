@@ -54,6 +54,7 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LVQueue = new System.Windows.Forms.ListView();
+            this.btnBack = new System.Windows.Forms.Button();
             columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -73,6 +74,7 @@
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.ContextMenuStrip = this.contextMenuStrip1;
+            this.panel1.Controls.Add(this.btnBack);
             this.panel1.Controls.Add(this.btnTransList);
             this.panel1.Controls.Add(this.btnVoid);
             this.panel1.Controls.Add(this.groupBox1);
@@ -86,7 +88,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1243, 749);
             this.panel1.TabIndex = 0;
-      
             // 
             // contextMenuStrip1
             // 
@@ -337,6 +338,19 @@
             this.LVQueue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LVQueue_KeyDown);
             this.LVQueue.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LVQueue_MouseClick);
             // 
+            // btnBack
+            // 
+            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(12, 709);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(198, 35);
+            this.btnBack.TabIndex = 9;
+            this.btnBack.Text = "&Back To Menu";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // frmCasher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,5 +396,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.Button btnVoid;
         private System.Windows.Forms.Button btnTransList;
+        private System.Windows.Forms.Button btnBack;
     }
 }
