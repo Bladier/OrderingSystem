@@ -131,6 +131,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsReport.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Report\frmQeuryDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmQeuryDate.Designer.cs">
+      <DependentUpon>frmQeuryDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\frmReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,10 +179,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report\frmQeuryDate.resx">
+      <DependentUpon>frmQeuryDate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\frmReport.resx">
       <DependentUpon>frmReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rptReciept.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptSalesReport.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rpt_Menu.rdlc" />

@@ -180,9 +180,7 @@ namespace OrderingSystems
 
             q.LoadQueue(idx);
 
-            (Application.OpenForms["frmCasher"] as frmCasher).isView = true;
-            (Application.OpenForms["frmCasher"] as frmCasher).OrderNumber = lvTransactionList.SelectedItems[0].Text;
-  
+            Console.WriteLine(q.QueueColl.Count);
             foreach (QueueLines orders in q.QueueColl)
             {
                 MenuItem smenu = new MenuItem();
@@ -192,9 +190,19 @@ namespace OrderingSystems
 
                 if (Application.OpenForms["frmCasher"] != null)
                 {
+                    (Application.OpenForms["frmCasher"] as frmCasher).isView = true;
+                    (Application.OpenForms["frmCasher"] as frmCasher).OrderNumber = lvTransactionList.SelectedItems[0].Text;
                     (Application.OpenForms["frmCasher"] as frmCasher).AddMenuItem(smenu);
-                  
                 }
+                else
+                {
+                    frmCasher frm = new frmCasher();
+                    frm.isView = true;
+                    frm.OrderNumber = lvTransactionList.SelectedItems[0].Text;
+                    frm.Show();
+                    frm.AddMenuItem(smenu);
+                }
+
             }
 
            this.Close();

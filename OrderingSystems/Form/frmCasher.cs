@@ -34,6 +34,8 @@ namespace OrderingSystems
 
         private void frmCasher_Load(object sender, EventArgs e)
         {
+            if (isView) { return; }
+            
             LoadQueues();
             if (LVQueue.Items.Count == 0) { return; }
             LVQueue.Items[0].Selected = true;
@@ -214,8 +216,8 @@ namespace OrderingSystems
              lv1.SubItems.Add(mItem.Qty.ToString());
              lv1.SubItems.Add(mItem.ID.ToString());
 
-             QueueLines ql = new QueueLines();
-             lv1.Tag = ql.LoadLastID();
+             //QueueLines ql = new QueueLines();
+             //lv1.Tag = ql.LoadLastID();
              ReCalCulate();
 
              isView = false;
@@ -457,6 +459,13 @@ namespace OrderingSystems
 
         private void btnVoid_Click(object sender, EventArgs e)
         {
+            if (mod_system.ORuser.Userrule == "Admin")
+            {
+                frmOrderHistory frm1 = new frmOrderHistory();
+                frm1.Show();
+                return;
+            }
+
             frmAutorize frm = new frmAutorize();
             frm.ShowDialog();
         }

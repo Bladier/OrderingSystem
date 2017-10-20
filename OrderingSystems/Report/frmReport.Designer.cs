@@ -46,8 +46,7 @@
             this.ClientSize = new System.Drawing.Size(919, 516);
             this.Controls.Add(this.rv_display);
             this.Name = "frmReport";
-            this.Text = "frmReport";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Text = "Report";
             this.Load += new System.EventHandler(this.frmReport_Load);
             this.ResumeLayout(false);
 

@@ -36,6 +36,8 @@ namespace OrderingSystems
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            
+
             if (txtUsername.Text == "") { txtUsername.Focus(); return; }
             if (txtPassword.Text == "") { txtPassword.Focus(); return; }
 
