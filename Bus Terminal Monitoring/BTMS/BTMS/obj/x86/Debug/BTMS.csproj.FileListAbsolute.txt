@@ -1,0 +1,9 @@
+E:\github\Bus Terminal Monitoring\BTMS\BTMS\obj\x86\Debug\BTMS.Form1.resources
+E:\github\Bus Terminal Monitoring\BTMS\BTMS\obj\x86\Debug\BTMS.Properties.Resources.resources
+E:\github\Bus Terminal Monitoring\BTMS\BTMS\obj\x86\Debug\BTMS.csproj.GenerateResource.Cache
+E:\github\Bus Terminal Monitoring\BTMS\BTMS\obj\x86\Debug\BTMS.csprojResolveAssemblyReference.cache
+E:\github\Bus Terminal Monitoring\BTMS\BTMS\bin\Debug\BTMS.exe
+E:\github\Bus Terminal Monitoring\BTMS\BTMS\bin\Debug\BTMS.pdb
+E:\github\Bus Terminal Monitoring\BTMS\BTMS\bin\Debug\DeathCodez.dll
+E:\github\Bus Terminal Monitoring\BTMS\BTMS\obj\x86\Debug\BTMS.exe
+E:\github\Bus Terminal Monitoring\BTMS\BTMS\obj\x86\Debug\BTMS.pdb
