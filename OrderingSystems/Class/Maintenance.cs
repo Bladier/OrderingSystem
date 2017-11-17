@@ -91,7 +91,32 @@ namespace OrderingSystems
             string mysql = "Select * From tblMaintenance Where M_Key = '" + key +"'";
             DataSet ds = Database.LoadSQL(mysql, "tblMaintenance");
 
+            if (ds.Tables[0].Rows.Count == 0) { return ""; }
+
             return ds.Tables[0].Rows[0]["M_Value"].ToString();
+        }
+
+        internal void UpdateOption(string key, string val)
+        {
+            string mysql = "Select * From tblMaintenance Where M_Key = '"+ key +"'";
+            DataSet ds = Database.LoadSQL(mysql, "tblMaintenance");
+
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                DataRow dsNewRow = null;
+                dsNewRow = ds.Tables[0].NewRow();
+                var with = dsNewRow;
+                with["M_Key"] = key;
+                with["M_Value"] = val;
+                ds.Tables[0].Rows.Add(dsNewRow);
+                Database.SaveEntry(ds, true);
+            }
+            else
+            {
+                var with = ds.Tables[0].Rows[0];
+                with["M_Value"] = val;
+                Database.SaveEntry(ds, false);
+            }
         }
 
         #endregion

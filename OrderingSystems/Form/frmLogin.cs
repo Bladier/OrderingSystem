@@ -14,6 +14,7 @@ namespace OrderingSystems
 {
     public partial class frmLogin : Form
     {
+        int i = 0;
         public frmLogin()
         {
             InitializeComponent();
@@ -26,16 +27,16 @@ namespace OrderingSystems
 
             string username = txtusername.Text;
             string userpass = mod_system.DreadKnight(txtPassword.Text);
-            int i=0;
-
+          
             User loginUser =new User();
             if (!loginUser.LoginUser(username, userpass)) {
-		    i += 1;
+		    i++;
 			if (i >= 3) {
 				Interaction.MsgBox("You have reached the MAXIMUM logins. This is a recording.", MsgBoxStyle.Critical);
 				System.Environment.Exit(0);
 			}
 			Interaction.MsgBox("Invalid Username and password", MsgBoxStyle.Critical);
+            txtPassword.Clear(); txtPassword.Focus();
 			return;
 		}
 
@@ -44,8 +45,12 @@ namespace OrderingSystems
 		mod_system.UserID = mod_system.ORuser.ID;
 		Interaction.MsgBox("Welcome " + mod_system.ORuser.Username + " " + mod_system.ORuser.Lastname);
 
-        frmCasher frm = new frmCasher();
-        frm.Show();
+         frmMain frm = new frmMain();
+         frm.Show();
+          
+        txtPassword.Clear();
+        txtusername.Clear();
+        i = 0;
         this.Hide();
 	}
 
@@ -68,6 +73,11 @@ namespace OrderingSystems
             {
                 btnOkay.PerformClick();
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
             
         }
