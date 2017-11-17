@@ -139,6 +139,16 @@ namespace OrderingSystems
             ds.Tables["tblQueue"].Rows[0]["Status"] = "S";
             Database.SaveEntry(ds, false);
         }
+
+        internal void Void_Oueue(int idx)
+        {
+            string mySql = "SELECT * FROM tblQueue Where ID = " + idx;
+            DataSet ds = Database.LoadSQL(mySql, "tblQueue");
+            ds.Tables["tblQueue"].Rows[0]["Status"] = "C";
+            Database.SaveEntry(ds, false);
+        }
+
+
         //    public void Update()
         //    {
         //        string mySql = string.Format("SELECT * FROM {0} WHERE ItemID = {1}", MainTable, _itemID);

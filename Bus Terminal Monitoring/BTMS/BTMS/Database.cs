@@ -10,7 +10,7 @@ using System.Linq;
 using System.Xml.Linq;
 using MySql.Data.MySqlClient;
 
-namespace OrderingSystems
+namespace BTMS
 {
 	static class Database
 	{
@@ -21,10 +21,10 @@ namespace OrderingSystems
         //static internal string uid = "blade";
         //static internal string fbPass = "blade";
         //static internal string server = "BLADE";
-        static internal string dbName = "os";
-        static internal string uid = "ellie";
-        static internal string fbPass = "ellie123";
-        static internal string server = "MISGwapohon-PC";
+        static internal string dbName = "rf";
+        static internal string uid = "root";
+        static internal string fbPass = "";
+        static internal string server = "localhost";
         static internal DataSet fbDataSet = new DataSet();
 
         static internal string conStr = string.Empty;
@@ -169,9 +169,8 @@ namespace OrderingSystems
         /// <remarks></remarks>
         static internal bool DBCompatibilityCheck()
         {
-            Maintenance m = new Maintenance();
             Console.WriteLine("Checking database compatibility...");
-            string strDB = m.GetValue("DBVersion");
+            string strDB = GetOption("DBVersion");
 
             if (DBversion == strDB)
             {
@@ -269,7 +268,22 @@ namespace OrderingSystems
         /// <param name="keys">keys is the parameter </param>
         /// <returns>return ret after reading the dataset.</returns>
         /// <remarks></remarks>
-        
+        static internal string GetOption(string keys)
+        {
+            string mySql = "SELECT * FROM tblmaintenance WHERE opt_keys = '" + keys + "'";
+            string ret = null;
+            try
+            {
+                DataSet ds = LoadSQL(mySql);
+                // ret = ds.Tables[0].Rows[0]["opt_values"];
+            }
+            catch (Exception ex)
+            {
+                ret = " ";
+            }
+
+            return ret;
+        }
        
 	}
 }

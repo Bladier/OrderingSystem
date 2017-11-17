@@ -128,6 +128,16 @@ namespace OrderingSystems
             }
             return Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]);
         }
+
+        public void voidOrder(int qID)
+        {
+            string mysql = "SELECT * FROM tblQueueInfo WHERE ID = " + qID;
+            DataSet ds = Database.LoadSQL(mysql, "tblQueueInfo");
+            ds.Tables[0].Rows[0]["Status"] = 0;
+            Database.SaveEntry(ds, false);
+            Console.WriteLine("Successfully voided.");
+        }
+
         #endregion
     }
 

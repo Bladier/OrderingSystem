@@ -33,6 +33,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnTransList = new System.Windows.Forms.Button();
+            this.btnVoid = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblAmountDue = new System.Windows.Forms.Label();
             this.lblChange = new System.Windows.Forms.Label();
@@ -50,8 +52,9 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.LVQueue = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.LVQueue = new System.Windows.Forms.ListView();
+            this.btnBack = new System.Windows.Forms.Button();
             columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -71,6 +74,9 @@
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.ContextMenuStrip = this.contextMenuStrip1;
+            this.panel1.Controls.Add(this.btnBack);
+            this.panel1.Controls.Add(this.btnTransList);
+            this.panel1.Controls.Add(this.btnVoid);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.btnRemove);
@@ -81,7 +87,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1243, 749);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 0;
             // 
             // contextMenuStrip1
             // 
@@ -96,6 +102,32 @@
             this.refreshToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.refreshToolStripMenuItem.Text = "&Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
+            // btnTransList
+            // 
+            this.btnTransList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTransList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTransList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTransList.Location = new System.Drawing.Point(582, 648);
+            this.btnTransList.Name = "btnTransList";
+            this.btnTransList.Size = new System.Drawing.Size(114, 43);
+            this.btnTransList.TabIndex = 8;
+            this.btnTransList.Text = "&Transaction";
+            this.btnTransList.UseVisualStyleBackColor = true;
+            this.btnTransList.Click += new System.EventHandler(this.btnTransList_Click);
+            // 
+            // btnVoid
+            // 
+            this.btnVoid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVoid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoid.Location = new System.Drawing.Point(462, 648);
+            this.btnVoid.Name = "btnVoid";
+            this.btnVoid.Size = new System.Drawing.Size(114, 43);
+            this.btnVoid.TabIndex = 5;
+            this.btnVoid.Text = "&Void";
+            this.btnVoid.UseVisualStyleBackColor = true;
+            this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
             // groupBox1
             // 
@@ -114,7 +146,7 @@
             this.groupBox1.Location = new System.Drawing.Point(458, 414);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(773, 200);
-            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Payment Info";
             // 
@@ -126,7 +158,7 @@
             this.lblAmountDue.Location = new System.Drawing.Point(215, 140);
             this.lblAmountDue.Name = "lblAmountDue";
             this.lblAmountDue.Size = new System.Drawing.Size(75, 33);
-            this.lblAmountDue.TabIndex = 5;
+            this.lblAmountDue.TabIndex = 2;
             this.lblAmountDue.Text = "0.00";
             // 
             // lblChange
@@ -137,7 +169,7 @@
             this.lblChange.Location = new System.Drawing.Point(215, 90);
             this.lblChange.Name = "lblChange";
             this.lblChange.Size = new System.Drawing.Size(75, 33);
-            this.lblChange.TabIndex = 4;
+            this.lblChange.TabIndex = 1;
             this.lblChange.Text = "0.00";
             // 
             // txtCash
@@ -145,7 +177,8 @@
             this.txtCash.Location = new System.Drawing.Point(221, 44);
             this.txtCash.Name = "txtCash";
             this.txtCash.Size = new System.Drawing.Size(198, 31);
-            this.txtCash.TabIndex = 3;
+            this.txtCash.TabIndex = 0;
+            this.txtCash.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCash_KeyDown);
             this.txtCash.Leave += new System.EventHandler(this.txtCash_Leave);
             // 
             // label3
@@ -189,7 +222,7 @@
             this.btnAdd.Location = new System.Drawing.Point(979, 45);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(114, 43);
-            this.btnAdd.TabIndex = 5;
+            this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -202,7 +235,7 @@
             this.btnRemove.Location = new System.Drawing.Point(1115, 45);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(114, 43);
-            this.btnRemove.TabIndex = 4;
+            this.btnRemove.TabIndex = 7;
             this.btnRemove.Text = "&Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
@@ -215,7 +248,7 @@
             this.btnCancel.Location = new System.Drawing.Point(1117, 660);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(114, 43);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -228,7 +261,7 @@
             this.btnPrint.Location = new System.Drawing.Point(981, 660);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(114, 43);
-            this.btnPrint.TabIndex = 2;
+            this.btnPrint.TabIndex = 3;
             this.btnPrint.Text = "&Post";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
@@ -254,6 +287,8 @@
             this.lvListOrder.TabIndex = 1;
             this.lvListOrder.UseCompatibleStateImageBehavior = false;
             this.lvListOrder.View = System.Windows.Forms.View.Details;
+            this.lvListOrder.DoubleClick += new System.EventHandler(this.lvListOrder_DoubleClick);
+            this.lvListOrder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvListOrder_KeyDown);
             // 
             // columnHeader2
             // 
@@ -279,6 +314,11 @@
             // 
             this.columnHeader6.Text = "QTY";
             // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "MenuID";
+            this.columnHeader7.Width = 0;
+            // 
             // LVQueue
             // 
             this.LVQueue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -298,10 +338,18 @@
             this.LVQueue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LVQueue_KeyDown);
             this.LVQueue.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LVQueue_MouseClick);
             // 
-            // columnHeader7
+            // btnBack
             // 
-            this.columnHeader7.Text = "MenuID";
-            this.columnHeader7.Width = 0;
+            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(12, 709);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(198, 35);
+            this.btnBack.TabIndex = 9;
+            this.btnBack.Text = "&Back To Menu";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // frmCasher
             // 
@@ -346,5 +394,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.Button btnVoid;
+        private System.Windows.Forms.Button btnTransList;
+        private System.Windows.Forms.Button btnBack;
     }
 }
