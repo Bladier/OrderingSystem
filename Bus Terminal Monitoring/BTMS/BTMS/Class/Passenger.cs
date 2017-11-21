@@ -103,7 +103,7 @@ namespace BTMS
         private string _PassType;
         public string PassType
         {
-            get { return PassType; }
+            get { return _PassType; }
             set { _PassType = value; }
 
         }
@@ -133,7 +133,7 @@ namespace BTMS
         #endregion
 
         #region "Functions and Procedures"
-        public void LoadQueue(int id)
+        public void Loadpass(int id)
         {
             string mySql = string.Format("SELECT * FROM " + MainTable + " WHERE PAssID = {0}", id);
             DataSet ds = Database.LoadSQL(mySql, MainTable);
@@ -195,6 +195,8 @@ namespace BTMS
             _Province = _with3["Province"].ToString();
             _IdType = _with3["IDType"].ToString();
             _IDNum = _with3["IDNumber"].ToString();
+
+            _FullAddress = _Street + " " + _Brgy + ", " + _City + ", " + _Province;
         }
 
 
@@ -243,6 +245,20 @@ namespace BTMS
                 ds.Tables[0].Rows.Add(dsNewRow);
                 Database.SaveEntry(ds);
             }
+        }
+
+
+        public bool IsCardNumExists(string cardNum)
+        {
+            string mySql = "SELECT * from tblPassenger ";
+            mySql += string.Format(" WHERE RFIDNUM = '{0}'",cardNum);
+            DataSet ds = null;
+
+            ds = Database.LoadSQL(mySql);
+            if (ds.Tables[0].Rows.Count > 0)
+                return false;
+
+            return true;
         }
     }
       #endregion

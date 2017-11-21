@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\busManagement.cs" />
+    <Compile Include="Class\buspersonnel.cs" />
+    <Compile Include="Class\busRoute.cs" />
     <Compile Include="Class\Passenger.cs" />
     <Compile Include="Class\User.cs" />
     <Compile Include="Database.cs" />
@@ -60,11 +63,74 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBusList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBusList.Designer.cs">
+      <DependentUpon>frmBusList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBusManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBusManagement.Designer.cs">
+      <DependentUpon>frmBusManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPassengerList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPassengerList.Designer.cs">
+      <DependentUpon>frmPassengerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPersonnelList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPersonnelList.Designer.cs">
+      <DependentUpon>frmPersonnelList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPersonnelRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPersonnelRegistration.Designer.cs">
+      <DependentUpon>frmPersonnelRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTransaction.Designer.cs">
+      <DependentUpon>frmTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="mod_system.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBusList.resx">
+      <DependentUpon>frmBusList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBusManagement.resx">
+      <DependentUpon>frmBusManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPassengerList.resx">
+      <DependentUpon>frmPassengerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPersonnelList.resx">
+      <DependentUpon>frmPersonnelList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPersonnelRegistration.resx">
+      <DependentUpon>frmPersonnelRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTransaction.resx">
+      <DependentUpon>frmTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
