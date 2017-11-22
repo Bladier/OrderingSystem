@@ -86,9 +86,9 @@ namespace BTMS
             _Credit = Convert.ToDouble(_with3["Credit"]);
         }
 
-        public void UpdateCredit(double fare=0)
+        public void UpdateCredit(double fare=0,int passID=0)
         {
-            string mySql = string.Format("SELECT * FROM {0} WHERE Personid = {1}", MainTable, _ID);
+            string mySql = string.Format("SELECT * FROM {0} WHERE PassID = {1}", MainTable, passID);
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
             if (ds.Tables[0].Rows.Count == 1)
@@ -97,7 +97,6 @@ namespace BTMS
                 double tmpCredit = Convert.ToDouble(ds.Tables[0].Rows[0]["Credit"]);
                 tmpCredit = tmpCredit - fare;
 
-                _with2["PassID"] = _PID;
                 _with2["Credit"] = tmpCredit;
                 Database.SaveEntry(ds, false);
             }

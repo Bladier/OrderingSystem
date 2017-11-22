@@ -14,6 +14,9 @@ namespace BTMS
         public static string plateNum = "";
         public static string passCardNum = "";
         public static bool isTransaction = false;
+        private passenger tmpPassenger;
+        private busManagement tmpBus;
+
         public frmTransaction()
         {
             InitializeComponent();
@@ -32,7 +35,7 @@ namespace BTMS
 
             buspersonnel bp = new buspersonnel();
             bp.Loadpersonnel(bm.Driver);
-
+            tmpBus = bm;
 
             txtDriver.Text = bp.Fname + " " + bp.Lname;
 
@@ -54,6 +57,7 @@ namespace BTMS
             txtAddress.Text = pas.FullAddress;
             txtPassType.Text = pas.PassType;
 
+            tmpPassenger = pas;
             calc();
         }
 
@@ -155,6 +159,35 @@ namespace BTMS
 
         private void btnPost_Click(object sender, EventArgs e)
         {
+            if (txtPlateNum.Text==""){txtPlateNum.Focus();return;}
+            if (txtCardNum.Text == "") { txtCardNum.Focus(); return; }
+            if (txtCardNum.Text.Length != 10)
+            {
+                MessageBox.Show("Invalid Card Number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            DialogResult result = MessageBox.Show("Do you want to save this transaction?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            Transaction trans = new Transaction();
+            trans.TransDate = Convert.ToDateTime(DateTime.Today.ToString("yyyy-MM-dd"));
+            trans.Client = tmpPassenger;
+            trans.Bus = tmpBus;
+            trans.TransRate = Convert.ToDouble(lblAmountDue.Text);
+            trans.TransDiscount = Convert.ToDouble(lblDiscount.Text);
+            trans.Remarks = "";
+            trans.SaveTrans();
+
+
+            Credit cr = new Credit();
+            cr.UpdateCredit(Convert.ToDouble(lblAmountDue.Text), tmpPassenger.ID);
+
+            MessageBox.Show("Successfully saved.", "Confirmation", MessageBoxButtons.OK);
             clearfield();
         }
 
