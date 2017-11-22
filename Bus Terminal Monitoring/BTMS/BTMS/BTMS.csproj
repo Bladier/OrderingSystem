@@ -54,6 +54,7 @@
     <Compile Include="Class\busManagement.cs" />
     <Compile Include="Class\buspersonnel.cs" />
     <Compile Include="Class\busRoute.cs" />
+    <Compile Include="Class\Credit.cs" />
     <Compile Include="Class\Passenger.cs" />
     <Compile Include="Class\User.cs" />
     <Compile Include="Database.cs" />

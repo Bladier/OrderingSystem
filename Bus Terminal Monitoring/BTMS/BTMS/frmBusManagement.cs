@@ -184,6 +184,10 @@ namespace BTMS
         {
             driverID = bp.ID;
             txtDriver.Text = bp.Fname + " " + bp.Lname;
+
+            condoctorID = bp.ID;
+           txtCondoctor.Text = bp.Fname + " " + bp.Lname;
+
         }
 
         private void txtDriver_KeyPress(object sender, KeyPressEventArgs e)

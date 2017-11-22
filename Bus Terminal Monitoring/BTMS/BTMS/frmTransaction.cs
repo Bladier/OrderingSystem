@@ -41,6 +41,9 @@ namespace BTMS
             txtFrom.Text = br.From;
             txtTo.Text = br.Dest;
             txtRate.Text = br.Rate.ToString();
+
+            if (txtPassType.Text == "") { return; }
+            calc();
         }
 
         internal void addbus(passenger pas)
@@ -74,22 +77,22 @@ namespace BTMS
             mod_system.DigitOnly(e);
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
+        //private void btnSearch_Click(object sender, EventArgs e)
+        //{
 
-            if (Application.OpenForms["frmPassengerList"] != null)
-            {
-                isTransaction = true;
-                passCardNum = txtCardNum.Text;
-            }
-            else
-            {
-                isTransaction = true;
-                passCardNum = txtCardNum.Text;
-                frmPassengerList frm = new frmPassengerList();
-                frm.Show();
-            }
-        }
+        //    //if (Application.OpenForms["frmPassengerList"] != null)
+        //    //{
+        //    //    isTransaction = true;
+        //    //    passCardNum = txtCardNum.Text;
+        //    //}
+        //    //else
+        //    //{
+        //    //    isTransaction = true;
+        //    //    passCardNum = txtCardNum.Text;
+        //    //    frmPassengerList frm = new frmPassengerList();
+        //    //    frm.Show();
+        //    //}
+        //}
 
         private void txtPassType_TextChanged(object sender, EventArgs e)
         {
@@ -98,6 +101,7 @@ namespace BTMS
 
         private void calc()
         {
+            if (txtBusType.Text == "") { return; }
             if (txtPassType.Text== "") { return; }
             if (txtPassType.Text == "Senior")
             {
@@ -123,14 +127,6 @@ namespace BTMS
             }
         }
 
-        private void txtCash_TextChanged(object sender, EventArgs e)
-        {
-            double change = 0.0;
-            if (txtCash.Text == "") {lblChange.Text ="0.00"; return; }
-            change = Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lblAmountDue.Text);
-            lblChange.Text = change.ToString();
-        }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             clearfield();
@@ -149,9 +145,9 @@ namespace BTMS
             txtContactnum.Clear();
             txtAddress.Clear();
             txtPassType.Clear();
-            txtCash.Clear();
+           
             lblAmountDue.Text = "0.00";
-            lblChange.Text = "0.00";
+            
             lblDiscount.Text = "0.00";
             txtCondoctor.Clear();
             txtDriver.Clear();
@@ -160,6 +156,65 @@ namespace BTMS
         private void btnPost_Click(object sender, EventArgs e)
         {
             clearfield();
+        }
+
+        private void searchCardNum()
+        {
+            string mysql = "SELECT * FROM TBLPASSENGER WHERE RFIDNUM = '" + txtCardNum.Text  + "'";
+            DataSet ds = Database.LoadSQL(mysql, "TBLPASSENGER");
+
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                MessageBox.Show("This card number is not registered.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtCardNum.Clear();
+                txtPassenger.Clear();
+                txtContactnum.Clear();
+                txtAddress.Clear();
+                txtPassType.Clear();
+                return;
+            }
+            passenger ps = new passenger();
+            ps.Loadpass(Convert.ToInt32(ds.Tables[0].Rows[0]["PassID"]));
+            addbus(ps);
+
+            Credit cd = new Credit();
+            cd.LoadCredit(ps.ID);
+
+            if (txtRate.Text == "") { return; }
+            if (txtPassType.Text == "Senior")
+            {
+                double discount = 0.06;
+                discount = Convert.ToDouble(txtRate.Text) * discount;
+                lblDiscount.Text = discount.ToString();
+                discount = Convert.ToDouble(txtRate.Text) - discount;
+                lblAmountDue.Text = discount.ToString();
+            }
+
+            if (txtPassType.Text == "Student")
+            {
+                double discount = 0.06;
+                discount = Convert.ToDouble(txtRate.Text) * discount;
+                lblDiscount.Text = discount.ToString();
+                discount = Convert.ToDouble(txtRate.Text) - discount;
+                lblAmountDue.Text = discount.ToString();
+            }
+        }
+
+        private void txtCardNum_Leave(object sender, EventArgs e)
+        {
+            if (txtCardNum.Text == "") { return; }
+            searchCardNum();
+        }
+
+        private void txtCardNum_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           // mod_system.DigitOnly(e);
+            if (mod_system.isEnter(e))
+            {
+            if (txtCardNum.Text == "") { return; }
+            searchCardNum();
+            }
+          
         }
     }
 }

@@ -37,10 +37,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtCardNum = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.txtPassenger = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtCondoctor = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtDriver = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtRate = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtTo = new System.Windows.Forms.TextBox();
@@ -53,20 +56,12 @@
             this.txtPlateNum = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtCash = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.lblChange = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.lblAmountDue = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.lblDiscount = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.lblAmountDue = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.btnPost = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.txtDriver = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtCondoctor = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -82,7 +77,6 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtCardNum);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.txtPassenger);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 288);
@@ -148,9 +142,12 @@
             // txtCardNum
             // 
             this.txtCardNum.Location = new System.Drawing.Point(126, 17);
+            this.txtCardNum.MaxLength = 10;
             this.txtCardNum.Name = "txtCardNum";
-            this.txtCardNum.Size = new System.Drawing.Size(225, 22);
+            this.txtCardNum.Size = new System.Drawing.Size(305, 22);
             this.txtCardNum.TabIndex = 0;
+            this.txtCardNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCardNum_KeyPress);
+            this.txtCardNum.Leave += new System.EventHandler(this.txtCardNum_Leave);
             // 
             // label2
             // 
@@ -160,16 +157,6 @@
             this.label2.Size = new System.Drawing.Size(88, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Card Number";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(357, 17);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 1;
-            this.btnSearch.Text = "&Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtPassenger
             // 
@@ -211,6 +198,40 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bus Info";
+            // 
+            // txtCondoctor
+            // 
+            this.txtCondoctor.Location = new System.Drawing.Point(78, 132);
+            this.txtCondoctor.Name = "txtCondoctor";
+            this.txtCondoctor.ReadOnly = true;
+            this.txtCondoctor.Size = new System.Drawing.Size(353, 22);
+            this.txtCondoctor.TabIndex = 17;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(8, 135);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(70, 16);
+            this.label15.TabIndex = 16;
+            this.label15.Text = "Condoctor";
+            // 
+            // txtDriver
+            // 
+            this.txtDriver.Location = new System.Drawing.Point(78, 104);
+            this.txtDriver.Name = "txtDriver";
+            this.txtDriver.ReadOnly = true;
+            this.txtDriver.Size = new System.Drawing.Size(353, 22);
+            this.txtDriver.TabIndex = 15;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(8, 107);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 16);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "Driver";
             // 
             // txtRate
             // 
@@ -310,87 +331,21 @@
             // 
             this.groupBox3.Controls.Add(this.lblDiscount);
             this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.txtCash);
-            this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.lblChange);
-            this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.lblAmountDue);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Location = new System.Drawing.Point(463, 24);
+            this.groupBox3.Location = new System.Drawing.Point(463, 204);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(445, 190);
+            this.groupBox3.Size = new System.Drawing.Size(338, 106);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "PayMent Info";
-            // 
-            // txtCash
-            // 
-            this.txtCash.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCash.Location = new System.Drawing.Point(142, 40);
-            this.txtCash.Name = "txtCash";
-            this.txtCash.Size = new System.Drawing.Size(225, 29);
-            this.txtCash.TabIndex = 10;
-            this.txtCash.TextChanged += new System.EventHandler(this.txtCash_TextChanged);
-            this.txtCash.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCash_KeyPress);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(77, 43);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(58, 24);
-            this.label16.TabIndex = 15;
-            this.label16.Text = "Cash:";
-            // 
-            // lblChange
-            // 
-            this.lblChange.AutoSize = true;
-            this.lblChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChange.ForeColor = System.Drawing.Color.Blue;
-            this.lblChange.Location = new System.Drawing.Point(138, 115);
-            this.lblChange.Name = "lblChange";
-            this.lblChange.Size = new System.Drawing.Size(45, 24);
-            this.lblChange.TabIndex = 14;
-            this.lblChange.Text = "0.00";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(50, 115);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(82, 24);
-            this.label14.TabIndex = 13;
-            this.label14.Text = "Change:";
-            // 
-            // lblAmountDue
-            // 
-            this.lblAmountDue.AutoSize = true;
-            this.lblAmountDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAmountDue.ForeColor = System.Drawing.Color.Red;
-            this.lblAmountDue.Location = new System.Drawing.Point(138, 152);
-            this.lblAmountDue.Name = "lblAmountDue";
-            this.lblAmountDue.Size = new System.Drawing.Size(45, 24);
-            this.lblAmountDue.TabIndex = 12;
-            this.lblAmountDue.Text = "0.00";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(14, 152);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(121, 24);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "Amount Due:";
             // 
             // lblDiscount
             // 
             this.lblDiscount.AutoSize = true;
             this.lblDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscount.ForeColor = System.Drawing.Color.Blue;
-            this.lblDiscount.Location = new System.Drawing.Point(140, 79);
+            this.lblDiscount.Location = new System.Drawing.Point(140, 33);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(45, 24);
             this.lblDiscount.TabIndex = 17;
@@ -400,16 +355,37 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(46, 79);
+            this.label13.Location = new System.Drawing.Point(46, 33);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(88, 24);
             this.label13.TabIndex = 16;
             this.label13.Text = "Discount:";
             // 
+            // lblAmountDue
+            // 
+            this.lblAmountDue.AutoSize = true;
+            this.lblAmountDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAmountDue.ForeColor = System.Drawing.Color.Red;
+            this.lblAmountDue.Location = new System.Drawing.Point(137, 68);
+            this.lblAmountDue.Name = "lblAmountDue";
+            this.lblAmountDue.Size = new System.Drawing.Size(45, 24);
+            this.lblAmountDue.TabIndex = 12;
+            this.lblAmountDue.Text = "0.00";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(13, 68);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(121, 24);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "Amount Due:";
+            // 
             // btnPost
             // 
             this.btnPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPost.Location = new System.Drawing.Point(544, 254);
+            this.btnPost.Location = new System.Drawing.Point(480, 331);
             this.btnPost.Name = "btnPost";
             this.btnPost.Size = new System.Drawing.Size(132, 69);
             this.btnPost.TabIndex = 14;
@@ -420,7 +396,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(709, 254);
+            this.btnCancel.Location = new System.Drawing.Point(645, 331);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(132, 69);
             this.btnCancel.TabIndex = 15;
@@ -428,45 +404,11 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // txtDriver
-            // 
-            this.txtDriver.Location = new System.Drawing.Point(78, 104);
-            this.txtDriver.Name = "txtDriver";
-            this.txtDriver.ReadOnly = true;
-            this.txtDriver.Size = new System.Drawing.Size(353, 22);
-            this.txtDriver.TabIndex = 15;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(8, 107);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 16);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "Driver";
-            // 
-            // txtCondoctor
-            // 
-            this.txtCondoctor.Location = new System.Drawing.Point(78, 132);
-            this.txtCondoctor.Name = "txtCondoctor";
-            this.txtCondoctor.ReadOnly = true;
-            this.txtCondoctor.Size = new System.Drawing.Size(353, 22);
-            this.txtCondoctor.TabIndex = 17;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(8, 135);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(70, 16);
-            this.label15.TabIndex = 16;
-            this.label15.Text = "Condoctor";
-            // 
             // frmTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 504);
+            this.ClientSize = new System.Drawing.Size(826, 504);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnPost);
             this.Controls.Add(this.groupBox3);
@@ -493,7 +435,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtCardNum;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtPassenger;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtAddress;
@@ -515,10 +456,6 @@
         private System.Windows.Forms.TextBox txtRate;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtCash;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label lblChange;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblAmountDue;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblDiscount;

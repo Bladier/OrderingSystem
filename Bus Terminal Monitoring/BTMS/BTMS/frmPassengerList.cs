@@ -89,7 +89,7 @@ namespace BTMS
 
         private void btnadd_Click(object sender, EventArgs e)
         {
-            frmPersonnelRegistration frm = new frmPersonnelRegistration();
+            Form1 frm = new Form1();
             frm.Show();
         }
 
