@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : newlocalhost
 Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : rf
@@ -10,26 +10,10 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-11-22 09:06:06
+Date: 2017-11-22 10:59:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
--- ----------------------------
--- Table structure for `adminpass`
--- ----------------------------
-DROP TABLE IF EXISTS `adminpass`;
-CREATE TABLE `adminpass` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `user` varchar(10) NOT NULL,
-  `pass` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of adminpass
--- ----------------------------
-INSERT INTO `adminpass` VALUES ('1', 'admin', 'admin');
-
 -- ----------------------------
 -- Table structure for `tblbus`
 -- ----------------------------
@@ -85,7 +69,7 @@ CREATE TABLE `tblcredit` (
 -- ----------------------------
 -- Records of tblcredit
 -- ----------------------------
-INSERT INTO `tblCredit` VALUES ('1', '2', '2000');
+INSERT INTO `tblcredit` VALUES ('1', '2', '2000');
 
 -- ----------------------------
 -- Table structure for `tblpassenger`
@@ -132,3 +116,48 @@ CREATE TABLE `tblroute` (
 -- Records of tblroute
 -- ----------------------------
 INSERT INTO `tblroute` VALUES ('1', 'Gensan', 'Davao', '260', '3');
+
+-- ----------------------------
+-- Table structure for `tbltransaction`
+-- ----------------------------
+DROP TABLE IF EXISTS `tbltransaction`;
+CREATE TABLE `tbltransaction` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `TransDate` date NOT NULL,
+  `passID` int(11) NOT NULL,
+  `busID` int(11) NOT NULL,
+  `Rate` double NOT NULL DEFAULT '0',
+  `Discount` double NOT NULL DEFAULT '0',
+  `Status` smallint(11) NOT NULL,
+  `remarks` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of tbltransaction
+-- ----------------------------
+INSERT INTO `tbltransaction` VALUES ('1', '2017-11-22', '2', '3', '244.4', '15.6', '1', '');
+INSERT INTO `tbltransaction` VALUES ('2', '2017-11-22', '2', '3', '244.4', '15.6', '1', '');
+INSERT INTO `tbltransaction` VALUES ('3', '2017-11-22', '2', '3', '244.4', '15.6', '1', '');
+INSERT INTO `tbltransaction` VALUES ('4', '2017-11-22', '2', '3', '244.4', '15.6', '1', '');
+
+-- ----------------------------
+-- Table structure for `tbluser`
+-- ----------------------------
+DROP TABLE IF EXISTS `tbluser`;
+CREATE TABLE `tbluser` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `USERNAME` varchar(30) NOT NULL,
+  `USERPASS` varchar(30) NOT NULL,
+  `FIRSTNAME` varchar(30) NOT NULL,
+  `MIDDLENAME` varchar(30) DEFAULT NULL,
+  `LASTNAME` varchar(30) NOT NULL,
+  `STATUS` varchar(1) NOT NULL,
+  `USERTYPE` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tbluser
+-- ----------------------------
+INSERT INTO `tbluser` VALUES ('1', 'admin', 'admin', '', null, '', '', '');
