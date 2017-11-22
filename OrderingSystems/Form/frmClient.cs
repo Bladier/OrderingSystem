@@ -123,6 +123,7 @@ namespace OrderingSystems
                 tmpQty = Interaction.InputBox("Enter Qty", "Order", "");
                 if (tmpQty == "") { return; }
                 if (tmpQty == "0") { return; }
+                if (tmpQty.Contains(".")) { return; }
 
                 retNum = Information.IsNumeric(tmpQty);
 
@@ -202,13 +203,30 @@ namespace OrderingSystems
                 string mysql = "Select OrderNum From tblQueue Where ID = '" + QueOrder.GetLastID() +"'";
                 DataSet ds = Database.LoadSQL(mysql,"tblQueue");
 
+    
+               
                 report.ReportPath = @"Report\rpt_OrderPrint.rdlc";
-                report.DataSources.Add(new ReportDataSource(dsName, ds.Tables[dsName]));
+                report.DataSources.Clear();
+                report.DataSources.Add(new ReportDataSource(dsName, ds.Tables[0]));
 
-      
+                Dictionary<string, string> addParameters = new Dictionary<string, string>();
+
+                if ((addParameters != null))
+                {
+                    foreach (KeyValuePair<string, string> nPara_loopVariable in addParameters)
+                    {
+                        var nPara = nPara_loopVariable;
+                        ReportParameter tmpPara = new ReportParameter();
+                        tmpPara.Name = nPara.Key;
+                        tmpPara.Values.Add(nPara.Value);
+                        report.SetParameters(new ReportParameter[] { tmpPara });
+                    }
+                }
+
                 Dictionary<string, double> paperSize = new Dictionary<string,double>();
                 paperSize.Add("width", 3.5);
                 paperSize.Add("height", 2.5);
+
 
                 try
                 {

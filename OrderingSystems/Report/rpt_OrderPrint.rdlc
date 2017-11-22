@@ -35,7 +35,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.71875in</Width>
+              <Width>2.25in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -53,7 +53,7 @@
                             <TextRun>
                               <Value>=Fields!OrderNum.Value</Value>
                               <Style>
-                                <FontSize>18pt</FontSize>
+                                <FontSize>36pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -93,10 +93,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>dsOrderPrint</DataSetName>
-        <Top>0.60778in</Top>
+        <Top>0.48278in</Top>
         <Left>0.14583in</Left>
         <Height>0.625in</Height>
-        <Width>2.71875in</Width>
+        <Width>2.25in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -120,8 +120,8 @@
         <rd:DefaultName>Textbox7</rd:DefaultName>
         <Top>0.12167in</Top>
         <Left>0.14583in</Left>
-        <Height>0.41667in</Height>
-        <Width>2.71875in</Width>
+        <Height>0.29167in</Height>
+        <Width>2.25in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -144,14 +144,16 @@
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>1.66333in</Top>
+        <Top>1.16334in</Top>
         <Left>0.14583in</Left>
         <Height>0.25in</Height>
-        <Width>1in</Width>
+        <Width>2.25in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -164,11 +166,13 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>2in</Height>
+    <Height>1.5in</Height>
     <Style />
   </Body>
-  <Width>3in</Width>
+  <Width>2.5in</Width>
   <Page>
+    <PageHeight>2.5in</PageHeight>
+    <PageWidth>3.5in</PageWidth>
     <LeftMargin>0.5in</LeftMargin>
     <RightMargin>0.5in</RightMargin>
     <TopMargin>0.5in</TopMargin>

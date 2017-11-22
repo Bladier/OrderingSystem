@@ -51,6 +51,7 @@ namespace OrderingSystems
 
             Warning[] warnings = null;
             m_streams = new List<Stream>();
+            report.Refresh();
             report.Render("Image", deviceInfo, CreateStream, out warnings);
             Console.WriteLine(report.GetDefaultPageSettings().PaperSize);
             Console.WriteLine(report.GetDefaultPageSettings().Margins);
