@@ -57,11 +57,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.txtCardExpiration = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtCardExpiration);
+            this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.txtIDNum);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.txtIDType);
@@ -89,9 +93,9 @@
             this.groupBox1.Controls.Add(this.txtFname);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(39, 43);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1041, 382);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -99,7 +103,7 @@
             // txtIDNum
             // 
             this.txtIDNum.Location = new System.Drawing.Point(775, 272);
-            this.txtIDNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIDNum.Margin = new System.Windows.Forms.Padding(4);
             this.txtIDNum.Name = "txtIDNum";
             this.txtIDNum.Size = new System.Drawing.Size(253, 22);
             this.txtIDNum.TabIndex = 11;
@@ -117,7 +121,7 @@
             // txtIDType
             // 
             this.txtIDType.Location = new System.Drawing.Point(448, 274);
-            this.txtIDType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIDType.Margin = new System.Windows.Forms.Padding(4);
             this.txtIDType.Name = "txtIDType";
             this.txtIDType.ReadOnly = true;
             this.txtIDType.Size = new System.Drawing.Size(264, 22);
@@ -152,7 +156,7 @@
             "Senior",
             "Student"});
             this.cboPassTyp.Location = new System.Drawing.Point(131, 272);
-            this.cboPassTyp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboPassTyp.Margin = new System.Windows.Forms.Padding(4);
             this.cboPassTyp.Name = "cboPassTyp";
             this.cboPassTyp.Size = new System.Drawing.Size(239, 24);
             this.cboPassTyp.TabIndex = 9;
@@ -162,10 +166,10 @@
             // 
             this.txtCardNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCardNum.Location = new System.Drawing.Point(129, 326);
-            this.txtCardNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCardNum.Margin = new System.Windows.Forms.Padding(4);
             this.txtCardNum.MaxLength = 10;
             this.txtCardNum.Name = "txtCardNum";
-            this.txtCardNum.Size = new System.Drawing.Size(333, 26);
+            this.txtCardNum.Size = new System.Drawing.Size(397, 26);
             this.txtCardNum.TabIndex = 12;
             this.txtCardNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCardNum_KeyPress);
             // 
@@ -194,7 +198,7 @@
             // 
             this.cboProvince.FormattingEnabled = true;
             this.cboProvince.Location = new System.Drawing.Point(612, 224);
-            this.cboProvince.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboProvince.Margin = new System.Windows.Forms.Padding(4);
             this.cboProvince.Name = "cboProvince";
             this.cboProvince.Size = new System.Drawing.Size(416, 24);
             this.cboProvince.TabIndex = 8;
@@ -213,7 +217,7 @@
             // 
             this.cboCity.FormattingEnabled = true;
             this.cboCity.Location = new System.Drawing.Point(131, 224);
-            this.cboCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboCity.Margin = new System.Windows.Forms.Padding(4);
             this.cboCity.Name = "cboCity";
             this.cboCity.Size = new System.Drawing.Size(395, 24);
             this.cboCity.TabIndex = 7;
@@ -232,7 +236,7 @@
             // 
             this.cboBrgy.FormattingEnabled = true;
             this.cboBrgy.Location = new System.Drawing.Point(612, 166);
-            this.cboBrgy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboBrgy.Margin = new System.Windows.Forms.Padding(4);
             this.cboBrgy.Name = "cboBrgy";
             this.cboBrgy.Size = new System.Drawing.Size(416, 24);
             this.cboBrgy.TabIndex = 6;
@@ -251,7 +255,7 @@
             // 
             this.cboStreet.FormattingEnabled = true;
             this.cboStreet.Location = new System.Drawing.Point(131, 167);
-            this.cboStreet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboStreet.Margin = new System.Windows.Forms.Padding(4);
             this.cboStreet.Name = "cboStreet";
             this.cboStreet.Size = new System.Drawing.Size(395, 24);
             this.cboStreet.TabIndex = 5;
@@ -259,7 +263,7 @@
             // txtContactNum
             // 
             this.txtContactNum.Location = new System.Drawing.Point(469, 98);
-            this.txtContactNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactNum.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactNum.MaxLength = 11;
             this.txtContactNum.Name = "txtContactNum";
             this.txtContactNum.Size = new System.Drawing.Size(195, 22);
@@ -281,7 +285,7 @@
             // 
             this.txtBday.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.txtBday.Location = new System.Drawing.Point(153, 100);
-            this.txtBday.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBday.Margin = new System.Windows.Forms.Padding(4);
             this.txtBday.Name = "txtBday";
             this.txtBday.Size = new System.Drawing.Size(216, 22);
             this.txtBday.TabIndex = 3;
@@ -299,7 +303,7 @@
             // txtLname
             // 
             this.txtLname.Location = new System.Drawing.Point(761, 41);
-            this.txtLname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLname.Margin = new System.Windows.Forms.Padding(4);
             this.txtLname.Name = "txtLname";
             this.txtLname.Size = new System.Drawing.Size(267, 22);
             this.txtLname.TabIndex = 2;
@@ -319,7 +323,7 @@
             // txtMname
             // 
             this.txtMname.Location = new System.Drawing.Point(469, 41);
-            this.txtMname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMname.Margin = new System.Windows.Forms.Padding(4);
             this.txtMname.Name = "txtMname";
             this.txtMname.Size = new System.Drawing.Size(195, 22);
             this.txtMname.TabIndex = 1;
@@ -339,7 +343,7 @@
             // txtFname
             // 
             this.txtFname.Location = new System.Drawing.Point(148, 42);
-            this.txtFname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFname.Margin = new System.Windows.Forms.Padding(4);
             this.txtFname.Name = "txtFname";
             this.txtFname.Size = new System.Drawing.Size(216, 22);
             this.txtFname.TabIndex = 0;
@@ -358,7 +362,7 @@
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(872, 443);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 43);
             this.btnSave.TabIndex = 1;
@@ -370,13 +374,34 @@
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(980, 443);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 43);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // txtCardExpiration
+            // 
+            this.txtCardExpiration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCardExpiration.Location = new System.Drawing.Point(661, 324);
+            this.txtCardExpiration.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCardExpiration.MaxLength = 10;
+            this.txtCardExpiration.Name = "txtCardExpiration";
+            this.txtCardExpiration.Size = new System.Drawing.Size(367, 26);
+            this.txtCardExpiration.TabIndex = 24;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(540, 326);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(113, 20);
+            this.label14.TabIndex = 25;
+            this.label14.Text = "CardExpiration";
             // 
             // Form1
             // 
@@ -387,7 +412,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Passenger Registration";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -428,6 +453,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtIDType;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtCardExpiration;
+        private System.Windows.Forms.Label label14;
     }
 }
 

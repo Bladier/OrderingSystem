@@ -130,6 +130,13 @@ namespace BTMS
             get { return _FullAddress; }
             set { _FullAddress = value; }
         }
+
+        private DateTime _CardExp;
+        public DateTime CardExp
+        {
+            get { return _CardExp; }
+            set { _CardExp = value; }
+        }
         #endregion
 
         #region "Functions and Procedures"
@@ -172,6 +179,7 @@ namespace BTMS
             _with2["province"] = _Province;
             _with2["IDType"] = _IdType;
             _with2["IDNumber"] = _IDNum;
+            _with2["CardExpiration"] = _CardExp;
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
@@ -195,7 +203,7 @@ namespace BTMS
             _Province = _with3["Province"].ToString();
             _IdType = _with3["IDType"].ToString();
             _IDNum = _with3["IDNumber"].ToString();
-
+            _CardExp = Convert.ToDateTime(_with3["CardExpiration"]);
             _FullAddress = _Street + " " + _Brgy + ", " + _City + ", " + _Province;
         }
 
@@ -221,7 +229,7 @@ namespace BTMS
                 _with2["province"] = _Province;
                 _with2["IDType"] = _IdType;
                 _with2["IDNumber"] = _IDNum;
-
+                _with2["CardExpiration"] = _CardExp;
                 Database.SaveEntry(ds, false);
             }
             else
@@ -242,6 +250,7 @@ namespace BTMS
                 _with2["province"] = _Province;
                 _with2["IDType"] = _IdType;
                 _with2["IDNumber"] = _IDNum;
+                _with2["CardExpiration"] = _CardExp;
                 ds.Tables[0].Rows.Add(dsNewRow);
                 Database.SaveEntry(ds);
             }

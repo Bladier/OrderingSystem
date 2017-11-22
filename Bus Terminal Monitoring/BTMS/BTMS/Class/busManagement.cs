@@ -69,7 +69,13 @@ namespace BTMS
             set { _status = value; }
         }
 
-        
+        private string _BusNo;
+        public string BusNo
+        {
+            get { return _BusNo; }
+            set { _BusNo = value; }
+        }
+
         #endregion
 
         #region "Functions
@@ -105,6 +111,7 @@ namespace BTMS
             _with2["driverno"] = _Driver;
             _with2["Condoctor"] = _Condoctor;
             _with2["Status"] = _status;
+            _with2["Busno"] = _BusNo;
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
@@ -121,6 +128,7 @@ namespace BTMS
             _Driver = Convert.ToInt32(_with3["driverno"]);
             _status = _with3["status"].ToString();
             _Condoctor = Convert.ToInt32(_with3["CondoctorID"]);
+            _BusNo = _with3["Busno"].ToString();
         }
 
         public void UpdateBusMngnt()
@@ -137,6 +145,7 @@ namespace BTMS
                 _with2["driverno"] = _Driver;
                 _with2["Status"] = _status;
                 _with2["CondoctorID"]=_Condoctor;
+                _with2["Busno"] = _BusNo;
                 Database.SaveEntry(ds, false);
             }
             else
@@ -150,7 +159,7 @@ namespace BTMS
                 _with2["driverno"] = _Driver;
                 _with2["Status"] = _status;
                 _with2["CondoctorID"] = _Condoctor;
-
+                _with2["Busno"] = _BusNo;
                 ds.Tables[0].Rows.Add(dsNewRow);
                 Database.SaveEntry(ds);
             }

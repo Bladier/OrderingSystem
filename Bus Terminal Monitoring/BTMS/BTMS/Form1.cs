@@ -125,6 +125,7 @@ namespace BTMS
             savepass.Province = cboProvince.Text;
             savepass.IdType = txtIDType.Text;
             savepass.IDNum = txtIDNum.Text;
+            savepass.CardExp = Convert.ToDateTime(txtCardExpiration.Text);
 
             savepass.Savepassenger();
 
@@ -216,6 +217,7 @@ namespace BTMS
             savepass.Province = cboProvince.Text;
             savepass.IdType = txtIDType.Text;
             savepass.IDNum = txtIDNum.Text;
+            savepass.CardExp = Convert.ToDateTime(txtCardExpiration.Text);
 
             savepass.Update();
 

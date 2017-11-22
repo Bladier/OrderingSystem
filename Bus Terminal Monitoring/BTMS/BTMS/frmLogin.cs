@@ -46,6 +46,18 @@ namespace BTMS
 		mod_system.UserID = mod_system.ORuser.ID;
 		Interaction.MsgBox("Welcome " + mod_system.ORuser.Username + " " + mod_system.ORuser.Lastname);
 
+        if (loginUser.Userrule == "Inspector")
+        {
+
+            frmMain2 frm1 = new frmMain2();
+            frm1.Show();
+            txtPassword.Clear();
+            txtusername.Clear();
+            i = 0;
+            this.Hide();
+            return;
+        }
+
          frmMain frm = new frmMain();
          frm.Show();
           

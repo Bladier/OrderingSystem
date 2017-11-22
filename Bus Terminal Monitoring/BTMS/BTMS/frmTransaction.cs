@@ -61,20 +61,20 @@ namespace BTMS
             calc();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (Application.OpenForms["frmBusList"] != null)
-            {
-                 plateNum = txtPlateNum.Text;
-                (Application.OpenForms["frmBusList"] as frmBusList).Show();
-            }
-            else
-            {
-                plateNum = txtPlateNum.Text;
-                frmBusList frm = new frmBusList();
-                frm.Show();
-            }
-        }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    if (Application.OpenForms["frmBusList"] != null)
+        //    {
+        //         plateNum = txtPlateNum.Text;
+        //        (Application.OpenForms["frmBusList"] as frmBusList).Show();
+        //    }
+        //    else
+        //    {
+        //        plateNum = txtPlateNum.Text;
+        //        frmBusList frm = new frmBusList();
+        //        frm.Show();
+        //    }
+        //}
 
         private void txtCash_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -131,10 +131,10 @@ namespace BTMS
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            clearfield();
-        }
+        //private void btnCancel_Click(object sender, EventArgs e)
+        //{
+        //    clearfield();
+        //}
 
         private void clearfield()
         {
@@ -157,9 +157,9 @@ namespace BTMS
             txtDriver.Clear();
         }
 
-        private void btnPost_Click(object sender, EventArgs e)
+        private void SaveTransaction()
         {
-            if (txtPlateNum.Text==""){txtPlateNum.Focus();return;}
+            if (txtPlateNum.Text == "") { txtPlateNum.Focus(); return; }
             if (txtCardNum.Text == "") { txtCardNum.Focus(); return; }
             if (txtCardNum.Text.Length != 10)
             {

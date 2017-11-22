@@ -52,7 +52,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtBusType = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.txtPlateNum = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -60,8 +59,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.lblAmountDue = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnPost = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -79,16 +76,16 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtPassenger);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 288);
+            this.groupBox1.Location = new System.Drawing.Point(360, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(445, 208);
+            this.groupBox1.Size = new System.Drawing.Size(445, 252);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Passenger Info";
             // 
             // txtPassType
             // 
-            this.txtPassType.Location = new System.Drawing.Point(126, 173);
+            this.txtPassType.Location = new System.Drawing.Point(126, 189);
             this.txtPassType.Name = "txtPassType";
             this.txtPassType.ReadOnly = true;
             this.txtPassType.Size = new System.Drawing.Size(306, 22);
@@ -98,7 +95,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 173);
+            this.label10.Location = new System.Drawing.Point(7, 189);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(109, 16);
             this.label10.TabIndex = 9;
@@ -106,7 +103,7 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(126, 110);
+            this.txtAddress.Location = new System.Drawing.Point(126, 126);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.ReadOnly = true;
@@ -116,7 +113,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 110);
+            this.label4.Location = new System.Drawing.Point(7, 126);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 16);
             this.label4.TabIndex = 7;
@@ -124,7 +121,7 @@
             // 
             // txtContactnum
             // 
-            this.txtContactnum.Location = new System.Drawing.Point(126, 73);
+            this.txtContactnum.Location = new System.Drawing.Point(126, 89);
             this.txtContactnum.Name = "txtContactnum";
             this.txtContactnum.ReadOnly = true;
             this.txtContactnum.Size = new System.Drawing.Size(306, 22);
@@ -133,7 +130,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 73);
+            this.label3.Location = new System.Drawing.Point(7, 89);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 16);
             this.label3.TabIndex = 5;
@@ -141,7 +138,7 @@
             // 
             // txtCardNum
             // 
-            this.txtCardNum.Location = new System.Drawing.Point(126, 17);
+            this.txtCardNum.Location = new System.Drawing.Point(126, 33);
             this.txtCardNum.MaxLength = 10;
             this.txtCardNum.Name = "txtCardNum";
             this.txtCardNum.Size = new System.Drawing.Size(305, 22);
@@ -152,7 +149,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 20);
+            this.label2.Location = new System.Drawing.Point(6, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 16);
             this.label2.TabIndex = 3;
@@ -160,7 +157,7 @@
             // 
             // txtPassenger
             // 
-            this.txtPassenger.Location = new System.Drawing.Point(126, 45);
+            this.txtPassenger.Location = new System.Drawing.Point(126, 61);
             this.txtPassenger.Name = "txtPassenger";
             this.txtPassenger.ReadOnly = true;
             this.txtPassenger.Size = new System.Drawing.Size(306, 22);
@@ -169,7 +166,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 48);
+            this.label1.Location = new System.Drawing.Point(6, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 16);
             this.label1.TabIndex = 0;
@@ -189,12 +186,11 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtBusType);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.txtPlateNum);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(12, 24);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(445, 258);
+            this.groupBox2.Size = new System.Drawing.Size(342, 258);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bus Info";
@@ -204,7 +200,7 @@
             this.txtCondoctor.Location = new System.Drawing.Point(78, 132);
             this.txtCondoctor.Name = "txtCondoctor";
             this.txtCondoctor.ReadOnly = true;
-            this.txtCondoctor.Size = new System.Drawing.Size(353, 22);
+            this.txtCondoctor.Size = new System.Drawing.Size(247, 22);
             this.txtCondoctor.TabIndex = 17;
             // 
             // label15
@@ -221,7 +217,7 @@
             this.txtDriver.Location = new System.Drawing.Point(78, 104);
             this.txtDriver.Name = "txtDriver";
             this.txtDriver.ReadOnly = true;
-            this.txtDriver.Size = new System.Drawing.Size(353, 22);
+            this.txtDriver.Size = new System.Drawing.Size(247, 22);
             this.txtDriver.TabIndex = 15;
             // 
             // label12
@@ -238,7 +234,7 @@
             this.txtRate.Location = new System.Drawing.Point(79, 221);
             this.txtRate.Name = "txtRate";
             this.txtRate.ReadOnly = true;
-            this.txtRate.Size = new System.Drawing.Size(353, 22);
+            this.txtRate.Size = new System.Drawing.Size(247, 22);
             this.txtRate.TabIndex = 13;
             // 
             // label8
@@ -255,7 +251,7 @@
             this.txtTo.Location = new System.Drawing.Point(79, 192);
             this.txtTo.Name = "txtTo";
             this.txtTo.ReadOnly = true;
-            this.txtTo.Size = new System.Drawing.Size(353, 22);
+            this.txtTo.Size = new System.Drawing.Size(247, 22);
             this.txtTo.TabIndex = 11;
             // 
             // label9
@@ -272,7 +268,7 @@
             this.txtFrom.Location = new System.Drawing.Point(79, 163);
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.ReadOnly = true;
-            this.txtFrom.Size = new System.Drawing.Size(353, 22);
+            this.txtFrom.Size = new System.Drawing.Size(247, 22);
             this.txtFrom.TabIndex = 9;
             // 
             // label7
@@ -289,7 +285,7 @@
             this.txtBusType.Location = new System.Drawing.Point(79, 74);
             this.txtBusType.Name = "txtBusType";
             this.txtBusType.ReadOnly = true;
-            this.txtBusType.Size = new System.Drawing.Size(353, 22);
+            this.txtBusType.Size = new System.Drawing.Size(247, 22);
             this.txtBusType.TabIndex = 7;
             // 
             // label6
@@ -301,21 +297,12 @@
             this.label6.TabIndex = 6;
             this.label6.Text = "Type";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(357, 32);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "&Search";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // txtPlateNum
             // 
-            this.txtPlateNum.Location = new System.Drawing.Point(79, 32);
+            this.txtPlateNum.Location = new System.Drawing.Point(79, 33);
             this.txtPlateNum.Name = "txtPlateNum";
-            this.txtPlateNum.Size = new System.Drawing.Size(272, 22);
+            this.txtPlateNum.ReadOnly = true;
+            this.txtPlateNum.Size = new System.Drawing.Size(246, 22);
             this.txtPlateNum.TabIndex = 0;
             // 
             // label5
@@ -333,9 +320,9 @@
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.lblAmountDue);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Location = new System.Drawing.Point(463, 204);
+            this.groupBox3.Location = new System.Drawing.Point(22, 288);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(338, 106);
+            this.groupBox3.Size = new System.Drawing.Size(770, 93);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "PayMent Info";
@@ -345,7 +332,7 @@
             this.lblDiscount.AutoSize = true;
             this.lblDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscount.ForeColor = System.Drawing.Color.Blue;
-            this.lblDiscount.Location = new System.Drawing.Point(140, 33);
+            this.lblDiscount.Location = new System.Drawing.Point(237, 33);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(45, 24);
             this.lblDiscount.TabIndex = 17;
@@ -355,7 +342,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(46, 33);
+            this.label13.Location = new System.Drawing.Point(143, 33);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(88, 24);
             this.label13.TabIndex = 16;
@@ -366,7 +353,7 @@
             this.lblAmountDue.AutoSize = true;
             this.lblAmountDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAmountDue.ForeColor = System.Drawing.Color.Red;
-            this.lblAmountDue.Location = new System.Drawing.Point(137, 68);
+            this.lblAmountDue.Location = new System.Drawing.Point(529, 33);
             this.lblAmountDue.Name = "lblAmountDue";
             this.lblAmountDue.Size = new System.Drawing.Size(45, 24);
             this.lblAmountDue.TabIndex = 12;
@@ -376,41 +363,17 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(13, 68);
+            this.label11.Location = new System.Drawing.Point(405, 33);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(121, 24);
             this.label11.TabIndex = 11;
             this.label11.Text = "Amount Due:";
             // 
-            // btnPost
-            // 
-            this.btnPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPost.Location = new System.Drawing.Point(480, 331);
-            this.btnPost.Name = "btnPost";
-            this.btnPost.Size = new System.Drawing.Size(132, 69);
-            this.btnPost.TabIndex = 14;
-            this.btnPost.Text = "&Post";
-            this.btnPost.UseVisualStyleBackColor = true;
-            this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(645, 331);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(132, 69);
-            this.btnCancel.TabIndex = 15;
-            this.btnCancel.Text = "&Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
             // frmTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 504);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnPost);
+            this.ClientSize = new System.Drawing.Size(815, 392);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -442,7 +405,6 @@
         private System.Windows.Forms.TextBox txtContactnum;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtPlateNum;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtTo;
@@ -460,8 +422,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblDiscount;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button btnPost;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox txtDriver;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtCondoctor;

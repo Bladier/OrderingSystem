@@ -32,6 +32,8 @@ namespace BTMS
             txtDriver.Enabled = st;
             cboBusType.Enabled = st;
             txtCondoctor.Enabled = st;
+            txtBusNo.Enabled = st;
+            cboStatus.Enabled = st;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -68,6 +70,7 @@ namespace BTMS
             if (cboStatus.Text == "") { cboStatus.Focus(); return; }
             if (txtDriver.Text == "") { txtDriver.Focus(); return; }
             if (txtCondoctor.Text == "") { txtCondoctor.Focus(); return; }
+            if (txtBusNo.Text == "") { txtBusNo.Focus(); return; }
 
             DialogResult result = MessageBox.Show("Do you want to save this?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
@@ -105,6 +108,7 @@ namespace BTMS
             if (txtDriver.Text == "") { txtDriver.Focus(); return; }
             if (cboStatus.Text == "") { cboStatus.Focus(); return; }
             if (txtCondoctor.Text == "") { txtCondoctor.Focus(); return; }
+            if (txtBusNo.Text == "") { txtBusNo.Focus(); return; }
 
             DialogResult result = MessageBox.Show("Do you want to save this?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
@@ -135,6 +139,7 @@ namespace BTMS
             busmgtID = 0;
             txtCondoctor.Clear();
             condoctorID = 0;
+            txtBusNo.Clear();
         }
 
         internal void addbus(busManagement bm)
@@ -146,6 +151,7 @@ namespace BTMS
             cboStatus.Text = bm.Status;
             buspersonnel bpDriver = new buspersonnel();
             bpDriver.Loadpersonnel(bm.Driver);
+            txtBusNo.Text = bm.BusNo;
 
             txtDriver.Text = bpDriver.Fname + " " + bpDriver.Lname;
 
