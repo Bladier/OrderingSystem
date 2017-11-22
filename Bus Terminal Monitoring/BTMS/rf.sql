@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-11-22 10:59:13
+Date: 2017-11-22 11:04:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -160,4 +160,4 @@ CREATE TABLE `tbluser` (
 -- ----------------------------
 -- Records of tbluser
 -- ----------------------------
-INSERT INTO `tbluser` VALUES ('1', 'admin', 'admin', '', null, '', '', '');
+INSERT INTO `tbluser` VALUES ('1', 'admin', 'myN/8XCodM4=', 'Mica', null, 'Legisniana', '1', 'Admin');
