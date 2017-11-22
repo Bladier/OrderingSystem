@@ -143,6 +143,7 @@
             this.txtCardNum.Name = "txtCardNum";
             this.txtCardNum.Size = new System.Drawing.Size(305, 22);
             this.txtCardNum.TabIndex = 0;
+            this.txtCardNum.TextChanged += new System.EventHandler(this.txtCardNum_TextChanged);
             this.txtCardNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCardNum_KeyPress);
             this.txtCardNum.Leave += new System.EventHandler(this.txtCardNum_Leave);
             // 

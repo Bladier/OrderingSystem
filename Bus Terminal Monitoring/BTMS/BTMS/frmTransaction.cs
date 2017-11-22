@@ -25,6 +25,14 @@ namespace BTMS
         private void frmTransaction_Load(object sender, EventArgs e)
         {
             txtCardNum.Focus();
+
+            string mysql  ="SELECT * FROM TBLBUSTRANSACTION WHERE STATUS ='W'";
+            DataSet ds = Database.LoadSQL(mysql, "TBLBUSTRANSACTION");
+            if (ds.Tables[0].Rows.Count == 0) { return; }
+
+            busManagement buslist = new busManagement();
+            buslist.Loadbusmngt(Convert.ToInt16(ds.Tables[0].Rows[0]["BUSID"]));
+            addbus(buslist);
         }
 
 
@@ -138,11 +146,11 @@ namespace BTMS
 
         private void clearfield()
         {
-            txtPlateNum.Clear();
-            txtBusType.Clear();
-            txtFrom.Clear();
-            txtTo.Clear();
-            txtRate.Clear();
+            //txtPlateNum.Clear();
+            //txtBusType.Clear();
+            //txtFrom.Clear();
+            //txtTo.Clear();
+            //txtRate.Clear();
 
             txtCardNum.Clear();
             txtPassenger.Clear();
@@ -153,8 +161,9 @@ namespace BTMS
             lblAmountDue.Text = "0.00";
             
             lblDiscount.Text = "0.00";
-            txtCondoctor.Clear();
-            txtDriver.Clear();
+            txtCardNum.Focus();
+            //txtCondoctor.Clear();
+            //txtDriver.Clear();
         }
 
         private void SaveTransaction()
@@ -166,15 +175,21 @@ namespace BTMS
                 MessageBox.Show("Invalid Card Number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            //DialogResult result = MessageBox.Show("Do you want to save this transaction?", "Confirmation", MessageBoxButtons.YesNo);
+            //if (result == DialogResult.No)
+            //{
+            //    return;
+            //}
 
+            Transaction trans = new Transaction();
 
-            DialogResult result = MessageBox.Show("Do you want to save this transaction?", "Confirmation", MessageBoxButtons.YesNo);
-            if (result == DialogResult.No)
+            if (trans.IsTag(tmpPassenger.ID))
             {
+                MessageBox.Show("You Are already Tag in this bus.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clearfield();
                 return;
             }
 
-            Transaction trans = new Transaction();
             trans.TransDate = Convert.ToDateTime(DateTime.Today.ToString("yyyy-MM-dd"));
             trans.Client = tmpPassenger;
             trans.Bus = tmpBus;
@@ -187,7 +202,7 @@ namespace BTMS
             Credit cr = new Credit();
             cr.UpdateCredit(Convert.ToDouble(lblAmountDue.Text), tmpPassenger.ID);
 
-            MessageBox.Show("Successfully saved.", "Confirmation", MessageBoxButtons.OK);
+            MessageBox.Show("You are successfully tag in this bus.", "Confirmation", MessageBoxButtons.OK);
             clearfield();
         }
 
@@ -237,6 +252,9 @@ namespace BTMS
         {
             if (txtCardNum.Text == "") { return; }
             searchCardNum();
+            System.Threading.Thread.Sleep(1000);
+            SaveTransaction();
+
         }
 
         private void txtCardNum_KeyPress(object sender, KeyPressEventArgs e)
@@ -248,6 +266,14 @@ namespace BTMS
             searchCardNum();
             }
           
+        }
+
+        private void txtCardNum_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCardNum.Text == "") { return; }
+            searchCardNum();
+            System.Threading.Thread.Sleep(1000);
+            SaveTransaction();
         }
     }
 }

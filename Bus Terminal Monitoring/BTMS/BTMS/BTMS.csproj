@@ -54,7 +54,14 @@
     <Compile Include="Class\busManagement.cs" />
     <Compile Include="Class\buspersonnel.cs" />
     <Compile Include="Class\busRoute.cs" />
+    <Compile Include="Class\busTransaction.cs" />
     <Compile Include="Class\Credit.cs" />
+    <Compile Include="frmSetBus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetBus.Designer.cs">
+      <DependentUpon>frmSetBus.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +129,9 @@
     <Compile Include="mod_system.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmSetBus.resx">
+      <DependentUpon>frmSetBus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>

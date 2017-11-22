@@ -98,13 +98,13 @@ namespace BTMS
             busManagement bp = new busManagement();
             bp.Loadbusmngt(idx);
 
-            if (Application.OpenForms["frmTransaction"] != null)
+            if (Application.OpenForms["frmSetBus"] != null)
             {
-                (Application.OpenForms["frmTransaction"] as frmTransaction).addbus(bp);
+                (Application.OpenForms["frmSetBus"] as frmSetBus).addbus(bp);
             }
             else
             {
-                frmTransaction frm = new frmTransaction();
+                frmSetBus frm = new frmSetBus();
                 frm.Show();
                 frm.addbus(bp);
             }

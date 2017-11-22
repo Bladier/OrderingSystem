@@ -14,9 +14,11 @@ using System.Text;
 
 namespace BTMS
 {
-    class Transaction
+    class busTransaction
     {
-        private string MainTable = "tblTransaction";
+
+         private string MainTable = "tblBusTransaction";
+
         #region "Properties"
         private int _ID;
         public virtual int ID
@@ -25,53 +27,25 @@ namespace BTMS
             set { _ID = value; }
         }
 
-        private DateTime _TransDate;
-        public DateTime TransDate
-        {
-            get { return _TransDate; }
-            set { _TransDate = value; }
-        }
-
-        private passenger _Client;
-        public passenger Client
-        {
-            get { return _Client; }
-            set { _Client = value; }
-        }
-
-        private busManagement _Bus;
+          private busManagement _Bus;
         public busManagement Bus
         {
             get { return _Bus; }
             set { _Bus = value; }
         }
 
-        private double _TransRate;
-        public double TransRate
+        private int _AvailableSeat;
+        public int AvailableSeat
         {
-            get { return _TransRate; }
-            set { _TransRate = value; }
+            get { return _AvailableSeat; }
+            set { _AvailableSeat = value; }
         }
 
-        private double _TransDiscount;
-        public double TransDiscount
+        private string _Status;
+        public string Status
         {
-            get { return _TransDiscount; }
-            set { _TransDiscount = value; }
-        }
-
-        private bool _status;
-        public bool Status
-        {
-            get { return _status; }
-            set { _status = value; }
-        }
-
-        private string _Remarks;
-        public string Remarks
-        {
-            get { return _Remarks; }
-            set { _Remarks = value; }
+            get { return _Status; }
+            set { _Status = value; }
         }
         #endregion
 
@@ -83,7 +57,7 @@ namespace BTMS
 
             if (ds.Tables[0].Rows.Count != 1)
             {
-                MessageBox.Show("Unable load Transaction", "Error",
+                MessageBox.Show("Unable load bus Transaction", "Error",
     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -99,29 +73,17 @@ namespace BTMS
             DataSet ds = new DataSet();
             var _with3 = dr;
             _ID = Convert.ToInt32(_with3["ID"]);
-            _TransDate = Convert.ToDateTime(_with3["TransDate"]);
-
-            passenger tmpClient = new passenger();
-            tmpClient.Loadpass(Convert.ToInt32(_with3["passID"]));
-            _Client = tmpClient;
 
             busManagement tmpbus = new busManagement();
             tmpbus.Loadbusmngt(Convert.ToInt32(_with3["busID"]));
             _Bus = tmpbus;
-            _TransRate = Convert.ToDouble(_with3["Rate"]);
-            _TransDiscount = Convert.ToDouble(_with3["Discount"]);
+            _AvailableSeat = Convert.ToInt32(_with3["AvailableSeat"]);
 
-            if (_with3["Status"].ToString() == "1")
-            {
-                _status = true;
-            }
-            else {_status =false;}
-
-            _Remarks = _with3["Remarks"].ToString();
+            _Status = _with3["Status"].ToString();
         }
 
 
-        public void SaveTrans()
+        public void SavebusTrans()
         {
             string mySql = "Select * From " + MainTable + " Limit 1";
             DataSet ds = Database.LoadSQL(mySql, MainTable);
@@ -129,28 +91,26 @@ namespace BTMS
             DataRow dsNewRow = null;
             dsNewRow = ds.Tables[0].NewRow();
             var _with2 = dsNewRow;
-            _with2["TransDate"] = _TransDate;
-            _with2["PassID"] = _Client.ID;
             _with2["BusID"] = _Bus.ID;
-            _with2["Rate"] = _TransRate;
-            _with2["Discount"] = _TransDiscount;
-            _with2["Status"] = "1";
-            _with2["Remarks"] = _Remarks;
+            _with2["AvailableSeat"] = _AvailableSeat;
+            _with2["Status"] = _Status;
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
 
-        public bool IsTag(int passID)
+
+        public bool iShasbusTrans()
         {
-            string mySql = "Select * From " + MainTable + " where passID = '" + passID + "'";
+            string mySql = "Select * From " + MainTable + " where Status = 'T'";
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
             if (ds.Tables[0].Rows.Count == 0)
+            {
                 return false;
+            }
 
             return true;
         }
-
         #endregion
     }
 }
