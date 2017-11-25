@@ -73,6 +73,13 @@ namespace BTMS
             get { return _Remarks; }
             set { _Remarks = value; }
         }
+
+        private busTransaction _BusTransID;
+        public busTransaction BusTransID
+        {
+            get { return _BusTransID; }
+            set { _BusTransID = value; }
+        }
         #endregion
 
         #region "Functions and Procedures"
@@ -118,6 +125,10 @@ namespace BTMS
             else {_status =false;}
 
             _Remarks = _with3["Remarks"].ToString();
+
+            busTransaction tmpnew = new busTransaction();
+            tmpnew.LoadTrans(Convert.ToInt32(_with3["busTransID"]));
+           _BusTransID = tmpnew;
         }
 
 
@@ -136,6 +147,7 @@ namespace BTMS
             _with2["Discount"] = _TransDiscount;
             _with2["Status"] = "1";
             _with2["Remarks"] = _Remarks;
+            _with2["BusTransID"] = _BusTransID.ID;
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
