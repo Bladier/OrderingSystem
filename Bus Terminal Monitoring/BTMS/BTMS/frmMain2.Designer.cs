@@ -34,6 +34,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnTravel = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,6 +88,28 @@
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // btnTravel
+            // 
+            this.btnTravel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTravel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTravel.Location = new System.Drawing.Point(154, 213);
+            this.btnTravel.Name = "btnTravel";
+            this.btnTravel.Size = new System.Drawing.Size(137, 58);
+            this.btnTravel.TabIndex = 3;
+            this.btnTravel.Text = "&Travel";
+            this.btnTravel.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(297, 213);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(137, 58);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "&Set Bus";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // frmMain2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -93,6 +117,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(625, 374);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnTravel);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
@@ -115,5 +141,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Button btnTravel;
+        private System.Windows.Forms.Button button4;
     }
 }
