@@ -14,9 +14,10 @@ namespace BTMS
         public static string plateNum = "";
         public static string passCardNum = "";
         public static bool isTransaction = false;
+
         private passenger tmpPassenger;
         private busManagement tmpBus;
-
+        private busTransaction tmpBusTrans;
         public frmTransaction()
         {
             InitializeComponent();
@@ -31,6 +32,10 @@ namespace BTMS
             DataSet ds = Database.LoadSQL(mysql, "TBLBUSTRANSACTION");
             if (ds.Tables[0].Rows.Count == 0) { return; }
 
+            busTransaction bt = new busTransaction();
+            bt.LoadTrans( Convert.ToInt16(ds.Tables[0].Rows[0]["ID"]));
+            tmpBusTrans = bt;
+                        
             busManagement buslist = new busManagement();
             buslist.Loadbusmngt(Convert.ToInt16(ds.Tables[0].Rows[0]["BUSID"]));
             addbus(buslist);
@@ -39,6 +44,7 @@ namespace BTMS
 
         internal void addbus(busManagement bm)
         {
+            txtbusNo.Text = bm.BusNo;
             txtPlateNum.Text = bm.PlateNumber;
             txtBusType.Text = bm.BusType;
 
@@ -174,11 +180,6 @@ namespace BTMS
                 MessageBox.Show("Invalid Card Number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            //DialogResult result = MessageBox.Show("Do you want to save this transaction?", "Confirmation", MessageBoxButtons.YesNo);
-            //if (result == DialogResult.No)
-            //{
-            //    return;
-            //}
 
             Transaction trans = new Transaction();
 
@@ -195,6 +196,7 @@ namespace BTMS
             trans.TransRate = Convert.ToDouble(lblAmountDue.Text);
             trans.TransDiscount = Convert.ToDouble(lblDiscount.Text);
             trans.Remarks = "";
+            trans.BusTransID = tmpBusTrans;
             trans.SaveTrans();
 
 

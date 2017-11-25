@@ -41,6 +41,8 @@
             this.txtPassenger = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtbusNo = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.txtCondoctor = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtDriver = new System.Windows.Forms.TextBox();
@@ -62,8 +64,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.tmpTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -72,6 +72,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.txtPassType);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.txtAddress);
@@ -181,7 +182,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtbusNo);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.txtCondoctor);
             this.groupBox2.Controls.Add(this.label15);
@@ -203,6 +204,23 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bus Info";
+            // 
+            // txtbusNo
+            // 
+            this.txtbusNo.Location = new System.Drawing.Point(68, 20);
+            this.txtbusNo.Name = "txtbusNo";
+            this.txtbusNo.ReadOnly = true;
+            this.txtbusNo.Size = new System.Drawing.Size(216, 21);
+            this.txtbusNo.TabIndex = 18;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(9, 22);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(47, 15);
+            this.label16.TabIndex = 19;
+            this.label16.Text = "Bus No";
             // 
             // txtCondoctor
             // 
@@ -398,23 +416,6 @@
             this.label14.TabIndex = 4;
             this.label14.Text = "Successfully saved . . . ";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(68, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(216, 21);
-            this.textBox1.TabIndex = 18;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(9, 22);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(47, 15);
-            this.label16.TabIndex = 19;
-            this.label16.Text = "Bus No";
-            // 
             // tmpTimer
             // 
             this.tmpTimer.Enabled = true;
@@ -432,6 +433,7 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "frmTransaction";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Transaction";
@@ -482,7 +484,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtbusNo;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Timer tmpTimer;
     }

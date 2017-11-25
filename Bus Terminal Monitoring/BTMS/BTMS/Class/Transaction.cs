@@ -154,7 +154,7 @@ namespace BTMS
 
         public bool IsTag(int passID)
         {
-            string mySql = "Select * From " + MainTable + " where passID = '" + passID + "'";
+            string mySql = "Select * From " + MainTable + " where passID = '" + passID + "' ";
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
             if (ds.Tables[0].Rows.Count == 0)
