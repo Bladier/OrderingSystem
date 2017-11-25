@@ -25,6 +25,7 @@ namespace BTMS
         private void frmTransaction_Load(object sender, EventArgs e)
         {
             txtCardNum.Focus();
+            label14.Visible = false;
 
             string mysql  ="SELECT * FROM TBLBUSTRANSACTION WHERE STATUS ='W'";
             DataSet ds = Database.LoadSQL(mysql, "TBLBUSTRANSACTION");
@@ -200,7 +201,8 @@ namespace BTMS
             Credit cr = new Credit();
             cr.UpdateCredit(Convert.ToDouble(lblAmountDue.Text), tmpPassenger.ID);
 
-            MessageBox.Show("You are successfully tag in this bus.", "Confirmation", MessageBoxButtons.OK);
+            label14.Visible = true;
+          Console.WriteLine("You are successfully tag in this bus");
             clearfield();
         }
 
@@ -274,6 +276,11 @@ namespace BTMS
             searchCardNum();
             System.Threading.Thread.Sleep(1000);
             SaveTransaction();
+        }
+
+        private void tmpTimer_Tick(object sender, EventArgs e)
+        {
+            lblDate.Text = Convert.ToString(DateTime.Now);
         }
     }
 }
