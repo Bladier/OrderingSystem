@@ -250,21 +250,25 @@ namespace BTMS
             if (cboPassTyp.Text == "Student")
             {
                   txtIDType.Text ="Student";
+                  txtCardExpiration.Text = DateTime.Now.AddDays(180).ToShortDateString();
                   return;
             }
 
              if (cboPassTyp.Text == "Senior")
+
             {
                   txtIDType.Text ="Senior";
+                  txtCardExpiration.Text = DateTime.Now.AddDays(744).ToShortDateString();
                   return;
             }
 
-             if (cboPassTyp.Text == "Regular") { txtIDType.Clear(); txtIDNum.Clear(); } 
+             if (cboPassTyp.Text == "Regular") { txtIDType.Clear(); txtIDNum.Clear(); txtCardExpiration.Text = DateTime.Now.AddDays(744).ToShortDateString(); } 
 
             }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            txtCardExpiration.Text = DateTime.Now.AddDays(180).ToShortDateString();
             txtContactNum.Clear();
         }
 

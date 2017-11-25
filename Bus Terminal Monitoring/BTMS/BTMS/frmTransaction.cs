@@ -43,10 +43,15 @@ namespace BTMS
 
             buspersonnel bp = new buspersonnel();
             bp.Loadpersonnel(bm.Driver);
-            tmpBus = bm;
+         
 
             txtDriver.Text = bp.Fname + " " + bp.Lname;
 
+            buspersonnel bpCondoctor = new buspersonnel();
+            bpCondoctor.Loadpersonnel(bm.Condoctor);
+            txtCondoctor.Text = bpCondoctor.Fname + " " + bpCondoctor.Lname;
+
+           tmpBus = bm;
             busRoute br = new busRoute();
             br.LoadbusRoute(bm.ID);
             txtFrom.Text = br.From;
@@ -146,12 +151,6 @@ namespace BTMS
 
         private void clearfield()
         {
-            //txtPlateNum.Clear();
-            //txtBusType.Clear();
-            //txtFrom.Clear();
-            //txtTo.Clear();
-            //txtRate.Clear();
-
             txtCardNum.Clear();
             txtPassenger.Clear();
             txtContactnum.Clear();
@@ -162,8 +161,7 @@ namespace BTMS
             
             lblDiscount.Text = "0.00";
             txtCardNum.Focus();
-            //txtCondoctor.Clear();
-            //txtDriver.Clear();
+           
         }
 
         private void SaveTransaction()
@@ -251,6 +249,7 @@ namespace BTMS
         private void txtCardNum_Leave(object sender, EventArgs e)
         {
             if (txtCardNum.Text == "") { return; }
+            if (txtCardNum.Text.Length != 10) { return; }
             searchCardNum();
             System.Threading.Thread.Sleep(1000);
             SaveTransaction();
@@ -259,10 +258,10 @@ namespace BTMS
 
         private void txtCardNum_KeyPress(object sender, KeyPressEventArgs e)
         {
-           // mod_system.DigitOnly(e);
-            if (mod_system.isEnter(e))
+            mod_system.DigitOnly(e);
             {
             if (txtCardNum.Text == "") { return; }
+            if (txtCardNum.Text.Length != 10) { return; }
             searchCardNum();
             }
           
@@ -271,6 +270,7 @@ namespace BTMS
         private void txtCardNum_TextChanged(object sender, EventArgs e)
         {
             if (txtCardNum.Text == "") { return; }
+            if (txtCardNum.Text.Length != 10) { return; }
             searchCardNum();
             System.Threading.Thread.Sleep(1000);
             SaveTransaction();
