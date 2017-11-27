@@ -44,10 +44,10 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(524, 496);
+            this.btnCancel.Location = new System.Drawing.Point(551, 492);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(133, 34);
+            this.btnCancel.Size = new System.Drawing.Size(102, 28);
             this.btnCancel.TabIndex = 40;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -56,10 +56,10 @@
             // btnSelect
             // 
             this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelect.Location = new System.Drawing.Point(381, 496);
+            this.btnSelect.Location = new System.Drawing.Point(439, 492);
             this.btnSelect.Margin = new System.Windows.Forms.Padding(5);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(133, 34);
+            this.btnSelect.Size = new System.Drawing.Size(102, 28);
             this.btnSelect.TabIndex = 39;
             this.btnSelect.Text = "&Select";
             this.btnSelect.UseVisualStyleBackColor = true;
@@ -71,7 +71,7 @@
             this.btnadd.Location = new System.Drawing.Point(31, 496);
             this.btnadd.Margin = new System.Windows.Forms.Padding(5);
             this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(133, 34);
+            this.btnadd.Size = new System.Drawing.Size(102, 28);
             this.btnadd.TabIndex = 38;
             this.btnadd.Text = "&Add";
             this.btnadd.UseVisualStyleBackColor = true;
@@ -93,11 +93,12 @@
             this.lvbusList.Location = new System.Drawing.Point(31, 47);
             this.lvbusList.Margin = new System.Windows.Forms.Padding(5);
             this.lvbusList.Name = "lvbusList";
-            this.lvbusList.Size = new System.Drawing.Size(626, 435);
+            this.lvbusList.Size = new System.Drawing.Size(623, 435);
             this.lvbusList.TabIndex = 37;
             this.lvbusList.UseCompatibleStateImageBehavior = false;
             this.lvbusList.View = System.Windows.Forms.View.Details;
             this.lvbusList.DoubleClick += new System.EventHandler(this.lvbusList_DoubleClick);
+            this.lvbusList.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvbusList_KeyPress);
             // 
             // columnHeader2
             // 
@@ -122,10 +123,10 @@
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(524, 8);
+            this.btnSearch.Location = new System.Drawing.Point(570, 11);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(5);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(133, 34);
+            this.btnSearch.Size = new System.Drawing.Size(83, 26);
             this.btnSearch.TabIndex = 35;
             this.btnSearch.Text = "&Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -138,16 +139,17 @@
             this.txtsearch.Location = new System.Drawing.Point(31, 14);
             this.txtsearch.Margin = new System.Windows.Forms.Padding(5);
             this.txtsearch.Name = "txtsearch";
-            this.txtsearch.Size = new System.Drawing.Size(483, 20);
+            this.txtsearch.Size = new System.Drawing.Size(529, 20);
             this.txtsearch.TabIndex = 36;
+            this.txtsearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtsearch_KeyPress);
             // 
             // btnView
             // 
             this.btnView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnView.Location = new System.Drawing.Point(185, 496);
+            this.btnView.Location = new System.Drawing.Point(140, 496);
             this.btnView.Margin = new System.Windows.Forms.Padding(5);
             this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(133, 34);
+            this.btnView.Size = new System.Drawing.Size(102, 28);
             this.btnView.TabIndex = 41;
             this.btnView.Text = "&View";
             this.btnView.UseVisualStyleBackColor = true;
@@ -157,7 +159,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 538);
+            this.ClientSize = new System.Drawing.Size(685, 538);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.btnadd);

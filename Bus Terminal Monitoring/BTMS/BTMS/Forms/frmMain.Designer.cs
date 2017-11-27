@@ -38,6 +38,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.btnMaintenance = new System.Windows.Forms.Button();
             this.btnReport = new System.Windows.Forms.Button();
+            this.btnAccountMngt = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +63,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -113,22 +114,34 @@
             // btnMaintenance
             // 
             this.btnMaintenance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMaintenance.Location = new System.Drawing.Point(330, 247);
+            this.btnMaintenance.Location = new System.Drawing.Point(459, 247);
             this.btnMaintenance.Name = "btnMaintenance";
             this.btnMaintenance.Size = new System.Drawing.Size(123, 69);
             this.btnMaintenance.TabIndex = 5;
             this.btnMaintenance.Text = "Maintenance";
             this.btnMaintenance.UseVisualStyleBackColor = true;
+            this.btnMaintenance.Click += new System.EventHandler(this.btnMaintenance_Click);
             // 
             // btnReport
             // 
             this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReport.Location = new System.Drawing.Point(459, 249);
+            this.btnReport.Location = new System.Drawing.Point(330, 322);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(123, 69);
             this.btnReport.TabIndex = 6;
             this.btnReport.Text = "Reports";
             this.btnReport.UseVisualStyleBackColor = true;
+            // 
+            // btnAccountMngt
+            // 
+            this.btnAccountMngt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccountMngt.Location = new System.Drawing.Point(330, 247);
+            this.btnAccountMngt.Name = "btnAccountMngt";
+            this.btnAccountMngt.Size = new System.Drawing.Size(123, 69);
+            this.btnAccountMngt.TabIndex = 7;
+            this.btnAccountMngt.Text = "Account Management";
+            this.btnAccountMngt.UseVisualStyleBackColor = true;
+            this.btnAccountMngt.Click += new System.EventHandler(this.btnAccountMngt_Click);
             // 
             // frmMain
             // 
@@ -137,6 +150,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(776, 498);
+            this.Controls.Add(this.btnAccountMngt);
             this.Controls.Add(this.btnReport);
             this.Controls.Add(this.btnMaintenance);
             this.Controls.Add(this.button3);
@@ -169,5 +183,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnMaintenance;
         private System.Windows.Forms.Button btnReport;
+        private System.Windows.Forms.Button btnAccountMngt;
     }
 }

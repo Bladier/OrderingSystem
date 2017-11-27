@@ -256,6 +256,23 @@ namespace BTMS
             }
         }
 
+        public void LoadpassbyCard(string cardnum)
+        {
+            string mySql = string.Format("SELECT * FROM " + MainTable + " WHERE RFIDNUM = '{0}'", cardnum);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+            if (ds.Tables[0].Rows.Count != 1)
+            {
+                MessageBox.Show("Unable load client", "Error",
+    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                LoadByRow(dr);
+            }
+        }
 
         public bool IsCardNumExists(string cardNum)
         {
@@ -269,6 +286,25 @@ namespace BTMS
 
             return true;
         }
+
+        public bool isPassengerExists(string f,string m,string l)
+        {
+            string mySql = "SELECT * from tblPassenger where fname = '" + f + "'";
+            if (m != "")
+            {
+                mySql += " and mname ='" + m + "'";
+            }
+            mySql += " and lname ='" + l + "'";
+
+            DataSet ds = null;
+
+            ds = Database.LoadSQL(mySql);
+            if (ds.Tables[0].Rows.Count > 0)
+                return false;
+
+            return true;
+        }
+
     }
       #endregion
 

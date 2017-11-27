@@ -56,119 +56,155 @@
     <Compile Include="Class\busRoute.cs" />
     <Compile Include="Class\busTransaction.cs" />
     <Compile Include="Class\Credit.cs" />
-    <Compile Include="frmConfirmation.cs">
+    <Compile Include="Forms\frmBusListTransaction.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmConfirmation.Designer.cs">
+    <Compile Include="Forms\frmBusListTransaction.Designer.cs">
+      <DependentUpon>frmBusListTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmConfirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmConfirmation.Designer.cs">
       <DependentUpon>frmConfirmation.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSetBus.cs">
+    <Compile Include="Forms\frmLoading.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSetBus.Designer.cs">
+    <Compile Include="Forms\frmLoading.Designer.cs">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPassengerTransactionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPassengerTransactionList.Designer.cs">
+      <DependentUpon>frmPassengerTransactionList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSetBus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSetBus.Designer.cs">
       <DependentUpon>frmSetBus.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
+    <Compile Include="Forms\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.designer.cs">
+    <Compile Include="Forms\frmLogin.designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\Passenger.cs" />
     <Compile Include="Class\Transaction.cs" />
     <Compile Include="Class\User.cs" />
-    <Compile Include="Database.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\frmSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Database.cs" />
+    <Compile Include="Forms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBusList.cs">
+    <Compile Include="Forms\frmBusList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBusList.Designer.cs">
+    <Compile Include="Forms\frmBusList.Designer.cs">
       <DependentUpon>frmBusList.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBusManagement.cs">
+    <Compile Include="Forms\frmBusManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBusManagement.Designer.cs">
+    <Compile Include="Forms\frmBusManagement.Designer.cs">
       <DependentUpon>frmBusManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
+    <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
+    <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain2.cs">
+    <Compile Include="Forms\frmMain2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain2.Designer.cs">
+    <Compile Include="Forms\frmMain2.Designer.cs">
       <DependentUpon>frmMain2.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPassengerList.cs">
+    <Compile Include="Forms\frmPassengerList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPassengerList.Designer.cs">
+    <Compile Include="Forms\frmPassengerList.Designer.cs">
       <DependentUpon>frmPassengerList.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPersonnelList.cs">
+    <Compile Include="Forms\frmPersonnelList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPersonnelList.Designer.cs">
+    <Compile Include="Forms\frmPersonnelList.Designer.cs">
       <DependentUpon>frmPersonnelList.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPersonnelRegistration.cs">
+    <Compile Include="Forms\frmPersonnelRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPersonnelRegistration.Designer.cs">
+    <Compile Include="Forms\frmPersonnelRegistration.Designer.cs">
       <DependentUpon>frmPersonnelRegistration.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTransaction.cs">
+    <Compile Include="Forms\frmTransaction.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTransaction.Designer.cs">
+    <Compile Include="Forms\frmTransaction.Designer.cs">
       <DependentUpon>frmTransaction.cs</DependentUpon>
     </Compile>
-    <Compile Include="mod_system.cs" />
+    <Compile Include="Module\mod_system.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmConfirmation.resx">
+    <EmbeddedResource Include="Forms\frmBusListTransaction.resx">
+      <DependentUpon>frmBusListTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmConfirmation.resx">
       <DependentUpon>frmConfirmation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSetBus.resx">
+    <EmbeddedResource Include="Forms\frmLoading.resx">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPassengerTransactionList.resx">
+      <DependentUpon>frmPassengerTransactionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSetBus.resx">
       <DependentUpon>frmSetBus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
+    <EmbeddedResource Include="Forms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBusList.resx">
+    <EmbeddedResource Include="Forms\frmBusList.resx">
       <DependentUpon>frmBusList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBusManagement.resx">
+    <EmbeddedResource Include="Forms\frmBusManagement.resx">
       <DependentUpon>frmBusManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
+    <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain2.resx">
+    <EmbeddedResource Include="Forms\frmMain2.resx">
       <DependentUpon>frmMain2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPassengerList.resx">
+    <EmbeddedResource Include="Forms\frmPassengerList.resx">
       <DependentUpon>frmPassengerList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPersonnelList.resx">
+    <EmbeddedResource Include="Forms\frmPersonnelList.resx">
       <DependentUpon>frmPersonnelList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPersonnelRegistration.resx">
+    <EmbeddedResource Include="Forms\frmPersonnelRegistration.resx">
       <DependentUpon>frmPersonnelRegistration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTransaction.resx">
+    <EmbeddedResource Include="Forms\frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTransaction.resx">
       <DependentUpon>frmTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -189,6 +225,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Report\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

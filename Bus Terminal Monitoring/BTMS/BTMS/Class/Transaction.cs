@@ -154,13 +154,23 @@ namespace BTMS
 
         public bool IsTag(int passID)
         {
-            string mySql = "Select * From " + MainTable + " where passID = '" + passID + "' ";
+            string mySql = "Select * From " + MainTable + " where passID = '" + passID + "' and BusTransID= '" + _BusTransID.ID +"' and status = 1";
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
             if (ds.Tables[0].Rows.Count == 0)
                 return false;
-
             return true;
+        }
+
+        public void VoidTrans()
+        {
+            string mySql = "Select * From " + MainTable + " where ID = '" + _ID + "' ";
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+            var _with2 = ds.Tables[MainTable].Rows[0];
+          
+            _with2["Status"] = 0;
+            Database.SaveEntry(ds, false);
         }
 
         #endregion

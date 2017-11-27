@@ -43,12 +43,21 @@ namespace BTMS
         private void btnSet_Click(object sender, EventArgs e)
         {
             savebusTrans();
-
+            
         }
         private void savebusTrans()
         {
             if (txtBusNo.Text == "") { txtBusNo.Focus(); return; }
-     
+
+            busTransaction bustrans = new busTransaction();
+            if (bustrans.iShasbusTrans())
+            {
+                busManagement bm = new busManagement();
+                bm.Loadbusmngt(tmpBus.ID);
+
+                MessageBox.Show("Can't set multiple bus, Because Bus # " + bm.BusNo + " was setted first.","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             DialogResult result = MessageBox.Show("Do you want to set this?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
@@ -56,16 +65,22 @@ namespace BTMS
                 return;
             }
 
-            busTransaction bustrans = new busTransaction();
-
+          
             bustrans.Bus = tmpBus;
             bustrans.AvailableSeat =Convert.ToInt32(txtAvailableSeat.Text);
             bustrans.Status = "W";
+            bustrans.Transdate =Convert.ToDateTime(mod_system.CurrentDate.ToShortDateString());
             bustrans.SavebusTrans();
 
             MessageBox.Show("Successfully saved.", "Confirmation", MessageBoxButtons.OK);
             txtAvailableSeat.Clear();
             txtBusNo.Clear();
+            this.Close();
+        }
+
+        private void frmSetBus_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

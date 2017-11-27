@@ -43,13 +43,14 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(490, 517);
+            this.btnCancel.Location = new System.Drawing.Point(524, 526);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(133, 34);
+            this.btnCancel.Size = new System.Drawing.Size(93, 24);
             this.btnCancel.TabIndex = 19;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // columnHeader7
             // 
@@ -59,10 +60,10 @@
             // btnSelect
             // 
             this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelect.Location = new System.Drawing.Point(347, 517);
+            this.btnSelect.Location = new System.Drawing.Point(421, 526);
             this.btnSelect.Margin = new System.Windows.Forms.Padding(5);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(133, 34);
+            this.btnSelect.Size = new System.Drawing.Size(93, 24);
             this.btnSelect.TabIndex = 18;
             this.btnSelect.Text = "&Select";
             this.btnSelect.UseVisualStyleBackColor = true;
@@ -76,10 +77,10 @@
             // btnadd
             // 
             this.btnadd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnadd.Location = new System.Drawing.Point(8, 517);
+            this.btnadd.Location = new System.Drawing.Point(9, 526);
             this.btnadd.Margin = new System.Windows.Forms.Padding(5);
             this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(133, 34);
+            this.btnadd.Size = new System.Drawing.Size(93, 24);
             this.btnadd.TabIndex = 17;
             this.btnadd.Text = "&Add";
             this.btnadd.UseVisualStyleBackColor = true;
@@ -118,17 +119,17 @@
             this.txtsearch.Location = new System.Drawing.Point(8, 20);
             this.txtsearch.Margin = new System.Windows.Forms.Padding(5);
             this.txtsearch.Name = "txtsearch";
-            this.txtsearch.Size = new System.Drawing.Size(472, 22);
+            this.txtsearch.Size = new System.Drawing.Size(516, 22);
             this.txtsearch.TabIndex = 15;
             this.txtsearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtsearch_KeyPress);
             // 
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(490, 14);
+            this.btnSearch.Location = new System.Drawing.Point(534, 17);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(5);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(133, 34);
+            this.btnSearch.Size = new System.Drawing.Size(89, 26);
             this.btnSearch.TabIndex = 14;
             this.btnSearch.Text = "&Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -137,10 +138,10 @@
             // btnView
             // 
             this.btnView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnView.Location = new System.Drawing.Point(151, 517);
+            this.btnView.Location = new System.Drawing.Point(112, 526);
             this.btnView.Margin = new System.Windows.Forms.Padding(5);
             this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(133, 34);
+            this.btnView.Size = new System.Drawing.Size(93, 24);
             this.btnView.TabIndex = 20;
             this.btnView.Text = "&View";
             this.btnView.UseVisualStyleBackColor = true;

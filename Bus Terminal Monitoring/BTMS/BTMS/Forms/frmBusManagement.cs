@@ -15,6 +15,9 @@ namespace BTMS
         int condoctorID;
         int busmgtID;
         public static string drivers = "";
+        public static bool isDriver;
+        public static bool isCondoctor;
+
         public frmBusManagement()
         {
             InitializeComponent();
@@ -72,6 +75,15 @@ namespace BTMS
             if (txtCondoctor.Text == "") { txtCondoctor.Focus(); return; }
             if (txtBusNo.Text == "") { txtBusNo.Focus(); return; }
 
+            busManagement busmngt = new busManagement();
+            busmngt.BusNo = txtBusNo.Text;
+            busmngt.IsBusAdded();
+            if (busmngt.isadded)
+            {
+                MessageBox.Show("Bus number already exists.", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+
             DialogResult result = MessageBox.Show("Do you want to save this?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
             {
@@ -86,6 +98,7 @@ namespace BTMS
             bm.Status = cboStatus.Text;
             bm.Driver = driverID;
             bm.Condoctor = condoctorID;
+            bm.BusNo = txtBusNo.Text;
             bm.SaveBusmngt();
 
             MessageBox.Show("Successfully saved.", "Confirmation", MessageBoxButtons.OK);
@@ -109,22 +122,24 @@ namespace BTMS
             if (cboStatus.Text == "") { cboStatus.Focus(); return; }
             if (txtCondoctor.Text == "") { txtCondoctor.Focus(); return; }
             if (txtBusNo.Text == "") { txtBusNo.Focus(); return; }
+            
 
-            DialogResult result = MessageBox.Show("Do you want to save this?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("Do you want to update this?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
             {
                 return;
             }
 
             busManagement bm = new busManagement();
+            bm.ID = busmgtID;
             bm.BusType = cboBusType.Text;
             bm.NumSeat = txtNumSeats.Text;
             bm.PlateNumber = txtPlateNumber.Text;
             bm.Status = cboStatus.Text;
             bm.Driver = driverID;
             bm.Condoctor = condoctorID;
-
-            bm.SaveBusmngt();
+            bm.BusNo = txtBusNo.Text;
+            bm.UpdateBusMngnt();
 
             MessageBox.Show("Successfully updated.", "Confirmation", MessageBoxButtons.OK);
             clearfield();
@@ -175,6 +190,7 @@ namespace BTMS
             }
             else
             {
+                isDriver = true;
                 drivers = txtDriver.Text;
                 frmPersonnelList frm = new frmPersonnelList();
                 frm.Show();
@@ -188,12 +204,17 @@ namespace BTMS
 
         internal void addDriver(buspersonnel bp)
         {
-            driverID = bp.ID;
+            if (bp.Position=="Driver")
+            {
+             driverID = bp.ID;
             txtDriver.Text = bp.Fname + " " + bp.Lname;
+            }
 
-            condoctorID = bp.ID;
-           txtCondoctor.Text = bp.Fname + " " + bp.Lname;
-
+            if (bp.Position == "Condoctor")
+            {
+                condoctorID = bp.ID;
+                txtCondoctor.Text = bp.Fname + " " + bp.Lname;
+            }
         }
 
         private void txtDriver_KeyPress(object sender, KeyPressEventArgs e)
@@ -213,6 +234,7 @@ namespace BTMS
             }
             else
             {
+                isCondoctor = true;
                 drivers = txtCondoctor.Text;
                 frmPersonnelList frm = new frmPersonnelList();
                 frm.Show();

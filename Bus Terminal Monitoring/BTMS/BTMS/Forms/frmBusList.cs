@@ -11,6 +11,7 @@ namespace BTMS
 {
     public partial class frmBusList : Form
     {
+        public bool isAddBusRoute;
         public frmBusList()
         {
             InitializeComponent();
@@ -21,14 +22,23 @@ namespace BTMS
             if (txtsearch.Text == "") { LoadbusList(); return; }
 
             string mysql = "SELECT * FROM tblbus WHERE PlateNo LIKE '%" + txtsearch.Text + "%' OR ";
-            mysql += " Type like '%" + txtsearch.Text + "%'";
+            mysql += " Type like '%" + txtsearch.Text + "%' OR BusNo like '%" + txtsearch.Text + "%' and status <>'UnAvailable'";
 
             LoadbusList(mysql);
         }
 
         private void frmBusList_Load(object sender, EventArgs e)
         {
-            txtsearch.Text = frmTransaction.plateNum;
+            if (isAddBusRoute)
+            {
+                txtsearch.Text = frmSettings.BusNo;
+            }
+            else
+            {
+                txtsearch.Text = frmTransaction.plateNum;
+            }
+           
+
             if (txtsearch.Text == "")
             {
                 LoadbusList();
@@ -39,7 +49,7 @@ namespace BTMS
             }
         }
 
-        private void LoadbusList(string mysql = "SELECT * FROM tblbus ORDER BY BusID ASC LIMIT 20")
+        private void LoadbusList(string mysql = "SELECT * FROM tblbus where status <> 'UnAvailable' ORDER BY BusID ASC LIMIT 20")
         {
 
             DataSet ds = Database.LoadSQL(mysql, "tblbus");
@@ -97,6 +107,26 @@ namespace BTMS
 
             busManagement bp = new busManagement();
             bp.Loadbusmngt(idx);
+            if (bp.Status == "UnAvailable")
+            {
+                MessageBox.Show("This is not available or is being repair.", "Notificatin", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            if (isAddBusRoute)
+            {
+                if (Application.OpenForms["frmSettings"] != null)
+                {
+                    (Application.OpenForms["frmSettings"] as frmSettings).addbus(bp);
+                }
+                else
+                {
+                    frmSettings frm = new frmSettings();
+                    frm.Show();
+                    frm.addbus(bp);
+                }
+                goto goHere;
+            }
 
             if (Application.OpenForms["frmSetBus"] != null)
             {
@@ -108,6 +138,7 @@ namespace BTMS
                 frm.Show();
                 frm.addbus(bp);
             }
+            goHere:
             this.Close();
         }
 
@@ -119,6 +150,16 @@ namespace BTMS
         private void lvbusList_DoubleClick(object sender, EventArgs e)
         {
             btnSelect.PerformClick();
+        }
+
+        private void txtsearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (mod_system.isEnter(e)) { btnSearch.PerformClick(); }
+        }
+
+        private void lvbusList_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (mod_system.isEnter(e)) { btnSelect.PerformClick(); }
         }
     }
 }

@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : newlocalhost
+Source Server         : localhost
 Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : rf
@@ -10,10 +10,26 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-11-22 15:01:26
+Date: 2017-11-26 22:05:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `adminpass`
+-- ----------------------------
+DROP TABLE IF EXISTS `adminpass`;
+CREATE TABLE `adminpass` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `user` varchar(10) NOT NULL,
+  `pass` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of adminpass
+-- ----------------------------
+INSERT INTO `adminpass` VALUES ('1', 'admin', 'admin');
+
 -- ----------------------------
 -- Table structure for `tblbus`
 -- ----------------------------
@@ -23,17 +39,17 @@ CREATE TABLE `tblbus` (
   `type` varchar(10) NOT NULL,
   `seat` int(11) NOT NULL,
   `plateno` varchar(20) NOT NULL,
-  `driverno` int(11) DEFAULT NULL,
+  `driverno` int(11) NOT NULL,
   `Status` varchar(20) DEFAULT NULL,
-  `condoctorID` int(11) DEFAULT NULL,
-  `busno` varchar(20) DEFAULT NULL,
+  `condoctorID` int(11) NOT NULL,
+  `Busno` varchar(20) NOT NULL,
   PRIMARY KEY (`busid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tblbus
 -- ----------------------------
-INSERT INTO `tblbus` VALUES ('3', 'Aircon', '60', 'AJD 2333', '2', 'For Travel', '1', '2151');
+INSERT INTO `tblbus` VALUES ('3', 'Aircon', '60', 'AJD 2333', '2', 'Available', '1', '2209');
 
 -- ----------------------------
 -- Table structure for `tblbusperson`
@@ -61,17 +77,19 @@ INSERT INTO `tblbusperson` VALUES ('2', 'john', '', 'Brown', '2017-11-20', 'Driv
 -- ----------------------------
 DROP TABLE IF EXISTS `tblbustransaction`;
 CREATE TABLE `tblbustransaction` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
   `busID` int(11) NOT NULL,
-  `AvailableSeat` int(20) DEFAULT NULL,
-  `Status` varchar(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `AvailableSeat` int(11) NOT NULL,
+  `Status` varchar(1) NOT NULL,
+  `transDate` date NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tblbustransaction
 -- ----------------------------
-INSERT INTO `tblbustransaction` VALUES ('1', '3', '60', 'W');
+INSERT INTO `tblBusTransaction` VALUES ('1', '3', '57', 'C', '2017-11-01');
+INSERT INTO `tblBusTransaction` VALUES ('2', '3', '57', 'W', '2017-11-26');
 
 -- ----------------------------
 -- Table structure for `tblcredit`
@@ -82,12 +100,13 @@ CREATE TABLE `tblcredit` (
   `passID` int(11) NOT NULL,
   `Credit` double DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tblcredit
 -- ----------------------------
-INSERT INTO `tblcredit` VALUES ('1', '2', '1022.3999999999997');
+INSERT INTO `tblcredit` VALUES ('1', '2', '2855.6');
+INSERT INTO `tblcredit` VALUES ('2', '1', '3000');
 
 -- ----------------------------
 -- Table structure for `tblpassenger`
@@ -108,15 +127,15 @@ CREATE TABLE `tblpassenger` (
   `Province` varchar(40) DEFAULT NULL,
   `IDTYPE` varchar(20) DEFAULT NULL,
   `IDNumber` varchar(20) DEFAULT '0',
-  `CARDEXPIRATION` date DEFAULT NULL,
+  `CardExpiration` date DEFAULT NULL,
   PRIMARY KEY (`passid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tblpassenger
 -- ----------------------------
-INSERT INTO `tblpassenger` VALUES ('1', '3110359101', 'Steves', '', 'Salon', '2017-11-16', '9202929302', 'Senior', 'Soledad State', '11/16/2017 12:00:00 AM', 'General Santos City', 'South Cot.', 'Senior', '01923423', '2017-11-23');
-INSERT INTO `tblpassenger` VALUES ('2', '3110345429', 'MICA', '', 'LEGISNIANA', '1996-06-10', '9123123123', 'Senior', 'PUROK 6', '6/10/1996 12:00:00 AM', 'KORONADAL', 'SOUTH COT.', 'Senior', '898080980', '2017-11-23');
+INSERT INTO `tblpassenger` VALUES ('1', '3110359101', 'Steves', '', 'Salon', '2017-11-16', '9202929302', 'Regular', 'Soledad State', '11/16/2017 12:00:00 AM', 'General Santos City', 'South Cot.', '', '', '2019-12-10');
+INSERT INTO `tblpassenger` VALUES ('2', '3110345429', 'MICA', '', 'LEGISNIANA', '1996-06-10', '9123123123', 'Senior', 'PUROK 6', '6/10/1996 12:00:00 AM', 'KORONADAL', 'SOUTH COT.', 'Senior', '898080980', '2021-12-27');
 
 -- ----------------------------
 -- Table structure for `tblroute`
@@ -129,12 +148,13 @@ CREATE TABLE `tblroute` (
   `Rate` double DEFAULT NULL,
   `busID` int(10) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tblroute
 -- ----------------------------
 INSERT INTO `tblroute` VALUES ('1', 'Gensan', 'Davao', '260', '3');
+INSERT INTO `tblroute` VALUES ('2', 'Gensan', 'Davao', '200', '5');
 
 -- ----------------------------
 -- Table structure for `tbltransaction`
@@ -149,20 +169,16 @@ CREATE TABLE `tbltransaction` (
   `Discount` double NOT NULL DEFAULT '0',
   `Status` smallint(11) NOT NULL,
   `remarks` varchar(255) DEFAULT NULL,
+  `busTransID` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tbltransaction
 -- ----------------------------
-INSERT INTO `tbltransaction` VALUES ('1', '2017-11-22', '2', '3', '244.4', '15.6', '1', '');
-INSERT INTO `tbltransaction` VALUES ('2', '2017-11-22', '2', '3', '244.4', '15.6', '1', '');
-INSERT INTO `tbltransaction` VALUES ('3', '2017-11-22', '2', '3', '244.4', '15.6', '1', '');
-INSERT INTO `tbltransaction` VALUES ('4', '2017-11-22', '2', '3', '244.4', '15.6', '1', '');
-INSERT INTO `tbltransaction` VALUES ('5', '2017-11-22', '2', '3', '244.4', '15.6', '1', '');
-INSERT INTO `tbltransaction` VALUES ('6', '2017-11-22', '2', '3', '244.4', '15.6', '1', '');
-INSERT INTO `tbltransaction` VALUES ('7', '2017-11-22', '2', '3', '244.4', '15.6', '1', '');
-INSERT INTO `tbltransaction` VALUES ('8', '2017-11-22', '2', '3', '244.4', '15.6', '1', '');
+INSERT INTO `tbltransaction` VALUES ('9', '2017-11-26', '2', '3', '244.4', '15.6', '0', '', '1');
+INSERT INTO `tbltransaction` VALUES ('10', '2017-11-26', '1', '3', '260', '0', '0', '', '1');
+INSERT INTO `tbltransaction` VALUES ('13', '2017-11-26', '1', '3', '260', '0', '0', '', '2');
 
 -- ----------------------------
 -- Table structure for `tbluser`
@@ -185,3 +201,15 @@ CREATE TABLE `tbluser` (
 -- ----------------------------
 INSERT INTO `tbluser` VALUES ('1', 'admin', 'myN/8XCodM4=', 'Mica', null, 'Legisniana', '1', 'Admin');
 INSERT INTO `tbluser` VALUES ('2', 'ins', 'myN/8XCodM4=', 'Mica', null, 'Legisniana', '1', 'Inspector');
+
+-- ----------------------------
+-- View structure for `buslisttransaction`
+-- ----------------------------
+DROP VIEW IF EXISTS `buslisttransaction`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `buslisttransaction` AS select `tblbustransaction`.`busID` AS `busID`,`tblbustransaction`.`ID` AS `ID`,`tblbustransaction`.`AvailableSeat` AS `AvailableSeat`,`tblbustransaction`.`Status` AS `Status`,`tblbus`.`type` AS `type`,`tblbus`.`seat` AS `seat`,`tblbus`.`plateno` AS `plateno`,`tblbus`.`condoctorID` AS `condoctorID`,`tblbus`.`driverno` AS `driverno`,`tblbus`.`Busno` AS `Busno` from (`tblbus` join `tblbustransaction` on((`tblbustransaction`.`busID` = `tblbus`.`busid`)));
+
+-- ----------------------------
+-- View structure for `passengertransaction`
+-- ----------------------------
+DROP VIEW IF EXISTS `passengertransaction`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `passengertransaction` AS select distinct `tbltransaction`.`ID` AS `ID`,`tbltransaction`.`TransDate` AS `TransDate`,`tblpassenger`.`RFIDNUM` AS `RFIDNUM`,`tblpassenger`.`fname` AS `fname`,`tblpassenger`.`mname` AS `mname`,`tblpassenger`.`lname` AS `lname`,`tbltransaction`.`passID` AS `passID`,`tbltransaction`.`busID` AS `busID`,`tblbus`.`type` AS `type`,`tblbus`.`Busno` AS `Busno`,`tblroute`.`From` AS `From`,`tblroute`.`Destination` AS `Destination`,`tbltransaction`.`Status` AS `Status`,`tblcredit`.`Credit` AS `Credit`,`tblcredit`.`ID` AS `creditID`,`tbltransaction`.`Rate` AS `Rate` from ((((`tbltransaction` join `tblpassenger` on((`tblpassenger`.`passid` = `tbltransaction`.`passID`))) join `tblbus` on((`tblbus`.`busid` = `tbltransaction`.`busID`))) join `tblroute` on((`tblroute`.`busID` = `tblbus`.`busid`))) join `tblcredit` on((`tblcredit`.`ID` = `tblpassenger`.`passid`)));

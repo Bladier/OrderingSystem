@@ -136,5 +136,10 @@ namespace BTMS
         {
             if (mod_system.isEnter(e)){btnSelect.PerformClick();}
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

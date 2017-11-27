@@ -106,7 +106,7 @@ namespace BTMS
 
         public void Updateroute()
         {
-            string mySql = string.Format("SELECT * FROM {0} WHERE Personid = {1}", MainTable, _ID);
+            string mySql = string.Format("SELECT * FROM {0} WHERE ID = {1}", MainTable, _ID);
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
             if (ds.Tables[0].Rows.Count == 1)
@@ -130,12 +130,22 @@ namespace BTMS
                 ds.Tables[0].Rows.Add(dsNewRow);
                 Database.SaveEntry(ds);
             }
+        }
+            public bool isBusHasRoute()
+            {
+                string mySql = string.Format("SELECT * FROM {0} WHERE busID = {1}", MainTable, _BusID);
+                DataSet ds = Database.LoadSQL(mySql, MainTable);
 
-
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
         #endregion
         }
     }
 
-}
+
 
 

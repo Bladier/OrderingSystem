@@ -14,6 +14,7 @@ namespace BTMS
     public partial class Form1 :Form
     {
         int pID;
+        public bool isRenew;
         public Form1()
         {
             InitializeComponent();
@@ -104,6 +105,11 @@ namespace BTMS
             if (!savepass.IsCardNumExists(txtCardNum.Text))
             {
                  MessageBox.Show("Card Number Already Exists.", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error); return; 
+            }
+
+            if (!savepass.isPassengerExists(txtFname.Text,txtMname.Text,txtLname.Text))
+            {
+                MessageBox.Show("Passenger already exists. Try to search in the list.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; 
             }
 
             DialogResult result = MessageBox.Show("Do you want to save this client?", "Confirmation", MessageBoxButtons.YesNo);
@@ -240,6 +246,10 @@ namespace BTMS
             txtIDNum.Text = "";
             txtIDType.Text = "";
             cboPassTyp.Focus();
+
+            label15.Visible = false;
+            txtCardExpiration.Text = DateTime.Now.ToShortDateString();
+
             btnSave.Text = "&Update";
             pID = 0;
         }
@@ -268,6 +278,7 @@ namespace BTMS
 
         private void Form1_Load(object sender, EventArgs e)
         {
+          
             txtCardExpiration.Text = DateTime.Now.AddDays(180).ToShortDateString();
             txtContactNum.Clear();
         }
@@ -298,7 +309,28 @@ namespace BTMS
             txtIDType.Text = ps.IdType;
             txtIDNum.Text = ps.IDNum.ToString();
             txtCardNum.Text = ps.RFIDnum.ToString();
+            txtCardExpiration.Text = Convert.ToDateTime(ps.CardExp).ToShortDateString();
 
+            if (!isRenew) { label15.Visible = false; }
+            if (isRenew)
+            {
+                if (isRenew) { label15.Visible = true; }
+     
+                if (ps.PassType == "Student")
+                {
+                    txtCardExpiration.Text = Convert.ToDateTime(ps.CardExp).AddDays(180).ToShortDateString();
+                    goto goHere;
+                }
+
+                if (ps.PassType == "Senior")
+                {
+                    txtCardExpiration.Text = Convert.ToDateTime(ps.CardExp).AddDays(744).ToShortDateString();
+                    goto goHere;
+                }
+
+                if (ps.PassType == "Regular") { txtCardExpiration.Text = Convert.ToDateTime(ps.CardExp).AddDays(744).ToShortDateString(); } 
+            }
+goHere:
             Disbled();
             btnSave.Text = "&Modify";
         }
@@ -327,7 +359,7 @@ namespace BTMS
             {
                 return;
             }
-            this.Hide();
+            this.Close();
         }
 
         private void label2_Click(object sender, EventArgs e)

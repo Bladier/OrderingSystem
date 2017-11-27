@@ -30,16 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtPassType = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtContactnum = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtCardNum = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtPassenger = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtbusNo = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -73,112 +64,26 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.txtPassType);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.txtAddress);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtContactnum);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtCardNum);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtPassenger);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(317, 73);
+            this.groupBox1.Location = new System.Drawing.Point(322, 153);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(389, 236);
+            this.groupBox1.Size = new System.Drawing.Size(384, 72);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Passenger Info";
-            // 
-            // txtPassType
-            // 
-            this.txtPassType.Location = new System.Drawing.Point(110, 177);
-            this.txtPassType.Name = "txtPassType";
-            this.txtPassType.ReadOnly = true;
-            this.txtPassType.Size = new System.Drawing.Size(268, 21);
-            this.txtPassType.TabIndex = 5;
-            this.txtPassType.TextChanged += new System.EventHandler(this.txtPassType_TextChanged);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 177);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(95, 15);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Passenger Type";
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Location = new System.Drawing.Point(110, 118);
-            this.txtAddress.Multiline = true;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.ReadOnly = true;
-            this.txtAddress.Size = new System.Drawing.Size(268, 54);
-            this.txtAddress.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 118);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 15);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Address";
-            // 
-            // txtContactnum
-            // 
-            this.txtContactnum.Location = new System.Drawing.Point(110, 83);
-            this.txtContactnum.Name = "txtContactnum";
-            this.txtContactnum.ReadOnly = true;
-            this.txtContactnum.Size = new System.Drawing.Size(268, 21);
-            this.txtContactnum.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 83);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 15);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Contact #";
+            this.groupBox1.Text = "Enter your card #";
             // 
             // txtCardNum
             // 
-            this.txtCardNum.Location = new System.Drawing.Point(110, 31);
+            this.txtCardNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCardNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCardNum.Location = new System.Drawing.Point(15, 31);
             this.txtCardNum.MaxLength = 10;
             this.txtCardNum.Name = "txtCardNum";
-            this.txtCardNum.Size = new System.Drawing.Size(267, 21);
+            this.txtCardNum.Size = new System.Drawing.Size(352, 26);
             this.txtCardNum.TabIndex = 0;
             this.txtCardNum.TextChanged += new System.EventHandler(this.txtCardNum_TextChanged);
             this.txtCardNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCardNum_KeyPress);
             this.txtCardNum.Leave += new System.EventHandler(this.txtCardNum_Leave);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Card Number";
-            // 
-            // txtPassenger
-            // 
-            this.txtPassenger.Location = new System.Drawing.Point(110, 57);
-            this.txtPassenger.Name = "txtPassenger";
-            this.txtPassenger.ReadOnly = true;
-            this.txtPassenger.Size = new System.Drawing.Size(268, 21);
-            this.txtPassenger.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 60);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Passenger Name";
             // 
             // groupBox2
             // 
@@ -233,7 +138,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(7, 153);
+            this.label15.Location = new System.Drawing.Point(3, 153);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(63, 15);
             this.label15.TabIndex = 16;
@@ -390,7 +295,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(348, 21);
+            this.label11.Location = new System.Drawing.Point(347, 21);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(121, 24);
             this.label11.TabIndex = 11;
@@ -409,12 +314,13 @@
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(571, 55);
+            this.label14.Location = new System.Drawing.Point(323, 114);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(130, 15);
+            this.label14.Size = new System.Drawing.Size(30, 18);
             this.label14.TabIndex = 4;
-            this.label14.Text = "Successfully saved . . . ";
+            this.label14.Text = "Idle";
             // 
             // tmpTimer
             // 
@@ -425,7 +331,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 411);
+            this.ClientSize = new System.Drawing.Size(718, 345);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.groupBox3);
@@ -453,13 +359,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtCardNum;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtPassenger;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtContactnum;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtPlateNum;
         private System.Windows.Forms.Label label5;
@@ -469,8 +368,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtBusType;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtPassType;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtRate;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox3;

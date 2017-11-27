@@ -110,9 +110,23 @@ namespace BTMS
                 ds.Tables[0].Rows.Add(dsNewRow);
                 Database.SaveEntry(ds);
             }
-
-
-        #endregion
         }
+           public void Refund(double FareRefund)
+           {
+                string mySql = string.Format("SELECT * FROM {0} WHERE PassID = {1}", MainTable, _PID);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+            if (ds.Tables[0].Rows.Count == 1)
+            {
+                var _with2 = ds.Tables[MainTable].Rows[0];
+                double tmpCredit = Convert.ToDouble(ds.Tables[0].Rows[0]["Credit"]);
+                tmpCredit = tmpCredit + FareRefund;
+
+                _with2["Credit"] = tmpCredit;
+                Database.SaveEntry(ds, false);
+            }
+           }
+        #endregion
+        
     }
 }

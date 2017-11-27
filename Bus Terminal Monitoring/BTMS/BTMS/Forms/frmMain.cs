@@ -72,5 +72,31 @@ namespace BTMS
         {
             Application.Exit();
         }
+
+        private void btnAccountMngt_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["frmLoading"] != null)
+            {
+
+            }
+            else
+            {
+                frmLoading frm = new frmLoading();
+                frm.Show();
+            }
+        }
+
+        private void btnMaintenance_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["frmSettings"] != null)
+            {
+
+            }
+            else
+            {
+                frmSettings frm = new frmSettings();
+                frm.Show();
+            }
+        }
     }
 }

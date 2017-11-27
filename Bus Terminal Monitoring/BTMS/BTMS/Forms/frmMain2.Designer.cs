@@ -35,15 +35,16 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTravel = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnBuslistTrans = new System.Windows.Forms.Button();
+            this.btnVoidpassTrans = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(154, 149);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(155, 117);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(137, 58);
             this.button1.TabIndex = 0;
@@ -54,8 +55,8 @@
             // button2
             // 
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(297, 149);
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(298, 117);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(137, 58);
             this.button2.TabIndex = 1;
@@ -91,24 +92,38 @@
             // btnTravel
             // 
             this.btnTravel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTravel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTravel.Location = new System.Drawing.Point(154, 213);
+            this.btnTravel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTravel.Location = new System.Drawing.Point(155, 181);
             this.btnTravel.Name = "btnTravel";
             this.btnTravel.Size = new System.Drawing.Size(137, 58);
             this.btnTravel.TabIndex = 3;
             this.btnTravel.Text = "&Travel";
             this.btnTravel.UseVisualStyleBackColor = true;
+            this.btnTravel.Click += new System.EventHandler(this.btnTravel_Click);
             // 
-            // button4
+            // btnBuslistTrans
             // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(297, 213);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(137, 58);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "&Set Bus";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnBuslistTrans.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuslistTrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuslistTrans.Location = new System.Drawing.Point(298, 181);
+            this.btnBuslistTrans.Name = "btnBuslistTrans";
+            this.btnBuslistTrans.Size = new System.Drawing.Size(137, 58);
+            this.btnBuslistTrans.TabIndex = 4;
+            this.btnBuslistTrans.Text = "&Bus List Transaction";
+            this.btnBuslistTrans.UseVisualStyleBackColor = true;
+            this.btnBuslistTrans.Click += new System.EventHandler(this.btnBuslistTrans_Click);
+            // 
+            // btnVoidpassTrans
+            // 
+            this.btnVoidpassTrans.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoidpassTrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoidpassTrans.Location = new System.Drawing.Point(155, 245);
+            this.btnVoidpassTrans.Name = "btnVoidpassTrans";
+            this.btnVoidpassTrans.Size = new System.Drawing.Size(137, 58);
+            this.btnVoidpassTrans.TabIndex = 5;
+            this.btnVoidpassTrans.Text = "&Void Passenger Transaction";
+            this.btnVoidpassTrans.UseVisualStyleBackColor = true;
+            this.btnVoidpassTrans.Click += new System.EventHandler(this.btnVoidpassTrans_Click);
             // 
             // frmMain2
             // 
@@ -117,7 +132,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(625, 374);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnVoidpassTrans);
+            this.Controls.Add(this.btnBuslistTrans);
             this.Controls.Add(this.btnTravel);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -142,6 +158,7 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Button btnTravel;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnBuslistTrans;
+        private System.Windows.Forms.Button btnVoidpassTrans;
     }
 }

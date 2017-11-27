@@ -18,6 +18,8 @@ namespace BTMS
         private passenger tmpPassenger;
         private busManagement tmpBus;
         private busTransaction tmpBusTrans;
+
+        int counter = 0;
         public frmTransaction()
         {
             InitializeComponent();
@@ -26,8 +28,7 @@ namespace BTMS
         private void frmTransaction_Load(object sender, EventArgs e)
         {
             txtCardNum.Focus();
-            label14.Visible = false;
-
+         
             string mysql  ="SELECT * FROM TBLBUSTRANSACTION WHERE STATUS ='W'";
             DataSet ds = Database.LoadSQL(mysql, "TBLBUSTRANSACTION");
             if (ds.Tables[0].Rows.Count == 0) { return; }
@@ -65,17 +66,16 @@ namespace BTMS
             txtTo.Text = br.Dest;
             txtRate.Text = br.Rate.ToString();
 
-            if (txtPassType.Text == "") { return; }
-            calc();
+            ///calc();
         }
 
         internal void addbus(passenger pas)
         {
             txtCardNum.Text = pas.RFIDnum.ToString();
-            txtPassenger.Text = pas.Fname + " " + pas.Lname;
-            txtContactnum.Text = pas.ContactNum.ToString();
-            txtAddress.Text = pas.FullAddress;
-            txtPassType.Text = pas.PassType;
+            //txtPassenger.Text = pas.Fname + " " + pas.Lname;
+            //txtContactnum.Text = pas.ContactNum.ToString();
+            //txtAddress.Text = pas.FullAddress;
+            //txtPassType.Text = pas.PassType;
 
             tmpPassenger = pas;
             calc();
@@ -101,33 +101,13 @@ namespace BTMS
             mod_system.DigitOnly(e);
         }
 
-        //private void btnSearch_Click(object sender, EventArgs e)
-        //{
-
-        //    //if (Application.OpenForms["frmPassengerList"] != null)
-        //    //{
-        //    //    isTransaction = true;
-        //    //    passCardNum = txtCardNum.Text;
-        //    //}
-        //    //else
-        //    //{
-        //    //    isTransaction = true;
-        //    //    passCardNum = txtCardNum.Text;
-        //    //    frmPassengerList frm = new frmPassengerList();
-        //    //    frm.Show();
-        //    //}
-        //}
-
-        private void txtPassType_TextChanged(object sender, EventArgs e)
-        {
-            calc();
-        }
-
         private void calc()
         {
             if (txtBusType.Text == "") { return; }
-            if (txtPassType.Text== "") { return; }
-            if (txtPassType.Text == "Senior")
+
+            if (tmpPassenger.PassType == "") { return; }
+          
+            if (tmpPassenger.PassType == "Senior")
             {
                 double discount = 0.06;
                 discount = Convert.ToDouble(txtRate.Text) * discount;
@@ -136,7 +116,8 @@ namespace BTMS
                 lblAmountDue.Text = discount.ToString();
             }
 
-            if (txtPassType.Text == "Student")
+
+            if (tmpPassenger.PassType == "Student")
             {
                 double discount = 0.06;
                 discount = Convert.ToDouble(txtRate.Text) * discount;
@@ -145,7 +126,7 @@ namespace BTMS
                 lblAmountDue.Text = discount.ToString();
             }
 
-            if (txtPassType.Text == "Regular")
+            if (tmpPassenger.PassType == "Regular")
             {
                 lblAmountDue.Text = txtRate.Text;
             }
@@ -159,10 +140,10 @@ namespace BTMS
         private void clearfield()
         {
             txtCardNum.Clear();
-            txtPassenger.Clear();
-            txtContactnum.Clear();
-            txtAddress.Clear();
-            txtPassType.Clear();
+            //txtPassenger.Clear();
+            //txtContactnum.Clear();
+            //txtAddress.Clear();
+            //txtPassType.Clear();
            
             lblAmountDue.Text = "0.00";
             
@@ -177,15 +158,16 @@ namespace BTMS
             if (txtCardNum.Text == "") { txtCardNum.Focus(); return; }
             if (txtCardNum.Text.Length != 10)
             {
-                MessageBox.Show("Invalid Card Number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                label15.Text = "Invalid Card Number. Error";
                 return;
             }
 
             Transaction trans = new Transaction();
 
+            trans.BusTransID = tmpBusTrans;
             if (trans.IsTag(tmpPassenger.ID))
             {
-                MessageBox.Show("You Are already Tag in this bus.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                label14.Text = "You Are already Tag in this bus!";
                 clearfield();
                 return;
             }
@@ -196,15 +178,21 @@ namespace BTMS
             trans.TransRate = Convert.ToDouble(lblAmountDue.Text);
             trans.TransDiscount = Convert.ToDouble(lblDiscount.Text);
             trans.Remarks = "";
-            trans.BusTransID = tmpBusTrans;
+       
             trans.SaveTrans();
 
 
             Credit cr = new Credit();
             cr.UpdateCredit(Convert.ToDouble(lblAmountDue.Text), tmpPassenger.ID);
 
+            busTransaction bt = new busTransaction();
+            bt.Bus = tmpBus;
+            bt.ID = tmpBusTrans.ID;
+            bt.DeductSeat(1);
+
             label14.Visible = true;
-          Console.WriteLine("You are successfully tag in this bus");
+            label14.Text= "You are successfully tag in this bus";
+
             clearfield();
         }
 
@@ -215,12 +203,12 @@ namespace BTMS
 
             if (ds.Tables[0].Rows.Count == 0)
             {
-                MessageBox.Show("This card number is not registered.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtCardNum.Clear();
-                txtPassenger.Clear();
-                txtContactnum.Clear();
-                txtAddress.Clear();
-                txtPassType.Clear();
+                label14.Text = "This card number is not registered!";
+                //txtCardNum.Clear();
+                //txtPassenger.Clear();
+                //txtContactnum.Clear();
+                //txtAddress.Clear();
+                //txtPassType.Clear();
                 return;
             }
             passenger ps = new passenger();
@@ -231,7 +219,7 @@ namespace BTMS
             cd.LoadCredit(ps.ID);
 
             if (txtRate.Text == "") { return; }
-            if (txtPassType.Text == "Senior")
+            if (tmpPassenger.PassType == "Senior")
             {
                 double discount = 0.06;
                 discount = Convert.ToDouble(txtRate.Text) * discount;
@@ -240,13 +228,17 @@ namespace BTMS
                 lblAmountDue.Text = discount.ToString();
             }
 
-            if (txtPassType.Text == "Student")
+            if (tmpPassenger.PassType == "Student")
             {
                 double discount = 0.06;
                 discount = Convert.ToDouble(txtRate.Text) * discount;
                 lblDiscount.Text = discount.ToString();
                 discount = Convert.ToDouble(txtRate.Text) - discount;
                 lblAmountDue.Text = discount.ToString();
+            }
+            if (tmpPassenger.PassType == "Regular")
+            {
+                lblAmountDue.Text = txtRate.Text;
             }
         }
 
@@ -273,7 +265,7 @@ namespace BTMS
 
         private void txtCardNum_TextChanged(object sender, EventArgs e)
         {
-            if (txtCardNum.Text == "") { return; }
+            if (txtCardNum.Text == "") {return; }
             if (txtCardNum.Text.Length != 10) { return; }
             searchCardNum();
             System.Threading.Thread.Sleep(1000);

@@ -59,6 +59,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,8 +108,9 @@
             this.txtCardExpiration.Margin = new System.Windows.Forms.Padding(4);
             this.txtCardExpiration.MaxLength = 10;
             this.txtCardExpiration.Name = "txtCardExpiration";
+            this.txtCardExpiration.ReadOnly = true;
             this.txtCardExpiration.Size = new System.Drawing.Size(322, 21);
-            this.txtCardExpiration.TabIndex = 24;
+            this.txtCardExpiration.TabIndex = 13;
             // 
             // label14
             // 
@@ -427,11 +429,24 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Red;
+            this.label15.Location = new System.Drawing.Point(39, 14);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(70, 24);
+            this.label15.TabIndex = 26;
+            this.label15.Text = "Renew";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 452);
+            this.ClientSize = new System.Drawing.Size(964, 452);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
@@ -443,6 +458,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -479,6 +495,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtCardExpiration;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
     }
 }
 

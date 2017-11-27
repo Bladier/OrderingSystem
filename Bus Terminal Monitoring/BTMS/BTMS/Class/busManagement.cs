@@ -16,7 +16,7 @@ namespace BTMS
 {
     class busManagement
     {
-
+        
         private string MainTable = "tblBus";
 
         #region "Properties"
@@ -76,6 +76,13 @@ namespace BTMS
             set { _BusNo = value; }
         }
 
+        private bool _isadded;
+        public bool isadded
+        {
+            get { return _isadded; }
+            set { _isadded = value; }
+        }
+
         #endregion
 
         #region "Functions
@@ -109,7 +116,7 @@ namespace BTMS
             _with2["Seat"] = _NumSeat;
             _with2["Plateno"] = _PlateNumber;
             _with2["driverno"] = _Driver;
-            _with2["Condoctor"] = _Condoctor;
+            _with2["CondoctorID"] = _Condoctor;
             _with2["Status"] = _status;
             _with2["Busno"] = _BusNo;
             ds.Tables[0].Rows.Add(dsNewRow);
@@ -133,7 +140,7 @@ namespace BTMS
 
         public void UpdateBusMngnt()
         {
-            string mySql = string.Format("SELECT * FROM {0} WHERE Personid = {1}", MainTable, _ID);
+            string mySql = string.Format("SELECT * FROM {0} WHERE busID = {1}", MainTable, _ID);
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
             if (ds.Tables[0].Rows.Count == 1)
@@ -144,7 +151,7 @@ namespace BTMS
                 _with2["Plateno"] = _PlateNumber;
                 _with2["driverno"] = _Driver;
                 _with2["Status"] = _status;
-                _with2["CondoctorID"]=_Condoctor;
+                _with2["CondoctorID"] = _Condoctor;
                 _with2["Busno"] = _BusNo;
                 Database.SaveEntry(ds, false);
             }
@@ -163,7 +170,24 @@ namespace BTMS
                 ds.Tables[0].Rows.Add(dsNewRow);
                 Database.SaveEntry(ds);
             }
-        #endregion
         }
+
+        public void IsBusAdded()
+        {
+            string mySql = string.Format("SELECT * FROM {0} WHERE busNO = {1}", MainTable, _BusNo);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                _isadded = true;
+            }
+            else
+            {
+                _isadded = false;
+            }
+        }
+           
+        #endregion
+            
     }
 }

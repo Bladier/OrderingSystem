@@ -171,8 +171,7 @@
             this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStatus.FormattingEnabled = true;
             this.cboStatus.Items.AddRange(new object[] {
-            "For Travel",
-            "Arrived",
+            "Available",
             "Unavailable"});
             this.cboStatus.Location = new System.Drawing.Point(146, 291);
             this.cboStatus.Margin = new System.Windows.Forms.Padding(5);

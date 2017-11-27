@@ -38,7 +38,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(319, 29);
+            this.btnSearch.Location = new System.Drawing.Point(319, 25);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(42, 28);
@@ -104,9 +104,11 @@
             this.Controls.Add(this.txtBusNo);
             this.Controls.Add(this.btnSearch);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmSetBus";
             this.Text = " Set Bus";
+            this.Load += new System.EventHandler(this.frmSetBus_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
