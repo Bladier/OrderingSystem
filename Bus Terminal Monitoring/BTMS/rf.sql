@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-11-27 11:59:27
+Date: 2017-11-27 17:01:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -91,7 +91,7 @@ CREATE TABLE `tblbustransaction` (
 -- Records of tblbustransaction
 -- ----------------------------
 INSERT INTO `tblbustransaction` VALUES ('1', '3', '57', 'C', '2017-11-01');
-INSERT INTO `tblbustransaction` VALUES ('2', '3', '56', 'W', '2017-11-26');
+INSERT INTO `tblbustransaction` VALUES ('2', '3', '57', 'W', '2017-11-26');
 
 -- ----------------------------
 -- Table structure for `tblcredit`
@@ -107,7 +107,7 @@ CREATE TABLE `tblcredit` (
 -- ----------------------------
 -- Records of tblcredit
 -- ----------------------------
-INSERT INTO `tblcredit` VALUES ('1', '2', '3855.6');
+INSERT INTO `tblcredit` VALUES ('1', '2', '4588.799999999999');
 INSERT INTO `tblcredit` VALUES ('2', '1', '3000');
 
 -- ----------------------------
@@ -181,7 +181,7 @@ CREATE TABLE `tbltransaction` (
 INSERT INTO `tbltransaction` VALUES ('9', '2017-11-26', '2', '3', '244.4', '15.6', '0', '', '1');
 INSERT INTO `tbltransaction` VALUES ('10', '2017-11-26', '1', '3', '260', '0', '0', '', '1');
 INSERT INTO `tbltransaction` VALUES ('13', '2017-11-26', '1', '3', '260', '0', '0', '', '2');
-INSERT INTO `tbltransaction` VALUES ('14', '2017-11-27', '2', '3', '244.4', '15.6', '1', '', '2');
+INSERT INTO `tbltransaction` VALUES ('14', '2017-11-27', '2', '3', '244.4', '15.6', '0', '', '2');
 
 -- ----------------------------
 -- Table structure for `tbluser`
@@ -206,6 +206,12 @@ INSERT INTO `tbluser` VALUES ('1', 'admin', 'myN/8XCodM4=', 'Mica', null, 'Legis
 INSERT INTO `tbluser` VALUES ('2', 'ins', 'myN/8XCodM4=', 'Mica', null, 'Legisniana', '1', 'Inspector');
 
 -- ----------------------------
+-- View structure for `bus_sales`
+-- ----------------------------
+DROP VIEW IF EXISTS `bus_sales`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `bus_sales` AS select `t`.`ID` AS `ID`,`t`.`TransDate` AS `TransDate`,`t`.`passID` AS `passID`,`t`.`busID` AS `busID`,`t`.`Rate` AS `Fare`,`t`.`Discount` AS `Discount`,`t`.`Status` AS `TransStatus`,`t`.`remarks` AS `remarks`,`t`.`busTransID` AS `busTransID`,`p`.`RFIDNUM` AS `RFIDNUM`,concat(`p`.`fname`,' ',`p`.`mname`,' ',`p`.`lname`) AS `Fullname`,`p`.`bday` AS `bday`,`p`.`phone` AS `phone`,`p`.`passtype` AS `passtype`,concat(`p`.`Street`,' ',`p`.`Brgy`,' ',`p`.`City`,' ',`p`.`Province`) AS `Address`,`p`.`IDTYPE` AS `IDTYPE`,`p`.`IDNumber` AS `IDNumber`,`p`.`CardExpiration` AS `CardExpiration`,`b`.`type` AS `type`,`b`.`seat` AS `seat`,`b`.`plateno` AS `plateno`,`b`.`Status` AS `Status`,concat(`bp2`.`finame`,' ',`bp2`.`laname`) AS `Condoctor`,concat(`bp`.`finame`,' ',`bp`.`laname`) AS `Driver`,`b`.`Busno` AS `Busno`,concat(`r`.`From`,' ',`r`.`Destination`) AS `Route`,`r`.`Rate` AS `Rate`,`bt`.`AvailableSeat` AS `AvailableSeat`,`bt`.`Status` AS `BusTransStatus`,(`b`.`seat` - `bt`.`AvailableSeat`) AS `passengers` from ((((((`tbltransaction` `t` join `tblpassenger` `p` on((`p`.`passid` = `t`.`passID`))) join `tblbus` `b` on((`b`.`busid` = `t`.`busID`))) join `tblbusperson` `bp2` on((`b`.`condoctorID` = `bp2`.`personid`))) join `tblbusperson` `bp` on((`b`.`driverno` = `bp`.`personid`))) join `tblbustransaction` `bt` on((`bt`.`ID` = `t`.`busTransID`))) join `tblroute` `r` on((`r`.`busID` = `t`.`busID`)));
+
+-- ----------------------------
 -- View structure for `buslisttransaction`
 -- ----------------------------
 DROP VIEW IF EXISTS `buslisttransaction`;
@@ -215,4 +221,4 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- View structure for `passengertransaction`
 -- ----------------------------
 DROP VIEW IF EXISTS `passengertransaction`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `passengertransaction` AS select distinct `tbltransaction`.`ID` AS `ID`,`tbltransaction`.`TransDate` AS `TransDate`,`tblpassenger`.`RFIDNUM` AS `RFIDNUM`,`tblpassenger`.`fname` AS `fname`,`tblpassenger`.`mname` AS `mname`,`tblpassenger`.`lname` AS `lname`,`tbltransaction`.`passID` AS `passID`,`tbltransaction`.`busID` AS `busID`,`tblbus`.`type` AS `type`,`tblbus`.`Busno` AS `Busno`,`tblroute`.`From` AS `From`,`tblroute`.`Destination` AS `Destination`,`tbltransaction`.`Status` AS `Status`,`tblcredit`.`Credit` AS `Credit`,`tblcredit`.`ID` AS `creditID`,`tbltransaction`.`Rate` AS `Rate` from ((((`tbltransaction` join `tblpassenger` on((`tblpassenger`.`passid` = `tbltransaction`.`passID`))) join `tblbus` on((`tblbus`.`busid` = `tbltransaction`.`busID`))) join `tblroute` on((`tblroute`.`busID` = `tblbus`.`busid`))) join `tblcredit` on((`tblcredit`.`ID` = `tblpassenger`.`passid`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `passengertransaction` AS select distinct `tbltransaction`.`ID` AS `ID`,`tbltransaction`.`TransDate` AS `TransDate`,`tblpassenger`.`RFIDNUM` AS `RFIDNUM`,`tblpassenger`.`fname` AS `fname`,`tblpassenger`.`mname` AS `mname`,`tblpassenger`.`lname` AS `lname`,`tbltransaction`.`passID` AS `passID`,`tbltransaction`.`busID` AS `busID`,`tblbus`.`type` AS `type`,`tblbus`.`Busno` AS `Busno`,`tblroute`.`From` AS `From`,`tblroute`.`Destination` AS `Destination`,`tbltransaction`.`Status` AS `Status`,`tblcredit`.`Credit` AS `Credit`,`tblcredit`.`ID` AS `creditID`,`tbltransaction`.`Rate` AS `Rate`,`tblbustransaction`.`ID` AS `busTransID`,`tblbustransaction`.`AvailableSeat` AS `AvailableSeat` from (((((`tbltransaction` join `tblpassenger` on((`tblpassenger`.`passid` = `tbltransaction`.`passID`))) join `tblbus` on((`tblbus`.`busid` = `tbltransaction`.`busID`))) join `tblroute` on((`tblroute`.`busID` = `tblbus`.`busid`))) join `tblcredit` on((`tblcredit`.`ID` = `tblpassenger`.`passid`))) join `tblbustransaction` on((`tblbustransaction`.`ID` = `tbltransaction`.`busTransID`)));
