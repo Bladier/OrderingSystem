@@ -59,9 +59,23 @@ namespace BTMS
         {
             if (txtsearch.Text == "") { LoadPassenger(); return; }
 
-            string mysql = "SELECT * FROM TBLPASSENGER WHERE RFIDNUM LIKE '%" + txtsearch.Text + "%' OR ";
-            mysql += " Fname like '%" + txtsearch.Text + "%' OR lname like '%" + txtsearch.Text + "%'";
+            if (txtsearch.Text == "") { LoadPassenger(); return; }
+            string str = txtsearch.Text;
+            string[] strWords = str.Split(new char[] { ' ' });
+            string name = null;
 
+            string mysql = "SELECT * FROM TBLPASSENGER WHERE RFIDNUM LIKE '%" + txtsearch.Text + "%' OR ";
+            foreach (string name_loopVariable in strWords)
+            {
+                name = name_loopVariable;
+                mysql += " CONCAT(FNAME, ',', LNAME) LIKE UPPER('%" + name + "%') or ";
+                if (object.ReferenceEquals(name, strWords.Last()))
+                {
+                    mysql += " CONCAT(FNAME, ',', LNAME) LIKE UPPER('%" + name + "%') ";
+                    break;
+                }
+                //mysql += " CONCAT(Fname, ' ' , Mname, ' ' , Lname) Like '%" + txtsearch.Text + "%'";
+            }
             LoadPassenger(mysql);
         }
 
@@ -142,10 +156,22 @@ namespace BTMS
         private void btnSearch_Click_1(object sender, EventArgs e)
         {
             if (txtsearch.Text == "") { LoadPassenger(); return; }
+            string str =txtsearch.Text;
+            string[] strWords = str.Split(new char[] { ' ' });
+            string name = null;
 
-            string mysql = "SELECT * FROM TBLPASSENGER WHERE RFIDNUM LIKE '%" + txtsearch.Text + "%' OR ";
-            mysql += " Fname like '%" + txtsearch.Text + "%' OR lname like '%" + txtsearch.Text + "%'";
-
+            string mysql = "SELECT * FROM TBLPASSENGER WHERE RFIDNUM LIKE '%" + txtsearch.Text + "%' OR (";
+            foreach (string name_loopVariable in strWords)
+            {
+                name = name_loopVariable;
+                mysql += " CONCAT(FNAME, ',', LNAME) LIKE UPPER('%" + name + "%') OR ";
+                if (object.ReferenceEquals(name, strWords.Last()))
+                {
+                    mysql += " CONCAT(FNAME, ',', LNAME) LIKE UPPER('%" + name + "%') )";
+                    break;
+                }
+                //mysql += " CONCAT(Fname, ' ' , Mname, ' ' , Lname) Like '%" + txtsearch.Text + "%'";
+            }
             LoadPassenger(mysql);
         }
 
@@ -191,7 +217,11 @@ namespace BTMS
             if (mod_system.isEnter(e)) { btnView.PerformClick(); }
         }
 
-       
-       
+        private void txtsearch_TextChanged(object sender, EventArgs e)
+        {
+            if ( txtsearch.Text==""){LoadPassenger();}
+        }
+
+        }
     }
-}
+

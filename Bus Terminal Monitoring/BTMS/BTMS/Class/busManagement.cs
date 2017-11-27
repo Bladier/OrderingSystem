@@ -146,6 +146,15 @@ namespace BTMS
             if (ds.Tables[0].Rows.Count == 1)
             {
                 var _with2 = ds.Tables[MainTable].Rows[0];
+
+                Console.WriteLine(Convert.ToInt32(_with2["Driverno"]) + " " + _Driver);
+                if(Convert.ToInt32(_with2["Driverno"]) != _Driver)
+                {
+                    buspersonnel bp = new buspersonnel();
+                    bp.ID = Convert.ToInt32(_with2["driverno"]);
+                    bp.UnAssingedPersonnel();
+                }
+
                 _with2["Type"] = _BusType;
                 _with2["Seat"] = _NumSeat;
                 _with2["Plateno"] = _PlateNumber;

@@ -64,13 +64,27 @@ namespace BTMS
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (txtsearch.Text == "") { LoadPassenger(); return; }
+            string secured_str = txtsearch.Text;
+		    secured_str = mod_system.DreadKnight(secured_str);
+		    string str = txtsearch.Text;
+            string[] strWords = str.Split(new char[] { ' ' });
+            string name = null;
 
-            string mysql = "SELECT * FROM tblbusperson WHERE FiName LIKE '%" + txtsearch.Text + "%' OR ";
-            mysql += " LaName like '%" + txtsearch.Text + "%' or Position Like '%" + txtsearch.Text + "%'";
-
+            string mysql = "SELECT * FROM TBLBUSPERSON WHERE POSITION LIKE '%" + txtsearch.Text + "%' OR (";
+                 foreach (string name_loopVariable in strWords)
+            {
+                name = name_loopVariable;
+                mysql += " CONCAT(FINAME, ',', LANAME) LIKE UPPER('%" + name + "%') OR ";
+                if (object.ReferenceEquals(name, strWords.Last()))
+                {
+                    mysql += " CONCAT(FINAME, ',', LANAME) LIKE UPPER('%" + name + "%')) ";
+                    break;
+                }
+            }
             LoadPassenger(mysql);
-        }
-
+         }
+            
+        
         private void btnView_Click(object sender, EventArgs e)
         {
             if (lvPassList.SelectedItems.Count == 0) { return; }
@@ -104,6 +118,24 @@ namespace BTMS
 
             buspersonnel bp = new buspersonnel();
             bp.Loadpersonnel(idx);
+
+            if (bp.Position == "Driver")
+            {
+                if (bp.IsAssigned)
+                {
+                    MessageBox.Show("This driver was already assigned.", "Notification",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                    return;
+                }
+            }
+
+            if (bp.Position == "Condoctor")
+            {
+                if (bp.IsAssigned)
+                {
+                    MessageBox.Show("This condoctor was already assigned.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+            }
 
             if (Application.OpenForms["frmBusManagement"] != null)
             {

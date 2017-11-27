@@ -99,6 +99,7 @@
             this.txtsearch.Name = "txtsearch";
             this.txtsearch.Size = new System.Drawing.Size(925, 22);
             this.txtsearch.TabIndex = 0;
+            this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged);
             this.txtsearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtsearch_KeyPress);
             // 
             // btnSearch

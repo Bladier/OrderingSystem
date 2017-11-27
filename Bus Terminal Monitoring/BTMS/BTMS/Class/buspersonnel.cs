@@ -69,6 +69,12 @@ namespace BTMS
             set { _status = value; }
         }
 
+        private bool _IsAssigned;
+        public bool IsAssigned
+        {
+            get { return _IsAssigned; }
+            set { _IsAssigned = value; }
+        }
         #endregion
 
         #region "Functions
@@ -103,6 +109,7 @@ namespace BTMS
             _with2["laname"] = _Lname;
             _with2["bday"] = _BDay;
             _with2["Position"] = _Position;
+            _with2["IsAssigned"] = 0;
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
@@ -121,13 +128,12 @@ namespace BTMS
             _Position = _with3["Position"].ToString();
 
             if (Convert.ToInt32(_with3["Status"]) == 1)
-            {
-                _status = true;
-            }
-            else
-            {
-                _status = false; 
-            }
+            { _status = true;}
+            else{_status = false; }
+
+            if (Convert.ToInt32(_with3["IsAssigned"]) == 1)
+            { _IsAssigned = true;}
+            else { _IsAssigned = false; }
         }
 
         public void Updatepersonnel()
@@ -152,6 +158,7 @@ namespace BTMS
                 {
                     _with2["status"] = 0;
                 }
+
                 Database.SaveEntry(ds, false);
             }
             else
@@ -164,10 +171,32 @@ namespace BTMS
                 _with2["laname"] = _Lname;
                 _with2["bday"] = _BDay;
                 _with2["Position"] = _Position;
+             
                 ds.Tables[0].Rows.Add(dsNewRow);
                 Database.SaveEntry(ds);
             }
-        #endregion
         }
-    }
+            
+        public void AssingedPersonnel()
+        {
+            string mySql = string.Format("SELECT * FROM {0} WHERE Personid = {1}", MainTable, _ID);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+            var _with2 = ds.Tables[MainTable].Rows[0];
+            _with2["IsAssigned"] = 1;
+            Database.SaveEntry(ds, false);
+        }
+
+        public void UnAssingedPersonnel()
+        {
+            string mySql = string.Format("SELECT * FROM {0} WHERE Personid = {1}", MainTable, _ID);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+            var _with2 = ds.Tables[MainTable].Rows[0];
+            _with2["IsAssigned"] = 1;
+            Database.SaveEntry(ds, false);
+        }
+        #endregion
+    } 
+    
 }

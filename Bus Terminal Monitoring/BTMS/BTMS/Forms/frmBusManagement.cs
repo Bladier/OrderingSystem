@@ -164,6 +164,7 @@ namespace BTMS
             txtNumSeats.Text = bm.NumSeat;
             txtPlateNumber.Text = bm.PlateNumber;
             cboStatus.Text = bm.Status;
+
             buspersonnel bpDriver = new buspersonnel();
             bpDriver.Loadpersonnel(bm.Driver);
             txtBusNo.Text = bm.BusNo;

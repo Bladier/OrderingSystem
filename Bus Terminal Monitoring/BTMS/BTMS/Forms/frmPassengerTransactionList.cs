@@ -101,5 +101,10 @@ namespace BTMS
         {
             this.Close();
         }
+
+        private void txtsearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (mod_system.isEnter(e)) { btnSearch.PerformClick(); }
+        }
     }
 }
