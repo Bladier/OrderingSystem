@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : newlocalhost
 Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : rf
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-11-26 22:05:49
+Date: 2017-11-27 11:59:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,7 +44,7 @@ CREATE TABLE `tblbus` (
   `condoctorID` int(11) NOT NULL,
   `Busno` varchar(20) NOT NULL,
   PRIMARY KEY (`busid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tblbus
@@ -63,14 +63,16 @@ CREATE TABLE `tblbusperson` (
   `bday` date NOT NULL,
   `position` varchar(20) NOT NULL,
   `Status` varchar(1) NOT NULL DEFAULT '1',
+  `IsAssigned` int(1) NOT NULL,
   PRIMARY KEY (`personid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tblbusperson
 -- ----------------------------
-INSERT INTO `tblbusperson` VALUES ('1', 'Steve', '', 'Salon', '1992-12-11', 'Condoctor', '1');
-INSERT INTO `tblbusperson` VALUES ('2', 'john', '', 'Brown', '2017-11-20', 'Driver', '1');
+INSERT INTO `tblbusperson` VALUES ('1', 'Steve', '', 'Salon', '1992-12-11', 'Condoctor', '1', '1');
+INSERT INTO `tblbusperson` VALUES ('2', 'john', '', 'Brown', '2017-11-20', 'Driver', '1', '1');
+INSERT INTO `tblbusperson` VALUES ('3', 'sanple', 'sample', 'sample', '2017-11-27', 'Driver', '1', '0');
 
 -- ----------------------------
 -- Table structure for `tblbustransaction`
@@ -88,8 +90,8 @@ CREATE TABLE `tblbustransaction` (
 -- ----------------------------
 -- Records of tblbustransaction
 -- ----------------------------
-INSERT INTO `tblBusTransaction` VALUES ('1', '3', '57', 'C', '2017-11-01');
-INSERT INTO `tblBusTransaction` VALUES ('2', '3', '57', 'W', '2017-11-26');
+INSERT INTO `tblbustransaction` VALUES ('1', '3', '57', 'C', '2017-11-01');
+INSERT INTO `tblbustransaction` VALUES ('2', '3', '56', 'W', '2017-11-26');
 
 -- ----------------------------
 -- Table structure for `tblcredit`
@@ -105,7 +107,7 @@ CREATE TABLE `tblcredit` (
 -- ----------------------------
 -- Records of tblcredit
 -- ----------------------------
-INSERT INTO `tblcredit` VALUES ('1', '2', '2855.6');
+INSERT INTO `tblcredit` VALUES ('1', '2', '3855.6');
 INSERT INTO `tblcredit` VALUES ('2', '1', '3000');
 
 -- ----------------------------
@@ -171,7 +173,7 @@ CREATE TABLE `tbltransaction` (
   `remarks` varchar(255) DEFAULT NULL,
   `busTransID` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tbltransaction
@@ -179,6 +181,7 @@ CREATE TABLE `tbltransaction` (
 INSERT INTO `tbltransaction` VALUES ('9', '2017-11-26', '2', '3', '244.4', '15.6', '0', '', '1');
 INSERT INTO `tbltransaction` VALUES ('10', '2017-11-26', '1', '3', '260', '0', '0', '', '1');
 INSERT INTO `tbltransaction` VALUES ('13', '2017-11-26', '1', '3', '260', '0', '0', '', '2');
+INSERT INTO `tbltransaction` VALUES ('14', '2017-11-27', '2', '3', '244.4', '15.6', '1', '', '2');
 
 -- ----------------------------
 -- Table structure for `tbluser`
