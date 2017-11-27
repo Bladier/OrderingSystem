@@ -92,7 +92,7 @@ namespace BTMS
             bt.ID = Convert.ToInt32(lvbusList.SelectedItems[0].Tag);
             bt.VoidTransction();
 
-            string mysql="SELECT * FROM tbltransaction WHERE BusTransID = " + bt.ID +"";
+            string mysql="SELECT * FROM tbltransaction WHERE BusTransID = " + bt.ID +" and status <> 0";
            DataSet ds =Database.LoadSQL(mysql,"tbltransaction");
 
            foreach (DataRow itm in ds.Tables[0].Rows)

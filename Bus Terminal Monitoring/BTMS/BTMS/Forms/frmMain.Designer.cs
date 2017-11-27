@@ -131,6 +131,7 @@
             this.btnReport.TabIndex = 6;
             this.btnReport.Text = "Reports";
             this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // btnAccountMngt
             // 
@@ -149,7 +150,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(776, 498);
+            this.ClientSize = new System.Drawing.Size(776, 503);
             this.Controls.Add(this.btnAccountMngt);
             this.Controls.Add(this.btnReport);
             this.Controls.Add(this.btnMaintenance);

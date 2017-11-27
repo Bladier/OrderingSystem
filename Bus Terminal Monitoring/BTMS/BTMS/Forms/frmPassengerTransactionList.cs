@@ -38,7 +38,9 @@ namespace BTMS
                 lv.SubItems.Add(itm["Fname"] + " " + itm["lname"]);
                 lv.SubItems.Add(itm["Busno"].ToString());
                 lv.SubItems.Add(itm["From"] + "-" + itm["Destination"]);
-
+                lv.SubItems.Add(itm["CreditID"].ToString());
+                lv.SubItems.Add(itm["Rate"].ToString());
+                lv.SubItems.Add(itm["busTransID"].ToString());
                 lv.Tag = itm["ID"];
             }
         }
@@ -62,6 +64,7 @@ namespace BTMS
                 lv.SubItems.Add(itm["From"] + "-" + itm["Destination"]);
                 lv.SubItems.Add(itm["CreditID"].ToString());
                 lv.SubItems.Add(itm["Rate"].ToString());
+                lv.SubItems.Add(itm["busTransID"].ToString());
                 lv.Tag = itm["ID"];
             }
         }
@@ -92,6 +95,10 @@ namespace BTMS
             c.LoadCredit(t.Client.ID);
             double fare = Convert.ToDouble(t.TransRate);
             c.Refund(fare);
+
+            busTransaction bt = new busTransaction();
+            bt.ID = Convert.ToInt32(lvpasslist.SelectedItems[0].SubItems[7].Text);
+            bt.BackSeat_to_Available();
 
             MessageBox.Show("Bus transaction successfully voided.", "Voiding", MessageBoxButtons.OK);
             this.Close();

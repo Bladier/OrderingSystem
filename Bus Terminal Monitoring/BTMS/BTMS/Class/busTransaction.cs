@@ -158,6 +158,20 @@ namespace BTMS
             _with2["Status"] = "C";
             Database.SaveEntry(ds, false);
         }
+
+        public void BackSeat_to_Available()
+        {
+            string mySql = "Select * From " + MainTable + " where ID = " + _ID + "";
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+             var _with2 = ds.Tables[MainTable].Rows[0];
+
+             int tmpavailseat = Convert.ToInt32(_with2["AvailableSeat"]);
+             tmpavailseat = tmpavailseat + 1;
+             _with2["AvailableSeat"] = tmpavailseat;
+
+             Database.SaveEntry(ds, false);
+        }
         #endregion
     }
 }

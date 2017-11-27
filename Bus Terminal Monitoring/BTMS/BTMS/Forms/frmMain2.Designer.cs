@@ -143,6 +143,7 @@
             this.Name = "frmMain2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMain2";
+            this.Load += new System.EventHandler(this.frmMain2_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

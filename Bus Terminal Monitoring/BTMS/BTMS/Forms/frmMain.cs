@@ -98,5 +98,11 @@ namespace BTMS
                 frm.Show();
             }
         }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            frmQeuryDate frm = new frmQeuryDate();
+            frm.Show();
+        }
     }
 }

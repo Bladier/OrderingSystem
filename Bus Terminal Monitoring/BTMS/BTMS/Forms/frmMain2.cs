@@ -79,6 +79,11 @@ namespace BTMS
                 frmPassengerTransactionList frm = new frmPassengerTransactionList();
                 frm.Show();
             }
+        }
+
+        private void frmMain2_Load(object sender, EventArgs e)
+        {
+           
         }   
 
     }
