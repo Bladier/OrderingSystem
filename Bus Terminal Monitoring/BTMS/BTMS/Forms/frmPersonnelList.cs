@@ -36,8 +36,19 @@ namespace BTMS
 
         }
 
-        private void LoadPassenger(string mysql = "SELECT * FROM tblbusperson ORDER BY personID ASC LIMIT 20")
+        private void LoadPassenger()
         {
+            string mysql = "SELECT * FROM tblbusperson WHERE ISASSIGNED <> 1 ";
+               if (frmBusManagement.isDriver)
+                 {
+                     mysql += " and Position ='Driver'";
+                 }
+
+                 if (frmBusManagement.isCondoctor)
+                 {
+                     mysql += " and Position ='Condoctor'";
+                 }
+                 mysql += " ORDER BY personID ASC LIMIT 40";
 
             DataSet ds = Database.LoadSQL(mysql, "tblbusperson");
             if (ds.Tables[0].Rows.Count == 0) { lvPassList.Items.Clear(); return; }
@@ -81,7 +92,27 @@ namespace BTMS
                     break;
                 }
             }
-            LoadPassenger(mysql);
+
+                 if (frmBusManagement.isDriver)
+                 {
+                     mysql += " and Position ='Driver'";
+                 }
+
+                 if (frmBusManagement.isCondoctor)
+                 {
+                     mysql += " and Position ='Condoctor'";
+                 }
+
+                 DataSet ds = Database.LoadSQL(mysql, "tblbusperson");
+                 if (ds.Tables[0].Rows.Count == 0) { lvPassList.Items.Clear(); return; }
+
+                 lvPassList.Items.Clear();
+                 foreach (DataRow itm in ds.Tables[0].Rows)
+                 {
+                     buspersonnel ps = new buspersonnel();
+                     ps.Loadpersonnel(Convert.ToInt32(itm["personID"]));
+                     Addpassenger(ps);
+                 }
          }
             
         

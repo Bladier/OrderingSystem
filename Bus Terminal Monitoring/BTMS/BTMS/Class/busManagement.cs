@@ -150,9 +150,13 @@ namespace BTMS
                 Console.WriteLine(Convert.ToInt32(_with2["Driverno"]) + " " + _Driver);
                 if(Convert.ToInt32(_with2["Driverno"]) != _Driver)
                 {
-                    buspersonnel bp = new buspersonnel();
-                    bp.ID = Convert.ToInt32(_with2["driverno"]);
-                    bp.UnAssingedPersonnel();
+                    buspersonnel bpUnassigned = new buspersonnel();
+                    bpUnassigned.ID = Convert.ToInt32(_with2["driverno"]);
+                    bpUnassigned.UnAssingedPersonnel();
+
+                    buspersonnel bpAssigned = new buspersonnel();
+                    bpAssigned.ID = _Driver;
+                    bpAssigned.AssingedPersonnel();
                 }
 
                 _with2["Type"] = _BusType;

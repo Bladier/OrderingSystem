@@ -192,6 +192,7 @@ namespace BTMS
             else
             {
                 isDriver = true;
+                isCondoctor = false;
                 drivers = txtDriver.Text;
                 frmPersonnelList frm = new frmPersonnelList();
                 frm.Show();
@@ -236,6 +237,7 @@ namespace BTMS
             else
             {
                 isCondoctor = true;
+                isDriver = false;
                 drivers = txtCondoctor.Text;
                 frmPersonnelList frm = new frmPersonnelList();
                 frm.Show();

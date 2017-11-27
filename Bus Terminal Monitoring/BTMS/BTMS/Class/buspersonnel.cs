@@ -193,7 +193,7 @@ namespace BTMS
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
             var _with2 = ds.Tables[MainTable].Rows[0];
-            _with2["IsAssigned"] = 1;
+            _with2["IsAssigned"] = 0;
             Database.SaveEntry(ds, false);
         }
         #endregion
