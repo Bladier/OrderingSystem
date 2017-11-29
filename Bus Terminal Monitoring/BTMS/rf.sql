@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : newlocalhost
 Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : rf
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-11-29 10:32:53
+Date: 2017-11-29 11:50:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -92,6 +92,22 @@ CREATE TABLE `tblbustransaction` (
 -- ----------------------------
 INSERT INTO `tblbustransaction` VALUES ('1', '3', '57', 'C', '2017-11-01');
 INSERT INTO `tblbustransaction` VALUES ('2', '3', '57', 'W', '2017-11-26');
+
+-- ----------------------------
+-- Table structure for `tblbustype`
+-- ----------------------------
+DROP TABLE IF EXISTS `tblbustype`;
+CREATE TABLE `tblbustype` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `BusType` varchar(20) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of tblbustype
+-- ----------------------------
+INSERT INTO `tblBusType` VALUES ('1', 'Aircon');
+INSERT INTO `tblBusType` VALUES ('2', 'Exclusive');
 
 -- ----------------------------
 -- Table structure for `tblcredit`

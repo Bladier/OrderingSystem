@@ -226,6 +226,8 @@
             // 
             // cboProvince
             // 
+            this.cboProvince.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cboProvince.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboProvince.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboProvince.FormattingEnabled = true;
             this.cboProvince.Location = new System.Drawing.Point(536, 210);
@@ -247,6 +249,8 @@
             // 
             // cboCity
             // 
+            this.cboCity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cboCity.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCity.FormattingEnabled = true;
             this.cboCity.Location = new System.Drawing.Point(115, 210);
@@ -268,6 +272,8 @@
             // 
             // cboBrgy
             // 
+            this.cboBrgy.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cboBrgy.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboBrgy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboBrgy.FormattingEnabled = true;
             this.cboBrgy.Location = new System.Drawing.Point(536, 156);
@@ -289,6 +295,8 @@
             // 
             // cboStreet
             // 
+            this.cboStreet.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cboStreet.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboStreet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboStreet.FormattingEnabled = true;
             this.cboStreet.Location = new System.Drawing.Point(115, 157);
@@ -329,6 +337,7 @@
             this.txtBday.Name = "txtBday";
             this.txtBday.Size = new System.Drawing.Size(190, 21);
             this.txtBday.TabIndex = 3;
+            this.txtBday.ValueChanged += new System.EventHandler(this.txtBday_ValueChanged);
             // 
             // label4
             // 

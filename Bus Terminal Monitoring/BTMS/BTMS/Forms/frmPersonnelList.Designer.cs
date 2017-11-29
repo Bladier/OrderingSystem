@@ -163,6 +163,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmPersonnelList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personnel List";
             this.Load += new System.EventHandler(this.frmPersonnelList_Load);
             this.ResumeLayout(false);

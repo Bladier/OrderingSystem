@@ -157,6 +157,7 @@
             this.Controls.Add(this.btnVoid);
             this.Controls.Add(this.lvbusList);
             this.Name = "frmBusListTransaction";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bus List Transaction";
             this.Load += new System.EventHandler(this.frmBusListTransaction_Load);
             this.ResumeLayout(false);

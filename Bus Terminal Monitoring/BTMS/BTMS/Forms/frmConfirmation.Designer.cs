@@ -208,6 +208,7 @@
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "frmConfirmation";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Confirmation";
             this.Load += new System.EventHandler(this.frmConfirmation_Load);
             this.groupBox2.ResumeLayout(false);

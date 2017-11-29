@@ -117,22 +117,22 @@ namespace BTMS
             }
         }
 
-        private void transactionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!dateSet)
-            {
-                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-            }
-            if (Application.OpenForms["frmTransaction"] != null)
-            {
+        //private void transactionToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    if (!dateSet)
+        //    {
+        //        MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+        //    }
+        //    if (Application.OpenForms["frmTransaction"] != null)
+        //    {
 
-            }
-            else
-            {
-                frmTransaction frm = new frmTransaction();
-                frm.Show();
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        frmTransaction frm = new frmTransaction();
+        //        frm.Show();
+        //    }
+        //}
 
         private void busPersonnelToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -175,7 +175,16 @@ namespace BTMS
             {
                 MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
             }
-           
+
+            if (Application.OpenForms["frmSettings"] != null)
+            {
+
+            }
+            else
+            {
+                frmSettings frm = new frmSettings();
+                frm.Show();
+            }
         }
 
         private void reportToolStripMenuItem_Click(object sender, EventArgs e)
@@ -184,7 +193,7 @@ namespace BTMS
             {
                 MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
             }
-            if (Application.OpenForms["frmSettings"] != null)
+            if (Application.OpenForms["frmQeuryDate"] != null)
             {
 
             }

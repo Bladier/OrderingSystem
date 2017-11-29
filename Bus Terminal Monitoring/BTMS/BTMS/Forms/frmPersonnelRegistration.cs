@@ -13,6 +13,7 @@ namespace BTMS
 {
     public partial class frmPersonnelRegistration : Form
     {
+        int age;
         int personnelID;
         public frmPersonnelRegistration()
         {
@@ -66,6 +67,11 @@ namespace BTMS
             }
             if (cboPosition.Text == "") { cboPosition.Focus(); return; }
 
+            if (age < 18)
+            {
+                MessageBox.Show("Age below 18 is not allowed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
+            }
+
 
             DialogResult result = MessageBox.Show("Do you want to save this personnel?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
@@ -79,6 +85,9 @@ namespace BTMS
             bp.Lname = txtLname.Text;
             bp.BDay =Convert.ToDateTime(txtBday.Text);
             bp.Position = cboPosition.Text;
+
+
+
             bp.Savepersonnel();
 
             MessageBox.Show("Successfully saved.", "Confirmation", MessageBoxButtons.OK);
@@ -113,11 +122,11 @@ namespace BTMS
             bp.BDay = Convert.ToDateTime(txtBday.Text);
             bp.Position = cboPosition.Text;
 
-            if (chkStatus.Checked)
+            if (rbactive.Checked)
             {
                 bp.Status = true;
             }
-            else
+            if (rbinActive.Checked)
             {
                 bp.Status = false;
             }
@@ -137,7 +146,6 @@ namespace BTMS
             txtBday.Text = mod_system.CurrentDate.ToShortDateString();
             cboPosition.Text = "";
             personnelID = 0;
-            chkStatus.Checked = true;
         }
 
         internal void addPass(buspersonnel bp)
@@ -149,13 +157,14 @@ namespace BTMS
             txtBday.Text = Convert.ToDateTime(bp.BDay).ToShortDateString();
             cboPosition.Text = bp.Position;
 
+
             if (bp.Status)
             {
-                chkStatus.Checked = true;
+                rbactive.Checked = true;
             }
             else
             {
-                chkStatus.Checked = false;
+                rbinActive.Checked = true;
             }
 
             Disbled();
@@ -169,12 +178,18 @@ namespace BTMS
             txtLname.Enabled = st;
             txtBday.Enabled = st;
             cboPosition.Enabled = st;
-            chkStatus.Enabled = st;
+            rbactive.Enabled = st;
+            rbinActive.Enabled = st;
         }
 
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtBday_ValueChanged(object sender, EventArgs e)
+        {
+            age = Convert.ToInt32(mod_system.GetCurrentAge(txtBday.Value));
         }
     }
 }

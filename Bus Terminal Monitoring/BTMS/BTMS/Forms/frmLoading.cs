@@ -33,6 +33,13 @@ namespace BTMS
                 {
                     if (Convert.ToDouble(credits) < 0) { return; }
                 }
+
+                double tmpcredit = Convert.ToDouble(credits);
+                if (tmpcredit < 200)
+                {
+                    MessageBox.Show("The MINIMUM load is 200.?", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return;
+                }
             }
             
             DialogResult result = MessageBox.Show("Are you sure about this?", "Confirmation", MessageBoxButtons.YesNo);

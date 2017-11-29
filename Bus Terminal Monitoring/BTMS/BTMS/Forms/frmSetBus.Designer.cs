@@ -38,10 +38,9 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(319, 25);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSearch.Location = new System.Drawing.Point(239, 20);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(42, 28);
+            this.btnSearch.Size = new System.Drawing.Size(32, 23);
             this.btnSearch.TabIndex = 0;
             this.btnSearch.Text = "...";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -49,44 +48,43 @@
             // 
             // txtBusNo
             // 
-            this.txtBusNo.Location = new System.Drawing.Point(80, 29);
-            this.txtBusNo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBusNo.Location = new System.Drawing.Point(60, 24);
             this.txtBusNo.Name = "txtBusNo";
-            this.txtBusNo.Size = new System.Drawing.Size(231, 22);
+            this.txtBusNo.Size = new System.Drawing.Size(174, 20);
             this.txtBusNo.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 32);
+            this.label1.Location = new System.Drawing.Point(14, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 16);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Bus No.";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 72);
+            this.label2.Location = new System.Drawing.Point(14, 58);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 16);
+            this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Available Seats";
             // 
             // txtAvailableSeat
             // 
-            this.txtAvailableSeat.Location = new System.Drawing.Point(128, 69);
-            this.txtAvailableSeat.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAvailableSeat.Location = new System.Drawing.Point(96, 56);
             this.txtAvailableSeat.Name = "txtAvailableSeat";
-            this.txtAvailableSeat.Size = new System.Drawing.Size(233, 22);
+            this.txtAvailableSeat.Size = new System.Drawing.Size(176, 20);
             this.txtAvailableSeat.TabIndex = 3;
             // 
             // btnSet
             // 
-            this.btnSet.Location = new System.Drawing.Point(261, 99);
-            this.btnSet.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSet.Location = new System.Drawing.Point(196, 80);
             this.btnSet.Name = "btnSet";
-            this.btnSet.Size = new System.Drawing.Size(100, 28);
+            this.btnSet.Size = new System.Drawing.Size(75, 23);
             this.btnSet.TabIndex = 5;
             this.btnSet.Text = "&Set";
             this.btnSet.UseVisualStyleBackColor = true;
@@ -94,19 +92,19 @@
             // 
             // frmSetBus
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 142);
+            this.ClientSize = new System.Drawing.Size(280, 113);
             this.Controls.Add(this.btnSet);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtAvailableSeat);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBusNo);
             this.Controls.Add(this.btnSearch);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmSetBus";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Set Bus";
             this.Load += new System.EventHandler(this.frmSetBus_Load);
             this.ResumeLayout(false);

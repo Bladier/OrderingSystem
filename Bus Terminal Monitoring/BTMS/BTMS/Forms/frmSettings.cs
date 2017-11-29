@@ -104,7 +104,7 @@ namespace BTMS
             b.Updateroute();
 
             MessageBox.Show("Successfully added.", "Add", MessageBoxButtons.OK);
-            txtBusno.Clear(); txtDest.Clear(); txtFrom.Clear(); txtRate.Clear(); txtBusno.Focus();
+            txtBusno.Clear(); txtDest.Clear(); txtFrom.Clear(); txtRate.Clear(); txtBusno.Focus(); txtSearch.Clear();
             loadbus();
         }
         private void lvbusroute_DoubleClick(object sender, EventArgs e)
@@ -112,10 +112,22 @@ namespace BTMS
             int busID = Convert.ToInt32(lvbusroute.SelectedItems[0].Tag);
             busRoute br = new busRoute();
             br.LoadbusRoute(busID);
+
+            busManagement bm = new busManagement();
+            bm.Loadbusmngt(busID);
+            txtSearch.Text = bm.BusNo;
+
+            if (br.From == null)
+            {
+                goto gohere;
+            }
+
             txtFrom.Text = br.From;
             txtDest.Text = br.Dest;
             txtRate.Text = br.Rate.ToString();
             routeID = br.ID;
+
+gohere:
             bID = busID;
             btnUpdate.Text = "&Update";
         }
@@ -140,7 +152,7 @@ namespace BTMS
             b.Updateroute();
 
             MessageBox.Show("Successfully updated.", "Update", MessageBoxButtons.OK);
-            txtBusno.Clear(); txtDest.Clear(); txtFrom.Clear(); txtRate.Clear(); txtBusno.Focus();
+            txtBusno.Clear(); txtDest.Clear(); txtFrom.Clear(); txtRate.Clear(); txtBusno.Focus(); txtSearch.Clear();
             loadbus();
         }
     
@@ -175,6 +187,11 @@ namespace BTMS
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAddBusType_Click(object sender, EventArgs e)
+        {
+
         }
 
       

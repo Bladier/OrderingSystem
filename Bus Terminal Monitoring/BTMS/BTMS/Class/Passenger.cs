@@ -287,14 +287,17 @@ namespace BTMS
             return true;
         }
 
-        public bool isPassengerExists(string f,string m,string l)
+        public bool isPassengerExists(string f,string m,string l,DateTime b)
         {
+           
+            string tmpcur = b.ToString("yyyy-MM-dd");
             string mySql = "SELECT * from tblPassenger where fname = '" + f + "'";
             if (m != "")
             {
                 mySql += " and mname ='" + m + "'";
             }
-            mySql += " and lname ='" + l + "'";
+            mySql += " and lname ='" + l + "' and bday ='" + tmpcur + "'";
+
 
             DataSet ds = null;
 

@@ -50,12 +50,12 @@
             this.txtBusno = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnCancelAddbusType = new System.Windows.Forms.Button();
-            this.btnAddBusType = new System.Windows.Forms.Button();
-            this.txtAddBusType = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txtAddBusType = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnCancelAddbusType = new System.Windows.Forms.Button();
+            this.btnAddBusType = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -274,41 +274,6 @@
             this.tabPage2.Text = "Add Bus Type";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // btnCancelAddbusType
-            // 
-            this.btnCancelAddbusType.Location = new System.Drawing.Point(350, 27);
-            this.btnCancelAddbusType.Name = "btnCancelAddbusType";
-            this.btnCancelAddbusType.Size = new System.Drawing.Size(81, 22);
-            this.btnCancelAddbusType.TabIndex = 6;
-            this.btnCancelAddbusType.Text = "&Cancel";
-            this.btnCancelAddbusType.UseVisualStyleBackColor = true;
-            // 
-            // btnAddBusType
-            // 
-            this.btnAddBusType.Location = new System.Drawing.Point(259, 27);
-            this.btnAddBusType.Name = "btnAddBusType";
-            this.btnAddBusType.Size = new System.Drawing.Size(81, 22);
-            this.btnAddBusType.TabIndex = 5;
-            this.btnAddBusType.Text = "&Add";
-            this.btnAddBusType.UseVisualStyleBackColor = true;
-            // 
-            // txtAddBusType
-            // 
-            this.txtAddBusType.Location = new System.Drawing.Point(85, 27);
-            this.txtAddBusType.MaxLength = 10;
-            this.txtAddBusType.Name = "txtAddBusType";
-            this.txtAddBusType.Size = new System.Drawing.Size(165, 20);
-            this.txtAddBusType.TabIndex = 12;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 31);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Bus Type";
-            // 
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -327,6 +292,42 @@
             this.columnHeader9.Text = "Bus Type";
             this.columnHeader9.Width = 227;
             // 
+            // txtAddBusType
+            // 
+            this.txtAddBusType.Location = new System.Drawing.Point(85, 27);
+            this.txtAddBusType.MaxLength = 10;
+            this.txtAddBusType.Name = "txtAddBusType";
+            this.txtAddBusType.Size = new System.Drawing.Size(165, 20);
+            this.txtAddBusType.TabIndex = 12;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(17, 31);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(52, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Bus Type";
+            // 
+            // btnCancelAddbusType
+            // 
+            this.btnCancelAddbusType.Location = new System.Drawing.Point(350, 27);
+            this.btnCancelAddbusType.Name = "btnCancelAddbusType";
+            this.btnCancelAddbusType.Size = new System.Drawing.Size(81, 22);
+            this.btnCancelAddbusType.TabIndex = 6;
+            this.btnCancelAddbusType.Text = "&Cancel";
+            this.btnCancelAddbusType.UseVisualStyleBackColor = true;
+            // 
+            // btnAddBusType
+            // 
+            this.btnAddBusType.Location = new System.Drawing.Point(259, 27);
+            this.btnAddBusType.Name = "btnAddBusType";
+            this.btnAddBusType.Size = new System.Drawing.Size(81, 22);
+            this.btnAddBusType.TabIndex = 5;
+            this.btnAddBusType.Text = "&Add";
+            this.btnAddBusType.UseVisualStyleBackColor = true;
+            this.btnAddBusType.Click += new System.EventHandler(this.btnAddBusType_Click);
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -334,6 +335,7 @@
             this.ClientSize = new System.Drawing.Size(628, 410);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmSettings";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";
             this.Load += new System.EventHandler(this.frmSettings_Load);
             this.tabControl1.ResumeLayout(false);
