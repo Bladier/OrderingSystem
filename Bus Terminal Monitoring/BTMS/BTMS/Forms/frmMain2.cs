@@ -21,14 +21,19 @@ namespace BTMS
             Application.Exit();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+      
+        private void frmMain2_Load(object sender, EventArgs e)
         {
-            frmTransaction frmtrans = new frmTransaction();
-            frmtrans.Show();
+           
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void setBusToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!frmMain.dateSet)
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+
             if (Application.OpenForms["frmSetBus"] != null)
             {
                 // (Application.OpenForms["frmPersonnelList"] as frmPersonnelList;
@@ -40,8 +45,51 @@ namespace BTMS
             }
         }
 
-        private void btnBuslistTrans_Click(object sender, EventArgs e)
+        private void transactionToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            if (!frmMain.dateSet)
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+
+            if (Application.OpenForms["frmSetBus"] != null)
+            {
+                // (Application.OpenForms["frmPersonnelList"] as frmPersonnelList;
+            }
+            else
+            {
+                frmTransaction frmtrans = new frmTransaction();
+                frmtrans.Show();
+            }
+        }
+
+        private void busConfirmationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (!frmMain.dateSet)
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+
+            if (Application.OpenForms["frmSetBus"] != null)
+            {
+                // (Application.OpenForms["frmPersonnelList"] as frmPersonnelList;
+            }
+            else
+            {
+                frmConfirmation frm = new frmConfirmation();
+                frm.Show();
+            }
+            
+        }
+
+        private void busListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!frmMain.dateSet)
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+
             if (Application.OpenForms["frmSetBus"] != null)
             {
                 // (Application.OpenForms["frmPersonnelList"] as frmPersonnelList;
@@ -54,22 +102,13 @@ namespace BTMS
           
         }
 
-        private void btnTravel_Click(object sender, EventArgs e)
+        private void passengerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms["frmSetBus"] != null)
+            if (!frmMain.dateSet)
             {
-                // (Application.OpenForms["frmPersonnelList"] as frmPersonnelList;
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
             }
-            else
-            {
-                frmConfirmation frm = new frmConfirmation();
-                frm.Show(); 
-            }
-            
-        }
 
-        private void btnVoidpassTrans_Click(object sender, EventArgs e)
-        {
             if (Application.OpenForms["frmSetBus"] != null)
             {
                 // (Application.OpenForms["frmPersonnelList"] as frmPersonnelList;
@@ -79,11 +118,6 @@ namespace BTMS
                 frmPassengerTransactionList frm = new frmPassengerTransactionList();
                 frm.Show();
             }
-        }
-
-        private void frmMain2_Load(object sender, EventArgs e)
-        {
-           
         }   
 
     }

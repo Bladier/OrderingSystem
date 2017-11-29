@@ -172,7 +172,7 @@ namespace BTMS
                 return;
             }
 
-            trans.TransDate = Convert.ToDateTime(DateTime.Today.ToString("yyyy-MM-dd"));
+            trans.TransDate = Convert.ToDateTime(mod_system.CurrentDate.ToString("yyyy-MM-dd"));
             trans.Client = tmpPassenger;
             trans.Bus = tmpBus;
             trans.TransRate = Convert.ToDouble(lblAmountDue.Text);
@@ -274,7 +274,7 @@ namespace BTMS
 
         private void tmpTimer_Tick(object sender, EventArgs e)
         {
-            lblDate.Text = Convert.ToString(DateTime.Now);
+            lblDate.Text = Convert.ToString(mod_system.CurrentDate.ToLongDateString());
         }
     }
 }

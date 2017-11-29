@@ -29,6 +29,16 @@ namespace BTMS
 
         private void frmBusList_Load(object sender, EventArgs e)
         {
+
+            if (frmMain.isAdmin)
+            {
+                btnSelect.Visible = false;
+            }
+            else
+            {
+                btnSelect.Visible = false;
+            }
+
             if (isAddBusRoute)
             {
                 txtsearch.Text = frmSettings.BusNo;

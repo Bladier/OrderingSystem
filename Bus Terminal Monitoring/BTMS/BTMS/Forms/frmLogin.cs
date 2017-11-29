@@ -60,7 +60,8 @@ namespace BTMS
 
          frmMain frm = new frmMain();
          frm.Show();
-          
+         frm.CheckDateStatus();
+         frm.notYetLogin(false);  
         txtPassword.Clear();
         txtusername.Clear();
         i = 0;

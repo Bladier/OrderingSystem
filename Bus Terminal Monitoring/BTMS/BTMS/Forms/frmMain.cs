@@ -11,13 +11,83 @@ namespace BTMS
 {
     public partial class frmMain : Form
     {
+        public static bool isAdmin;
+        public static bool dateSet;
         public frmMain()
         {
             InitializeComponent();
         }
 
-        private void btnBusManagement_Click(object sender, EventArgs e)
+        internal void notYetLogin(bool st = true)
         {
+           
+
+        }
+
+       
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+
+        private void tmpTimer_Tick(object sender, EventArgs e)
+        {
+            if (dateSet)
+            {
+                tsDateset.Text = mod_system.CurrentDate.ToShortDateString() + " " + DateTime.Now.ToString("T");
+                dateSetToolStripMenuItem.Text = "&Date closing";
+            }
+            else
+            {
+                tsDateset.Text = "Date not set";
+                dateSetToolStripMenuItem.Text = "&Date setting";
+            }
+        }
+        internal void CheckDateStatus()
+        {
+            mod_system.LoadCurrentDate();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+         
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            if (mod_system.ORuser.Username == null)
+            {
+                notYetLogin();
+            }
+            else
+            {
+                notYetLogin(false);
+            }
+        }
+
+
+        private void dateSetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["frmSetDate"] != null)
+            {
+             
+            }
+            else
+            {
+                frmSetDate frm = new frmSetDate();
+                frm.Show();
+            }
+        }
+
+        private void busManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!dateSet)
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+
+            isAdmin = true;
             if (Application.OpenForms["frmBusList"] != null)
             {
                 // (Application.OpenForms["frmPersonnelList"] as frmPersonnelList;
@@ -29,11 +99,16 @@ namespace BTMS
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void clientManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!dateSet)
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+
             if (Application.OpenForms["frmPassengerList"] != null)
             {
-                // (Application.OpenForms["frmPersonnelList"] as frmPersonnelList;
+
             }
             else
             {
@@ -42,11 +117,15 @@ namespace BTMS
             }
         }
 
-        private void btnTransaction_Click(object sender, EventArgs e)
+        private void transactionToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!dateSet)
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
             if (Application.OpenForms["frmTransaction"] != null)
             {
-               
+
             }
             else
             {
@@ -55,11 +134,15 @@ namespace BTMS
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void busPersonnelToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!dateSet)
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
             if (Application.OpenForms["frmPersonnelList"] != null)
             {
-               
+
             }
             else
             {
@@ -68,13 +151,12 @@ namespace BTMS
             }
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void loadingAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
-
-        private void btnAccountMngt_Click(object sender, EventArgs e)
-        {
+            if (!dateSet)
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
             if (Application.OpenForms["frmLoading"] != null)
             {
 
@@ -86,23 +168,34 @@ namespace BTMS
             }
         }
 
-        private void btnMaintenance_Click(object sender, EventArgs e)
+        private void maintenanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            if (!dateSet)
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+           
+        }
+
+        private void reportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!dateSet)
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
             if (Application.OpenForms["frmSettings"] != null)
             {
 
             }
             else
             {
-                frmSettings frm = new frmSettings();
+                frmQeuryDate frm = new frmQeuryDate();
                 frm.Show();
             }
+          
         }
 
-        private void btnReport_Click(object sender, EventArgs e)
-        {
-            frmQeuryDate frm = new frmQeuryDate();
-            frm.Show();
-        }
+       
     }
 }

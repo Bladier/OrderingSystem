@@ -109,5 +109,10 @@ namespace BTMS
            MessageBox.Show("Bus transaction successfully voided.","Voiding",MessageBoxButtons.OK);
            this.Close();
         }
+
+        private void txtsearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (mod_system.isEnter(e)) { btnSearch.PerformClick(); }
+        }
     }
 }

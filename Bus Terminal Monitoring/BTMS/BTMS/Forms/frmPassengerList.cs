@@ -140,6 +140,12 @@ namespace BTMS
             passenger ps = new passenger();
             ps.Loadpass(idx);
 
+            if (Convert.ToDateTime(ps.CardExp.ToShortDateString()) < Convert.ToDateTime( mod_system.CurrentDate.ToLongDateString()))
+            {
+                MessageBox.Show("The Card of this passenger was expired. You cannot select it. Please be Advice to RENEW.","Validation",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                return;
+            }
+
             if (Application.OpenForms["Form1"] != null)
             {
                 (Application.OpenForms["Form1"] as Form1).addPass(ps);

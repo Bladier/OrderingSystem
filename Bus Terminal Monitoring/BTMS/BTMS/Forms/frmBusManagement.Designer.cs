@@ -46,6 +46,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtBusNo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label6
@@ -68,13 +69,13 @@
             this.cboBusType.Location = new System.Drawing.Point(127, 42);
             this.cboBusType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboBusType.Name = "cboBusType";
-            this.cboBusType.Size = new System.Drawing.Size(356, 23);
+            this.cboBusType.Size = new System.Drawing.Size(312, 23);
             this.cboBusType.TabIndex = 14;
             // 
             // txtNumSeats
             // 
             this.txtNumSeats.Location = new System.Drawing.Point(128, 120);
-            this.txtNumSeats.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtNumSeats.Margin = new System.Windows.Forms.Padding(6);
             this.txtNumSeats.Name = "txtNumSeats";
             this.txtNumSeats.Size = new System.Drawing.Size(356, 21);
             this.txtNumSeats.TabIndex = 16;
@@ -93,7 +94,7 @@
             // txtPlateNumber
             // 
             this.txtPlateNumber.Location = new System.Drawing.Point(128, 161);
-            this.txtPlateNumber.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtPlateNumber.Margin = new System.Windows.Forms.Padding(6);
             this.txtPlateNumber.Name = "txtPlateNumber";
             this.txtPlateNumber.Size = new System.Drawing.Size(356, 21);
             this.txtPlateNumber.TabIndex = 18;
@@ -111,7 +112,7 @@
             // txtDriver
             // 
             this.txtDriver.Location = new System.Drawing.Point(128, 202);
-            this.txtDriver.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtDriver.Margin = new System.Windows.Forms.Padding(6);
             this.txtDriver.Name = "txtDriver";
             this.txtDriver.Size = new System.Drawing.Size(281, 21);
             this.txtDriver.TabIndex = 20;
@@ -192,7 +193,7 @@
             // txtCondoctor
             // 
             this.txtCondoctor.Location = new System.Drawing.Point(128, 233);
-            this.txtCondoctor.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtCondoctor.Margin = new System.Windows.Forms.Padding(6);
             this.txtCondoctor.Name = "txtCondoctor";
             this.txtCondoctor.Size = new System.Drawing.Size(281, 21);
             this.txtCondoctor.TabIndex = 28;
@@ -210,7 +211,7 @@
             // txtBusNo
             // 
             this.txtBusNo.Location = new System.Drawing.Point(128, 88);
-            this.txtBusNo.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtBusNo.Margin = new System.Windows.Forms.Padding(6);
             this.txtBusNo.Name = "txtBusNo";
             this.txtBusNo.Size = new System.Drawing.Size(356, 21);
             this.txtBusNo.TabIndex = 31;
@@ -225,11 +226,21 @@
             this.label7.TabIndex = 32;
             this.label7.Text = "Bus No.";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(446, 42);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(39, 23);
+            this.button1.TabIndex = 33;
+            this.button1.Text = "+";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // frmBusManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 359);
+            this.ClientSize = new System.Drawing.Size(497, 356);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtBusNo);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnsearchCondoctor);
@@ -278,5 +289,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtBusNo;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button1;
     }
 }

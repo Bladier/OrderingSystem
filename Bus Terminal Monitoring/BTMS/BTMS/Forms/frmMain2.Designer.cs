@@ -29,45 +29,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain2));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnTravel = new System.Windows.Forms.Button();
-            this.btnBuslistTrans = new System.Windows.Forms.Button();
-            this.btnVoidpassTrans = new System.Windows.Forms.Button();
+            this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transactionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.setBusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.busListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.busConfirmationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.passengerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(155, 117);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 58);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "&Set Bus";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(298, 117);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(137, 58);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "&Transaction";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.transactionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(625, 24);
@@ -89,41 +67,52 @@
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // btnTravel
+            // transactionToolStripMenuItem
             // 
-            this.btnTravel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTravel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTravel.Location = new System.Drawing.Point(155, 181);
-            this.btnTravel.Name = "btnTravel";
-            this.btnTravel.Size = new System.Drawing.Size(137, 58);
-            this.btnTravel.TabIndex = 3;
-            this.btnTravel.Text = "&Travel";
-            this.btnTravel.UseVisualStyleBackColor = true;
-            this.btnTravel.Click += new System.EventHandler(this.btnTravel_Click);
+            this.transactionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.transactionToolStripMenuItem1,
+            this.setBusToolStripMenuItem,
+            this.busListToolStripMenuItem,
+            this.busConfirmationToolStripMenuItem,
+            this.passengerToolStripMenuItem});
+            this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
+            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.transactionToolStripMenuItem.Text = "&Module";
             // 
-            // btnBuslistTrans
+            // transactionToolStripMenuItem1
             // 
-            this.btnBuslistTrans.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuslistTrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuslistTrans.Location = new System.Drawing.Point(298, 181);
-            this.btnBuslistTrans.Name = "btnBuslistTrans";
-            this.btnBuslistTrans.Size = new System.Drawing.Size(137, 58);
-            this.btnBuslistTrans.TabIndex = 4;
-            this.btnBuslistTrans.Text = "&Bus List Transaction";
-            this.btnBuslistTrans.UseVisualStyleBackColor = true;
-            this.btnBuslistTrans.Click += new System.EventHandler(this.btnBuslistTrans_Click);
+            this.transactionToolStripMenuItem1.Name = "transactionToolStripMenuItem1";
+            this.transactionToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
+            this.transactionToolStripMenuItem1.Text = "&Transaction";
+            this.transactionToolStripMenuItem1.Click += new System.EventHandler(this.transactionToolStripMenuItem1_Click);
             // 
-            // btnVoidpassTrans
+            // setBusToolStripMenuItem
             // 
-            this.btnVoidpassTrans.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoidpassTrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoidpassTrans.Location = new System.Drawing.Point(155, 245);
-            this.btnVoidpassTrans.Name = "btnVoidpassTrans";
-            this.btnVoidpassTrans.Size = new System.Drawing.Size(137, 58);
-            this.btnVoidpassTrans.TabIndex = 5;
-            this.btnVoidpassTrans.Text = "&Void Passenger Transaction";
-            this.btnVoidpassTrans.UseVisualStyleBackColor = true;
-            this.btnVoidpassTrans.Click += new System.EventHandler(this.btnVoidpassTrans_Click);
+            this.setBusToolStripMenuItem.Name = "setBusToolStripMenuItem";
+            this.setBusToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.setBusToolStripMenuItem.Text = "&Set Bus";
+            this.setBusToolStripMenuItem.Click += new System.EventHandler(this.setBusToolStripMenuItem_Click);
+            // 
+            // busListToolStripMenuItem
+            // 
+            this.busListToolStripMenuItem.Name = "busListToolStripMenuItem";
+            this.busListToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.busListToolStripMenuItem.Text = "&Bus List";
+            this.busListToolStripMenuItem.Click += new System.EventHandler(this.busListToolStripMenuItem_Click);
+            // 
+            // busConfirmationToolStripMenuItem
+            // 
+            this.busConfirmationToolStripMenuItem.Name = "busConfirmationToolStripMenuItem";
+            this.busConfirmationToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.busConfirmationToolStripMenuItem.Text = "&B&us Confirmation";
+            this.busConfirmationToolStripMenuItem.Click += new System.EventHandler(this.busConfirmationToolStripMenuItem_Click);
+            // 
+            // passengerToolStripMenuItem
+            // 
+            this.passengerToolStripMenuItem.Name = "passengerToolStripMenuItem";
+            this.passengerToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.passengerToolStripMenuItem.Text = "&Passenger";
+            this.passengerToolStripMenuItem.Click += new System.EventHandler(this.passengerToolStripMenuItem_Click);
             // 
             // frmMain2
             // 
@@ -132,17 +121,13 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(625, 374);
-            this.Controls.Add(this.btnVoidpassTrans);
-            this.Controls.Add(this.btnBuslistTrans);
-            this.Controls.Add(this.btnTravel);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmMain2";
+            this.Text = "BUS PAYMENT CARD TECHNOLOGY SYSTEM";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain2_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -153,13 +138,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.Button btnTravel;
-        private System.Windows.Forms.Button btnBuslistTrans;
-        private System.Windows.Forms.Button btnVoidpassTrans;
+        private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem setBusToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem busListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem busConfirmationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem passengerToolStripMenuItem;
     }
 }
