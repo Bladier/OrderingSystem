@@ -50,7 +50,9 @@
             this.txtBusno = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+
             this.lvBusType = new System.Windows.Forms.ListView();
+
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txtAddBusType = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -287,6 +289,7 @@
             this.lvBusType.UseCompatibleStateImageBehavior = false;
             this.lvBusType.View = System.Windows.Forms.View.Details;
             this.lvBusType.DoubleClick += new System.EventHandler(this.lvBusType_DoubleClick);
+
             // 
             // columnHeader9
             // 
@@ -318,7 +321,9 @@
             this.btnCancelAddbusType.TabIndex = 6;
             this.btnCancelAddbusType.Text = "&Cancel";
             this.btnCancelAddbusType.UseVisualStyleBackColor = true;
+
             this.btnCancelAddbusType.Click += new System.EventHandler(this.btnCancelAddbusType_Click);
+
             // 
             // btnAddBusType
             // 

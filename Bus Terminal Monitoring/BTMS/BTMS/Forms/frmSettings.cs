@@ -287,6 +287,7 @@ gohere:
             }
             txtAddBusType.Text = lvBusType.SelectedItems[0].Text;
             btnAddBusType.Text = "&Update";
+
         }
 
       
