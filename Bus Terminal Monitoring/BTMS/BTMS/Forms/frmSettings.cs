@@ -104,7 +104,7 @@ namespace BTMS
             b.Updateroute();
 
             MessageBox.Show("Successfully added.", "Add", MessageBoxButtons.OK);
-            txtBusno.Clear(); txtDest.Clear(); txtFrom.Clear(); txtRate.Clear(); txtBusno.Focus();
+            txtBusno.Clear(); txtDest.Clear(); txtFrom.Clear(); txtRate.Clear(); txtBusno.Focus(); txtSearch.Clear();
             loadbus();
         }
         private void lvbusroute_DoubleClick(object sender, EventArgs e)
@@ -112,10 +112,22 @@ namespace BTMS
             int busID = Convert.ToInt32(lvbusroute.SelectedItems[0].Tag);
             busRoute br = new busRoute();
             br.LoadbusRoute(busID);
+
+            busManagement bm = new busManagement();
+            bm.Loadbusmngt(busID);
+            txtSearch.Text = bm.BusNo;
+
+            if (br.From == null)
+            {
+                goto gohere;
+            }
+
             txtFrom.Text = br.From;
             txtDest.Text = br.Dest;
             txtRate.Text = br.Rate.ToString();
             routeID = br.ID;
+
+gohere:
             bID = busID;
             btnUpdate.Text = "&Update";
         }
@@ -140,7 +152,7 @@ namespace BTMS
             b.Updateroute();
 
             MessageBox.Show("Successfully updated.", "Update", MessageBoxButtons.OK);
-            txtBusno.Clear(); txtDest.Clear(); txtFrom.Clear(); txtRate.Clear(); txtBusno.Focus();
+            txtBusno.Clear(); txtDest.Clear(); txtFrom.Clear(); txtRate.Clear(); txtBusno.Focus(); txtSearch.Clear();
             loadbus();
         }
     
@@ -149,7 +161,26 @@ namespace BTMS
         private void frmSettings_Load(object sender, EventArgs e)
         {
             loadbus();
+            busType();
         }
+
+        private void busType()
+        {
+            string mysql = "SELECT * FROM TBLBUSTYPE ORDER BY ID ASC";
+            DataSet ds = Database.LoadSQL(mysql, "TblbusType");
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return;
+            }
+            lvBusType.Items.Clear();
+            foreach (DataRow itm in ds.Tables[0].Rows)
+            {
+                ListViewItem lv = lvBusType.Items.Add(itm["BusType"].ToString());
+                lv.Tag = itm["ID"];
+            }
+
+        }
+
 
         private void btnsearchbus_Click(object sender, EventArgs e)
         {
@@ -175,6 +206,87 @@ namespace BTMS
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAddBusType_Click(object sender, EventArgs e)
+        {
+            if (txtAddBusType.Text == "") { txtAddBusType.Focus(); return; }
+
+            if (btnAddBusType.Text == "&Add")
+            {
+
+                DialogResult result = MessageBox.Show("Do you want to save it?", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+
+                string mySql = "Select * From " + "tblbusType";
+                DataSet ds = Database.LoadSQL(mySql, "tblbusType");
+                DataRow dsNewRow = null;
+                dsNewRow = ds.Tables[0].NewRow();
+                var _with2 = dsNewRow;
+                _with2["BusType"] = txtAddBusType.Text;
+                ds.Tables[0].Rows.Add(dsNewRow);
+                Database.SaveEntry(ds);
+                goto gohere;
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Do you want to update it?", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+
+                string mySql = "Select * From " + "tblbusType" + " where ID ='" + Convert.ToInt32(lvBusType.SelectedItems[0].Tag) + "'";
+                DataSet ds = Database.LoadSQL(mySql, "tblbusType");
+
+                if (ds.Tables[0].Rows.Count == 1)
+                {
+                    var _with2 = ds.Tables["tblbusType"].Rows[0];
+                    _with2["BusType"] = txtAddBusType.Text;
+
+                    Database.SaveEntry(ds, false);
+                }
+                else
+                {
+                    DataRow dsNewRow = null;
+                    dsNewRow = ds.Tables[0].NewRow();
+                    var _with2 = dsNewRow;
+                    _with2["BusType"] = txtAddBusType.Text;
+                    ds.Tables[0].Rows.Add(dsNewRow);
+                    Database.SaveEntry(ds);
+
+                }
+            }
+gohere:
+            if (btnAddBusType.Text == "&Add")
+            {
+                MessageBox.Show("Successfully added.", "add", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("Successfully updated.", "Update", MessageBoxButtons.OK);
+
+            }
+            txtAddBusType.Clear();
+            busType();
+        }
+
+        private void btnCancelAddbusType_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void lvBusType_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvBusType.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            txtAddBusType.Text = lvBusType.SelectedItems[0].Text;
+            btnAddBusType.Text = "&Update";
         }
 
       

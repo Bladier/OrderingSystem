@@ -40,13 +40,14 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.cboStatus = new System.Windows.Forms.ComboBox();
             this.btnsearchCondoctor = new System.Windows.Forms.Button();
             this.txtCondoctor = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtBusNo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.rbUnavailable = new System.Windows.Forms.RadioButton();
+            this.rbAvailable = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // label6
@@ -63,9 +64,6 @@
             // 
             this.cboBusType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBusType.FormattingEnabled = true;
-            this.cboBusType.Items.AddRange(new object[] {
-            "Aircon",
-            "Exclusive"});
             this.cboBusType.Location = new System.Drawing.Point(127, 42);
             this.cboBusType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboBusType.Name = "cboBusType";
@@ -167,19 +165,6 @@
             this.label4.TabIndex = 27;
             this.label4.Text = "Status";
             // 
-            // cboStatus
-            // 
-            this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Items.AddRange(new object[] {
-            "Available",
-            "Unavailable"});
-            this.cboStatus.Location = new System.Drawing.Point(128, 273);
-            this.cboStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(356, 23);
-            this.cboStatus.TabIndex = 26;
-            // 
             // btnsearchCondoctor
             // 
             this.btnsearchCondoctor.Location = new System.Drawing.Point(417, 232);
@@ -234,12 +219,37 @@
             this.button1.TabIndex = 33;
             this.button1.Text = "+";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // rbUnavailable
+            // 
+            this.rbUnavailable.AutoSize = true;
+            this.rbUnavailable.Location = new System.Drawing.Point(202, 276);
+            this.rbUnavailable.Name = "rbUnavailable";
+            this.rbUnavailable.Size = new System.Drawing.Size(90, 19);
+            this.rbUnavailable.TabIndex = 35;
+            this.rbUnavailable.Text = "UnAvailable";
+            this.rbUnavailable.UseVisualStyleBackColor = true;
+            // 
+            // rbAvailable
+            // 
+            this.rbAvailable.AutoSize = true;
+            this.rbAvailable.Checked = true;
+            this.rbAvailable.Location = new System.Drawing.Point(126, 277);
+            this.rbAvailable.Name = "rbAvailable";
+            this.rbAvailable.Size = new System.Drawing.Size(74, 19);
+            this.rbAvailable.TabIndex = 34;
+            this.rbAvailable.TabStop = true;
+            this.rbAvailable.Text = "Available";
+            this.rbAvailable.UseVisualStyleBackColor = true;
             // 
             // frmBusManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(497, 356);
+            this.Controls.Add(this.rbUnavailable);
+            this.Controls.Add(this.rbAvailable);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtBusNo);
             this.Controls.Add(this.label7);
@@ -247,7 +257,6 @@
             this.Controls.Add(this.txtCondoctor);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.cboStatus);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -262,6 +271,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmBusManagement";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bus Management";
             this.Load += new System.EventHandler(this.frmBusManagement_Load);
             this.ResumeLayout(false);
@@ -283,12 +293,13 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cboStatus;
         private System.Windows.Forms.Button btnsearchCondoctor;
         private System.Windows.Forms.TextBox txtCondoctor;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtBusNo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RadioButton rbUnavailable;
+        private System.Windows.Forms.RadioButton rbAvailable;
     }
 }

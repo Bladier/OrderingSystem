@@ -15,6 +15,7 @@ namespace BTMS
     {
         int pID;
         public bool isRenew;
+
         public Form1()
         {
             InitializeComponent();
@@ -98,6 +99,7 @@ namespace BTMS
                 return;
             }
 
+     
             if (txtCardNum.Text == "") { txtCardNum.Focus(); return; }
             if (txtCardNum.Text.Length != 10) { MessageBox.Show("Invalid card number.", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error); return; }
 
@@ -107,7 +109,7 @@ namespace BTMS
                  MessageBox.Show("Card Number Already Exists.", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error); return; 
             }
 
-            if (!savepass.isPassengerExists(txtFname.Text,txtMname.Text,txtLname.Text))
+            if (!savepass.isPassengerExists(txtFname.Text,txtMname.Text,txtLname.Text,txtBday.Value))
             {
                 MessageBox.Show("Passenger already exists. Try to search in the list.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; 
             }
@@ -281,6 +283,27 @@ namespace BTMS
           
             txtCardExpiration.Text =  mod_system.CurrentDate.AddDays(180).ToShortDateString();
             txtContactNum.Clear();
+            cboStreet.Items.AddRange(GetDistinct("Street"));
+            cboBrgy.Items.AddRange(GetDistinct("Brgy"));
+            cboCity.Items.AddRange(GetDistinct("City"));
+            cboProvince.Items.AddRange(GetDistinct("Province"));
+
+        }
+        
+        private string[] GetDistinct(string col)
+        {
+            string mySql = "SELECT DISTINCT " + col + " FROM tblPassenger WHERE " + col + " <> ''";
+            DataSet ds = Database.LoadSQL(mySql);
+
+            int MaxCount = ds.Tables[0].Rows.Count;
+            string[] str = new string[MaxCount];
+            for (int cnt = 0; cnt <= MaxCount - 1; cnt++)
+            {
+                string tmpStr = ds.Tables[0].Rows[cnt][col].ToString();
+                str[cnt] = tmpStr;
+            }
+
+            return str;
         }
 
         private void txtCardNum_KeyPress(object sender, KeyPressEventArgs e)
@@ -380,6 +403,17 @@ goHere:
         private void txtLname_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtBday_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        internal void ComputeBirthday()
+        {
+
+            
         }
 
         }

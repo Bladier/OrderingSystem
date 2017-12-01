@@ -156,7 +156,7 @@ namespace BTMS
                 frm.Show();
                 frm.addPass(ps);
             }
-         //   this.Close();
+          this.Close();
         }
 
         private void btnSearch_Click_1(object sender, EventArgs e)

@@ -54,6 +54,17 @@ namespace BTMS
             txtPassword.Clear();
             txtusername.Clear();
             i = 0;
+            if (Application.OpenForms["Form1"] != null)
+            {
+               
+            }
+            else
+            {
+
+                frmMain frm2 = new frmMain();
+                frm2.CheckDateStatus();
+            }
+
             this.Hide();
             return;
         }

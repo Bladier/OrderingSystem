@@ -331,7 +331,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 345);
+            this.ClientSize = new System.Drawing.Size(718, 339);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.groupBox3);

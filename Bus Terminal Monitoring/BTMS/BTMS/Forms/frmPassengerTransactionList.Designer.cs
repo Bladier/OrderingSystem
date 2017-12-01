@@ -164,6 +164,7 @@
             this.Controls.Add(this.btnVoid);
             this.Controls.Add(this.lvpasslist);
             this.Name = "frmPassengerTransactionList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Passenger Transaction List";
             this.Load += new System.EventHandler(this.frmPassengerTransactionList_Load);
             this.ResumeLayout(false);

@@ -7,3 +7,34 @@ E:\github\Bus Terminal Monitoring\BTMS\BTMS\bin\Debug\BTMS.pdb
 E:\github\Bus Terminal Monitoring\BTMS\BTMS\bin\Debug\DeathCodez.dll
 E:\github\Bus Terminal Monitoring\BTMS\BTMS\obj\x86\Debug\BTMS.exe
 E:\github\Bus Terminal Monitoring\BTMS\BTMS\obj\x86\Debug\BTMS.pdb
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\bin\Debug\Report\rptPassengerCount.rdlc
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\bin\Debug\Report\rptSales.rdlc
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\bin\Debug\BTMS.exe
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\bin\Debug\BTMS.pdb
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\bin\Debug\DeathCodez.dll
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.csprojResolveAssemblyReference.cache
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmBusListTransaction.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmConfirmation.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmLoading.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmPassengerTransactionList.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmSetBus.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmLogin.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.Form1.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmBusList.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmBusManagement.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmMain.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmMain2.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmPassengerList.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmPersonnelList.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmPersonnelRegistration.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmSetDate.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmSettings.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmTransaction.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.Properties.Resources.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmQeuryDate.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.frmReport.resources
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.csproj.GenerateResource.Cache
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\RdlCompile.cache
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\RdlCompile.compiled
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.exe
+C:\Users\blade\Desktop\update BTMS\BTMS\BTMS\obj\x86\Debug\BTMS.pdb

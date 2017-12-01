@@ -40,7 +40,14 @@ namespace BTMS
             set { _Credit = value; }
         }
 
+        private bool _hasCr;
+        public bool hasCr
+        {
+            get { return _hasCr; }
+            set { _hasCr = value; }
+        }
 
+      
         #endregion
 
         #region "Functions"
@@ -51,11 +58,12 @@ namespace BTMS
 
             if (ds.Tables[0].Rows.Count != 1)
             {
-                MessageBox.Show("Unable load credits", "Error",
-    MessageBoxButtons.OK, MessageBoxIcon.Error);
+           Console.WriteLine("Unable load credits", "Error");
+   
+                _hasCr = false;
                 return;
             }
-
+            _hasCr = true;
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 LoadByRow(dr);
@@ -125,6 +133,30 @@ namespace BTMS
                 _with2["Credit"] = tmpCredit;
                 Database.SaveEntry(ds, false);
             }
+            else
+            {
+                DataRow dsNewRow = null;
+                dsNewRow = ds.Tables[0].NewRow();
+                var _with2 = dsNewRow;
+                _with2["PassID"] = _PID;
+                _with2["Credit"] = FareRefund;
+                ds.Tables[0].Rows.Add(dsNewRow);
+                Database.SaveEntry(ds);
+            }
+           }
+
+          
+
+           public bool LoginUser(int paID)
+           {
+               string mySql = string.Format("SELECT * FROM {0} WHERE PassID = {1}", MainTable, paID);
+               DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+               if (ds.Tables[0].Rows.Count == 1)
+               {
+                   return true;
+               }
+               return false;
            }
         #endregion
         

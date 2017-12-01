@@ -19,6 +19,11 @@ namespace BTMS
         private busManagement tmpBus;
         private busTransaction tmpBusTrans;
 
+        private bool isCardExpire = false;
+
+        private bool CardNotFound = false;
+
+        private bool hasCreditBal = false;
         int counter = 0;
         public frmTransaction()
         {
@@ -154,11 +159,15 @@ namespace BTMS
 
         private void SaveTransaction()
         {
+            if (isCardExpire) { isCardExpire = false; return; }
+            if (CardNotFound) { CardNotFound = false; return; }
+            if (!hasCreditBal) { hasCreditBal = true; return; }
             if (txtPlateNum.Text == "") { txtPlateNum.Focus(); return; }
             if (txtCardNum.Text == "") { txtCardNum.Focus(); return; }
             if (txtCardNum.Text.Length != 10)
             {
-                label15.Text = "Invalid Card Number. Error";
+                label14.Text = "Invalid Card Number. Error";
+               // label14.ForeColor = Color.Red;
                 return;
             }
 
@@ -168,6 +177,7 @@ namespace BTMS
             if (trans.IsTag(tmpPassenger.ID))
             {
                 label14.Text = "You Are already Tag in this bus!";
+             //   label14.ForeColor = Color.Red;
                 clearfield();
                 return;
             }
@@ -190,9 +200,8 @@ namespace BTMS
             bt.ID = tmpBusTrans.ID;
             bt.DeductSeat(1);
 
-            label14.Visible = true;
             label14.Text= "You are successfully tag in this bus";
-
+      
             clearfield();
         }
 
@@ -204,6 +213,8 @@ namespace BTMS
             if (ds.Tables[0].Rows.Count == 0)
             {
                 label14.Text = "This card number is not registered!";
+                CardNotFound = true;
+               // label14.ForeColor = Color.Red;
                 //txtCardNum.Clear();
                 //txtPassenger.Clear();
                 //txtContactnum.Clear();
@@ -215,9 +226,25 @@ namespace BTMS
             ps.Loadpass(Convert.ToInt32(ds.Tables[0].Rows[0]["PassID"]));
             addbus(ps);
 
+            if (Convert.ToDateTime(ps.CardExp.ToShortDateString()) < Convert.ToDateTime(mod_system.CurrentDate.ToLongDateString()))
+            {
+                label14.Text = "YOur Card was EXPIRED. Please be Advice to RENEW.";
+                isCardExpire = true;
+                label14.ForeColor = Color.Red;
+                return;
+            }
+
             Credit cd = new Credit();
             cd.LoadCredit(ps.ID);
+            if (!cd.hasCr)
+            {
+                //label14.ForeColor = Color.Red;
+                label14.Text = "You don't have credits Please load your account.";
+                hasCreditBal = false;
+                return;
+            }
 
+            //lblAmountDue
             if (txtRate.Text == "") { return; }
             if (tmpPassenger.PassType == "Senior")
             {
@@ -240,12 +267,19 @@ namespace BTMS
             {
                 lblAmountDue.Text = txtRate.Text;
             }
+
+            if (cd.passMoney < Convert.ToDouble(lblAmountDue.Text))
+            {
+               // label14.ForeColor = Color.Red;
+                hasCreditBal = false;
+                label14.Text = "You don't have enough money in your account.";
+            }
         }
 
         private void txtCardNum_Leave(object sender, EventArgs e)
         {
             if (txtCardNum.Text == "") { return; }
-            if (txtCardNum.Text.Length != 10) { return; }
+            if (txtCardNum.Text.Length != 10) { label14.Text = "Invalid Card Number. Error"; return; }
             searchCardNum();
             System.Threading.Thread.Sleep(1000);
             SaveTransaction();
@@ -265,7 +299,7 @@ namespace BTMS
 
         private void txtCardNum_TextChanged(object sender, EventArgs e)
         {
-            if (txtCardNum.Text == "") {return; }
+            if (txtCardNum.Text == "") { return; }
             if (txtCardNum.Text.Length != 10) { return; }
             searchCardNum();
             System.Threading.Thread.Sleep(1000);

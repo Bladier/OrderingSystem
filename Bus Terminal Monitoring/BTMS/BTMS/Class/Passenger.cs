@@ -224,7 +224,7 @@ namespace BTMS
                 _with2["phone"] = _ContactNum;
                 _with2["passType"] = _PassType;
                 _with2["Street"] = _Street;
-                _with2["Brgy"] = _BDay;
+                _with2["Brgy"] = _Brgy;
                 _with2["City"] = _City;
                 _with2["province"] = _Province;
                 _with2["IDType"] = _IdType;
@@ -287,14 +287,17 @@ namespace BTMS
             return true;
         }
 
-        public bool isPassengerExists(string f,string m,string l)
+        public bool isPassengerExists(string f,string m,string l,DateTime b)
         {
+           
+            string tmpcur = b.ToString("yyyy-MM-dd");
             string mySql = "SELECT * from tblPassenger where fname = '" + f + "'";
             if (m != "")
             {
                 mySql += " and mname ='" + m + "'";
             }
-            mySql += " and lname ='" + l + "'";
+            mySql += " and lname ='" + l + "' and bday ='" + tmpcur + "'";
+
 
             DataSet ds = null;
 

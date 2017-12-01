@@ -33,6 +33,13 @@ namespace BTMS
                 {
                     if (Convert.ToDouble(credits) < 0) { return; }
                 }
+
+                double tmpcredit = Convert.ToDouble(credits);
+                if (tmpcredit < 200)
+                {
+                    MessageBox.Show("The MINIMUM load is 200.?", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return;
+                }
             }
             
             DialogResult result = MessageBox.Show("Are you sure about this?", "Confirmation", MessageBoxButtons.YesNo);
@@ -70,11 +77,19 @@ namespace BTMS
             passenger p = new passenger();
             p.LoadpassbyCard(txtCardNum.Text);
             txtname.Text = p.Fname + " " + p.Lname;
+            passID = p.ID;
 
             Credit c = new Credit();
+
+            if (!c.LoginUser(p.ID))
+            {
+                txtCredit.Text = "0";
+                return;
+            }
+
             c.LoadCredit(p.ID);
             txtCredit.Text = c.passMoney.ToString();
-            passID = p.ID;
+           
         }
 
         private void txtCardNum_KeyPress(object sender, KeyPressEventArgs e)

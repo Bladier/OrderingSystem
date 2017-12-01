@@ -102,6 +102,7 @@ namespace BTMS
                 frm.Show();
                 frm.addbus(bm);
             }
+            this.Close();
         }
 
         private void btnadd_Click(object sender, EventArgs e)

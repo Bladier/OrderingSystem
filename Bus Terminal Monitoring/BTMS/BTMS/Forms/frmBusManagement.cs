@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace BTMS
 {
@@ -14,6 +15,7 @@ namespace BTMS
         int driverID;
         int condoctorID;
         int busmgtID;
+        string BusType;
         public static string drivers = "";
         public static bool isDriver;
         public static bool isCondoctor;
@@ -25,7 +27,23 @@ namespace BTMS
 
         private void frmBusManagement_Load(object sender, EventArgs e)
         {
+            cboBusType.Items.AddRange(GetDistinct("BusType"));
+        }
 
+        private string[] GetDistinct(string col)
+        {
+            string mySql = "SELECT DISTINCT " + col + " FROM tblbusType WHERE " + col + " <> ''";
+            DataSet ds = Database.LoadSQL(mySql);
+
+            int MaxCount = ds.Tables[0].Rows.Count;
+            string[] str = new string[MaxCount];
+            for (int cnt = 0; cnt <= MaxCount - 1; cnt++)
+            {
+                string tmpStr = ds.Tables[0].Rows[cnt]["BusType"].ToString();
+                str[cnt]= tmpStr;
+            }
+
+            return str;
         }
 
         internal void Disbled(bool st = false)
@@ -36,7 +54,8 @@ namespace BTMS
             cboBusType.Enabled = st;
             txtCondoctor.Enabled = st;
             txtBusNo.Enabled = st;
-            cboStatus.Enabled = st;
+            rbAvailable.Enabled = st;
+            rbUnavailable.Enabled = st;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -70,7 +89,6 @@ namespace BTMS
                 return;
             }
             if (txtPlateNumber.Text == "") { txtPlateNumber.Focus(); return; }
-            if (cboStatus.Text == "") { cboStatus.Focus(); return; }
             if (txtDriver.Text == "") { txtDriver.Focus(); return; }
             if (txtCondoctor.Text == "") { txtCondoctor.Focus(); return; }
             if (txtBusNo.Text == "") { txtBusNo.Focus(); return; }
@@ -94,8 +112,16 @@ namespace BTMS
             bm.BusType = cboBusType.Text;
             bm.NumSeat = txtNumSeats.Text;
             bm.PlateNumber = txtPlateNumber.Text;
+            if (rbAvailable.Checked)
+            {
+                bm.Status = "Available";
+            }
 
-            bm.Status = cboStatus.Text;
+            if (rbUnavailable.Checked)
+            {
+                bm.Status = "UnAvailable";
+            }
+      
             bm.Driver = driverID;
             bm.Condoctor = condoctorID;
             bm.BusNo = txtBusNo.Text;
@@ -119,7 +145,6 @@ namespace BTMS
             }
             if (txtPlateNumber.Text == "") { txtPlateNumber.Focus(); return; }
             if (txtDriver.Text == "") { txtDriver.Focus(); return; }
-            if (cboStatus.Text == "") { cboStatus.Focus(); return; }
             if (txtCondoctor.Text == "") { txtCondoctor.Focus(); return; }
             if (txtBusNo.Text == "") { txtBusNo.Focus(); return; }
             
@@ -135,7 +160,15 @@ namespace BTMS
             bm.BusType = cboBusType.Text;
             bm.NumSeat = txtNumSeats.Text;
             bm.PlateNumber = txtPlateNumber.Text;
-            bm.Status = cboStatus.Text;
+            if (rbAvailable.Checked)
+            {
+                bm.Status = "Available";
+            }
+
+            if (rbUnavailable.Checked)
+            {
+                bm.Status = "UnAvailable";
+            }
             bm.Driver = driverID;
             bm.Condoctor = condoctorID;
             bm.BusNo = txtBusNo.Text;
@@ -163,7 +196,14 @@ namespace BTMS
             cboBusType.Text = bm.BusType;
             txtNumSeats.Text = bm.NumSeat;
             txtPlateNumber.Text = bm.PlateNumber;
-            cboStatus.Text = bm.Status;
+            if (bm.Status == "Available")
+            {
+                rbAvailable.Checked = true;
+            }
+            if (bm.Status == "UnAvailable")
+            {
+                rbUnavailable.Checked= true;
+            }
 
             buspersonnel bpDriver = new buspersonnel();
             bpDriver.Loadpersonnel(bm.Driver);
@@ -242,6 +282,38 @@ namespace BTMS
                 frmPersonnelList frm = new frmPersonnelList();
                 frm.Show();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            BusType = Interaction.InputBox("Enter Bus Type", "Bus Type", "");
+
+            string mySql = "Select * From " + "tblbusType" + " where BusType ='" + BusType + "'";
+            DataSet ds = Database.LoadSQL(mySql, "tblbusType");
+
+            if (ds.Tables[0].Rows.Count == 1)
+            {
+                MessageBox.Show("Bus Type Already Exists.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+
+            if (BusType == "")
+            { return; }
+
+            DialogResult result = MessageBox.Show("Do you want to save it?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            DataRow dsNewRow = null;
+            dsNewRow = ds.Tables[0].NewRow();
+            var _with2 = dsNewRow;
+            _with2["BusType"] = BusType;
+            ds.Tables[0].Rows.Add(dsNewRow);
+            Database.SaveEntry(ds);
+            cboBusType.Items.Add(BusType);
+            cboBusType.Text = BusType;
         }
     }
 
