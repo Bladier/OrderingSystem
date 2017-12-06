@@ -97,8 +97,8 @@ namespace BTMS
             string tmpdate = "";
             tmpdate = mod_system.CurrentDate.ToString("yyyy-MM-dd");
 
-            string mysql = "select * from tbltransaction where busID = '" + tmpBus.ID + "' and status ='T' and transDate ='" + tmpdate + "'";
-            DataSet ds = Database.LoadSQL(mysql, "tbltransaction");
+            string mysql = "select * from tblbusTransaction where busID = '" + tmpBus.ID + "' and status ='T' and transDate ='" + tmpdate + "'";
+            DataSet ds = Database.LoadSQL(mysql, "tblbusTransaction");
             if (ds.Tables[0].Rows.Count==0)
             {
                 isTraveling = false;
