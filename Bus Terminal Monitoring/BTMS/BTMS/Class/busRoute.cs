@@ -64,8 +64,8 @@ namespace BTMS
 
             if (ds.Tables[0].Rows.Count != 1)
             {
-                MessageBox.Show("Unable load bus route", "Error",
-    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Unable load bus route", "Notification",
+    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 

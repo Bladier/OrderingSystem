@@ -139,7 +139,7 @@ namespace BTMS
 
         public void ConfirmBusTravel()
         {
-            string mySql = "Select * From " + MainTable + " where ID = " + _ID + " and status ='W'";
+            string mySql = "Select * From " + MainTable + " where ID = " + _ID + "";
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
             var _with2 = ds.Tables[MainTable].Rows[0];
@@ -172,6 +172,8 @@ namespace BTMS
 
              Database.SaveEntry(ds, false);
         }
+
+
         #endregion
     }
 }

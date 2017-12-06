@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbinActive = new System.Windows.Forms.RadioButton();
+            this.rbactive = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtBday = new System.Windows.Forms.DateTimePicker();
@@ -42,8 +44,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.rbactive = new System.Windows.Forms.RadioButton();
-            this.rbinActive = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,6 +69,29 @@
             this.groupBox1.Size = new System.Drawing.Size(417, 232);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // rbinActive
+            // 
+            this.rbinActive.AutoSize = true;
+            this.rbinActive.Location = new System.Drawing.Point(171, 191);
+            this.rbinActive.Name = "rbinActive";
+            this.rbinActive.Size = new System.Drawing.Size(66, 19);
+            this.rbinActive.TabIndex = 6;
+            this.rbinActive.TabStop = true;
+            this.rbinActive.Text = "Inactive";
+            this.rbinActive.UseVisualStyleBackColor = true;
+            // 
+            // rbactive
+            // 
+            this.rbactive.AutoSize = true;
+            this.rbactive.Checked = true;
+            this.rbactive.Location = new System.Drawing.Point(95, 192);
+            this.rbactive.Name = "rbactive";
+            this.rbactive.Size = new System.Drawing.Size(56, 19);
+            this.rbactive.TabIndex = 5;
+            this.rbactive.TabStop = true;
+            this.rbactive.Text = "Active";
+            this.rbactive.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -202,29 +225,6 @@
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // rbactive
-            // 
-            this.rbactive.AutoSize = true;
-            this.rbactive.Checked = true;
-            this.rbactive.Location = new System.Drawing.Point(95, 192);
-            this.rbactive.Name = "rbactive";
-            this.rbactive.Size = new System.Drawing.Size(56, 19);
-            this.rbactive.TabIndex = 16;
-            this.rbactive.TabStop = true;
-            this.rbactive.Text = "Active";
-            this.rbactive.UseVisualStyleBackColor = true;
-            // 
-            // rbinActive
-            // 
-            this.rbinActive.AutoSize = true;
-            this.rbinActive.Location = new System.Drawing.Point(171, 191);
-            this.rbinActive.Name = "rbinActive";
-            this.rbinActive.Size = new System.Drawing.Size(66, 19);
-            this.rbinActive.TabIndex = 17;
-            this.rbinActive.TabStop = true;
-            this.rbinActive.Text = "Inactive";
-            this.rbinActive.UseVisualStyleBackColor = true;
             // 
             // frmPersonnelRegistration
             // 

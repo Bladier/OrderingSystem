@@ -196,6 +196,18 @@ namespace BTMS
             _with2["IsAssigned"] = 0;
             Database.SaveEntry(ds, false);
         }
+
+        public void loadLastSave()
+        {
+            string mySql = string.Format("SELECT * FROM {0} ORDER BY PERSONID DESC LIMIT 1", MainTable);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                LoadByRow(dr);
+            }
+        }
         #endregion
     } 
     

@@ -11,6 +11,7 @@ namespace BTMS
 {
     public partial class frmBusList : Form
     {
+        bool isAddBus = false;
         public bool isAddBusRoute;
         public frmBusList()
         {
@@ -30,18 +31,19 @@ namespace BTMS
         private void frmBusList_Load(object sender, EventArgs e)
         {
 
-            if (frmMain.isAdmin)
-            {
-                btnSelect.Visible = false;
-            }
-            else
-            {
-                btnSelect.Visible = false;
-            }
+            //if (frmMain.isAdmin)
+            //{
+            //    btnSelect.Visible = false;
+            //}
+            //else
+            //{
+            //    btnSelect.Visible = true;
+            //}
 
             if (isAddBusRoute)
             {
                 txtsearch.Text = frmSettings.BusNo;
+                btnSelect.Visible = true;
             }
             else
             {
@@ -76,7 +78,8 @@ namespace BTMS
 
         private void Addbuses(busManagement bm)
         {
-            ListViewItem lv = lvbusList.Items.Add(bm.BusType);
+            ListViewItem lv = lvbusList.Items.Add(bm.BusNo);
+            lv.SubItems.Add(bm.BusType);
             lv.SubItems.Add(bm.NumSeat);
             lv.SubItems.Add(bm.PlateNumber);
             lv.SubItems.Add(bm.Status);

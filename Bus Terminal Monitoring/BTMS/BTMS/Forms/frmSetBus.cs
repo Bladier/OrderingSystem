@@ -11,6 +11,7 @@ namespace BTMS
 {
     public partial class frmSetBus : Form
     {
+        bool isTraveling = false;
         public static string BusNo = "";
         private busManagement tmpBus;
         public frmSetBus()
@@ -38,6 +39,7 @@ namespace BTMS
            txtBusNo.Text = bm.BusNo;
            txtAvailableSeat.Text = bm.NumSeat;
             tmpBus = bm;
+            IsTravel();
         }
 
         private void btnSet_Click(object sender, EventArgs e)
@@ -55,7 +57,14 @@ namespace BTMS
                 busManagement bm = new busManagement();
                 bm.Loadbusmngt(tmpBus.ID);
 
-                MessageBox.Show("Can't set multiple bus, Because Bus # " + bm.BusNo + " was setted first.","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Can't set multiple bus, this bus is already waiting","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (IsTravel())
+            {
+
+                MessageBox.Show("This bus is now traveling, you can't set it now wait until it's arrived", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -64,7 +73,7 @@ namespace BTMS
             {
                 return;
             }
-
+            
           
             bustrans.Bus = tmpBus;
             bustrans.AvailableSeat =Convert.ToInt32(txtAvailableSeat.Text);
@@ -80,7 +89,24 @@ namespace BTMS
 
         private void frmSetBus_Load(object sender, EventArgs e)
         {
+            //IsTravel();
+        }
 
+        public bool IsTravel()
+        {
+            string tmpdate = "";
+            tmpdate = mod_system.CurrentDate.ToString("yyyy-MM-dd");
+
+            string mysql = "select * from tbltransaction where busID = '" + tmpBus.ID + "' and status ='T' and transDate ='" + tmpdate + "'";
+            DataSet ds = Database.LoadSQL(mysql, "tbltransaction");
+            if (ds.Tables[0].Rows.Count==0)
+            {
+                isTraveling = false;
+                return false;
+               
+            }
+            isTraveling = true;
+            return true;
         }
     }
 }

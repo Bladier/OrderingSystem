@@ -33,12 +33,14 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.transactionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.setBusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.busListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.busConfirmationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.passengerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -70,21 +72,11 @@
             // transactionToolStripMenuItem
             // 
             this.transactionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.transactionToolStripMenuItem1,
             this.setBusToolStripMenuItem,
-            this.busListToolStripMenuItem,
-            this.busConfirmationToolStripMenuItem,
-            this.passengerToolStripMenuItem});
+            this.busConfirmationToolStripMenuItem});
             this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
-            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.transactionToolStripMenuItem.Text = "&Module";
-            // 
-            // transactionToolStripMenuItem1
-            // 
-            this.transactionToolStripMenuItem1.Name = "transactionToolStripMenuItem1";
-            this.transactionToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
-            this.transactionToolStripMenuItem1.Text = "&Transaction";
-            this.transactionToolStripMenuItem1.Click += new System.EventHandler(this.transactionToolStripMenuItem1_Click);
+            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.transactionToolStripMenuItem.Text = "&Tools";
             // 
             // setBusToolStripMenuItem
             // 
@@ -93,13 +85,6 @@
             this.setBusToolStripMenuItem.Text = "&Set Bus";
             this.setBusToolStripMenuItem.Click += new System.EventHandler(this.setBusToolStripMenuItem_Click);
             // 
-            // busListToolStripMenuItem
-            // 
-            this.busListToolStripMenuItem.Name = "busListToolStripMenuItem";
-            this.busListToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.busListToolStripMenuItem.Text = "&Bus List";
-            this.busListToolStripMenuItem.Click += new System.EventHandler(this.busListToolStripMenuItem_Click);
-            // 
             // busConfirmationToolStripMenuItem
             // 
             this.busConfirmationToolStripMenuItem.Name = "busConfirmationToolStripMenuItem";
@@ -107,12 +92,48 @@
             this.busConfirmationToolStripMenuItem.Text = "&B&us Confirmation";
             this.busConfirmationToolStripMenuItem.Click += new System.EventHandler(this.busConfirmationToolStripMenuItem_Click);
             // 
-            // passengerToolStripMenuItem
+            // toolStrip1
             // 
-            this.passengerToolStripMenuItem.Name = "passengerToolStripMenuItem";
-            this.passengerToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.passengerToolStripMenuItem.Text = "&Passenger";
-            this.passengerToolStripMenuItem.Click += new System.EventHandler(this.passengerToolStripMenuItem_Click);
+            this.toolStrip1.GripMargin = new System.Windows.Forms.Padding(3);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(16, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButton2,
+            this.toolStripButton3});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(1);
+            this.toolStrip1.Size = new System.Drawing.Size(625, 29);
+            this.toolStrip1.Stretch = true;
+            this.toolStrip1.TabIndex = 3;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(89, 24);
+            this.toolStripButton1.Text = "Transaction";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(132, 24);
+            this.toolStripButton2.Text = "Bus Transaction List";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(80, 24);
+            this.toolStripButton3.Text = "Passenger";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // frmMain2
             // 
@@ -121,6 +142,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(625, 374);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
@@ -131,6 +153,8 @@
             this.Load += new System.EventHandler(this.frmMain2_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,10 +166,11 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem setBusToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem busListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem busConfirmationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem passengerToolStripMenuItem;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
     }
 }

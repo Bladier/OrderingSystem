@@ -27,11 +27,7 @@ namespace BTMS
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Do you want to Close?", "Confirmation", MessageBoxButtons.YesNo);
-            if (result == DialogResult.No)
-            {
-                return;
-            }
+          
             this.Close();
         }
 
@@ -86,12 +82,34 @@ namespace BTMS
             bp.BDay =Convert.ToDateTime(txtBday.Text);
             bp.Position = cboPosition.Text;
 
-
-
+            if (rbactive.Checked)
+            {
+                bp.Status = true;
+            }
+            else
+            {
+                bp.Status = false;
+            }
             bp.Savepersonnel();
 
             MessageBox.Show("Successfully saved.", "Confirmation", MessageBoxButtons.OK);
             clearfield();
+
+            if (mod_system.isAddBus)
+            {
+                bp.loadLastSave();
+                if (Application.OpenForms["frmBusManagement"] != null)
+                {
+                    (Application.OpenForms["frmBusManagement"] as frmBusManagement).addDriver(bp);
+                }
+                else
+                {
+                    frmBusManagement frm = new frmBusManagement();
+                    frm.Show();
+                    frm.addDriver(bp);
+                }
+                this.Close();
+            }
         }
 
         private void UPdatepersonnel()
@@ -145,6 +163,7 @@ namespace BTMS
             txtLname.Clear();
             txtBday.Text = mod_system.CurrentDate.ToShortDateString();
             cboPosition.Text = "";
+            cboPosition.SelectedItem = null;
             personnelID = 0;
         }
 

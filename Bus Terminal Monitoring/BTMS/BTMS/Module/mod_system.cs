@@ -21,6 +21,8 @@ namespace BTMS
 	public static bool PROTOTYPE = false;
 	public static bool ADS_ESKIE = false;
 
+    public static bool isAddBus = false;
+
 	public static bool ADS_SHOW = false;
     public static System.DateTime CurrentDate = DateAndTime.Now;
 
@@ -176,7 +178,18 @@ namespace BTMS
            return age;
        }
 
+       static internal bool isSetDate()
+       {
+           string mysql = "SELECT * FROM TBLDAILY WHERE STATUS = '1'";
+           DataSet ds = Database.LoadSQL(mysql, "TBLDAILY");
 
+           if (ds.Tables[0].Rows.Count > 0)
+           {
+               return true;
+           }
+
+           return false;
+       }
       #endregion
   }
 }

@@ -76,14 +76,14 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // dateSetToolStripMenuItem
             // 
             this.dateSetToolStripMenuItem.Name = "dateSetToolStripMenuItem";
-            this.dateSetToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.dateSetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.dateSetToolStripMenuItem.Text = "&Date setting";
             this.dateSetToolStripMenuItem.Click += new System.EventHandler(this.dateSetToolStripMenuItem_Click);
             // 

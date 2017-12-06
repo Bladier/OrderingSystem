@@ -188,6 +188,8 @@ namespace BTMS
             txtCondoctor.Clear();
             condoctorID = 0;
             txtBusNo.Clear();
+            cboBusType.SelectedItem = null;
+            mod_system.isAddBus = false;
         }
 
         internal void addbus(busManagement bm)
@@ -225,6 +227,7 @@ namespace BTMS
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            mod_system.isAddBus = true;
             if (Application.OpenForms["frmPersonnelList"] != null)
             {
                 // (Application.OpenForms["frmPersonnelList"] as frmPersonnelList;
@@ -235,6 +238,7 @@ namespace BTMS
                 isCondoctor = false;
                 drivers = txtDriver.Text;
                 frmPersonnelList frm = new frmPersonnelList();
+                frm.isInspector = true;
                 frm.Show();
             }
         }
@@ -280,6 +284,7 @@ namespace BTMS
                 isDriver = false;
                 drivers = txtCondoctor.Text;
                 frmPersonnelList frm = new frmPersonnelList();
+                frm.isInspector = true;
                 frm.Show();
             }
         }

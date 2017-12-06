@@ -51,10 +51,13 @@ namespace BTMS
                 busRoute br = new busRoute();
                 br.LoadbusRoute(Convert.ToInt32(itm["busID"]));
 
+                lv.Tag = itm["BusID"];
+
+                if (br.From == null) { return; }
                 lv.SubItems.Add(br.From.ToString());
                 lv.SubItems.Add(br.Dest.ToString());
                 lv.SubItems.Add(br.Rate.ToString());
-                lv.Tag = itm["BusID"];
+           
             }
         }
 
@@ -72,6 +75,10 @@ namespace BTMS
             }
             if (btnUpdate.Text == "&Update")
             {
+                if (txtRate.Text == "") { txtRate.Focus(); return; }
+                if (txtFrom.Text == "") { txtFrom.Focus(); return; }
+                if (txtDest.Text == "") { txtDest.Focus(); return; }
+
                 updaterate();
             }
             btnUpdate.Text = "&Add";
@@ -134,9 +141,7 @@ gohere:
 
         private void updaterate()
         {
-            if (txtRate.Text == "") { txtRate.Focus(); return; }
-            if (txtFrom.Text == "") { txtFrom.Focus(); return; }
-            if (txtDest.Text == "") { txtDest.Focus(); return; }
+           
 
             DialogResult result = MessageBox.Show("Do you want to Update?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)

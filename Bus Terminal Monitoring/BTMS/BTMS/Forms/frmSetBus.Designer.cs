@@ -50,6 +50,7 @@
             // 
             this.txtBusNo.Location = new System.Drawing.Point(60, 24);
             this.txtBusNo.Name = "txtBusNo";
+            this.txtBusNo.ReadOnly = true;
             this.txtBusNo.Size = new System.Drawing.Size(174, 20);
             this.txtBusNo.TabIndex = 1;
             // 
@@ -77,6 +78,7 @@
             // 
             this.txtAvailableSeat.Location = new System.Drawing.Point(96, 56);
             this.txtAvailableSeat.Name = "txtAvailableSeat";
+            this.txtAvailableSeat.ReadOnly = true;
             this.txtAvailableSeat.Size = new System.Drawing.Size(176, 20);
             this.txtAvailableSeat.TabIndex = 3;
             // 

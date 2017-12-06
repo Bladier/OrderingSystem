@@ -248,6 +248,11 @@ namespace BTMS
             txtIDNum.Text = "";
             txtIDType.Text = "";
             cboPassTyp.Focus();
+            cboBrgy.SelectedItem = null;
+            cboCity.SelectedItem = null;
+            cboPassTyp.SelectedItem = null;
+            cboStreet.SelectedItem = null;
+            cboProvince.SelectedItem = null;
 
             label15.Visible = false;
             txtCardExpiration.Text = DateTime.Now.ToShortDateString();

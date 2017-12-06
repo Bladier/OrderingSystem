@@ -68,7 +68,7 @@
             this.cboBusType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboBusType.Name = "cboBusType";
             this.cboBusType.Size = new System.Drawing.Size(312, 23);
-            this.cboBusType.TabIndex = 14;
+            this.cboBusType.TabIndex = 0;
             // 
             // txtNumSeats
             // 
@@ -76,7 +76,7 @@
             this.txtNumSeats.Margin = new System.Windows.Forms.Padding(6);
             this.txtNumSeats.Name = "txtNumSeats";
             this.txtNumSeats.Size = new System.Drawing.Size(356, 21);
-            this.txtNumSeats.TabIndex = 16;
+            this.txtNumSeats.TabIndex = 2;
             this.txtNumSeats.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumSeats_KeyPress);
             // 
             // label3
@@ -95,7 +95,7 @@
             this.txtPlateNumber.Margin = new System.Windows.Forms.Padding(6);
             this.txtPlateNumber.Name = "txtPlateNumber";
             this.txtPlateNumber.Size = new System.Drawing.Size(356, 21);
-            this.txtPlateNumber.TabIndex = 18;
+            this.txtPlateNumber.TabIndex = 3;
             // 
             // label1
             // 
@@ -113,7 +113,7 @@
             this.txtDriver.Margin = new System.Windows.Forms.Padding(6);
             this.txtDriver.Name = "txtDriver";
             this.txtDriver.Size = new System.Drawing.Size(281, 21);
-            this.txtDriver.TabIndex = 20;
+            this.txtDriver.TabIndex = 4;
             this.txtDriver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDriver_KeyPress);
             // 
             // label2
@@ -131,7 +131,7 @@
             this.btnSave.Location = new System.Drawing.Point(343, 314);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(66, 31);
-            this.btnSave.TabIndex = 23;
+            this.btnSave.TabIndex = 10;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -141,7 +141,7 @@
             this.btnCancel.Location = new System.Drawing.Point(417, 314);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(66, 31);
-            this.btnCancel.TabIndex = 24;
+            this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -150,7 +150,7 @@
             this.btnSearch.Location = new System.Drawing.Point(417, 200);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(66, 22);
-            this.btnSearch.TabIndex = 25;
+            this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "&Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -170,7 +170,7 @@
             this.btnsearchCondoctor.Location = new System.Drawing.Point(417, 232);
             this.btnsearchCondoctor.Name = "btnsearchCondoctor";
             this.btnsearchCondoctor.Size = new System.Drawing.Size(66, 22);
-            this.btnsearchCondoctor.TabIndex = 30;
+            this.btnsearchCondoctor.TabIndex = 7;
             this.btnsearchCondoctor.Text = "&Search";
             this.btnsearchCondoctor.UseVisualStyleBackColor = true;
             this.btnsearchCondoctor.Click += new System.EventHandler(this.btnsearchCondoctor_Click);
@@ -181,7 +181,7 @@
             this.txtCondoctor.Margin = new System.Windows.Forms.Padding(6);
             this.txtCondoctor.Name = "txtCondoctor";
             this.txtCondoctor.Size = new System.Drawing.Size(281, 21);
-            this.txtCondoctor.TabIndex = 28;
+            this.txtCondoctor.TabIndex = 6;
             // 
             // label5
             // 
@@ -199,7 +199,7 @@
             this.txtBusNo.Margin = new System.Windows.Forms.Padding(6);
             this.txtBusNo.Name = "txtBusNo";
             this.txtBusNo.Size = new System.Drawing.Size(356, 21);
-            this.txtBusNo.TabIndex = 31;
+            this.txtBusNo.TabIndex = 1;
             // 
             // label7
             // 
@@ -216,7 +216,7 @@
             this.button1.Location = new System.Drawing.Point(446, 42);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(39, 23);
-            this.button1.TabIndex = 33;
+            this.button1.TabIndex = 12;
             this.button1.Text = "+";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -227,7 +227,7 @@
             this.rbUnavailable.Location = new System.Drawing.Point(202, 276);
             this.rbUnavailable.Name = "rbUnavailable";
             this.rbUnavailable.Size = new System.Drawing.Size(90, 19);
-            this.rbUnavailable.TabIndex = 35;
+            this.rbUnavailable.TabIndex = 9;
             this.rbUnavailable.Text = "UnAvailable";
             this.rbUnavailable.UseVisualStyleBackColor = true;
             // 
@@ -238,7 +238,7 @@
             this.rbAvailable.Location = new System.Drawing.Point(126, 277);
             this.rbAvailable.Name = "rbAvailable";
             this.rbAvailable.Size = new System.Drawing.Size(74, 19);
-            this.rbAvailable.TabIndex = 34;
+            this.rbAvailable.TabIndex = 8;
             this.rbAvailable.TabStop = true;
             this.rbAvailable.Text = "Available";
             this.rbAvailable.UseVisualStyleBackColor = true;

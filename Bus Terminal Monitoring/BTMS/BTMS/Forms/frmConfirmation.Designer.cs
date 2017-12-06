@@ -44,11 +44,21 @@
             this.txtBusType = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.rbTraveling = new System.Windows.Forms.RadioButton();
+            this.rbArrived = new System.Windows.Forms.RadioButton();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.rbwaiting = new System.Windows.Forms.RadioButton();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.rbwaiting);
+            this.groupBox2.Controls.Add(this.rbArrived);
+            this.groupBox2.Controls.Add(this.rbTraveling);
+            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtpassenger);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtbusNo);
@@ -63,9 +73,9 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtBusType);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Location = new System.Drawing.Point(14, 46);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(299, 213);
+            this.groupBox2.Size = new System.Drawing.Size(299, 279);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bus Info";
@@ -76,7 +86,7 @@
             this.txtpassenger.Name = "txtpassenger";
             this.txtpassenger.ReadOnly = true;
             this.txtpassenger.Size = new System.Drawing.Size(217, 20);
-            this.txtpassenger.TabIndex = 21;
+            this.txtpassenger.TabIndex = 6;
             // 
             // label1
             // 
@@ -93,7 +103,7 @@
             this.txtbusNo.Name = "txtbusNo";
             this.txtbusNo.ReadOnly = true;
             this.txtbusNo.Size = new System.Drawing.Size(216, 20);
-            this.txtbusNo.TabIndex = 18;
+            this.txtbusNo.TabIndex = 0;
             // 
             // label16
             // 
@@ -110,7 +120,7 @@
             this.txtCondoctor.Name = "txtCondoctor";
             this.txtCondoctor.ReadOnly = true;
             this.txtCondoctor.Size = new System.Drawing.Size(217, 20);
-            this.txtCondoctor.TabIndex = 17;
+            this.txtCondoctor.TabIndex = 3;
             // 
             // label15
             // 
@@ -127,7 +137,7 @@
             this.txtDriver.Name = "txtDriver";
             this.txtDriver.ReadOnly = true;
             this.txtDriver.Size = new System.Drawing.Size(217, 20);
-            this.txtDriver.TabIndex = 15;
+            this.txtDriver.TabIndex = 2;
             // 
             // label12
             // 
@@ -144,7 +154,7 @@
             this.txtTo.Name = "txtTo";
             this.txtTo.ReadOnly = true;
             this.txtTo.Size = new System.Drawing.Size(217, 20);
-            this.txtTo.TabIndex = 11;
+            this.txtTo.TabIndex = 5;
             // 
             // label9
             // 
@@ -161,7 +171,7 @@
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.ReadOnly = true;
             this.txtFrom.Size = new System.Drawing.Size(217, 20);
-            this.txtFrom.TabIndex = 9;
+            this.txtFrom.TabIndex = 4;
             // 
             // label7
             // 
@@ -178,7 +188,7 @@
             this.txtBusType.Name = "txtBusType";
             this.txtBusType.ReadOnly = true;
             this.txtBusType.Size = new System.Drawing.Size(217, 20);
-            this.txtBusType.TabIndex = 7;
+            this.txtBusType.TabIndex = 1;
             // 
             // label6
             // 
@@ -191,7 +201,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(236, 234);
+            this.button1.Location = new System.Drawing.Point(238, 331);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 25);
             this.button1.TabIndex = 3;
@@ -199,11 +209,73 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 216);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(117, 13);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Bus Transaction Status";
+            // 
+            // rbTraveling
+            // 
+            this.rbTraveling.AutoSize = true;
+            this.rbTraveling.Location = new System.Drawing.Point(131, 235);
+            this.rbTraveling.Name = "rbTraveling";
+            this.rbTraveling.Size = new System.Drawing.Size(55, 17);
+            this.rbTraveling.TabIndex = 8;
+            this.rbTraveling.TabStop = true;
+            this.rbTraveling.Text = "Travel";
+            this.rbTraveling.UseVisualStyleBackColor = true;
+            // 
+            // rbArrived
+            // 
+            this.rbArrived.AutoSize = true;
+            this.rbArrived.Location = new System.Drawing.Point(131, 259);
+            this.rbArrived.Name = "rbArrived";
+            this.rbArrived.Size = new System.Drawing.Size(58, 17);
+            this.rbArrived.TabIndex = 9;
+            this.rbArrived.TabStop = true;
+            this.rbArrived.Text = "Arrived";
+            this.rbArrived.UseVisualStyleBackColor = true;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(238, 17);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 1;
+            this.btnSearch.Text = "&Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(22, 18);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(210, 20);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
+            // 
+            // rbwaiting
+            // 
+            this.rbwaiting.AutoSize = true;
+            this.rbwaiting.Location = new System.Drawing.Point(131, 212);
+            this.rbwaiting.Name = "rbwaiting";
+            this.rbwaiting.Size = new System.Drawing.Size(61, 17);
+            this.rbwaiting.TabIndex = 7;
+            this.rbwaiting.TabStop = true;
+            this.rbwaiting.Text = "Waiting";
+            this.rbwaiting.UseVisualStyleBackColor = true;
+            // 
             // frmConfirmation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(325, 271);
+            this.ClientSize = new System.Drawing.Size(325, 368);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -214,6 +286,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -235,5 +308,11 @@
         private System.Windows.Forms.TextBox txtBusType;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RadioButton rbArrived;
+        private System.Windows.Forms.RadioButton rbTraveling;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.RadioButton rbwaiting;
     }
 }

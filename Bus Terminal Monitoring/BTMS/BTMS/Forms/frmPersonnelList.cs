@@ -11,6 +11,7 @@ namespace BTMS
 {
     public partial class frmPersonnelList : Form
     {
+       public bool isInspector = false;
         public frmPersonnelList()
         {
             //txtsearch.Text = driver;
@@ -20,6 +21,10 @@ namespace BTMS
 
         private void frmPersonnelList_Load(object sender, EventArgs e)
         {
+            if (!isInspector)
+            {
+                btnSelect.Visible = false;
+            }
             txtsearch.Text = frmBusManagement.drivers;
             if (txtsearch.Text == "")
             {
@@ -131,6 +136,7 @@ namespace BTMS
             else
             {
                 frmPersonnelRegistration frm = new frmPersonnelRegistration();
+                frm.addPass(bp);
                 frm.Show();
                 frm.addPass(bp);
             }
@@ -140,6 +146,7 @@ namespace BTMS
         {
             frmPersonnelRegistration frm = new frmPersonnelRegistration();
             frm.Show();
+            this.Close();
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -183,7 +190,7 @@ namespace BTMS
 
         private void txtsearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (mod_system.isEnter(e)) ;
+            if (mod_system.isEnter(e)) 
             {
                 btnSearch.PerformClick();
             }
@@ -192,7 +199,14 @@ namespace BTMS
 
         private void lvPassList_DoubleClick(object sender, EventArgs e)
         {
-            btnSelect.PerformClick();
+            if (isInspector)
+            {
+                btnSelect.PerformClick();
+            }
+            else
+            {
+                btnView.PerformClick();
+            }
         }
 
         private void lvPassList_KeyPress(object sender, KeyPressEventArgs e)

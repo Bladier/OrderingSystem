@@ -187,7 +187,7 @@ namespace BTMS
 
         public void IsBusAdded()
         {
-            string mySql = string.Format("SELECT * FROM {0} WHERE busNO = {1}", MainTable, _BusNo);
+            string mySql = string.Format("SELECT * FROM {0} WHERE busNO = '{1}'", MainTable, _BusNo);
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
             if (ds.Tables[0].Rows.Count > 0)

@@ -12,6 +12,7 @@ namespace BTMS
     public partial class frmBusListTransaction : Form
     {
         string busStatus;
+   
         public frmBusListTransaction()
         {
             InitializeComponent();
@@ -113,6 +114,11 @@ namespace BTMS
         private void txtsearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (mod_system.isEnter(e)) { btnSearch.PerformClick(); }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -229,6 +229,8 @@ namespace BTMS
         {
             ReaderCon.Close();
         }
+
+        
        
 	}
 }

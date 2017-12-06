@@ -76,7 +76,7 @@ namespace BTMS
 
         internal void addbus(passenger pas)
         {
-            txtCardNum.Text = pas.RFIDnum.ToString();
+           // txtCardNum.Text = pas.RFIDnum.ToString();
             //txtPassenger.Text = pas.Fname + " " + pas.Lname;
             //txtContactnum.Text = pas.ContactNum.ToString();
             //txtAddress.Text = pas.FullAddress;
@@ -85,21 +85,6 @@ namespace BTMS
             tmpPassenger = pas;
             calc();
         }
-
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    if (Application.OpenForms["frmBusList"] != null)
-        //    {
-        //         plateNum = txtPlateNum.Text;
-        //        (Application.OpenForms["frmBusList"] as frmBusList).Show();
-        //    }
-        //    else
-        //    {
-        //        plateNum = txtPlateNum.Text;
-        //        frmBusList frm = new frmBusList();
-        //        frm.Show();
-        //    }
-        //}
 
         private void txtCash_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -137,18 +122,11 @@ namespace BTMS
             }
         }
 
-        //private void btnCancel_Click(object sender, EventArgs e)
-        //{
-        //    clearfield();
-        //}
 
         private void clearfield()
         {
             txtCardNum.Clear();
-            //txtPassenger.Clear();
-            //txtContactnum.Clear();
-            //txtAddress.Clear();
-            //txtPassType.Clear();
+ 
            
             lblAmountDue.Text = "0.00";
             
@@ -214,12 +192,7 @@ namespace BTMS
             {
                 label14.Text = "This card number is not registered!";
                 CardNotFound = true;
-               // label14.ForeColor = Color.Red;
-                //txtCardNum.Clear();
-                //txtPassenger.Clear();
-                //txtContactnum.Clear();
-                //txtAddress.Clear();
-                //txtPassType.Clear();
+                clearfield();
                 return;
             }
             passenger ps = new passenger();
@@ -278,11 +251,11 @@ namespace BTMS
 
         private void txtCardNum_Leave(object sender, EventArgs e)
         {
-            if (txtCardNum.Text == "") { return; }
-            if (txtCardNum.Text.Length != 10) { label14.Text = "Invalid Card Number. Error"; return; }
-            searchCardNum();
-            System.Threading.Thread.Sleep(1000);
-            SaveTransaction();
+            //if (txtCardNum.Text == "") { return; }
+            //if (txtCardNum.Text.Length != 10) { label14.Text = "Invalid Card Number. Error"; return; }
+            //searchCardNum();
+            //System.Threading.Thread.Sleep(1000);
+            //SaveTransaction();
 
         }
 
@@ -290,9 +263,11 @@ namespace BTMS
         {
             mod_system.DigitOnly(e);
             {
-            if (txtCardNum.Text == "") { return; }
-            if (txtCardNum.Text.Length != 10) { return; }
-            searchCardNum();
+                if (txtCardNum.Text == "") { return; }
+                if (txtCardNum.Text.Length != 10) { return; }
+                searchCardNum();
+                System.Threading.Thread.Sleep(1000);
+                SaveTransaction();
             }
           
         }
