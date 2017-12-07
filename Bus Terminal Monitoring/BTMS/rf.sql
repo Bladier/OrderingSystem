@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-11-29 11:50:23
+Date: 2017-12-07 16:54:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,12 +44,13 @@ CREATE TABLE `tblbus` (
   `condoctorID` int(11) NOT NULL,
   `Busno` varchar(20) NOT NULL,
   PRIMARY KEY (`busid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tblbus
 -- ----------------------------
 INSERT INTO `tblbus` VALUES ('3', 'Aircon', '60', 'AJD 2333', '2', 'Available', '1', '2209');
+INSERT INTO `tblbus` VALUES ('4', 'Aircon', '60', 'DFSDF 12302', '2', 'Available', '1', 'DF 123');
 
 -- ----------------------------
 -- Table structure for `tblbusperson`
@@ -64,15 +65,16 @@ CREATE TABLE `tblbusperson` (
   `position` varchar(20) NOT NULL,
   `Status` varchar(1) NOT NULL DEFAULT '1',
   `IsAssigned` int(1) NOT NULL,
+  `DateHired` date DEFAULT NULL,
   PRIMARY KEY (`personid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tblbusperson
 -- ----------------------------
-INSERT INTO `tblbusperson` VALUES ('1', 'Steve', '', 'Salon', '1992-12-11', 'Condoctor', '1', '1');
-INSERT INTO `tblbusperson` VALUES ('2', 'john', '', 'Brown', '2017-11-20', 'Driver', '1', '1');
-INSERT INTO `tblbusperson` VALUES ('3', 'sanple', 'sample', 'sample', '2017-11-27', 'Driver', '1', '0');
+INSERT INTO `tblbusperson` VALUES ('1', 'Steve', '', 'Salon', '1992-12-11', 'Condoctor', '1', '1', null);
+INSERT INTO `tblbusperson` VALUES ('2', 'john', '', 'Brown', '2017-11-20', 'Driver', '1', '1', null);
+INSERT INTO `tblbusperson` VALUES ('3', 'sanple', 'sample', 'sample', '2017-11-27', 'Driver', '1', '1', null);
 
 -- ----------------------------
 -- Table structure for `tblbustransaction`
@@ -91,7 +93,6 @@ CREATE TABLE `tblbustransaction` (
 -- Records of tblbustransaction
 -- ----------------------------
 INSERT INTO `tblbustransaction` VALUES ('1', '3', '57', 'C', '2017-11-01');
-INSERT INTO `tblbustransaction` VALUES ('2', '3', '57', 'W', '2017-11-26');
 
 -- ----------------------------
 -- Table structure for `tblbustype`
@@ -106,8 +107,8 @@ CREATE TABLE `tblbustype` (
 -- ----------------------------
 -- Records of tblbustype
 -- ----------------------------
-INSERT INTO `tblBusType` VALUES ('1', 'Aircon');
-INSERT INTO `tblBusType` VALUES ('2', 'Exclusive');
+INSERT INTO `tblbustype` VALUES ('1', 'Aircon');
+INSERT INTO `tblbustype` VALUES ('2', 'Exclusive');
 
 -- ----------------------------
 -- Table structure for `tblcredit`
