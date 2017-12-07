@@ -35,9 +35,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dateSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.busManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.busPersonnelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadingAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,8 +44,13 @@
             this.tmpTimer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsDateset = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolsBmgt = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -76,61 +79,45 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // dateSetToolStripMenuItem
             // 
             this.dateSetToolStripMenuItem.Name = "dateSetToolStripMenuItem";
-            this.dateSetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dateSetToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.dateSetToolStripMenuItem.Text = "&Date setting";
             this.dateSetToolStripMenuItem.Click += new System.EventHandler(this.dateSetToolStripMenuItem_Click);
             // 
             // moduleToolStripMenuItem
             // 
             this.moduleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.busManagementToolStripMenuItem,
             this.busPersonnelToolStripMenuItem,
-            this.clientManagementToolStripMenuItem,
             this.loadingAccountToolStripMenuItem,
             this.toolStripMenuItem2});
             this.moduleToolStripMenuItem.Name = "moduleToolStripMenuItem";
             this.moduleToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.moduleToolStripMenuItem.Text = "Module";
             // 
-            // busManagementToolStripMenuItem
-            // 
-            this.busManagementToolStripMenuItem.Name = "busManagementToolStripMenuItem";
-            this.busManagementToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.busManagementToolStripMenuItem.Text = "&Bus Management";
-            this.busManagementToolStripMenuItem.Click += new System.EventHandler(this.busManagementToolStripMenuItem_Click);
-            // 
             // busPersonnelToolStripMenuItem
             // 
             this.busPersonnelToolStripMenuItem.Name = "busPersonnelToolStripMenuItem";
-            this.busPersonnelToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.busPersonnelToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.busPersonnelToolStripMenuItem.Text = "&Bus Personnel";
             this.busPersonnelToolStripMenuItem.Click += new System.EventHandler(this.busPersonnelToolStripMenuItem_Click);
-            // 
-            // clientManagementToolStripMenuItem
-            // 
-            this.clientManagementToolStripMenuItem.Name = "clientManagementToolStripMenuItem";
-            this.clientManagementToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.clientManagementToolStripMenuItem.Text = "&Client Management";
-            this.clientManagementToolStripMenuItem.Click += new System.EventHandler(this.clientManagementToolStripMenuItem_Click);
             // 
             // loadingAccountToolStripMenuItem
             // 
             this.loadingAccountToolStripMenuItem.Name = "loadingAccountToolStripMenuItem";
-            this.loadingAccountToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.loadingAccountToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.loadingAccountToolStripMenuItem.Text = "&Loading Account";
             this.loadingAccountToolStripMenuItem.Click += new System.EventHandler(this.loadingAccountToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(179, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(167, 22);
             this.toolStripMenuItem2.Text = "&";
             // 
             // toolsToolStripMenuItem
@@ -144,7 +131,7 @@
             // maintenanceToolStripMenuItem
             // 
             this.maintenanceToolStripMenuItem.Name = "maintenanceToolStripMenuItem";
-            this.maintenanceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.maintenanceToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.maintenanceToolStripMenuItem.Text = "Maintenance";
             this.maintenanceToolStripMenuItem.Click += new System.EventHandler(this.maintenanceToolStripMenuItem_Click);
             // 
@@ -177,6 +164,49 @@
             this.tsDateset.Size = new System.Drawing.Size(70, 17);
             this.tsDateset.Text = "Date not set";
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.GripMargin = new System.Windows.Forms.Padding(3);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(16, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolsBmgt,
+            this.toolStripButton2,
+            this.toolStripButton3});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(1);
+            this.toolStrip1.Size = new System.Drawing.Size(776, 29);
+            this.toolStrip1.Stretch = true;
+            this.toolStrip1.TabIndex = 9;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolsBmgt
+            // 
+            this.toolsBmgt.Image = ((System.Drawing.Image)(resources.GetObject("toolsBmgt.Image")));
+            this.toolsBmgt.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolsBmgt.Name = "toolsBmgt";
+            this.toolsBmgt.Size = new System.Drawing.Size(114, 24);
+            this.toolsBmgt.Text = "Bus Managment";
+            this.toolsBmgt.Click += new System.EventHandler(this.toolsBmgt_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(132, 24);
+            this.toolStripButton2.Text = "Bus Transaction List";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(80, 24);
+            this.toolStripButton3.Text = "Passenger";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,6 +214,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(776, 498);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -196,6 +227,8 @@
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,13 +244,15 @@
         private System.Windows.Forms.ToolStripStatusLabel tsDateset;
         private System.Windows.Forms.ToolStripMenuItem dateSetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moduleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem busManagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem busPersonnelToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clientManagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadingAccountToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maintenanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolsBmgt;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
     }
 }

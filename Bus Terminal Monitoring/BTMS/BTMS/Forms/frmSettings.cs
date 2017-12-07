@@ -14,6 +14,7 @@ namespace BTMS
         int routeID;
         int bID;
         public static string BusNo;
+     
         public frmSettings()
         {
             InitializeComponent();
@@ -21,7 +22,7 @@ namespace BTMS
 
         internal void addbus(busManagement bm)
         {
-            txtSearch.Text = bm.BusNo;
+            cboBusType.Text = bm.BusType;
             bID = bm.ID;
         }
 
@@ -111,7 +112,7 @@ namespace BTMS
             b.Updateroute();
 
             MessageBox.Show("Successfully added.", "Add", MessageBoxButtons.OK);
-            txtBusno.Clear(); txtDest.Clear(); txtFrom.Clear(); txtRate.Clear(); txtBusno.Focus(); txtSearch.Clear();
+            txtBusno.Clear(); txtDest.Clear(); txtFrom.Clear(); txtRate.Clear(); txtBusno.Focus(); cboBusType.SelectedItem = null;
             loadbus();
         }
         private void lvbusroute_DoubleClick(object sender, EventArgs e)
@@ -122,7 +123,7 @@ namespace BTMS
 
             busManagement bm = new busManagement();
             bm.Loadbusmngt(busID);
-            txtSearch.Text = bm.BusNo;
+            cboBusType.Text = bm.BusType;
 
             if (br.From == null)
             {
@@ -157,7 +158,7 @@ gohere:
             b.Updateroute();
 
             MessageBox.Show("Successfully updated.", "Update", MessageBoxButtons.OK);
-            txtBusno.Clear(); txtDest.Clear(); txtFrom.Clear(); txtRate.Clear(); txtBusno.Focus(); txtSearch.Clear();
+            txtBusno.Clear(); txtDest.Clear(); txtFrom.Clear(); txtRate.Clear(); txtBusno.Focus();cboBusType.SelectedItem=null;
             loadbus();
         }
     
@@ -167,6 +168,7 @@ gohere:
         {
             loadbus();
             busType();
+            cboBusType.Items.AddRange(GetDistinct("BusType"));
         }
 
         private void busType()
@@ -187,21 +189,21 @@ gohere:
         }
 
 
-        private void btnsearchbus_Click(object sender, EventArgs e)
-        {
-            if (Application.OpenForms["frmBusList"] != null)
-            {
-                BusNo = txtSearch.Text;
-                (Application.OpenForms["frmBusList"] as frmBusList).Show();
-            }
-            else
-            {
-                BusNo = txtSearch.Text;
-                frmBusList frm = new frmBusList();
-                frm.Show();
-                frm.isAddBusRoute = true;
-            }
-        }
+        //private void btnsearchbus_Click(object sender, EventArgs e)
+        //{
+        //    //if (Application.OpenForms["frmBusList"] != null)
+        //    //{
+        //    //    BusNo = txtSearch.Text;
+        //    //    (Application.OpenForms["frmBusList"] as frmBusList).Show();
+        //    //}
+        //    //else
+        //    //{
+        //    //    BusNo = txtSearch.Text;
+        //    //    frmBusList frm = new frmBusList();
+        //    //    frm.Show();
+        //    //    frm.isAddBusRoute = true;
+        //    //}
+        //}
 
         private void txtRate_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -295,6 +297,23 @@ gohere:
 
         }
 
+         
+
+        private string[] GetDistinct(string col)
+        {
+            string mySql = "SELECT DISTINCT " + col + " FROM tblbusType WHERE " + col + " <> ''";
+            DataSet ds = Database.LoadSQL(mySql);
+
+            int MaxCount = ds.Tables[0].Rows.Count;
+            string[] str = new string[MaxCount];
+            for (int cnt = 0; cnt <= MaxCount - 1; cnt++)
+            {
+                string tmpStr = ds.Tables[0].Rows[cnt]["BusType"].ToString();
+                str[cnt]= tmpStr;
+            }
+
+            return str;
+        }
       
     }
 }

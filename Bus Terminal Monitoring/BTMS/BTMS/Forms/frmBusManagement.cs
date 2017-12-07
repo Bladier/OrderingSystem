@@ -127,6 +127,24 @@ namespace BTMS
             bm.BusNo = txtBusNo.Text;
             bm.SaveBusmngt();
 
+            int[] numbers = { 0, 1 };
+            foreach (int i in numbers)
+            {
+                buspersonnel bp = new buspersonnel();
+       
+                if (i == 0)
+                {
+                    bp.ID = driverID;
+                    bp.AssingedPersonnel();
+                }
+                else
+                {
+                    bp.ID = condoctorID;
+                    bp.AssingedPersonnel();
+                }
+            }
+
+       
             MessageBox.Show("Successfully saved.", "Confirmation", MessageBoxButtons.OK);
             clearfield();
         }
@@ -319,6 +337,11 @@ namespace BTMS
             Database.SaveEntry(ds);
             cboBusType.Items.Add(BusType);
             cboBusType.Text = BusType;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 

@@ -44,11 +44,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.dtHired = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dtHired);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.rbinActive);
             this.groupBox1.Controls.Add(this.rbactive);
             this.groupBox1.Controls.Add(this.label5);
@@ -66,14 +70,14 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(417, 232);
+            this.groupBox1.Size = new System.Drawing.Size(417, 266);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // rbinActive
             // 
             this.rbinActive.AutoSize = true;
-            this.rbinActive.Location = new System.Drawing.Point(171, 191);
+            this.rbinActive.Location = new System.Drawing.Point(170, 221);
             this.rbinActive.Name = "rbinActive";
             this.rbinActive.Size = new System.Drawing.Size(66, 19);
             this.rbinActive.TabIndex = 6;
@@ -85,7 +89,7 @@
             // 
             this.rbactive.AutoSize = true;
             this.rbactive.Checked = true;
-            this.rbactive.Location = new System.Drawing.Point(95, 192);
+            this.rbactive.Location = new System.Drawing.Point(94, 222);
             this.rbactive.Name = "rbactive";
             this.rbactive.Size = new System.Drawing.Size(56, 19);
             this.rbactive.TabIndex = 5;
@@ -96,7 +100,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 192);
+            this.label5.Location = new System.Drawing.Point(18, 222);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 15);
@@ -141,7 +145,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 125);
+            this.label4.Location = new System.Drawing.Point(15, 127);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 15);
@@ -205,7 +209,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(352, 251);
+            this.btnCancel.Location = new System.Drawing.Point(353, 286);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(74, 26);
@@ -217,7 +221,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(269, 251);
+            this.btnSave.Location = new System.Drawing.Point(270, 286);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(74, 26);
@@ -226,11 +230,30 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // dtHired
+            // 
+            this.dtHired.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtHired.Location = new System.Drawing.Point(92, 184);
+            this.dtHired.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtHired.Name = "dtHired";
+            this.dtHired.Size = new System.Drawing.Size(311, 21);
+            this.dtHired.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(13, 187);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(66, 15);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Date Hired";
+            // 
             // frmPersonnelRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 291);
+            this.ClientSize = new System.Drawing.Size(440, 340);
             this.ControlBox = false;
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -265,5 +288,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton rbinActive;
         private System.Windows.Forms.RadioButton rbactive;
+        private System.Windows.Forms.DateTimePicker dtHired;
+        private System.Windows.Forms.Label label7;
     }
 }

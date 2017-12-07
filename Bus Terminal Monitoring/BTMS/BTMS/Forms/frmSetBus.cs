@@ -11,6 +11,7 @@ namespace BTMS
 {
     public partial class frmSetBus : Form
     {
+        public static  bool isAuthorized;
         bool isTraveling = false;
         public static string BusNo = "";
         private busManagement tmpBus;
@@ -38,6 +39,17 @@ namespace BTMS
         {
            txtBusNo.Text = bm.BusNo;
            txtAvailableSeat.Text = bm.NumSeat;
+
+           buspersonnel bp = new buspersonnel();
+           bp.Loadpersonnel(bm.Driver);
+
+           txtDriver.Text = bp.Fname + " " + bp.Lname;
+
+           buspersonnel bpcon = new buspersonnel();
+           bpcon.Loadpersonnel(bm.Condoctor);
+
+           txtCondoctor.Text = bpcon.Fname + " " + bpcon.Lname;
+
             tmpBus = bm;
             IsTravel();
         }
@@ -50,6 +62,14 @@ namespace BTMS
         private void savebusTrans()
         {
             if (txtBusNo.Text == "") { txtBusNo.Focus(); return; }
+
+            frmAutorization frm = new frmAutorization();
+
+            if (!frm.isAuthorizedPerson())
+            {
+                MessageBox.Show("Not verified, Please verify the authorized person.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
 
             busTransaction bustrans = new busTransaction();
             if (bustrans.iShasbusTrans())
@@ -73,8 +93,8 @@ namespace BTMS
             {
                 return;
             }
-            
-          
+
+           
             bustrans.Bus = tmpBus;
             bustrans.AvailableSeat =Convert.ToInt32(txtAvailableSeat.Text);
             bustrans.Status = "W";
@@ -107,6 +127,13 @@ namespace BTMS
             }
             isTraveling = true;
             return true;
+        }
+
+        private void btnAuthorization_Click(object sender, EventArgs e)
+        {
+
+            frmAutorization frm = new frmAutorization();
+            frm.Show();
         }
     }
 }

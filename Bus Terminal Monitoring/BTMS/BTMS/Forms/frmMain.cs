@@ -80,41 +80,12 @@ namespace BTMS
             }
         }
 
-        private void busManagementToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!dateSet)
-            {
-                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-            }
-
-            isAdmin = true;
-            if (Application.OpenForms["frmBusList"] != null)
-            {
-                // (Application.OpenForms["frmPersonnelList"] as frmPersonnelList;
-            }
-            else
-            {
-                frmBusList frm = new frmBusList();
-                frm.Show();
-            }
-        }
+        
+       
 
         private void clientManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!dateSet)
-            {
-                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-            }
-
-            if (Application.OpenForms["frmPassengerList"] != null)
-            {
-
-            }
-            else
-            {
-                frmPassengerList frm = new frmPassengerList();
-                frm.Show();
-            }
+           
         }
 
         //private void transactionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -203,6 +174,61 @@ namespace BTMS
                 frm.Show();
             }
           
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            if (!dateSet)
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+
+            if (Application.OpenForms["frmPassengerList"] != null)
+            {
+
+            }
+            else
+            {
+                frmPassengerList frm = new frmPassengerList();
+                frm.Show();
+            }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            if (!mod_system.isSetDate())
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+
+            if (Application.OpenForms["frmSetBus"] != null)
+            {
+                // (Application.OpenForms["frmPersonnelList"] as frmPersonnelList;
+            }
+            else
+            {
+                frmBusListTransaction frm = new frmBusListTransaction();
+                frm.Show();
+            }
+        }
+
+        private void toolsBmgt_Click(object sender, EventArgs e)
+        {
+            if (!dateSet)
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+
+            isAdmin = true;
+            if (Application.OpenForms["frmBusList"] != null)
+            {
+                // (Application.OpenForms["frmPersonnelList"] as frmPersonnelList;
+            }
+            else
+            {
+                frmBusList frm = new frmBusList();
+                frm.Show();
+            }
         }
 
        

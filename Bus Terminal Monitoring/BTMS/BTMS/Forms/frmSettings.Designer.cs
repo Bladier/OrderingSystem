@@ -37,8 +37,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnsearchbus = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.cboBusType = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtRate = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,9 +49,7 @@
             this.txtBusno = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-
             this.lvBusType = new System.Windows.Forms.ListView();
-
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txtAddBusType = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -139,8 +136,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnsearchbus);
-            this.groupBox1.Controls.Add(this.txtSearch);
+            this.groupBox1.Controls.Add(this.cboBusType);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtRate);
             this.groupBox1.Controls.Add(this.label4);
@@ -154,32 +150,23 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // btnsearchbus
+            // cboBusType
             // 
-            this.btnsearchbus.Location = new System.Drawing.Point(250, 16);
-            this.btnsearchbus.Name = "btnsearchbus";
-            this.btnsearchbus.Size = new System.Drawing.Size(32, 22);
-            this.btnsearchbus.TabIndex = 15;
-            this.btnsearchbus.Text = ". . .";
-            this.btnsearchbus.UseVisualStyleBackColor = true;
-            this.btnsearchbus.Click += new System.EventHandler(this.btnsearchbus_Click);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(79, 17);
-            this.txtSearch.MaxLength = 10;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(165, 20);
-            this.txtSearch.TabIndex = 0;
+            this.cboBusType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBusType.FormattingEnabled = true;
+            this.cboBusType.Location = new System.Drawing.Point(63, 15);
+            this.cboBusType.Name = "cboBusType";
+            this.cboBusType.Size = new System.Drawing.Size(219, 21);
+            this.cboBusType.TabIndex = 16;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(11, 21);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 13);
+            this.label5.Size = new System.Drawing.Size(52, 13);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Search Bus";
+            this.label5.Text = "Bus Type";
             // 
             // txtRate
             // 
@@ -289,7 +276,6 @@
             this.lvBusType.UseCompatibleStateImageBehavior = false;
             this.lvBusType.View = System.Windows.Forms.View.Details;
             this.lvBusType.DoubleClick += new System.EventHandler(this.lvBusType_DoubleClick);
-
             // 
             // columnHeader9
             // 
@@ -321,9 +307,7 @@
             this.btnCancelAddbusType.TabIndex = 6;
             this.btnCancelAddbusType.Text = "&Cancel";
             this.btnCancelAddbusType.UseVisualStyleBackColor = true;
-
             this.btnCancelAddbusType.Click += new System.EventHandler(this.btnCancelAddbusType_Click);
-
             // 
             // btnAddBusType
             // 
@@ -377,8 +361,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.Button btnsearchbus;
-        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtAddBusType;
         private System.Windows.Forms.Label label6;
@@ -386,5 +368,6 @@
         private System.Windows.Forms.Button btnAddBusType;
         private System.Windows.Forms.ListView lvBusType;
         private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ComboBox cboBusType;
     }
 }
