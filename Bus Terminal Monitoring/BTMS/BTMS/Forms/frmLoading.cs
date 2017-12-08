@@ -20,6 +20,8 @@ namespace BTMS
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            if (txtCardNum.Text == "") { return; }
+
             bool retNum = false;
 
             while (retNum == false)
@@ -76,6 +78,12 @@ namespace BTMS
             Credit c = new Credit();
             c.PID = passID;
             c.Refund(Convert.ToDouble(credits));
+
+            loadhistory lh = new loadhistory();
+            lh.PID = passID;
+            lh.PassMoneyAdd = Convert.ToDouble(credits);
+            lh.SaveLoadHist();
+
             MessageBox.Show("Successfully loaded.", "Information", MessageBoxButtons.OK);
             search();
         }
@@ -114,12 +122,79 @@ namespace BTMS
 
             c.LoadCredit(p.ID);
             txtCredit.Text = c.passMoney.ToString();
-           
+
+            LoadHistory(p.ID);
+
         }
 
         private void txtCardNum_KeyPress(object sender, KeyPressEventArgs e)
         {
             mod_system.DigitOnly(e);
+        }
+
+        private void LoadHistory(int PID)
+        {
+            string mysql = "SELECT * FROM TBLLOADHISTORY WHERE PASSID ='" + PID + "' and status <> 0 ORDER BY LOAdDATE DESC";
+            DataSet ds = Database.LoadSQL(mysql, "TBLLOADHISTORY");
+
+            if (ds.Tables[0].Rows.Count == 0) { lvloadHist.Items.Clear(); return; }
+            lvloadHist.Items.Clear();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                ListViewItem lv = lvloadHist.Items.Add(txtname.Text);
+                lv.SubItems.Add(Convert.ToDateTime(dr["Loaddate"].ToString()).ToShortDateString());
+                lv.SubItems.Add(dr["loadcredit"].ToString());
+                lv.SubItems.Add(dr["PASSID"].ToString());
+                lv.Tag = dr["ID"];
+            }
+
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do want to cancel?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            passID = 0;
+             credits = "";
+             lvloadHist.Items.Clear();
+             txtname.Clear();
+             txtCardNum.Clear();
+             txtCredit.Clear();
+
+        }
+
+        private void btnVoid_Click(object sender, EventArgs e)
+        {
+            if (lvloadHist.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+            DialogResult result = MessageBox.Show("Do you want to void this payment?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            //Void status will be 0
+            loadhistory lh = new loadhistory();
+            double tmploadCredit = Convert.ToDouble(lvloadHist.SelectedItems[0].SubItems[2].Text);
+            int ID =Convert.ToInt32(lvloadHist.SelectedItems[0].Tag);
+            int passenger = Convert.ToInt32(lvloadHist.SelectedItems[0].SubItems[3].Text);
+
+            lh.UpdateLoadHistory(tmploadCredit, ID);
+
+            //Deduct to credits
+            Credit c = new Credit();
+            c.UpdateCredit(tmploadCredit,passenger);
+
+            MessageBox.Show("Successfully Voided", "Voiding", MessageBoxButtons.OK);
+            LoadHistory(passenger);
         }
     }
 }

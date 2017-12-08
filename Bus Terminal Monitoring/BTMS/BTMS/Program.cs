@@ -15,7 +15,7 @@ namespace BTMS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmSetBusVersion2());
+            Application.Run(new frmLogin());
         }
     }
 }

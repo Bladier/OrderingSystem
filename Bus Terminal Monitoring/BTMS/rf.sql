@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : newlocalhost
 Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : rf
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-12-08 10:28:19
+Date: 2017-12-08 11:50:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -49,7 +49,7 @@ CREATE TABLE `tblbus` (
 -- ----------------------------
 -- Records of tblbus
 -- ----------------------------
-INSERT INTO `tblbus` VALUES ('3', 'Aircon', '60', 'AJD 2333', '2', 'Available', '1', '2209');
+INSERT INTO `tblbus` VALUES ('3', 'Aircon', '60', 'AJD 2333', '3', 'Available', '1', '2209');
 
 -- ----------------------------
 -- Table structure for `tblbusperson`
@@ -77,8 +77,8 @@ CREATE TABLE `tblbusperson` (
 -- Records of tblbusperson
 -- ----------------------------
 INSERT INTO `tblbusperson` VALUES ('1', 'Steve', '', 'Salon', '1992-12-11', 'Condoctor', '1', '1', '2017-11-09', null, null, null, null, null);
-INSERT INTO `tblbusperson` VALUES ('2', 'john', '', 'Brown', '2017-11-20', 'Driver', '1', '1', '2017-12-07', null, null, null, null, null);
-INSERT INTO `tblbusperson` VALUES ('3', 'sanple', 'sample', 'sample', '2017-11-27', 'Driver', '1', '0', '2017-12-07', '9123940213', 'Labos', 'City Heights', 'General Santos City', 'Driver');
+INSERT INTO `tblbusperson` VALUES ('2', 'john', '', 'Brown', '2017-11-20', 'Driver', '1', '0', '2017-12-07', null, null, null, null, null);
+INSERT INTO `tblbusperson` VALUES ('3', 'sanple', 'sample', 'sample', '2017-11-27', 'Driver', '1', '1', '2017-12-07', '9123940213', 'Labos', 'City Heights', 'General Santos City', 'Driver');
 
 -- ----------------------------
 -- Table structure for `tblbustransaction`
@@ -130,7 +130,7 @@ CREATE TABLE `tblcredit` (
 -- ----------------------------
 -- Records of tblcredit
 -- ----------------------------
-INSERT INTO `tblcredit` VALUES ('1', '2', '5588.799999999999');
+INSERT INTO `tblcredit` VALUES ('1', '2', '5488.799999999999');
 INSERT INTO `tblcredit` VALUES ('2', '1', '3000');
 
 -- ----------------------------
@@ -150,6 +150,25 @@ CREATE TABLE `tbldaily` (
 INSERT INTO `tbldaily` VALUES ('8', '2017-11-28', '0');
 INSERT INTO `tbldaily` VALUES ('9', '2017-11-30', '0');
 INSERT INTO `tbldaily` VALUES ('10', '2017-11-29', '1');
+
+-- ----------------------------
+-- Table structure for `tblloadhistory`
+-- ----------------------------
+DROP TABLE IF EXISTS `tblloadhistory`;
+CREATE TABLE `tblloadhistory` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `passID` int(11) NOT NULL,
+  `loadcredit` decimal(10,0) DEFAULT NULL,
+  `loaddate` date DEFAULT NULL,
+  `status` smallint(6) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of tblloadhistory
+-- ----------------------------
+INSERT INTO `tblloadhistory` VALUES ('1', '2', '200', '2017-11-29', '0');
+INSERT INTO `tblloadhistory` VALUES ('2', '2', '300', '2017-11-29', '1');
 
 -- ----------------------------
 -- Table structure for `tblpassenger`

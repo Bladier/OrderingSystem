@@ -12,7 +12,7 @@
   <xs:element name="dsReports" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsReports" msprop:Generator_UserDSName="dsReports">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="sales" msprop:Generator_TableClassName="salesDataTable" msprop:Generator_TableVarName="tablesales" msprop:Generator_RowChangedName="salesRowChanged" msprop:Generator_TablePropName="sales" msprop:Generator_RowDeletingName="salesRowDeleting" msprop:Generator_RowChangingName="salesRowChanging" msprop:Generator_RowEvHandlerName="salesRowChangeEventHandler" msprop:Generator_RowDeletedName="salesRowDeleted" msprop:Generator_RowClassName="salesRow" msprop:Generator_UserTableName="sales" msprop:Generator_RowEvArgName="salesRowChangeEvent">
+        <xs:element name="sales" msprop:Generator_TableClassName="salesDataTable" msprop:Generator_TableVarName="tablesales" msprop:Generator_TablePropName="sales" msprop:Generator_RowDeletingName="salesRowDeleting" msprop:Generator_RowChangingName="salesRowChanging" msprop:Generator_RowEvHandlerName="salesRowChangeEventHandler" msprop:Generator_RowDeletedName="salesRowDeleted" msprop:Generator_UserTableName="sales" msprop:Generator_RowChangedName="salesRowChanged" msprop:Generator_RowEvArgName="salesRowChangeEvent" msprop:Generator_RowClassName="salesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" minOccurs="0" />
@@ -47,6 +47,17 @@
               <xs:element name="PASSENGERS" msprop:Generator_ColumnVarNameInTable="columnPASSENGERS" msprop:Generator_ColumnPropNameInRow="PASSENGERS" msprop:Generator_ColumnPropNameInTable="PASSENGERSColumn" msprop:Generator_UserColumnName="PASSENGERS" type="xs:string" minOccurs="0" />
               <xs:element name="BTRANSID" msprop:Generator_ColumnVarNameInTable="columnBTRANSID" msprop:Generator_ColumnPropNameInRow="BTRANSID" msprop:Generator_ColumnPropNameInTable="BTRANSIDColumn" msprop:Generator_UserColumnName="BTRANSID" type="xs:string" minOccurs="0" />
               <xs:element name="BTRANSDATE" msprop:Generator_ColumnVarNameInTable="columnBTRANSDATE" msprop:Generator_ColumnPropNameInRow="BTRANSDATE" msprop:Generator_ColumnPropNameInTable="BTRANSDATEColumn" msprop:Generator_UserColumnName="BTRANSDATE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Receipt" msprop:Generator_TableClassName="ReceiptDataTable" msprop:Generator_TableVarName="tableReceipt" msprop:Generator_TablePropName="Receipt" msprop:Generator_RowDeletingName="ReceiptRowDeleting" msprop:Generator_RowChangingName="ReceiptRowChanging" msprop:Generator_RowEvHandlerName="ReceiptRowChangeEventHandler" msprop:Generator_RowDeletedName="ReceiptRowDeleted" msprop:Generator_UserTableName="Receipt" msprop:Generator_RowChangedName="ReceiptRowChanged" msprop:Generator_RowEvArgName="ReceiptRowChangeEvent" msprop:Generator_RowClassName="ReceiptRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" minOccurs="0" />
+              <xs:element name="PASSID" msprop:Generator_ColumnVarNameInTable="columnPASSID" msprop:Generator_ColumnPropNameInRow="PASSID" msprop:Generator_ColumnPropNameInTable="PASSIDColumn" msprop:Generator_UserColumnName="PASSID" type="xs:string" minOccurs="0" />
+              <xs:element name="LOADCREDIT" msprop:Generator_ColumnVarNameInTable="columnLOADCREDIT" msprop:Generator_ColumnPropNameInRow="LOADCREDIT" msprop:Generator_ColumnPropNameInTable="LOADCREDITColumn" msprop:Generator_UserColumnName="LOADCREDIT" type="xs:string" minOccurs="0" />
+              <xs:element name="LOADDATE" msprop:Generator_ColumnVarNameInTable="columnLOADDATE" msprop:Generator_ColumnPropNameInRow="LOADDATE" msprop:Generator_ColumnPropNameInTable="LOADDATEColumn" msprop:Generator_UserColumnName="LOADDATE" type="xs:string" minOccurs="0" />
+              <xs:element name="STATUS" msprop:Generator_ColumnVarNameInTable="columnSTATUS" msprop:Generator_ColumnPropNameInRow="STATUS" msprop:Generator_ColumnPropNameInTable="STATUSColumn" msprop:Generator_UserColumnName="STATUS" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

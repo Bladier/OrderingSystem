@@ -57,6 +57,7 @@
     <Compile Include="Class\busRoute.cs" />
     <Compile Include="Class\busTransaction.cs" />
     <Compile Include="Class\Credit.cs" />
+    <Compile Include="Class\loadhistory.cs" />
     <Compile Include="Forms\frmAutorization.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -274,6 +275,7 @@
     <EmbeddedResource Include="Report\rptSales.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpt_Receipt.rdlc" />
     <None Include="Properties\DataSources\BTMS.Report.dsReports.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
