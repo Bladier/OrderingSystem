@@ -57,6 +57,12 @@
     <Compile Include="Class\busRoute.cs" />
     <Compile Include="Class\busTransaction.cs" />
     <Compile Include="Class\Credit.cs" />
+    <Compile Include="Forms\frmAutorization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAutorization.Designer.cs">
+      <DependentUpon>frmAutorization.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmBusListTransaction.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,9 @@
       <DependentUpon>frmReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\Reporting.cs" />
+    <EmbeddedResource Include="Forms\frmAutorization.resx">
+      <DependentUpon>frmAutorization.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmBusListTransaction.resx">
       <DependentUpon>frmBusListTransaction.cs</DependentUpon>
     </EmbeddedResource>

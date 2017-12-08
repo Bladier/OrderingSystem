@@ -92,6 +92,7 @@ namespace BTMS
             }
             bp.Savepersonnel();
 
+      
             MessageBox.Show("Successfully saved.", "Confirmation", MessageBoxButtons.OK);
             clearfield();
 

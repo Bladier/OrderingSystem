@@ -10,7 +10,11 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
+<<<<<<< HEAD
 Date: 2017-12-06 22:38:22
+=======
+Date: 2017-12-07 16:54:45
+>>>>>>> origin/Casher
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,12 +48,21 @@ CREATE TABLE `tblbus` (
   `condoctorID` int(11) NOT NULL,
   `Busno` varchar(20) NOT NULL,
   PRIMARY KEY (`busid`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+>>>>>>> origin/Casher
 
 -- ----------------------------
 -- Records of tblbus
 -- ----------------------------
+<<<<<<< HEAD
 INSERT INTO `tblbus` VALUES ('5', 'Aircon', '60', 'SDF 20231', '6', 'Available', '8', 'KFK 2322');
+=======
+INSERT INTO `tblbus` VALUES ('3', 'Aircon', '60', 'AJD 2333', '2', 'Available', '1', '2209');
+INSERT INTO `tblbus` VALUES ('4', 'Aircon', '60', 'DFSDF 12302', '2', 'Available', '1', 'DF 123');
+>>>>>>> origin/Casher
 
 -- ----------------------------
 -- Table structure for `tblbusperson`
@@ -64,16 +77,23 @@ CREATE TABLE `tblbusperson` (
   `position` varchar(20) NOT NULL,
   `Status` varchar(1) NOT NULL DEFAULT '1',
   `IsAssigned` int(1) NOT NULL,
+  `DateHired` date DEFAULT NULL,
   PRIMARY KEY (`personid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tblbusperson
 -- ----------------------------
+<<<<<<< HEAD
 INSERT INTO `tblbusperson` VALUES ('5', 'John', '', 'Steve', '1991-04-05', 'Driver', '1', '0');
 INSERT INTO `tblbusperson` VALUES ('6', 'Von ', '', 'Jovi', '1994-06-21', 'Driver', '1', '0');
 INSERT INTO `tblbusperson` VALUES ('7', 'JOEY', '', 'TAN', '1998-06-10', 'Driver', '1', '0');
 INSERT INTO `tblbusperson` VALUES ('8', 'BEN', '', 'TOY', '1988-12-26', 'Condoctor', '1', '0');
+=======
+INSERT INTO `tblbusperson` VALUES ('1', 'Steve', '', 'Salon', '1992-12-11', 'Condoctor', '1', '1', null);
+INSERT INTO `tblbusperson` VALUES ('2', 'john', '', 'Brown', '2017-11-20', 'Driver', '1', '1', null);
+INSERT INTO `tblbusperson` VALUES ('3', 'sanple', 'sample', 'sample', '2017-11-27', 'Driver', '1', '1', null);
+>>>>>>> origin/Casher
 
 -- ----------------------------
 -- Table structure for `tblbustransaction`
@@ -91,7 +111,11 @@ CREATE TABLE `tblbustransaction` (
 -- ----------------------------
 -- Records of tblbustransaction
 -- ----------------------------
+<<<<<<< HEAD
 INSERT INTO `tblbustransaction` VALUES ('4', '5', '50', 'T', '2017-12-05');
+=======
+INSERT INTO `tblbustransaction` VALUES ('1', '3', '57', 'C', '2017-11-01');
+>>>>>>> origin/Casher
 
 -- ----------------------------
 -- Table structure for `tblbustype`

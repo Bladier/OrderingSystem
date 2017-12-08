@@ -75,6 +75,13 @@ namespace BTMS
             get { return _IsAssigned; }
             set { _IsAssigned = value; }
         }
+
+        private DateTime _DateHired;
+        public DateTime DateHired
+        {
+            get { return _DateHired; }
+            set { _DateHired = value; }
+        }
         #endregion
 
         #region "Functions
@@ -110,6 +117,7 @@ namespace BTMS
             _with2["bday"] = _BDay;
             _with2["Position"] = _Position;
             _with2["IsAssigned"] = 0;
+            _with2["DateHired"] = _DateHired;
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
@@ -158,7 +166,7 @@ namespace BTMS
                 {
                     _with2["status"] = 0;
                 }
-
+                _with2["DateHired"] = _DateHired;
                 Database.SaveEntry(ds, false);
             }
             else
@@ -171,7 +179,8 @@ namespace BTMS
                 _with2["laname"] = _Lname;
                 _with2["bday"] = _BDay;
                 _with2["Position"] = _Position;
-             
+                _with2["DateHired"] = _DateHired;
+
                 ds.Tables[0].Rows.Add(dsNewRow);
                 Database.SaveEntry(ds);
             }

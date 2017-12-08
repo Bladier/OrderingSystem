@@ -1,0 +1,2 @@
+C:\Users\MISGWAPOHON\Documents\NewDalton\OrderingSystem\OrderingSys\OrderingSys\obj\x86\Debug\OrderingSys.Properties.Resources.resources
+C:\Users\MISGWAPOHON\Documents\NewDalton\OrderingSystem\OrderingSys\OrderingSys\obj\x86\Debug\OrderingSys.csproj.GenerateResource.Cache
