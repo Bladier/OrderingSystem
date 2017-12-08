@@ -34,10 +34,9 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dateSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.moduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.busPersonnelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadingAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +47,7 @@
             this.toolsBmgt = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.confirmationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -57,7 +57,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.moduleToolStripMenuItem,
+            this.ToolStripMenuItem,
             this.toolsToolStripMenuItem,
             this.reportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -90,48 +90,42 @@
             this.dateSetToolStripMenuItem.Text = "&Date setting";
             this.dateSetToolStripMenuItem.Click += new System.EventHandler(this.dateSetToolStripMenuItem_Click);
             // 
-            // moduleToolStripMenuItem
+            // ToolStripMenuItem
             // 
-            this.moduleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.busPersonnelToolStripMenuItem,
             this.loadingAccountToolStripMenuItem,
-            this.toolStripMenuItem2});
-            this.moduleToolStripMenuItem.Name = "moduleToolStripMenuItem";
-            this.moduleToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.moduleToolStripMenuItem.Text = "Module";
+            this.confirmationToolStripMenuItem});
+            this.ToolStripMenuItem.Name = "ToolStripMenuItem";
+            this.ToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.ToolStripMenuItem.Text = "Tools";
             // 
             // busPersonnelToolStripMenuItem
             // 
             this.busPersonnelToolStripMenuItem.Name = "busPersonnelToolStripMenuItem";
-            this.busPersonnelToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.busPersonnelToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.busPersonnelToolStripMenuItem.Text = "&Bus Personnel";
             this.busPersonnelToolStripMenuItem.Click += new System.EventHandler(this.busPersonnelToolStripMenuItem_Click);
             // 
             // loadingAccountToolStripMenuItem
             // 
             this.loadingAccountToolStripMenuItem.Name = "loadingAccountToolStripMenuItem";
-            this.loadingAccountToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.loadingAccountToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.loadingAccountToolStripMenuItem.Text = "&Loading Account";
             this.loadingAccountToolStripMenuItem.Click += new System.EventHandler(this.loadingAccountToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(167, 22);
-            this.toolStripMenuItem2.Text = "&";
             // 
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.maintenanceToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.toolsToolStripMenuItem.Text = "Tools";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.toolsToolStripMenuItem.Text = "Settings";
             // 
             // maintenanceToolStripMenuItem
             // 
             this.maintenanceToolStripMenuItem.Name = "maintenanceToolStripMenuItem";
-            this.maintenanceToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.maintenanceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.maintenanceToolStripMenuItem.Text = "Maintenance";
             this.maintenanceToolStripMenuItem.Click += new System.EventHandler(this.maintenanceToolStripMenuItem_Click);
             // 
@@ -207,6 +201,13 @@
             this.toolStripButton3.Text = "Passenger";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
+            // confirmationToolStripMenuItem
+            // 
+            this.confirmationToolStripMenuItem.Name = "confirmationToolStripMenuItem";
+            this.confirmationToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.confirmationToolStripMenuItem.Text = "&Confirmation";
+            this.confirmationToolStripMenuItem.Click += new System.EventHandler(this.confirmationToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -243,10 +244,9 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tsDateset;
         private System.Windows.Forms.ToolStripMenuItem dateSetToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem moduleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem busPersonnelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadingAccountToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maintenanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
@@ -254,5 +254,6 @@
         private System.Windows.Forms.ToolStripButton toolsBmgt;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripMenuItem confirmationToolStripMenuItem;
     }
 }

@@ -77,9 +77,9 @@ namespace BTMS
         {
             if (IsAuthorize)
             {
-                if (Application.OpenForms["frmSetBus"] != null)
+                if (Application.OpenForms["frmSetBusVersion2"] != null)
                 {
-                    (Application.OpenForms["frmSetBus"] as frmSetBus).btnAuthorization.Text = "Verified";
+                    (Application.OpenForms["frmSetBusVersion2"] as frmSetBusVersion2).btnAuthorization.Text = "Verified";
                 }
                 return true;
             }

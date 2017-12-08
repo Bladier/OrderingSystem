@@ -82,6 +82,42 @@ namespace BTMS
             get { return _DateHired; }
             set { _DateHired = value; }
         }
+
+        private UInt64 _ContactNum;
+        public UInt64 ContactNum
+        {
+            get { return _ContactNum; }
+            set { _ContactNum = value; }
+        }
+
+        private string _Street;
+        public string Street
+        {
+            get { return _Street; }
+            set { _Street = value; }
+        }
+
+
+        private string _Brgy;
+        public string Brgy
+        {
+            get { return _Brgy; }
+            set { _Brgy = value; }
+        }
+
+        private string _City;
+        public string City
+        {
+            get { return _City; }
+            set { _City = value; }
+        }
+
+        private string _Province;
+        public string Province
+        {
+            get { return _Province; }
+            set { _Province = value; }
+        }
         #endregion
 
         #region "Functions
@@ -118,6 +154,11 @@ namespace BTMS
             _with2["Position"] = _Position;
             _with2["IsAssigned"] = 0;
             _with2["DateHired"] = _DateHired;
+            _with2["contactno   "] = _ContactNum;
+            _with2["street"] = _Street;
+            _with2["brgy"] = _Brgy;
+            _with2["city"] = _City;
+            _with2["province"] = _Province;
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
@@ -142,6 +183,22 @@ namespace BTMS
             if (Convert.ToInt32(_with3["IsAssigned"]) == 1)
             { _IsAssigned = true;}
             else { _IsAssigned = false; }
+            _DateHired = Convert.ToDateTime(_with3["datehired"]);
+
+            if (_with3["contactno"]==System.DBNull.Value)
+            {
+                _ContactNum = 0;
+            }
+            else
+            { _ContactNum = Convert.ToUInt64(_with3["contactno"]); }
+
+
+            _Street = _with3["street"].ToString();
+            _Brgy = _with3["brgy"].ToString();
+            _City = _with3["city"].ToString();
+            _Province = _with3["province"].ToString();
+
+
         }
 
         public void Updatepersonnel()
@@ -167,6 +224,13 @@ namespace BTMS
                     _with2["status"] = 0;
                 }
                 _with2["DateHired"] = _DateHired;
+
+                _with2["contactno"] = _ContactNum;
+                _with2["street"] = _Street;
+                _with2["brgy"] = _Brgy;
+                _with2["city"] = _City;
+                _with2["province"] = _Province;
+
                 Database.SaveEntry(ds, false);
             }
             else
@@ -180,6 +244,12 @@ namespace BTMS
                 _with2["bday"] = _BDay;
                 _with2["Position"] = _Position;
                 _with2["DateHired"] = _DateHired;
+
+                _with2["contactno   "] = _ContactNum;
+                _with2["street"] = _Street;
+                _with2["brgy"] = _Brgy;
+                _with2["city"] = _City;
+                _with2["province"] = _Province;
 
                 ds.Tables[0].Rows.Add(dsNewRow);
                 Database.SaveEntry(ds);

@@ -102,6 +102,12 @@
     <Compile Include="Class\Passenger.cs" />
     <Compile Include="Class\Transaction.cs" />
     <Compile Include="Class\User.cs" />
+    <Compile Include="Forms\frmSetBusVersion2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSetBusVersion2.Designer.cs">
+      <DependentUpon>frmSetBusVersion2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmSetDate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPersonnelRegistration.resx">
       <DependentUpon>frmPersonnelRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSetBusVersion2.resx">
+      <DependentUpon>frmSetBusVersion2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSetDate.resx">
       <DependentUpon>frmSetDate.cs</DependentUpon>

@@ -22,7 +22,25 @@ namespace BTMS
 
         private void frmPersonnelRegistration_Load(object sender, EventArgs e)
         {
+            cboStreet.Items.AddRange(GetDistinct("Street"));
+            cboBrgy.Items.AddRange(GetDistinct("Brgy"));
+            cboCity.Items.AddRange(GetDistinct("City"));
+            cboProvince.Items.AddRange(GetDistinct("Province"));
+        }
+        private string[] GetDistinct(string col)
+        {
+            string mySql = "SELECT DISTINCT " + col + " FROM tblbusperson WHERE " + col + " <> ''";
+            DataSet ds = Database.LoadSQL(mySql);
 
+            int MaxCount = ds.Tables[0].Rows.Count;
+            string[] str = new string[MaxCount];
+            for (int cnt = 0; cnt <= MaxCount - 1; cnt++)
+            {
+                string tmpStr = ds.Tables[0].Rows[cnt][col].ToString();
+                str[cnt] = tmpStr;
+            }
+
+            return str;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -63,6 +81,30 @@ namespace BTMS
             }
             if (cboPosition.Text == "") { cboPosition.Focus(); return; }
 
+            if (cboStreet.Text == "")
+            {
+                cboStreet.Focus();
+                return;
+            }
+
+            if (cboBrgy.Text == "")
+            {
+                cboBrgy.Focus();
+                return;
+            }
+
+            if (cboCity.Text == "")
+            {
+                cboCity.Focus();
+                return;
+            }
+
+            if (cboProvince.Text == "")
+            {
+                cboProvince.Focus();
+                return;
+            }
+
             if (age < 18)
             {
                 MessageBox.Show("Age below 18 is not allowed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
@@ -81,7 +123,7 @@ namespace BTMS
             bp.Lname = txtLname.Text;
             bp.BDay =Convert.ToDateTime(txtBday.Text);
             bp.Position = cboPosition.Text;
-
+           
             if (rbactive.Checked)
             {
                 bp.Status = true;
@@ -90,6 +132,13 @@ namespace BTMS
             {
                 bp.Status = false;
             }
+
+            bp.DateHired = Convert.ToDateTime(dtHired.Text);
+            bp.ContactNum = Convert.ToUInt64(txtContactNo.Text);
+            bp.Street = cboStreet.Text;
+            bp.Brgy = cboBrgy.Text;
+            bp.City = cboCity.Text;
+            bp.Province = cboProvince.Text;
             bp.Savepersonnel();
 
       
@@ -127,6 +176,31 @@ namespace BTMS
             }
             if (cboPosition.Text == "") { cboPosition.Focus(); return; }
 
+
+            if (cboStreet.Text == "")
+            {
+                cboStreet.Focus();
+                return;
+            }
+
+            if (cboBrgy.Text == "")
+            {
+                cboBrgy.Focus();
+                return;
+            }
+
+            if (cboCity.Text == "")
+            {
+                cboCity.Focus();
+                return;
+            }
+
+            if (cboProvince.Text == "")
+            {
+                cboProvince.Focus();
+                return;
+            }
+
             DialogResult result = MessageBox.Show("Do you want to Update this personnel?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
             {
@@ -149,6 +223,12 @@ namespace BTMS
             {
                 bp.Status = false;
             }
+            bp.DateHired = Convert.ToDateTime(dtHired.Text);
+            bp.ContactNum = Convert.ToUInt64(txtContactNo.Text);
+            bp.Street = cboStreet.Text;
+            bp.Brgy = cboBrgy.Text;
+            bp.City = cboCity.Text;
+            bp.Province = cboProvince.Text;
 
             bp.Updatepersonnel();
 
@@ -166,6 +246,22 @@ namespace BTMS
             cboPosition.Text = "";
             cboPosition.SelectedItem = null;
             personnelID = 0;
+            dtHired.Text = mod_system.CurrentDate.ToShortDateString();
+            txtContactNo.Clear();
+            cboStreet.SelectedItem = null;
+            cboBrgy.SelectedItem = null;
+            cboCity.SelectedItem = null;
+            cboProvince.SelectedItem = null;
+
+            cboCity.Items.Clear();
+            cboStreet.Items.Clear();
+            cboProvince.Items.Clear();
+            cboBrgy.Items.Clear();
+
+            cboStreet.Items.AddRange(GetDistinct("Street"));
+            cboBrgy.Items.AddRange(GetDistinct("Brgy"));
+            cboCity.Items.AddRange(GetDistinct("City"));
+            cboProvince.Items.AddRange(GetDistinct("Province"));
         }
 
         internal void addPass(buspersonnel bp)
@@ -187,6 +283,13 @@ namespace BTMS
                 rbinActive.Checked = true;
             }
 
+            dtHired.Text = Convert.ToDateTime(bp.DateHired).ToShortDateString();
+            txtContactNo.Text = bp.ContactNum.ToString();
+            cboStreet.Text = bp.Street;
+            cboBrgy.Text = bp.Brgy;
+            cboCity.Text = bp.City;
+            cboProvince.Text = bp.Province;
+
             Disbled();
             btnSave.Text = "&Modify";
         }
@@ -200,6 +303,12 @@ namespace BTMS
             cboPosition.Enabled = st;
             rbactive.Enabled = st;
             rbinActive.Enabled = st;
+            dtHired.Enabled = st;
+            txtContactNo.Enabled = st;
+            cboStreet.Enabled = st;
+            cboBrgy.Enabled = st;
+            cboCity.Enabled = st;
+            cboProvince.Enabled = st;
         }
 
         private void label6_Click(object sender, EventArgs e)

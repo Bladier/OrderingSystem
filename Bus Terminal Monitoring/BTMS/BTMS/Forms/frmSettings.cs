@@ -267,7 +267,7 @@ gohere:
 
                 }
             }
-gohere:
+        gohere:
             if (btnAddBusType.Text == "&Add")
             {
                 MessageBox.Show("Successfully added.", "add", MessageBoxButtons.OK);
@@ -276,11 +276,13 @@ gohere:
             {
                 MessageBox.Show("Successfully updated.", "Update", MessageBoxButtons.OK);
 
-            }
-            txtAddBusType.Clear();
-            busType();
-        }
 
+                cboBusType.Items.Clear();
+                cboBusType.Items.AddRange(GetDistinct("BusType"));
+                txtAddBusType.Clear();
+                busType();
+            }
+        }
         private void btnCancelAddbusType_Click(object sender, EventArgs e)
         {
             this.Close();

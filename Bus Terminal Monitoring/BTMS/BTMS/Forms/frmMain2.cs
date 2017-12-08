@@ -27,24 +27,7 @@ namespace BTMS
            
         }
 
-        private void setBusToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!mod_system.isSetDate())
-            {
-                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-            }
-
-            if (Application.OpenForms["frmSetBus"] != null)
-            {
-                // (Application.OpenForms["frmPersonnelList"] as frmPersonnelList;
-            }
-            else
-            {
-                frmSetBus frm = new frmSetBus();
-                frm.Show();
-            }
-        }
-
+     
         private void transactionToolStripMenuItem1_Click(object sender, EventArgs e)
         {
         }
@@ -52,20 +35,6 @@ namespace BTMS
         private void busConfirmationToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            if (!mod_system.isSetDate())
-            {
-                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-            }
-
-            if (Application.OpenForms["frmSetBus"] != null)
-            {
-                // (Application.OpenForms["frmPersonnelList"] as frmPersonnelList;
-            }
-            else
-            {
-                frmConfirmation frm = new frmConfirmation();
-                frm.Show();
-            }
             
         }
 
@@ -119,6 +88,29 @@ namespace BTMS
             else
             {
                 frmPassengerTransactionList frm = new frmPassengerTransactionList();
+                frm.Show();
+            }
+        }
+
+        private void transactionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButton2_Click_1(object sender, EventArgs e)
+        {
+            if (!mod_system.isSetDate())
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+
+            if (Application.OpenForms["frmSetBusVersion2"] != null)
+            {
+                // (Application.OpenForms["frmPersonnelList"] as frmPersonnelList;
+            }
+            else
+            {
+                frmSetBusVersion2 frm = new frmSetBusVersion2();
                 frm.Show();
             }
         }   

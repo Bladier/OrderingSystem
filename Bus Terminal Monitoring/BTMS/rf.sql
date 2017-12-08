@@ -10,11 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-<<<<<<< HEAD
-Date: 2017-12-06 22:38:22
-=======
-Date: 2017-12-07 16:54:45
->>>>>>> origin/Casher
+Date: 2017-12-08 10:28:19
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -48,21 +44,12 @@ CREATE TABLE `tblbus` (
   `condoctorID` int(11) NOT NULL,
   `Busno` varchar(20) NOT NULL,
   PRIMARY KEY (`busid`)
-<<<<<<< HEAD
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
->>>>>>> origin/Casher
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tblbus
 -- ----------------------------
-<<<<<<< HEAD
-INSERT INTO `tblbus` VALUES ('5', 'Aircon', '60', 'SDF 20231', '6', 'Available', '8', 'KFK 2322');
-=======
 INSERT INTO `tblbus` VALUES ('3', 'Aircon', '60', 'AJD 2333', '2', 'Available', '1', '2209');
-INSERT INTO `tblbus` VALUES ('4', 'Aircon', '60', 'DFSDF 12302', '2', 'Available', '1', 'DF 123');
->>>>>>> origin/Casher
 
 -- ----------------------------
 -- Table structure for `tblbusperson`
@@ -77,23 +64,21 @@ CREATE TABLE `tblbusperson` (
   `position` varchar(20) NOT NULL,
   `Status` varchar(1) NOT NULL DEFAULT '1',
   `IsAssigned` int(1) NOT NULL,
-  `DateHired` date DEFAULT NULL,
+  `datehired` date DEFAULT NULL,
+  `contactno` bigint(20) DEFAULT NULL,
+  `street` varchar(30) DEFAULT NULL,
+  `brgy` varchar(40) DEFAULT NULL,
+  `city` varchar(30) DEFAULT NULL,
+  `province` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`personid`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tblbusperson
 -- ----------------------------
-<<<<<<< HEAD
-INSERT INTO `tblbusperson` VALUES ('5', 'John', '', 'Steve', '1991-04-05', 'Driver', '1', '0');
-INSERT INTO `tblbusperson` VALUES ('6', 'Von ', '', 'Jovi', '1994-06-21', 'Driver', '1', '0');
-INSERT INTO `tblbusperson` VALUES ('7', 'JOEY', '', 'TAN', '1998-06-10', 'Driver', '1', '0');
-INSERT INTO `tblbusperson` VALUES ('8', 'BEN', '', 'TOY', '1988-12-26', 'Condoctor', '1', '0');
-=======
-INSERT INTO `tblbusperson` VALUES ('1', 'Steve', '', 'Salon', '1992-12-11', 'Condoctor', '1', '1', null);
-INSERT INTO `tblbusperson` VALUES ('2', 'john', '', 'Brown', '2017-11-20', 'Driver', '1', '1', null);
-INSERT INTO `tblbusperson` VALUES ('3', 'sanple', 'sample', 'sample', '2017-11-27', 'Driver', '1', '1', null);
->>>>>>> origin/Casher
+INSERT INTO `tblbusperson` VALUES ('1', 'Steve', '', 'Salon', '1992-12-11', 'Condoctor', '1', '1', '2017-11-09', null, null, null, null, null);
+INSERT INTO `tblbusperson` VALUES ('2', 'john', '', 'Brown', '2017-11-20', 'Driver', '1', '1', '2017-12-07', null, null, null, null, null);
+INSERT INTO `tblbusperson` VALUES ('3', 'sanple', 'sample', 'sample', '2017-11-27', 'Driver', '1', '0', '2017-12-07', '9123940213', 'Labos', 'City Heights', 'General Santos City', 'Driver');
 
 -- ----------------------------
 -- Table structure for `tblbustransaction`
@@ -106,16 +91,14 @@ CREATE TABLE `tblbustransaction` (
   `Status` varchar(1) NOT NULL,
   `transDate` date NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tblbustransaction
 -- ----------------------------
-<<<<<<< HEAD
-INSERT INTO `tblbustransaction` VALUES ('4', '5', '50', 'T', '2017-12-05');
-=======
 INSERT INTO `tblbustransaction` VALUES ('1', '3', '57', 'C', '2017-11-01');
->>>>>>> origin/Casher
+INSERT INTO `tblbustransaction` VALUES ('2', '3', '57', 'T', '2017-11-29');
+INSERT INTO `tblbustransaction` VALUES ('3', '3', '60', 'W', '2017-12-08');
 
 -- ----------------------------
 -- Table structure for `tblbustype`
@@ -142,12 +125,13 @@ CREATE TABLE `tblcredit` (
   `passID` int(11) NOT NULL,
   `Credit` double DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tblcredit
 -- ----------------------------
-INSERT INTO `tblcredit` VALUES ('4', '4', '4000');
+INSERT INTO `tblcredit` VALUES ('1', '2', '5588.799999999999');
+INSERT INTO `tblcredit` VALUES ('2', '1', '3000');
 
 -- ----------------------------
 -- Table structure for `tbldaily`
@@ -158,12 +142,14 @@ CREATE TABLE `tbldaily` (
   `CurrentDate` date NOT NULL,
   `Status` varchar(1) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tbldaily
 -- ----------------------------
-INSERT INTO `tbldaily` VALUES ('12', '2017-12-05', '1');
+INSERT INTO `tbldaily` VALUES ('8', '2017-11-28', '0');
+INSERT INTO `tbldaily` VALUES ('9', '2017-11-30', '0');
+INSERT INTO `tbldaily` VALUES ('10', '2017-11-29', '1');
 
 -- ----------------------------
 -- Table structure for `tblpassenger`
@@ -186,12 +172,13 @@ CREATE TABLE `tblpassenger` (
   `IDNumber` varchar(20) DEFAULT '0',
   `CardExpiration` date DEFAULT NULL,
   PRIMARY KEY (`passid`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tblpassenger
 -- ----------------------------
-INSERT INTO `tblpassenger` VALUES ('4', '2987123123', 'MICA', '', 'LEGISNIANA', '1994-06-09', '1923901293', 'Regular', 'LABOS SOLEDAD STATE', 'CITY HEIGHTS', 'GENERAL SANTOS CITY', 'SOUTH COT', '', '', '2019-12-19');
+INSERT INTO `tblpassenger` VALUES ('1', '3110359101', 'Steves', '', 'Salon', '2017-11-16', '9202929302', 'Regular', 'Soledad State', '11/16/2017 12:00:00 AM', 'General Santos City', 'South Cot.', '', '', '2019-12-10');
+INSERT INTO `tblpassenger` VALUES ('2', '3110345429', 'MICA', '', 'LEGISNIANA', '1996-06-10', '9123123123', 'Senior', 'PUROK 6', '6/10/1996 12:00:00 AM', 'KORONADAL', 'SOUTH COT.', 'Senior', '898080980', '2021-12-27');
 
 -- ----------------------------
 -- Table structure for `tblroute`
@@ -204,12 +191,13 @@ CREATE TABLE `tblroute` (
   `Rate` double DEFAULT NULL,
   `busID` int(10) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tblroute
 -- ----------------------------
-INSERT INTO `tblroute` VALUES ('4', 'GENSAN', 'DAVAO', '200', '5');
+INSERT INTO `tblroute` VALUES ('1', 'Gensan', 'Davao', '260', '3');
+INSERT INTO `tblroute` VALUES ('2', 'Gensan', 'Davao', '200', '5');
 
 -- ----------------------------
 -- Table structure for `tbltransaction`
@@ -226,12 +214,15 @@ CREATE TABLE `tbltransaction` (
   `remarks` varchar(255) DEFAULT NULL,
   `busTransID` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tbltransaction
 -- ----------------------------
-INSERT INTO `tbltransaction` VALUES ('25', '2017-12-05', '4', '5', '200', '0', '1', '', '4');
+INSERT INTO `tbltransaction` VALUES ('9', '2017-11-26', '2', '3', '244.4', '15.6', '1', '', '1');
+INSERT INTO `tbltransaction` VALUES ('10', '2017-11-26', '1', '3', '260', '0', '1', '', '1');
+INSERT INTO `tbltransaction` VALUES ('13', '2017-11-26', '1', '3', '260', '0', '1', '', '2');
+INSERT INTO `tbltransaction` VALUES ('14', '2017-11-26', '2', '3', '244.4', '15.6', '1', '', '2');
 
 -- ----------------------------
 -- Table structure for `tbluser`

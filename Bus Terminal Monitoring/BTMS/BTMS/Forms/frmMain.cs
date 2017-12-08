@@ -231,6 +231,25 @@ namespace BTMS
             }
         }
 
+        private void confirmationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (!mod_system.isSetDate())
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+
+            if (Application.OpenForms["frmSetBus"] != null)
+            {
+                // (Application.OpenForms["frmPersonnelList"] as frmPersonnelList;
+            }
+            else
+            {
+                frmConfirmation frm = new frmConfirmation();
+                frm.Show();
+            }
+        }
+
        
     }
 }

@@ -41,6 +41,31 @@ namespace BTMS
                     return;
                 }
             }
+
+          bool isCardValid=false;
+          while (isCardValid == false)
+          {
+              string confirmation = Interaction.InputBox("Enter Card Number", "Confirmation", "");
+
+              if (confirmation == "") { isCardValid = false; }
+              if (confirmation.Length != 10)
+              {
+                  isCardValid = false;
+                  goto Gohere;
+              }
+              if (confirmation != txtCardNum.Text)
+              {
+                  isCardValid = false;
+                  goto Gohere;
+              }
+              isCardValid = true;
+          }
+    Gohere:
+          if (!isCardValid)
+          {
+              MessageBox.Show("Invalid card number, Please try again.", "Confirmation failed.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+              return;
+          }
             
             DialogResult result = MessageBox.Show("Are you sure about this?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
