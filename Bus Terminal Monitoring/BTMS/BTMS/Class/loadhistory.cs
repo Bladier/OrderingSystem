@@ -132,7 +132,15 @@ namespace BTMS
                 Database.SaveEntry(ds);
             }
         }
-       
+
+        public int LoadLastID()
+        {
+            string mySql = string.Format("SELECT * FROM {0} ORDER BY ID DESC LIMIT 1", MainTable);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+            int idx = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]);
+
+            return idx;
+        }
         #endregion
 
     }

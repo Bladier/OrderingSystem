@@ -99,7 +99,8 @@ namespace BTMS
                 return;
             }
 
-     
+            if (txtPinCode.Text == "") { txtPinCode.Focus(); return; }
+
             if (txtCardNum.Text == "") { txtCardNum.Focus(); return; }
             if (txtCardNum.Text.Length != 10) { MessageBox.Show("Invalid card number.", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error); return; }
 
@@ -134,6 +135,7 @@ namespace BTMS
             savepass.IdType = txtIDType.Text;
             savepass.IDNum = txtIDNum.Text;
             savepass.CardExp = Convert.ToDateTime(txtCardExpiration.Text);
+            savepass.Pincode = Convert.ToInt32(txtPinCode.Text);
 
             savepass.Savepassenger();
 
@@ -203,6 +205,7 @@ namespace BTMS
             }
 
             if (txtCardNum.Text == "") { txtCardNum.Focus(); return; }
+            if (txtPinCode.Text == "") { txtPinCode.Focus(); return; }
 
             DialogResult result = MessageBox.Show("Do you want to Update this client?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
@@ -226,6 +229,7 @@ namespace BTMS
             savepass.IdType = txtIDType.Text;
             savepass.IDNum = txtIDNum.Text;
             savepass.CardExp = Convert.ToDateTime(txtCardExpiration.Text);
+            savepass.Pincode = Convert.ToInt32(txtPinCode.Text);
 
             savepass.Update();
 
@@ -338,6 +342,7 @@ namespace BTMS
             txtIDNum.Text = ps.IDNum.ToString();
             txtCardNum.Text = ps.RFIDnum.ToString();
             txtCardExpiration.Text = Convert.ToDateTime(ps.CardExp).ToShortDateString();
+            txtPinCode.Text = ps.Pincode.ToString();
 
             if (!isRenew) { label15.Visible = false; }
             if (isRenew)
@@ -378,6 +383,7 @@ goHere:
             txtIDNum.Enabled = st;
             txtIDType.Enabled = st;
             txtCardNum.Enabled = st;
+            txtPinCode.Enabled = st;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

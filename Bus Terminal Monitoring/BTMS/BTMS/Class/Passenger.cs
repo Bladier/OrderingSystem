@@ -137,6 +137,13 @@ namespace BTMS
             get { return _CardExp; }
             set { _CardExp = value; }
         }
+
+        private int _PinCode;
+        public int Pincode
+        {
+            get { return _PinCode; }
+            set { _PinCode = value; }
+        }
         #endregion
 
         #region "Functions and Procedures"
@@ -180,6 +187,7 @@ namespace BTMS
             _with2["IDType"] = _IdType;
             _with2["IDNumber"] = _IDNum;
             _with2["CardExpiration"] = _CardExp;
+            _with2["PinCode"] = _PinCode;
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
@@ -205,6 +213,7 @@ namespace BTMS
             _IDNum = _with3["IDNumber"].ToString();
             _CardExp = Convert.ToDateTime(_with3["CardExpiration"]);
             _FullAddress = _Street + " " + _Brgy + ", " + _City + ", " + _Province;
+            _PinCode = Convert.ToInt32(_with3["PinCode"]);
         }
 
 
@@ -230,6 +239,7 @@ namespace BTMS
                 _with2["IDType"] = _IdType;
                 _with2["IDNumber"] = _IDNum;
                 _with2["CardExpiration"] = _CardExp;
+                _with2["PinCode"] = _PinCode;
                 Database.SaveEntry(ds, false);
             }
             else
@@ -251,6 +261,7 @@ namespace BTMS
                 _with2["IDType"] = _IdType;
                 _with2["IDNumber"] = _IDNum;
                 _with2["CardExpiration"] = _CardExp;
+                _with2["PinCode"] = _PinCode;
                 ds.Tables[0].Rows.Add(dsNewRow);
                 Database.SaveEntry(ds);
             }

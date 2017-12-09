@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtPinCode = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.txtCardExpiration = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtIDNum = new System.Windows.Forms.TextBox();
@@ -65,6 +67,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtPinCode);
+            this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.txtCardExpiration);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.txtIDNum);
@@ -101,22 +105,44 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // txtPinCode
+            // 
+            this.txtPinCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPinCode.Location = new System.Drawing.Point(691, 303);
+            this.txtPinCode.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPinCode.MaxLength = 4;
+            this.txtPinCode.Name = "txtPinCode";
+            this.txtPinCode.Size = new System.Drawing.Size(211, 21);
+            this.txtPinCode.TabIndex = 27;
+            this.txtPinCode.UseSystemPasswordChar = true;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(634, 306);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(54, 15);
+            this.label16.TabIndex = 26;
+            this.label16.Text = "PinCode";
+            // 
             // txtCardExpiration
             // 
             this.txtCardExpiration.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCardExpiration.Location = new System.Drawing.Point(578, 304);
+            this.txtCardExpiration.Location = new System.Drawing.Point(442, 306);
             this.txtCardExpiration.Margin = new System.Windows.Forms.Padding(4);
             this.txtCardExpiration.MaxLength = 10;
             this.txtCardExpiration.Name = "txtCardExpiration";
             this.txtCardExpiration.ReadOnly = true;
-            this.txtCardExpiration.Size = new System.Drawing.Size(322, 21);
+            this.txtCardExpiration.Size = new System.Drawing.Size(182, 21);
             this.txtCardExpiration.TabIndex = 13;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(472, 306);
+            this.label14.Location = new System.Drawing.Point(346, 306);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(88, 15);
@@ -198,7 +224,7 @@
             this.txtCardNum.Margin = new System.Windows.Forms.Padding(4);
             this.txtCardNum.MaxLength = 10;
             this.txtCardNum.Name = "txtCardNum";
-            this.txtCardNum.Size = new System.Drawing.Size(348, 21);
+            this.txtCardNum.Size = new System.Drawing.Size(212, 21);
             this.txtCardNum.TabIndex = 12;
             this.txtCardNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCardNum_KeyPress);
             // 
@@ -206,7 +232,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(48, 309);
+            this.label11.Location = new System.Drawing.Point(65, 307);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(40, 15);
@@ -240,7 +266,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(67, 213);
+            this.label10.Location = new System.Drawing.Point(72, 213);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(26, 15);
@@ -308,7 +334,7 @@
             // txtContactNum
             // 
             this.txtContactNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContactNum.Location = new System.Drawing.Point(410, 92);
+            this.txtContactNum.Location = new System.Drawing.Point(378, 99);
             this.txtContactNum.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactNum.MaxLength = 11;
             this.txtContactNum.Name = "txtContactNum";
@@ -321,7 +347,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(346, 97);
+            this.label5.Location = new System.Drawing.Point(315, 102);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 15);
@@ -332,7 +358,7 @@
             // 
             this.txtBday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBday.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtBday.Location = new System.Drawing.Point(134, 94);
+            this.txtBday.Location = new System.Drawing.Point(117, 97);
             this.txtBday.Margin = new System.Windows.Forms.Padding(4);
             this.txtBday.Name = "txtBday";
             this.txtBday.Size = new System.Drawing.Size(190, 21);
@@ -343,7 +369,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(64, 96);
+            this.label4.Location = new System.Drawing.Point(48, 95);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 15);
@@ -407,7 +433,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(64, 40);
+            this.label1.Location = new System.Drawing.Point(45, 41);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 15);
@@ -505,6 +531,8 @@
         private System.Windows.Forms.TextBox txtCardExpiration;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtPinCode;
+        private System.Windows.Forms.Label label16;
     }
 }
 

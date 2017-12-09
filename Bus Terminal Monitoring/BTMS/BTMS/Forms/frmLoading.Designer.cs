@@ -40,9 +40,9 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnVoid = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -153,6 +153,11 @@
             this.columnHeader3.Text = "Amount Load";
             this.columnHeader3.Width = 131;
             // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "PID";
+            this.columnHeader4.Width = 0;
+            // 
             // btnVoid
             // 
             this.btnVoid.Location = new System.Drawing.Point(556, 200);
@@ -173,11 +178,6 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "PID";
-            this.columnHeader4.Width = 0;
-            // 
             // frmLoading
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,6 +194,7 @@
             this.Name = "frmLoading";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Accounts";
+            this.Load += new System.EventHandler(this.frmLoading_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

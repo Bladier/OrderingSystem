@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-12-08 11:50:42
+Date: 2017-12-09 10:29:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -130,7 +130,7 @@ CREATE TABLE `tblcredit` (
 -- ----------------------------
 -- Records of tblcredit
 -- ----------------------------
-INSERT INTO `tblcredit` VALUES ('1', '2', '5488.799999999999');
+INSERT INTO `tblcredit` VALUES ('1', '2', '12088.8');
 INSERT INTO `tblcredit` VALUES ('2', '1', '3000');
 
 -- ----------------------------
@@ -162,13 +162,33 @@ CREATE TABLE `tblloadhistory` (
   `loaddate` date DEFAULT NULL,
   `status` smallint(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tblloadhistory
 -- ----------------------------
 INSERT INTO `tblloadhistory` VALUES ('1', '2', '200', '2017-11-29', '0');
 INSERT INTO `tblloadhistory` VALUES ('2', '2', '300', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('3', '2', '500', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('4', '2', '300', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('5', '2', '400', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('6', '2', '250', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('7', '2', '700', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('8', '2', '600', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('9', '2', '450', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('10', '2', '1000', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('11', '2', '200', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('12', '2', '200', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('13', '2', '200', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('14', '2', '200', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('15', '2', '200', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('16', '2', '200', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('17', '2', '200', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('18', '2', '200', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('19', '2', '200', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('20', '2', '200', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('21', '2', '200', '2017-11-29', '1');
+INSERT INTO `tblloadhistory` VALUES ('22', '2', '200', '2017-11-29', '1');
 
 -- ----------------------------
 -- Table structure for `tblpassenger`
@@ -190,14 +210,15 @@ CREATE TABLE `tblpassenger` (
   `IDTYPE` varchar(20) DEFAULT NULL,
   `IDNumber` varchar(20) DEFAULT '0',
   `CardExpiration` date DEFAULT NULL,
+  `PinCode` smallint(6) DEFAULT NULL,
   PRIMARY KEY (`passid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tblpassenger
 -- ----------------------------
-INSERT INTO `tblpassenger` VALUES ('1', '3110359101', 'Steves', '', 'Salon', '2017-11-16', '9202929302', 'Regular', 'Soledad State', '11/16/2017 12:00:00 AM', 'General Santos City', 'South Cot.', '', '', '2019-12-10');
-INSERT INTO `tblpassenger` VALUES ('2', '3110345429', 'MICA', '', 'LEGISNIANA', '1996-06-10', '9123123123', 'Senior', 'PUROK 6', '6/10/1996 12:00:00 AM', 'KORONADAL', 'SOUTH COT.', 'Senior', '898080980', '2021-12-27');
+INSERT INTO `tblpassenger` VALUES ('1', '3110359101', 'Steves', '', 'Salon', '2017-11-16', '9202929302', 'Regular', 'Soledad State', '11/16/2017 12:00:00 AM', 'General Santos City', 'South Cot.', '', '', '2019-12-10', '1234');
+INSERT INTO `tblpassenger` VALUES ('2', '3110345429', 'MICA', '', 'LEGISNIANA', '1996-06-10', '9123123123', 'Senior', 'PUROK 6', '6/10/1996 12:00:00 AM', 'KORONADAL', 'SOUTH COT.', 'Senior', '898080980', '2021-12-27', '1234');
 
 -- ----------------------------
 -- Table structure for `tblroute`

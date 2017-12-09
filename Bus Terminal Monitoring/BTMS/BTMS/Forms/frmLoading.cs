@@ -11,6 +11,7 @@ namespace BTMS
 {
     public partial class frmLoading : Form
     {
+        int pin;
         int passID;
         string credits;
         public frmLoading()
@@ -47,7 +48,7 @@ namespace BTMS
           bool isCardValid=false;
           while (isCardValid == false)
           {
-              string confirmation = Interaction.InputBox("Enter Card Number", "Confirmation", "");
+              string confirmation = Interaction.InputBox("Enter Pin Code", "Confirmation", "");
 
               if (confirmation == "") { isCardValid = false; }
               if (confirmation.Length != 10)
@@ -85,7 +86,37 @@ namespace BTMS
             lh.SaveLoadHist();
 
             MessageBox.Show("Successfully loaded.", "Information", MessageBoxButtons.OK);
+
+            PrintReceipt(Convert.ToDouble(credits));
             search();
+        }
+
+        private void PrintReceipt(double Payment)
+        {
+            loadhistory lh = new loadhistory();
+
+            string mysql = "SELECT * FROM TBLLOADHISTORY WHERE ID ='" + lh.LoadLastID() + "'";
+            DataSet ds = Database.LoadSQL(mysql, "TBLLOADHISTORY");
+
+            int idx = Convert.ToInt32(ds.Tables[0].Rows[0]["PassID"]);
+
+            passenger ps = new passenger();
+            ps.Loadpass(idx);
+
+            Dictionary<string, string> rptPara = new Dictionary<string, string>();
+
+            string LastTree= ps.RFIDnum.ToString().Substring(7, 3);
+
+            string LastSeven = ps.RFIDnum.ToString().Substring(0, 7);
+            LastSeven = LastSeven.Replace(LastSeven, "*******");
+
+            frmReport frm = new frmReport();
+            rptPara.Add("txtCardNumber", LastSeven + "" + LastTree);
+            rptPara.Add("txtName", ps.Fname + " " + ps.Lname);
+            rptPara.Add("txtPayment", Payment.ToString());
+            frm.ReportInit(mysql, "dsReceipt", @"Report\rpt_Receipt.rdlc", rptPara);
+            frm.Show();
+
         }
 
         private void txtCardNum_TextChanged(object sender, EventArgs e)
@@ -111,6 +142,7 @@ namespace BTMS
             p.LoadpassbyCard(txtCardNum.Text);
             txtname.Text = p.Fname + " " + p.Lname;
             passID = p.ID;
+            pin = p.Pincode;
 
             Credit c = new Credit();
 
@@ -196,5 +228,12 @@ namespace BTMS
             MessageBox.Show("Successfully Voided", "Voiding", MessageBoxButtons.OK);
             LoadHistory(passenger);
         }
+
+        private void frmLoading_Load(object sender, EventArgs e)
+        {
+
+        }
+
+   
     }
 }
