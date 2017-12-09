@@ -11,7 +11,7 @@ namespace BTMS
 {
     public partial class frmLoading : Form
     {
-        int pin;
+        string pin;
         int passID;
         string credits;
         public frmLoading()
@@ -48,15 +48,15 @@ namespace BTMS
           bool isCardValid=false;
           while (isCardValid == false)
           {
-              string confirmation = Interaction.InputBox("Enter Pin Code", "Confirmation", "");
+              string promptValue = ShowDialog("Enter Pin Code", "Confirmation");
 
-              if (confirmation == "") { isCardValid = false; }
-              if (confirmation.Length != 10)
+              if (promptValue == "") { isCardValid = false; }
+              if (promptValue.Length != 4)
               {
                   isCardValid = false;
                   goto Gohere;
               }
-              if (confirmation != txtCardNum.Text)
+              if (promptValue != pin)
               {
                   isCardValid = false;
                   goto Gohere;
@@ -66,7 +66,7 @@ namespace BTMS
     Gohere:
           if (!isCardValid)
           {
-              MessageBox.Show("Invalid card number, Please try again.", "Confirmation failed.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+              MessageBox.Show("Invalid Pin.", "Confirmation failed.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
               return;
           }
             
@@ -142,7 +142,7 @@ namespace BTMS
             p.LoadpassbyCard(txtCardNum.Text);
             txtname.Text = p.Fname + " " + p.Lname;
             passID = p.ID;
-            pin = p.Pincode;
+            pin = Convert.ToString(p.Pincode);
 
             Credit c = new Credit();
 
@@ -183,8 +183,33 @@ namespace BTMS
 
         }
 
+        public static string ShowDialog(string text, string caption)
+        {
+            Font font = new Font("Times New Roman", 12.0f,
+                        FontStyle.Bold | FontStyle.Italic | FontStyle.Underline);
+  
+            Form prompt = new Form();
+            prompt.Width = 273;
+            prompt.Height = 103;
+
+            prompt.MaximumSize = new Size(273, 103);
+            prompt.MinimumSize = new Size(273, 103);
+            prompt.Text = caption;
+            TextBox inputBox = new TextBox() { Left = 12, Top = 10, Width = 239 };
+            Button confirmation = new Button() { Text = "Confirm", Left = 176, Width = 75, Top = 40 };
+            confirmation.Click += (sender, e) => { prompt.Close(); };
+            prompt.Controls.Add(confirmation);
+            
+            prompt.Controls.Add(inputBox);
+            inputBox.Font = font;
+            inputBox.UseSystemPasswordChar = true;
+            prompt.ShowDialog();
+            return (string)Convert.ToString(inputBox.Text);
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
+         
             DialogResult result = MessageBox.Show("Do want to cancel?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
             {
@@ -192,11 +217,11 @@ namespace BTMS
             }
 
             passID = 0;
-             credits = "";
-             lvloadHist.Items.Clear();
-             txtname.Clear();
-             txtCardNum.Clear();
-             txtCredit.Clear();
+            credits = "";
+            lvloadHist.Items.Clear();
+            txtname.Clear();
+            txtCardNum.Clear();
+            txtCredit.Clear();
 
         }
 
