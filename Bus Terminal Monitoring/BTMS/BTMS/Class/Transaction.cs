@@ -154,7 +154,10 @@ namespace BTMS
 
         public bool IsTag(int passID)
         {
-            string mySql = "Select * From " + MainTable + " where passID = '" + passID + "' and BusTransID= '" + _BusTransID.ID +"' and status = 1";
+            DateTime d = Convert.ToDateTime(mod_system.CurrentDate.ToShortDateString());
+            string datestring = d.ToString("yyyy-MM-dd");
+
+            string mySql = "Select * From " + MainTable + " where passID = '" + passID + "' and BusTransID= '" + _BusTransID.ID +"' and status = 1 and transDate ='" + datestring + "'";
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
             if (ds.Tables[0].Rows.Count == 0)

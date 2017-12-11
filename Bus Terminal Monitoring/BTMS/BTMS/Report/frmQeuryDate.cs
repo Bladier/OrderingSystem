@@ -20,9 +20,11 @@ namespace BTMS
         private void DailySales()
         {
             string fillData = "dsSales";
+            DateTime d = Convert.ToDateTime(monCal.SelectionStart.ToShortDateString());
+            string datestring = d.ToString("yyyy-MM-dd");
 
             string mysql = "SELECT * FROM BUS_SALES where transStatus <> 0";
-            mysql += string.Format(" and DATE_FORMAT(TransDate,'%m/%d/%Y')= '{0}'", monCal.SelectionStart.ToShortDateString());
+            mysql += string.Format(" and TransDate= '{0}'", datestring);
             
             Dictionary<string, string> rptPara = new Dictionary<string, string>();
          
@@ -35,9 +37,11 @@ namespace BTMS
         private void BusPassCount()
         {
             string fillData = "dsPassCount";
+            DateTime d = Convert.ToDateTime(monCal.SelectionStart.ToShortDateString());
+            string datestring = d.ToString("yyyy-MM-dd");
 
             string mysql = "SELECT * FROM BUS_SALES where busTransStatus <> 'C'";
-            mysql += string.Format(" and DATE_FORMAT(TransDate,'%m/%d/%Y')= '{0}'", MonCalbus.SelectionStart.ToShortDateString());
+            mysql += string.Format(" and TransDate= '{0}'", datestring);
 
             Dictionary<string, string> rptPara = new Dictionary<string, string>();
 

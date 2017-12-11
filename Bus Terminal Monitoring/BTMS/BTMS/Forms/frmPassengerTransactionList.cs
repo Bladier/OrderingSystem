@@ -100,6 +100,20 @@ namespace BTMS
             bt.ID = Convert.ToInt32(lvpasslist.SelectedItems[0].SubItems[7].Text);
             bt.BackSeat_to_Available();
 
+            if (Application.OpenForms["frmTransaction"] != null)
+            {
+                double availseat = bt.GetPassenger(bt.ID);
+                (Application.OpenForms["frmTransaction"] as frmTransaction).txtPassengerCount.Text = availseat.ToString();
+
+                int bustransIDX = Convert.ToInt32(lvpasslist.SelectedItems[0].SubItems[7].Text);
+                bt.LoadTrans(bustransIDX);
+                
+                (Application.OpenForms["frmTransaction"] as frmTransaction).txtAvailableSeat.Text = bt.AvailableSeat.ToString();
+            }
+
+            frmTransaction frm = new frmTransaction();
+           
+      
             MessageBox.Show("Bus transaction successfully voided.", "Voiding", MessageBoxButtons.OK);
             this.Close();
         }

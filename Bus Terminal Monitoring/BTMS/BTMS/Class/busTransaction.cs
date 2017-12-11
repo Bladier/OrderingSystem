@@ -173,7 +173,19 @@ namespace BTMS
              Database.SaveEntry(ds, false);
         }
 
+        public int GetPassenger(int busTransID)
+        {
+            string mySql = "Select count(ID) as passenger From " + "tbltransaction" + " where busTransID = " + busTransID + " and status = 1";
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
 
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return 0;
+            }
+
+            int passCount = Convert.ToInt32(ds.Tables[0].Rows[0]["passenger"]);
+            return passCount;
+        }
         #endregion
     }
 }

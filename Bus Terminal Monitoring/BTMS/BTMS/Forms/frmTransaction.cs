@@ -39,9 +39,13 @@ namespace BTMS
             if (ds.Tables[0].Rows.Count == 0) { return; }
 
             busTransaction bt = new busTransaction();
-            bt.LoadTrans( Convert.ToInt16(ds.Tables[0].Rows[0]["ID"]));
+            bt.LoadTrans(Convert.ToInt16(ds.Tables[0].Rows[0]["ID"]));
             tmpBusTrans = bt;
-                        
+            txtAvailableSeat.Text = bt.AvailableSeat.ToString();
+
+            int passcount = bt.GetPassenger(Convert.ToInt16(ds.Tables[0].Rows[0]["ID"]));
+            txtPassengerCount.Text = passcount.ToString();
+
             busManagement buslist = new busManagement();
             buslist.Loadbusmngt(Convert.ToInt16(ds.Tables[0].Rows[0]["BUSID"]));
             addbus(buslist);
@@ -177,6 +181,12 @@ namespace BTMS
             bt.Bus = tmpBus;
             bt.ID = tmpBusTrans.ID;
             bt.DeductSeat(1);
+
+            int passcount = bt.GetPassenger(Convert.ToInt16(tmpBusTrans.ID));
+            txtPassengerCount.Text = passcount.ToString();
+
+            int availseat = Convert.ToInt32(txtAvailableSeat.Text) - 1;
+            txtAvailableSeat.Text = Convert.ToString(availseat);
 
             label14.Text= "You are successfully tag in this bus";
       

@@ -56,6 +56,10 @@
             this.lblDate = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.tmpTimer = new System.Windows.Forms.Timer(this.components);
+            this.txtAvailableSeat = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtPassengerCount = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -65,7 +69,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.txtCardNum);
-            this.groupBox1.Location = new System.Drawing.Point(322, 153);
+            this.groupBox1.Location = new System.Drawing.Point(317, 116);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(384, 72);
             this.groupBox1.TabIndex = 0;
@@ -316,7 +320,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(323, 114);
+            this.label14.Location = new System.Drawing.Point(317, 77);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(30, 18);
             this.label14.TabIndex = 4;
@@ -327,11 +331,50 @@
             this.tmpTimer.Enabled = true;
             this.tmpTimer.Tick += new System.EventHandler(this.tmpTimer_Tick);
             // 
+            // txtAvailableSeat
+            // 
+            this.txtAvailableSeat.Location = new System.Drawing.Point(403, 214);
+            this.txtAvailableSeat.Name = "txtAvailableSeat";
+            this.txtAvailableSeat.ReadOnly = true;
+            this.txtAvailableSeat.Size = new System.Drawing.Size(101, 21);
+            this.txtAvailableSeat.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(313, 216);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 15);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Available Seat";
+            // 
+            // txtPassengerCount
+            // 
+            this.txtPassengerCount.Location = new System.Drawing.Point(403, 244);
+            this.txtPassengerCount.Name = "txtPassengerCount";
+            this.txtPassengerCount.ReadOnly = true;
+            this.txtPassengerCount.Size = new System.Drawing.Size(101, 21);
+            this.txtPassengerCount.TabIndex = 22;
+            this.txtPassengerCount.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(315, 246);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 15);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Passenger";
+            // 
             // frmTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 339);
+            this.ClientSize = new System.Drawing.Size(719, 339);
+            this.Controls.Add(this.txtPassengerCount);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtAvailableSeat);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.groupBox3);
@@ -384,5 +427,9 @@
         private System.Windows.Forms.TextBox txtbusNo;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Timer tmpTimer;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        internal System.Windows.Forms.TextBox txtAvailableSeat;
+        internal System.Windows.Forms.TextBox txtPassengerCount;
     }
 }
