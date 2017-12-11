@@ -194,6 +194,8 @@ namespace BTMS
 
             prompt.MaximumSize = new Size(273, 103);
             prompt.MinimumSize = new Size(273, 103);
+            prompt.MaximizeBox = false;
+            prompt.MinimizeBox = false;
             prompt.Text = caption;
             TextBox inputBox = new TextBox() { Left = 12, Top = 10, Width = 239 };
             Button confirmation = new Button() { Text = "Confirm", Left = 176, Width = 75, Top = 40 };
@@ -204,6 +206,7 @@ namespace BTMS
             inputBox.Font = font;
             inputBox.UseSystemPasswordChar = true;
             prompt.ShowDialog();
+            inputBox.Focus();
             return (string)Convert.ToString(inputBox.Text);
         }
 
