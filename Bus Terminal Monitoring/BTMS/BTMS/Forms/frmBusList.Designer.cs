@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBusList));
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.btnadd = new System.Windows.Forms.Button();
             this.lvbusList = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -39,7 +41,6 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtsearch = new System.Windows.Forms.TextBox();
             this.btnView = new System.Windows.Forms.Button();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnCancel
@@ -102,6 +103,10 @@
             this.lvbusList.DoubleClick += new System.EventHandler(this.lvbusList_DoubleClick);
             this.lvbusList.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvbusList_KeyPress);
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "BusNo";
+            // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Type";
@@ -157,10 +162,6 @@
             this.btnView.UseVisualStyleBackColor = true;
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "BusNo";
-            // 
             // frmBusList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,6 +174,7 @@
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtsearch);
             this.Controls.Add(this.btnView);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmBusList";
             this.Text = "Bus List";
             this.Load += new System.EventHandler(this.frmBusList_Load);

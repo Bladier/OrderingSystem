@@ -118,7 +118,7 @@ namespace BTMS
         {
             string mySql = "SELECT * FROM " + " tblUser";
             if (!isNew)
-                mySql += " WHERE UserID = " + _id;
+                mySql += " WHERE ID = " + _id;
 
             DataSet ds = Database.LoadSQL(mySql, "tblUser");
             if (isNew)
@@ -127,10 +127,11 @@ namespace BTMS
                 dsNewRow = ds.Tables["tblUser"].NewRow();
                 var _with3 = dsNewRow;
                 _with3["Username"] = _Username;
-                _with3["Userpass"] = _userpass;
+                _with3["Userpass"] = DeathCodez.Security.Encrypt(_userpass);
                 _with3["Firstname"] = _firstname;
                 _with3["Middlename"] = _Midname;
                 _with3["Lastname"] = _Lastname;
+                _with3["status"] = 1;
                 _with3["UserType"] = _UserRule;
                 ds.Tables["tblUser"].Rows.Add(dsNewRow);
             }
@@ -145,8 +146,9 @@ namespace BTMS
                 _with4["Firstname"] = _firstname;
                 _with4["MiddleName"]=_Midname;
                 _with4["Lastname"] = _Lastname;
-                if (_Status == true) { _with4["status"] = 1; }
-                else { _with4["status"] = 1; }
+                _with4["status"] = 1;
+                _with4["UserType"] = _UserRule;
+                
             }
 
             Database.SaveEntry(ds, isNew);
@@ -193,6 +195,39 @@ namespace BTMS
             Database.SaveEntry(ds, false);
             // End If
         }
+
+
+        public bool IsUserNameExists(string user)
+        {
+            string mySql = "SELECT ID, LOWER(Username) FROM tblUser ";
+            mySql += string.Format(" WHERE LOWER(Username) = LOWER('{0}')", user);
+            DataSet ds = Database.LoadSQL(mySql, "tblUser");
+
+            if (ds.Tables[0].Rows.Count == 0) { return false; }
+
+            return true;
+        }
+
+
+        public bool ifUserIxists(string f,string m, string l)
+        {
+            string mySql = "SELECT * FROM tblUser ";
+            mySql += string.Format(" WHERE LOWER(Firstname) = LOWER('{0}')", f);
+
+            if (m != "")
+            {
+                mysql += " and LOWER(MIDDLENAME) = '" + m + "'";
+            }
+
+            mysql += " and LOWER(LASTNAME) = '" + l + "'";
+
+            DataSet ds = Database.LoadSQL(mySql, "tblUser");
+
+            if (ds.Tables[0].Rows.Count == 0) { return false; }
+
+            return true;
+        }
+
         #endregion
         }
     }

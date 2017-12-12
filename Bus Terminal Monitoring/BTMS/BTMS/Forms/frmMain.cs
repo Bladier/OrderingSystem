@@ -250,6 +250,24 @@ namespace BTMS
             }
         }
 
+        private void tsUserMngt_Click(object sender, EventArgs e)
+        {
+            if (!dateSet)
+            {
+                MessageBox.Show("Not able to open this module Yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+
+            if (Application.OpenForms["frmUserManagement"] != null)
+            {
+
+            }
+            else
+            {
+                frmUserManagement frm = new frmUserManagement();
+                frm.Show();
+            }
+        }
+
        
     }
 }

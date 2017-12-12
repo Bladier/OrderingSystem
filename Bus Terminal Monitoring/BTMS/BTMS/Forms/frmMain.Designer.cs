@@ -37,6 +37,7 @@
             this.ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.busPersonnelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadingAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.confirmationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +48,7 @@
             this.toolsBmgt = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.confirmationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsUserMngt = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -114,6 +115,13 @@
             this.loadingAccountToolStripMenuItem.Text = "&Loading Account";
             this.loadingAccountToolStripMenuItem.Click += new System.EventHandler(this.loadingAccountToolStripMenuItem_Click);
             // 
+            // confirmationToolStripMenuItem
+            // 
+            this.confirmationToolStripMenuItem.Name = "confirmationToolStripMenuItem";
+            this.confirmationToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.confirmationToolStripMenuItem.Text = "&Confirmation";
+            this.confirmationToolStripMenuItem.Click += new System.EventHandler(this.confirmationToolStripMenuItem_Click);
+            // 
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -125,7 +133,7 @@
             // maintenanceToolStripMenuItem
             // 
             this.maintenanceToolStripMenuItem.Name = "maintenanceToolStripMenuItem";
-            this.maintenanceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.maintenanceToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.maintenanceToolStripMenuItem.Text = "Maintenance";
             this.maintenanceToolStripMenuItem.Click += new System.EventHandler(this.maintenanceToolStripMenuItem_Click);
             // 
@@ -165,7 +173,8 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsBmgt,
             this.toolStripButton2,
-            this.toolStripButton3});
+            this.toolStripButton3,
+            this.tsUserMngt});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(1);
@@ -201,12 +210,14 @@
             this.toolStripButton3.Text = "Passenger";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
-            // confirmationToolStripMenuItem
+            // tsUserMngt
             // 
-            this.confirmationToolStripMenuItem.Name = "confirmationToolStripMenuItem";
-            this.confirmationToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.confirmationToolStripMenuItem.Text = "&Confirmation";
-            this.confirmationToolStripMenuItem.Click += new System.EventHandler(this.confirmationToolStripMenuItem_Click);
+            this.tsUserMngt.Image = ((System.Drawing.Image)(resources.GetObject("tsUserMngt.Image")));
+            this.tsUserMngt.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsUserMngt.Name = "tsUserMngt";
+            this.tsUserMngt.Size = new System.Drawing.Size(124, 24);
+            this.tsUserMngt.Text = "User Management";
+            this.tsUserMngt.Click += new System.EventHandler(this.tsUserMngt_Click);
             // 
             // frmMain
             // 
@@ -219,6 +230,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -255,5 +267,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripMenuItem confirmationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton tsUserMngt;
     }
 }
