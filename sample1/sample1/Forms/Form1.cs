@@ -300,5 +300,9 @@ namespace sample1
             return ds.Tables[0].Rows[0]["Description"].ToString();
         }
 
+        private void DisAbledFields(bool st = false)
+        {
+            cbo
+        }
     }
 }
