@@ -57,5 +57,28 @@ namespace sample1
             return ds.Tables[0].Rows[0]["description"].ToString();
         }
 
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            if (lvTransList.SelectedItems.Count == 0) { return; }
+
+            int idx = Convert.ToInt32(lvTransList.SelectedItems[0].Tag);
+
+            reservation rs = new reservation();
+            rs.loadTrans(idx);
+
+            if (Application.OpenForms["frmSettings"] != null)
+            {
+                (Application.OpenForms["frmSettings"] as frmReservation).loadtrans(rs);
+            }
+
+            {
+                frmReservation frm = new frmReservation();
+                frm.Show();
+                frm.isView = true;
+                frm.loadtrans(rs);
+            }
+
+
+        }
     }
-}
+    }

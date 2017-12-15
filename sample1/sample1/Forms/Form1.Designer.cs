@@ -39,26 +39,27 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cboVenue = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtRate = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtPayment = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.rbInstallment = new System.Windows.Forms.RadioButton();
-            this.rbCash = new System.Windows.Forms.RadioButton();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblPaidAtleast = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblBalance = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblPaidAtleast = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.rbCash = new System.Windows.Forms.RadioButton();
+            this.rbInstallment = new System.Windows.Forms.RadioButton();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtPayment = new System.Windows.Forms.TextBox();
+            this.txtRate = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnPost = new System.Windows.Forms.Button();
             this.rbBoking = new System.Windows.Forms.RadioButton();
             this.rbReservation = new System.Windows.Forms.RadioButton();
             this.label11 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.lblBalance = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -177,69 +178,59 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Payment Info";
             // 
-            // label5
+            // lblBalance
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 34);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(30, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Rate";
+            this.lblBalance.AutoSize = true;
+            this.lblBalance.Location = new System.Drawing.Point(81, 144);
+            this.lblBalance.Name = "lblBalance";
+            this.lblBalance.Size = new System.Drawing.Size(28, 13);
+            this.lblBalance.TabIndex = 23;
+            this.lblBalance.Text = "00.0";
             // 
-            // txtRate
+            // label13
             // 
-            this.txtRate.Location = new System.Drawing.Point(74, 31);
-            this.txtRate.Name = "txtRate";
-            this.txtRate.ReadOnly = true;
-            this.txtRate.Size = new System.Drawing.Size(221, 20);
-            this.txtRate.TabIndex = 11;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(28, 144);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(52, 13);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Balance :";
             // 
-            // label6
+            // lblTotal
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 267);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Enter Payment";
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(80, 176);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(28, 13);
+            this.lblTotal.TabIndex = 21;
+            this.lblTotal.Text = "00.0";
             // 
-            // txtPayment
+            // label10
             // 
-            this.txtPayment.Location = new System.Drawing.Point(94, 264);
-            this.txtPayment.Name = "txtPayment";
-            this.txtPayment.Size = new System.Drawing.Size(201, 20);
-            this.txtPayment.TabIndex = 11;
-            this.txtPayment.TextChanged += new System.EventHandler(this.txtPayment_TextChanged);
-            this.txtPayment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPayment_KeyPress);
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(43, 176);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 13);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Total :";
             // 
-            // label7
+            // lblPaidAtleast
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(21, 79);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 13);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Venue";
+            this.lblPaidAtleast.AutoSize = true;
+            this.lblPaidAtleast.Location = new System.Drawing.Point(80, 118);
+            this.lblPaidAtleast.Name = "lblPaidAtleast";
+            this.lblPaidAtleast.Size = new System.Drawing.Size(28, 13);
+            this.lblPaidAtleast.TabIndex = 18;
+            this.lblPaidAtleast.Text = "00.0";
             // 
-            // label8
+            // label9
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 81);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 13);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "PayMent Mode";
-            // 
-            // rbInstallment
-            // 
-            this.rbInstallment.AutoSize = true;
-            this.rbInstallment.Location = new System.Drawing.Point(188, 78);
-            this.rbInstallment.Name = "rbInstallment";
-            this.rbInstallment.Size = new System.Drawing.Size(75, 17);
-            this.rbInstallment.TabIndex = 14;
-            this.rbInstallment.Text = "Installment";
-            this.rbInstallment.UseVisualStyleBackColor = true;
-            this.rbInstallment.CheckedChanged += new System.EventHandler(this.rbInstallment_CheckedChanged);
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(11, 117);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(69, 13);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Paid Atleast :";
             // 
             // rbCash
             // 
@@ -254,41 +245,69 @@
             this.rbCash.UseVisualStyleBackColor = true;
             this.rbCash.CheckedChanged += new System.EventHandler(this.rbCash_CheckedChanged);
             // 
-            // label9
+            // rbInstallment
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(11, 117);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 13);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Paid Atleast :";
+            this.rbInstallment.AutoSize = true;
+            this.rbInstallment.Location = new System.Drawing.Point(188, 78);
+            this.rbInstallment.Name = "rbInstallment";
+            this.rbInstallment.Size = new System.Drawing.Size(75, 17);
+            this.rbInstallment.TabIndex = 14;
+            this.rbInstallment.Text = "Installment";
+            this.rbInstallment.UseVisualStyleBackColor = true;
+            this.rbInstallment.CheckedChanged += new System.EventHandler(this.rbInstallment_CheckedChanged);
             // 
-            // lblPaidAtleast
+            // label8
             // 
-            this.lblPaidAtleast.AutoSize = true;
-            this.lblPaidAtleast.Location = new System.Drawing.Point(80, 118);
-            this.lblPaidAtleast.Name = "lblPaidAtleast";
-            this.lblPaidAtleast.Size = new System.Drawing.Size(28, 13);
-            this.lblPaidAtleast.TabIndex = 18;
-            this.lblPaidAtleast.Text = "00.0";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(11, 81);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(79, 13);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "PayMent Mode";
             // 
-            // label10
+            // label6
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(43, 176);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(37, 13);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "Total :";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 267);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Enter Payment";
             // 
-            // lblTotal
+            // label5
             // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(80, 176);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(28, 13);
-            this.lblTotal.TabIndex = 21;
-            this.lblTotal.Text = "00.0";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 34);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(30, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Rate";
+            // 
+            // txtPayment
+            // 
+            this.txtPayment.Location = new System.Drawing.Point(94, 264);
+            this.txtPayment.Name = "txtPayment";
+            this.txtPayment.Size = new System.Drawing.Size(201, 20);
+            this.txtPayment.TabIndex = 11;
+            this.txtPayment.TextChanged += new System.EventHandler(this.txtPayment_TextChanged);
+            this.txtPayment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPayment_KeyPress);
+            // 
+            // txtRate
+            // 
+            this.txtRate.Location = new System.Drawing.Point(74, 31);
+            this.txtRate.Name = "txtRate";
+            this.txtRate.ReadOnly = true;
+            this.txtRate.Size = new System.Drawing.Size(221, 20);
+            this.txtRate.TabIndex = 11;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(21, 79);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 13);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Venue";
             // 
             // btnPost
             // 
@@ -340,24 +359,6 @@
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // lblBalance
-            // 
-            this.lblBalance.AutoSize = true;
-            this.lblBalance.Location = new System.Drawing.Point(81, 144);
-            this.lblBalance.Name = "lblBalance";
-            this.lblBalance.Size = new System.Drawing.Size(28, 13);
-            this.lblBalance.TabIndex = 23;
-            this.lblBalance.Text = "00.0";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(28, 144);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(52, 13);
-            this.label13.TabIndex = 22;
-            this.label13.Text = "Balance :";
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.cboVenue);
@@ -380,11 +381,23 @@
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.ForeColor = System.Drawing.Color.Red;
+            this.lblStatus.Location = new System.Drawing.Point(13, 351);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(74, 16);
+            this.lblStatus.TabIndex = 27;
+            this.lblStatus.Text = "CheckOut";
+            // 
             // frmReservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 381);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnPost);
@@ -397,6 +410,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -433,6 +447,7 @@
         private System.Windows.Forms.Label lblBalance;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label lblStatus;
     }
 }
 

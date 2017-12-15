@@ -34,11 +34,11 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSelect = new System.Windows.Forms.Button();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSelect = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSearch
@@ -96,6 +96,21 @@
             this.columnHeader3.Text = "Venue";
             this.columnHeader3.Width = 140;
             // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Total";
+            this.columnHeader4.Width = 108;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Start Date";
+            this.columnHeader5.Width = 109;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "End Date";
+            this.columnHeader6.Width = 106;
+            // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -115,21 +130,7 @@
             this.btnSelect.TabIndex = 4;
             this.btnSelect.Text = "&Select";
             this.btnSelect.UseVisualStyleBackColor = true;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Total";
-            this.columnHeader4.Width = 108;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Start Date";
-            this.columnHeader5.Width = 109;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "End Date";
-            this.columnHeader6.Width = 106;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // frmTransactionList
             // 

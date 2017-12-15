@@ -26,8 +26,8 @@ namespace sample1
 	public static bool ADS_SHOW = false;
     public static System.DateTime CurrentDate = DateAndTime.Now;
 
-    //public static User ORuser = new User();
-    //public static int UserID = ORuser.ID;
+    public static User ORuser = new User();
+    public static int UserID = ORuser.ID;
 	
 	static internal bool isAuthorized = false;
 

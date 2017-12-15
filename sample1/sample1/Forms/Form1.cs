@@ -11,6 +11,8 @@ namespace sample1
 {
     public partial class frmReservation : Form
     {
+        string address;
+       public bool isView;
         int custID;
         int venudID;
         public frmReservation()
@@ -34,11 +36,13 @@ namespace sample1
 
         private void dtEndDate_Load(object sender, EventArgs e)
         {
+            lblStatus.Visible = false;
             cboVenue.Items.AddRange(GetDistinct("Description"));
             if (rbCash.Checked)
             {
                 lblPaidAtleast.Text = "00.0";
                 txtPayment.Enabled = false;
+                       lblStatus.Visible = true;
             }
         }
 
@@ -120,7 +124,7 @@ namespace sample1
                 return;
             }
 
-            revervation res = new revervation();
+            reservation res = new reservation();
             res.venueID = venudID;
             res.CusID = custID;
             res.Transdate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
@@ -146,6 +150,13 @@ namespace sample1
             }
             res.Total = Convert.ToDouble(lblTotal.Text);
             res.Balance = Convert.ToDouble(lblBalance.Text);
+            res.Rate = Convert.ToDouble(txtRate.Text);
+
+            if (rbCash.Checked)
+            { res.mod = "Full Payment";}
+            if (rbInstallment.Checked)
+            { res.mod = "Installment"; }
+
             res.saveRes();
 
             bill bl = new bill();
@@ -203,7 +214,7 @@ namespace sample1
                 }
             }
           
-            revervation rs = new revervation();
+            reservation rs = new reservation();
             if (rs.isHasReserved_or_Booked(Convert.ToDateTime(dtStartDate.Text)))
             {
                 MessageBox.Show("This date has already reserved or booked by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -231,9 +242,63 @@ namespace sample1
                 if (txtPayment.Text == "") { return; }
                 lblBalance.Text = (Convert.ToDouble(lblTotal.Text) - Convert.ToDouble(txtPayment.Text)).ToString();
             }
-           
         }
 
+
+        internal void loadtrans(reservation rs)
+        {
+          
+            if (rs.Status == "CheckOut")
+            {
+                lblStatus.Visible = true;
+            }
+
+            if (rs.Status == "Booked")
+            {
+                rbBoking.Checked = false;
+                lblStatus.Visible = false;
+            }
+            if (rs.Status == "Reserved")
+            {
+                rbReservation.Checked = false;
+                lblStatus.Visible = false;
+            }
+
+            cboVenue.Text = getVenue(rs.venueID);
+
+            txtCustomer.Text = GetFullName(rs.CusID);
+            txtAddress.Text = address;
+            dtStartDate.Text = rs.StartDate.ToString();
+            dtEndDate.Text = rs.EndDate.ToString();
+            txtRate.Text = rs.Rate.ToString();
+            if (rs.mod == "Full Payment")
+            {
+                rbCash.Checked = true;
+            }
+            if (rs.mod == "Installment")
+            {
+                rbCash.Checked = true;
+            }
+
+            lblBalance.Text = rs.Balance.ToString();
+            lblTotal.Text = rs.Total.ToString();
+        }
+
+        private string GetFullName(int idx)
+        {
+            string mysql = "select * from customertbl where ID = " + idx + "";
+            DataSet ds = Database.LoadSQL(mysql, "customertbl");
+
+            address = ds.Tables[0].Rows[0]["address"].ToString();
+            return ds.Tables[0].Rows[0]["Firstname"].ToString() + " " + ds.Tables[0].Rows[0]["Lastname"].ToString();
+        }
+
+        private string getVenue(int idx)
+        {
+            string mysql = "SELECT * FROM VENUETBL WHERE ID =" + idx + "";
+            DataSet ds = Database.LoadSQL(mysql, "VENUETBL");
+            return ds.Tables[0].Rows[0]["Description"].ToString();
+        }
 
     }
 }

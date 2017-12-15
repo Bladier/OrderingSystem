@@ -14,7 +14,7 @@ using System.Text;
 
 namespace sample1
 {
-    class revervation
+    class reservation
     {
         private string MainTable = "reservationtbl";
 
@@ -90,10 +90,25 @@ namespace sample1
             get { return _Balance; }
             set { _Balance = value; }
         }
+
+        private double _Rate;
+        public double Rate
+        {
+            get { return _Rate; }
+            set { _Rate = value; }
+        }
+
+
+        private string _mod;
+        public string mod
+        {
+            get { return _mod; }
+            set { _mod = value; }
+        }
         #endregion
 
         #region "Functions
-        public void Loadpersonnel(int id)
+        public void loadTrans(int id)
         {
             string mySql = string.Format("SELECT * FROM " + MainTable + " WHERE ID = {0}", id);
             DataSet ds = Database.LoadSQL(mySql, MainTable);
@@ -128,7 +143,8 @@ namespace sample1
             _with2["Total"] = _Total;
             _with2["ForfeitDate"] = _ForfeitDate;
             _with2["Balance"] = _Balance;
-        
+            _with2["Rate"] = _Rate;
+            _with2["MOD"] = _mod;
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
@@ -148,10 +164,11 @@ namespace sample1
             _Total = Convert.ToDouble(_with3["Total"]);
             _ForfeitDate = Convert.ToDateTime(_with3["ForfeitDate"]);
             _Balance = Convert.ToDouble(_with3["Balance"]);
-   
+            _Rate = Convert.ToDouble(_with3["Rate"]);
+            _mod = _with3["MOD"].ToString();
         }
 
-        public void Updatepersonnel()
+        public void UpdateTrans()
         {
             string mySql = string.Format("SELECT * FROM {0} WHERE Personid = {1}", MainTable, _ID);
             DataSet ds = Database.LoadSQL(mySql, MainTable);
@@ -168,6 +185,8 @@ namespace sample1
                 _with2["Total"] = _Total;
                 _with2["ForfeitDate"] = _ForfeitDate;
                 _with2["Balance"] = _Balance;
+                _with2["Rate"] = _Rate;
+                _with2["MOD"] = _mod;
                 Database.SaveEntry(ds, false);
             }
             else
@@ -184,7 +203,8 @@ namespace sample1
                 _with2["Total"] = _Total;
                 _with2["ForfeitDate"] = _ForfeitDate;
                 _with2["Balance"] = _Balance;
-
+                _with2["Rate"] = _Rate;
+                _with2["MOD"] = _mod;
                 ds.Tables[0].Rows.Add(dsNewRow);
                 Database.SaveEntry(ds);
             }
