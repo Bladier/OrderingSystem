@@ -12,9 +12,10 @@ namespace sample1
     public partial class frmReservation : Form
     {
         string address;
-       public bool isView;
+       public bool isView=false;
         int custID;
         int venudID;
+        reservation tmpres;
         public frmReservation()
         {
             InitializeComponent();
@@ -36,6 +37,9 @@ namespace sample1
 
         private void dtEndDate_Load(object sender, EventArgs e)
         {
+            dtStartDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
+            dtEndDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
+     
             lblStatus.Visible = false;
             cboVenue.Items.AddRange(GetDistinct("Description"));
             if (rbCash.Checked)
@@ -78,12 +82,19 @@ namespace sample1
 
         private void rbInstallment_CheckedChanged(object sender, EventArgs e)
         {
-            txtPayment.Enabled = true;
-            if (txtRate.Text == "") { return; }
+            if (isView)
+            {
 
-            double paidAtleast =  Convert.ToDouble(lblTotal.Text) * 0.5;
-            lblPaidAtleast.Text = paidAtleast.ToString();
-            lblBalance.Text = Convert.ToDouble(lblTotal.Text).ToString();
+            }
+            else
+            {
+                txtPayment.Enabled = true;
+                if (txtRate.Text == "") { return; }
+
+                double paidAtleast = Convert.ToDouble(lblTotal.Text) * 0.5;
+                lblPaidAtleast.Text = paidAtleast.ToString();
+                lblBalance.Text = Convert.ToDouble(lblTotal.Text).ToString();
+            }
         }
 
         private void txtPayment_KeyPress(object sender, KeyPressEventArgs e)
@@ -93,6 +104,7 @@ namespace sample1
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
+            if (cboVenue.Text == "") { return; }
             Calculate();
         }
 
@@ -102,7 +114,7 @@ namespace sample1
             DateTime d2 = Convert.ToDateTime(dtEndDate.Text).AddDays(1);
 
             TimeSpan t = d2 - d1;
-            double NrOfDays = t.TotalDays;
+            double NrOfDays = Math.Round(t.TotalDays);
             NrOfDays = Convert.ToDouble(txtRate.Text) * NrOfDays;
             lblTotal.Text = NrOfDays.ToString();
 
@@ -114,6 +126,31 @@ namespace sample1
         }
 
         private void btnPost_Click(object sender, EventArgs e)
+        {
+          if (btnPost.Text =="&Post")
+          {
+              SaveTrans();
+          }
+          if (btnPost.Text == "&Edit")
+          {
+              if (tmpres.Balance != 0.0)
+              {
+                  rbBoking.Enabled = true;
+                  rbReservation.Enabled = true;
+                  txtPayment.Enabled = true;
+              }
+
+              btnPost.Text = "&Update";
+              groupBox1.Enabled = true;
+          }
+          if (btnPost.Text == "&Update")
+          {
+              UpdateTrans();
+          }
+
+        }
+
+        private void SaveTrans()
         {
             if (!isValid()) { return; }
 
@@ -153,7 +190,7 @@ namespace sample1
             res.Rate = Convert.ToDouble(txtRate.Text);
 
             if (rbCash.Checked)
-            { res.mod = "Full Payment";}
+            { res.mod = "Full Payment"; }
             if (rbInstallment.Checked)
             { res.mod = "Installment"; }
 
@@ -174,51 +211,103 @@ namespace sample1
             bl.tranSDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             bl.saveBill();
             MessageBox.Show("Transaction Posted.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        
         }
 
-        private bool isValid()
+
+        private void UpdateTrans()
         {
+            if (!isValid()){ return; }
 
-            bool isDatetimeStart_equal_dateTimeEnd = System.DateTime.Equals(Convert.ToDateTime(dtEndDate.Text), Convert.ToDateTime(dtStartDate.Text));
-
-            if (isDatetimeStart_equal_dateTimeEnd)
+            reservation res = new reservation();
+            
+            if (rbBoking.Checked)
             {
-                MessageBox.Show("TIME START must not equal to TIME END.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                res.Status = "Booked";
             }
 
-            int result = DateTime.Compare(Convert.ToDateTime(dtEndDate.Text).Date, Convert.ToDateTime(dtStartDate.Text).Date);
-
-            if (txtCustomer.Text == "") { txtCustomer.Focus(); return false; }
-
-            if (Convert.ToDateTime(dtStartDate.Text).Date > Convert.ToDateTime(dtEndDate.Text).Date)
+            if (rbReservation.Checked)
             {
-                MessageBox.Show("DATE TIME START must be greater than DATE TIME END.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                res.Status = "Reserved";
             }
+            
+            res.Balance = Convert.ToDouble(lblBalance.Text);
+            res.saveRes();
 
+            bill bl = new bill();
+            bl.resID = tmpres.ID;
+
+            if (rbCash.Checked)
+            {
+                bl.Payment = Convert.ToDouble(lblTotal.Text);
+            }
             if (rbInstallment.Checked)
             {
-                if (txtPayment.Text == "") { txtPayment.Focus(); return false; }
-                if (Convert.ToDouble(txtPayment.Text) < Convert.ToDouble(lblPaidAtleast.Text))
+                bl.Payment = Convert.ToDouble(txtPayment.Text);
+            }
+
+            bl.tranSDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            bl.saveBill();
+
+            MessageBox.Show("Transaction updated.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+        private bool isValid()
+        {
+            if (isView)
+            {
+                if (tmpres.Balance != 0.0)
                 {
-                    MessageBox.Show("You must pay atleast " + Convert.ToDouble(lblPaidAtleast.Text) + " .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    if (txtPayment.Text == "") { txtPayment.Focus(); return false; }
+                    if (Convert.ToDouble(txtPayment.Text) > Convert.ToDouble(tmpres.Balance))
+                    {
+                        MessageBox.Show("The balance is: " + tmpres.Balance + " only.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+              
+            }
+            else
+            {
+                bool isDatetimeStart_equal_dateTimeEnd = System.DateTime.Equals(Convert.ToDateTime(dtEndDate.Text), Convert.ToDateTime(dtStartDate.Text));
+
+                if (isDatetimeStart_equal_dateTimeEnd)
+                {
+                    MessageBox.Show("TIME START must not equal to TIME END.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
 
-                if (Convert.ToDouble(txtPayment.Text) >= Convert.ToDouble(lblTotal.Text))
+                int result = DateTime.Compare(Convert.ToDateTime(dtEndDate.Text).Date, Convert.ToDateTime(dtStartDate.Text).Date);
+
+                if (txtCustomer.Text == "") { txtCustomer.Focus(); return false; }
+
+                if (Convert.ToDateTime(dtStartDate.Text).Date > Convert.ToDateTime(dtEndDate.Text).Date)
                 {
-                    MessageBox.Show("Select full payment to fully paid this transaction.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("DATE TIME START must be greater than DATE TIME END.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-            }
-          
-            reservation rs = new reservation();
-            if (rs.isHasReserved_or_Booked(Convert.ToDateTime(dtStartDate.Text)))
-            {
-                MessageBox.Show("This date has already reserved or booked by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
+
+                if (rbInstallment.Checked)
+                {
+                    if (txtPayment.Text == "") { txtPayment.Focus(); return false; }
+                    if (Convert.ToDouble(txtPayment.Text) < Convert.ToDouble(lblPaidAtleast.Text))
+                    {
+                        MessageBox.Show("You must pay atleast " + Convert.ToDouble(lblPaidAtleast.Text) + " .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }
+
+                    if (Convert.ToDouble(txtPayment.Text) >= Convert.ToDouble(lblTotal.Text))
+                    {
+                        MessageBox.Show("Select full payment to fully paid this transaction.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }
+                }
+
+                reservation rs = new reservation();
+                if (rs.isHasReserved_or_Booked(Convert.ToDateTime(dtStartDate.Text)))
+                {
+                    MessageBox.Show("This date has already reserved or booked by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
             }
 
             return true;
@@ -237,33 +326,56 @@ namespace sample1
 
         private void txtPayment_TextChanged(object sender, EventArgs e)
         {
-            if (rbInstallment.Checked)
+            if (isView)
             {
-                if (txtPayment.Text == "") { return; }
-                lblBalance.Text = (Convert.ToDouble(lblTotal.Text) - Convert.ToDouble(txtPayment.Text)).ToString();
+                if (txtPayment.Text == "") 
+                {
+                    lblBalance.Text = tmpres.Balance.ToString();
+                    return; }
+
+                lblBalance.Text = (Convert.ToDouble(lblBalance.Text) - Convert.ToDouble(txtPayment.Text)).ToString();
+                return;
             }
+            else
+            {
+                if (rbInstallment.Checked)
+                {
+                    if (txtPayment.Text == "") { return; }
+                    lblBalance.Text = (Convert.ToDouble(lblTotal.Text) - Convert.ToDouble(txtPayment.Text)).ToString();
+                }
+            }
+
         }
 
 
         internal void loadtrans(reservation rs)
         {
-          
-            if (rs.Status == "CheckOut")
+            if (rs.Balance == 0.0)
             {
-                lblStatus.Visible = true;
+                rbBoking.Enabled = false;
+                rbReservation.Enabled = false;
             }
+            else
+            {
+                if (rs.Status == "CheckOut")
+                {
+                    lblStatus.Visible = true;
+                }
 
-            if (rs.Status == "Booked")
-            {
-                rbBoking.Checked = false;
-                lblStatus.Visible = false;
+                if (rs.Status == "Booked")
+                {
+                    rbBoking.Text = "Booked";
+                    rbBoking.Checked = true;
+                    lblStatus.Visible = false;
+                }
+                if (rs.Status == "Reserved")
+                {
+                    rbReservation.Text = "Reserved";
+                    rbReservation.Checked = true;
+                    lblStatus.Visible = false;
+                }
             }
-            if (rs.Status == "Reserved")
-            {
-                rbReservation.Checked = false;
-                lblStatus.Visible = false;
-            }
-
+            
             cboVenue.Text = getVenue(rs.venueID);
 
             txtCustomer.Text = GetFullName(rs.CusID);
@@ -277,11 +389,14 @@ namespace sample1
             }
             if (rs.mod == "Installment")
             {
-                rbCash.Checked = true;
+              rbInstallment.Checked = true;
             }
 
             lblBalance.Text = rs.Balance.ToString();
             lblTotal.Text = rs.Total.ToString();
+
+            tmpres = rs;
+            DisAbledFields();
         }
 
         private string GetFullName(int idx)
@@ -302,7 +417,19 @@ namespace sample1
 
         private void DisAbledFields(bool st = false)
         {
-            cbo
+            rbBoking.Enabled = st;
+            rbReservation.Enabled = st;
+            cboVenue.Enabled = st;
+            txtCustomer.Enabled = false;
+            txtAddress.Enabled = false;
+            dtStartDate.Enabled = false;
+            dtEndDate.Enabled = false;
+            btnSearch.Enabled = st;
+            groupBox1.Enabled = st;
+            rbInstallment.Enabled = st;
+            rbCash.Enabled = st;
+
+            btnPost.Text = "&Edit";
         }
     }
 }
