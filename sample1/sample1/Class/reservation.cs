@@ -170,23 +170,13 @@ namespace sample1
 
         public void UpdateTrans()
         {
-            string mySql = string.Format("SELECT * FROM {0} WHERE Personid = {1}", MainTable, _ID);
+            string mySql = string.Format("SELECT * FROM {0} WHERE ID = {1}", MainTable, _ID);
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
             if (ds.Tables[0].Rows.Count == 1)
             {
                 var _with2 = ds.Tables[MainTable].Rows[0];
-                _with2["venueID"] = _venueID;
-                _with2["customerID"] = _CusID;
-                _with2["TransDate"] = _Transdate;
-                _with2["StartDate"] = _StartDate;
-                _with2["EndDate"] = _EndDate;
-                _with2["Status"] = _status;
-                _with2["Total"] = _Total;
-                _with2["ForfeitDate"] = _ForfeitDate;
                 _with2["Balance"] = _Balance;
-                _with2["Rate"] = _Rate;
-                _with2["MOD"] = _mod;
                 Database.SaveEntry(ds, false);
             }
             else

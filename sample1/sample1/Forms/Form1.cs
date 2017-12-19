@@ -12,7 +12,7 @@ namespace sample1
     public partial class frmReservation : Form
     {
         string address;
-       public bool isView=false;
+        public bool isView=false;
         int custID;
         int venudID;
         reservation tmpres;
@@ -39,15 +39,16 @@ namespace sample1
         {
             dtStartDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
             dtEndDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
-     
+
+            //if (rbCash.Checked)
+            //{
+            //    lblPaidAtleast.Text = "00.0";
+            //    lblStatus.Visible = true;
+            //}
+
             lblStatus.Visible = false;
             cboVenue.Items.AddRange(GetDistinct("Description"));
-            if (rbCash.Checked)
-            {
-                lblPaidAtleast.Text = "00.0";
-                txtPayment.Enabled = false;
-                       lblStatus.Visible = true;
-            }
+          
         }
 
 
@@ -115,9 +116,12 @@ namespace sample1
 
             TimeSpan t = d2 - d1;
             double NrOfDays = Math.Round(t.TotalDays);
+
+            txtNoOfDays.Text = NrOfDays.ToString();
             NrOfDays = Convert.ToDouble(txtRate.Text) * NrOfDays;
             lblTotal.Text = NrOfDays.ToString();
 
+      
             if (txtPayment.Text != "")
             {
                 lblBalance.Text = (Convert.ToDouble(lblTotal.Text) - Convert.ToDouble(txtPayment.Text)).ToString();
@@ -130,6 +134,7 @@ namespace sample1
           if (btnPost.Text =="&Post")
           {
               SaveTrans();
+              return;
           }
           if (btnPost.Text == "&Edit")
           {
@@ -142,6 +147,7 @@ namespace sample1
 
               btnPost.Text = "&Update";
               groupBox1.Enabled = true;
+              return;
           }
           if (btnPost.Text == "&Update")
           {
@@ -219,7 +225,7 @@ namespace sample1
             if (!isValid()){ return; }
 
             reservation res = new reservation();
-            
+            res.ID = tmpres.ID;
             if (rbBoking.Checked)
             {
                 res.Status = "Booked";
@@ -231,7 +237,7 @@ namespace sample1
             }
             
             res.Balance = Convert.ToDouble(lblBalance.Text);
-            res.saveRes();
+            res.UpdateTrans();
 
             bill bl = new bill();
             bl.resID = tmpres.ID;
@@ -261,9 +267,11 @@ namespace sample1
                     if (Convert.ToDouble(txtPayment.Text) > Convert.ToDouble(tmpres.Balance))
                     {
                         MessageBox.Show("The balance is: " + tmpres.Balance + " only.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtPayment.Clear(); 
                         return false;
                     }
                 }
+                if (txtPayment.Text == "") { txtPayment.Focus(); return false; }
               
             }
             else
@@ -333,7 +341,7 @@ namespace sample1
                     lblBalance.Text = tmpres.Balance.ToString();
                     return; }
 
-                lblBalance.Text = (Convert.ToDouble(lblBalance.Text) - Convert.ToDouble(txtPayment.Text)).ToString();
+                lblBalance.Text = Convert.ToDouble(GetBalance(tmpres.ID)- Convert.ToDouble(txtPayment.Text)).ToString();
                 return;
             }
             else
@@ -350,29 +358,51 @@ namespace sample1
 
         internal void loadtrans(reservation rs)
         {
+            lblStatus.Visible = true;
             if (rs.Balance == 0.0)
             {
                 rbBoking.Enabled = false;
-                rbReservation.Enabled = false;
+                rbBoking.Checked = false;
+                rbReservation.Checked = false;
+                if (rs.Status == "CheckOut")
+                {
+                    lblStatus.Visible = true;
+                    lblStatus.Text = "CheckOut";
+                }
+
+                if (rs.Status == "Booked")
+                {
+                    rbBoking.Text = "Booked";
+                    lblStatus.Text = "Booked";
+                    rbBoking.Checked = true;
+                }
+                if (rs.Status == "Reserved")
+                {
+                    rbReservation.Text = "Reserved";
+                    rbReservation.Checked = true;
+                    lblStatus.Text = "Reserved";
+                }
+
             }
             else
             {
                 if (rs.Status == "CheckOut")
                 {
                     lblStatus.Visible = true;
+                    lblStatus.Text = "CheckOut";
                 }
 
                 if (rs.Status == "Booked")
                 {
                     rbBoking.Text = "Booked";
+                    lblStatus.Text = "Booked";
                     rbBoking.Checked = true;
-                    lblStatus.Visible = false;
                 }
                 if (rs.Status == "Reserved")
                 {
                     rbReservation.Text = "Reserved";
                     rbReservation.Checked = true;
-                    lblStatus.Visible = false;
+                    lblStatus.Text = "Reserved";
                 }
             }
             
@@ -431,5 +461,20 @@ namespace sample1
 
             btnPost.Text = "&Edit";
         }
+
+        private double GetBalance(int idx)
+        {
+            string mysql = "SELECT * FROM reservationtbl WHERE id = " + idx;
+            DataSet ds = Database.LoadSQL(mysql, "reservationtbl");
+
+            return Convert.ToDouble(ds.Tables[0].Rows[0]["Balance"]);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }
