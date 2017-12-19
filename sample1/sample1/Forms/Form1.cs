@@ -226,8 +226,7 @@ namespace sample1
 
             if (tmpres.Balance == 0.0)
             {
-
-                DialogResult result = MessageBox.Show("This transaction is ready for checkOut. Click Yes to continue.", "Confirmation", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show("This transaction is ready for checkOut. Do you want to continue?", "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.No)
                 {
                     return;
