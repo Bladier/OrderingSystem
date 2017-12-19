@@ -224,6 +224,24 @@ namespace sample1
         {
             if (!isValid()){ return; }
 
+            if (tmpres.Balance == 0.0)
+            {
+
+                DialogResult result = MessageBox.Show("This transaction is ready for checkOut. Click Yes to continue.", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+
+                return;
+            }
+
+            DialogResult result1 = MessageBox.Show("Do you want to update this transaction?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result1 == DialogResult.No)
+            {
+                return;
+            }
+
             reservation res = new reservation();
             res.ID = tmpres.ID;
             if (rbBoking.Checked)
@@ -276,6 +294,7 @@ namespace sample1
             }
             else
             {
+                if (cboVenue.Text == "") { return false; }
                 bool isDatetimeStart_equal_dateTimeEnd = System.DateTime.Equals(Convert.ToDateTime(dtEndDate.Text), Convert.ToDateTime(dtStartDate.Text));
 
                 if (isDatetimeStart_equal_dateTimeEnd)
@@ -473,6 +492,19 @@ namespace sample1
         private void btnCancel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAvailability_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["frmSchedule"] != null)
+            {
+              
+            }
+
+            {
+                frmSchedule frm = new frmSchedule();
+                frm.Show();
+            }
         }
 
        

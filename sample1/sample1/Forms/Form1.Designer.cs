@@ -65,6 +65,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
+            this.btnAvailability = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -432,9 +433,9 @@
             this.Panel2.BackColor = System.Drawing.Color.DarkSlateGray;
             this.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Panel2.Controls.Add(this.label14);
-            this.Panel2.Location = new System.Drawing.Point(24, 5);
+            this.Panel2.Location = new System.Drawing.Point(15, 5);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(685, 62);
+            this.Panel2.Size = new System.Drawing.Size(697, 62);
             this.Panel2.TabIndex = 23;
             // 
             // label14
@@ -449,11 +450,22 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "Booking and Reservation";
             // 
+            // btnAvailability
+            // 
+            this.btnAvailability.Location = new System.Drawing.Point(480, 435);
+            this.btnAvailability.Name = "btnAvailability";
+            this.btnAvailability.Size = new System.Drawing.Size(75, 23);
+            this.btnAvailability.TabIndex = 24;
+            this.btnAvailability.Text = "&Availability";
+            this.btnAvailability.UseVisualStyleBackColor = true;
+            this.btnAvailability.Click += new System.EventHandler(this.btnAvailability_Click);
+            // 
             // frmReservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(726, 472);
+            this.Controls.Add(this.btnAvailability);
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.lblStatus);
@@ -519,6 +531,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         internal System.Windows.Forms.Panel Panel2;
         internal System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnAvailability;
     }
 }
 
