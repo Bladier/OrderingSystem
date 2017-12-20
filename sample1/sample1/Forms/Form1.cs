@@ -183,14 +183,16 @@ namespace sample1
             {
                 res.Status = "Reserved";
             }
-            if (rbReservation.Checked)
-            {
-                res.ForfeitDate = Convert.ToDateTime(DateTime.Now.AddDays(5));
-            }
-            else
-            {
-                res.ForfeitDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-            }
+
+            //if (rbReservation.Checked)
+            //{
+            //    res.ForfeitDate = Convert.ToDateTime(DateTime.Now.AddDays(5));
+            //}
+            //else
+            //{
+            //    res.ForfeitDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            //}
+
             res.Total = Convert.ToDouble(lblTotal.Text);
             res.Balance = Convert.ToDouble(lblBalance.Text);
             res.Rate = Convert.ToDouble(txtRate.Text);

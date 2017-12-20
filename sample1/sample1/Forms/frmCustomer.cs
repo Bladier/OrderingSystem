@@ -11,24 +11,62 @@ using Microsoft.VisualBasic;
 
 namespace sample1
 {
-    public partial class frmPersonnelRegistration : Form
+    public partial class frmCustomer : Form
     {
+        public static bool isView = false;
         int age;
-        int personnelID;
-        public frmPersonnelRegistration()
+        int CustomerID;
+        int BID;
+        Customer tmpcust;
+        public frmCustomer()
         {
             InitializeComponent();
         }
 
         private void frmPersonnelRegistration_Load(object sender, EventArgs e)
         {
-       
             cboCity.Items.AddRange(GetDistinct("City"));
+            cboStreet.Items.AddRange(GetStreet("Street"));
+            cboProvince.Items.AddRange(GetProvince("Province"));
        
         }
         private string[] GetDistinct(string col)
         {
             string mySql = "SELECT DISTINCT " + col + " FROM citytbl WHERE " + col + " <> ''";
+            DataSet ds = Database.LoadSQL(mySql);
+
+            int MaxCount = ds.Tables[0].Rows.Count;
+            string[] str = new string[MaxCount];
+            string tmpStr ;
+    
+            for (int cnt = 0; cnt <= MaxCount - 1; cnt++)
+            {
+                 tmpStr = ds.Tables[0].Rows[cnt][col].ToString();
+                 str[cnt] = tmpStr;
+            }
+         
+            return str;
+        }
+
+        private string[] GetStreet(string col)
+        {
+            string mySql = "SELECT DISTINCT " + col + " FROM customertbl WHERE " + col + " <> ''";
+            DataSet ds = Database.LoadSQL(mySql);
+
+            int MaxCount = ds.Tables[0].Rows.Count;
+            string[] str = new string[MaxCount];
+            for (int cnt = 0; cnt <= MaxCount - 1; cnt++)
+            {
+                string tmpStr = ds.Tables[0].Rows[cnt][col].ToString();
+                str[cnt] = tmpStr;
+            }
+
+            return str;
+        }
+
+        private string[] GetProvince(string col)
+        {
+            string mySql = "SELECT DISTINCT " + col + " FROM customertbl WHERE " + col + " <> ''";
             DataSet ds = Database.LoadSQL(mySql);
 
             int MaxCount = ds.Tables[0].Rows.Count;
@@ -58,15 +96,15 @@ namespace sample1
             }
             if (btnSave.Text == "&Save")
             {
-                savepersonnel();
+                saveCustomer();
             }
             else
             {
-                UPdatepersonnel();
+                UPdateCustomer();
             }
         }
 
-        private void savepersonnel()
+        private void saveCustomer()
         {
             if (txtFname.Text == "")
             {
@@ -108,57 +146,35 @@ namespace sample1
                 MessageBox.Show("Age below 18 is not allowed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
             }
 
+            Customer cus = new Customer();
+            if (!cus.isCustomerExists(txtFname.Text, txtMname.Text, txtLname.Text, txtBday.Value))
+            {
+                MessageBox.Show("Customer already exists. Try to search in the list.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
+            }
 
-            DialogResult result = MessageBox.Show("Do you want to save this personnel?", "Confirmation", MessageBoxButtons.YesNo);
+
+            DialogResult result = MessageBox.Show("Do you want to save this customer?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
             {
                 return;
             }
 
-            //buspersonnel bp = new buspersonnel();
-            //bp.Fname = txtFname.Text;
-            //bp.Mname = txtMname.Text;
-            //bp.Lname = txtLname.Text;
-            //bp.BDay =Convert.ToDateTime(txtBday.Text);
-   
-           
-            //if (rbactive.Checked)
-            //{
-            //    bp.Status = true;
-            //}
-            //else
-            //{
-            //    bp.Status = false;
-            //}
+            cus.firstname = txtFname.Text;
+            cus.middlename = txtMname.Text;
+            cus.lastname = txtLname.Text;
+            cus.birthday = Convert.ToDateTime(txtBday.Text);
 
-            //bp.ContactNum = Convert.ToUInt64(txtContactNo.Text);
-            //bp.Street = cboStreet.Text;
-            //bp.Brgy = cboBrgy.Text;
-            //bp.City = cboCity.Text;
-            //bp.Province = cboProvince.Text;
-            //bp.Savepersonnel();
+            cus.ContactNum = txtContactNo.Text;
+            cus.street = cboStreet.Text;
+            cus.brgyID = BID;
+            cus.province = cboProvince.Text;
+            cus.saveCust();
 
-      
             MessageBox.Show("Successfully saved.", "Confirmation", MessageBoxButtons.OK);
             clearfield();
-
-            if (mod_system.isAddBus)
-            {
-               // bp.loadLastSave();
-                if (Application.OpenForms["frmBusManagement"] != null)
-                {
-            
-                }
-                else
-                {
-              
-                  
-                }
-                this.Close();
-            }
         }
 
-        private void UPdatepersonnel()
+        private void UPdateCustomer()
         {
             if (txtFname.Text == "")
             {
@@ -196,37 +212,27 @@ namespace sample1
                 return;
             }
 
-            DialogResult result = MessageBox.Show("Do you want to Update this personnel?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("Do you want to Update this customer?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
             {
                 return;
             }
 
-         
-            //bp.ID = personnelID;
-            //bp.Fname = txtFname.Text;
-            //bp.Mname = txtMname.Text;
-            //bp.Lname = txtLname.Text;
-            //bp.BDay = Convert.ToDateTime(txtBday.Text);
-    
+            Customer cus = new Customer();
 
-            //if (rbactive.Checked)
-            //{
-            //    bp.Status = true;
-            //}
-            //if (rbinActive.Checked)
-            //{
-            //    bp.Status = false;
-            //}
-        
-            //bp.ContactNum = Convert.ToUInt64(txtContactNo.Text);
-            //bp.Street = cboStreet.Text;
-            //bp.Brgy = cboBrgy.Text;
-            //bp.City = cboCity.Text;
-            //bp.Province = cboProvince.Text;
+            cus.ID = CustomerID;
+            cus.firstname = txtFname.Text;
+            cus.middlename = txtMname.Text;
+            cus.lastname = txtLname.Text;
+            cus.birthday = Convert.ToDateTime(txtBday.Text);
 
-            //bp.Updatepersonnel();
-
+            cus.ContactNum = txtContactNo.Text;
+            cus.street = cboStreet.Text;
+            cus.brgyID = BID;
+   
+            cus.province = cboProvince.Text;
+            cus.Update();
+            
             MessageBox.Show("Successfully updated.", "Confirmation", MessageBoxButtons.OK);
             clearfield();
         }
@@ -239,55 +245,51 @@ namespace sample1
             txtLname.Clear();
             txtBday.Text = mod_system.CurrentDate.ToShortDateString();
    
- 
-            personnelID = 0;
+           CustomerID = 0;
        
             txtContactNo.Clear();
-            cboStreet.SelectedItem = null;
-            cboBrgy.SelectedItem = null;
+          
             cboCity.SelectedItem = null;
-            cboProvince.SelectedItem = null;
-
-            cboCity.Items.Clear();
             cboStreet.Items.Clear();
             cboProvince.Items.Clear();
             cboBrgy.Items.Clear();
-
-            cboStreet.Items.AddRange(GetDistinct("Street"));
-            cboBrgy.Items.AddRange(GetDistinct("Brgy"));
-            cboCity.Items.AddRange(GetDistinct("City"));
-            cboProvince.Items.AddRange(GetDistinct("Province"));
+            
+            cboStreet.Items.AddRange(GetStreet("Street"));
+            cboProvince.Items.AddRange(GetProvince("Province"));
+            cboCity.SelectedItem = null;
+            cboProvince.SelectedItem = null;
         }
 
-        //internal void addPass(buspersonnel bp)
-        //{
-        //    personnelID = bp.ID;
-        //    txtFname.Text = bp.Fname;
-        //    txtMname.Text = bp.Mname;
-        //    txtLname.Text = bp.Lname;
-        //    txtBday.Text = Convert.ToDateTime(bp.BDay).ToShortDateString();
+        internal void loadcustomer(Customer cus,bool view=false)
+        {
+
+            if (view)
+            {
+                isView = true;
+            }
+
+            CustomerID = cus.ID;
+            txtFname.Text = cus.firstname;
+            txtMname.Text = cus.middlename;
+            txtLname.Text = cus.lastname;
+            txtBday.Text = Convert.ToDateTime(cus.birthday).ToShortDateString();
+
+            txtContactNo.Text = cus.ContactNum.ToString();
+            cboStreet.Text = cus.street;
+            cboCity.Text = cus.city;
+            if (view)
+            {
+                cboBrgy.DropDownStyle = ComboBoxStyle.DropDown;
+                cboBrgy.Text = cus.brgy;
+            }
+
         
-
-
-        //    if (bp.Status)
-        //    {
-        //        rbactive.Checked = true;
-        //    }
-        //    else
-        //    {
-        //        rbinActive.Checked = true;
-        //    }
-
-      
-        //    txtContactNo.Text = bp.ContactNum.ToString();
-        //    cboStreet.Text = bp.Street;
-        //    cboBrgy.Text = bp.Brgy;
-        //    cboCity.Text = bp.City;
-        //    cboProvince.Text = bp.Province;
-
-        //    Disbled();
-        //    btnSave.Text = "&Modify";
-        //}
+            cboProvince.Text = cus.province;
+            Disbled();
+            btnSave.Text = "&Modify";
+            tmpcust = cus;
+         
+        }
 
         internal void Disbled(bool st = false)
         {
@@ -296,9 +298,6 @@ namespace sample1
             txtLname.Enabled = st;
             txtBday.Enabled = st;
             
-            rbactive.Enabled = st;
-            rbinActive.Enabled = st;
-          
             txtContactNo.Enabled = st;
             cboStreet.Enabled = st;
             cboBrgy.Enabled = st;
@@ -318,15 +317,16 @@ namespace sample1
 
         private void cboCity_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboCity.Text == "") { return; }
+          
+            if (cboCity.Text == "") { cboBrgy.Items.Clear(); return; }
             cboBrgy.Items.AddRange(GetDistinct(getcityID(cboCity.Text)));
         }
 
         private string[] GetDistinct(int idx)
         {
-            string mySql = "SELECT DISTINCT " + " Barangay " + " FROM barangaytbl WHERE " + " CityID = " + idx + "";
+            string mySql = "SELECT * FROM barangaytbl WHERE " + " CityID = " + idx + "";
             DataSet ds = Database.LoadSQL(mySql);
-
+      
             int MaxCount = ds.Tables[0].Rows.Count;
             string[] str = new string[MaxCount];
             for (int cnt = 0; cnt <= MaxCount - 1; cnt++)
@@ -334,7 +334,7 @@ namespace sample1
                 string tmpStr = ds.Tables[0].Rows[cnt]["Barangay"].ToString();
                 str[cnt] = tmpStr;
             }
-
+         
             return str;
         }
 
@@ -345,5 +345,15 @@ namespace sample1
 
             return Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]);
         }
+
+        private void cboBrgy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboBrgy.Text == "") { return; }
+            string mysql = "select * from barangaytbl where barangay ='" +  cboBrgy.Text + "'";
+            DataSet ds = Database.LoadSQL(mysql, "barangaytbl");
+            BID = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]);
+        }
+
+      
     }
 }
