@@ -46,14 +46,15 @@ namespace sample1
 		mod_system.UserID = mod_system.ORuser.ID;
 		Interaction.MsgBox("Welcome " + mod_system.ORuser.Username);
 
-        if (loginUser.Userrule == "Admin")
+        if (loginUser.Userrule.Replace(" ","") == "Admin")
         {
 
-           // frmMain2 frm1 = new frmMain2();
-          //  frm1.Show();
+            frmMain frm1 = new frmMain();
+            frm1.Show();
             txtPassword.Clear();
             txtusername.Clear();
             i = 0;
+
             if (Application.OpenForms["Form1"] != null)
             {
                

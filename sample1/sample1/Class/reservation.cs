@@ -208,6 +208,17 @@ namespace sample1
 
         }
 
+        public void CheckOut()
+        {
+            string mySql = string.Format("SELECT * FROM {0} where ID =" + _ID + "", MainTable);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+            var _with2 = ds.Tables[MainTable].Rows[0];
+            _with2["Status"] = _status;
+            Database.SaveEntry(ds, false);
+        }
+
+
         public bool isHasReserved_or_Booked(DateTime Res_startDate)
         {
             string tmpDate = Res_startDate.ToString("yyyy-MM-dd") + " " + Convert.ToString(Res_startDate.ToShortTimeString());

@@ -224,16 +224,21 @@ namespace sample1
         {
             if (!isValid()){ return; }
 
-            if (tmpres.Balance == 0.0)
-            {
-                DialogResult result = MessageBox.Show("This transaction is ready for checkOut. Do you want to continue?", "Confirmation", MessageBoxButtons.YesNo);
-                if (result == DialogResult.No)
-                {
-                    return;
-                }
+            reservation res = new reservation();
 
-                return;
-            }
+            //if (tmpres.Balance == 0.0)
+            //{
+            //    DialogResult result = MessageBox.Show("This transaction is ready for checkOut. Do you want to continue?", "Confirmation", MessageBoxButtons.YesNo);
+            //    if (result == DialogResult.No)
+            //    {
+            //        return;
+            //    }
+
+            //    res.ID = tmpres.ID;
+            //    res.Status = "CheckOut";
+            //    res.CheckOut();
+            //    return;
+            //}
 
             DialogResult result1 = MessageBox.Show("Do you want to update this transaction?", "Confirmation", MessageBoxButtons.YesNo);
             if (result1 == DialogResult.No)
@@ -241,7 +246,6 @@ namespace sample1
                 return;
             }
 
-            reservation res = new reservation();
             res.ID = tmpres.ID;
             if (rbBoking.Checked)
             {

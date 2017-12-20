@@ -39,20 +39,22 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cboVenue = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblBalance = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtNoOfDays = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtRate = new System.Windows.Forms.TextBox();
+            this.lblBalance = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.lblPaidAtleast = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.rbCash = new System.Windows.Forms.RadioButton();
             this.rbInstallment = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtPayment = new System.Windows.Forms.TextBox();
-            this.txtRate = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.btnPost = new System.Windows.Forms.Button();
             this.rbBoking = new System.Windows.Forms.RadioButton();
             this.rbReservation = new System.Windows.Forms.RadioButton();
@@ -60,8 +62,6 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtNoOfDays = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
@@ -186,23 +186,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rate Info";
             // 
-            // lblBalance
+            // label12
             // 
-            this.lblBalance.AutoSize = true;
-            this.lblBalance.Location = new System.Drawing.Point(108, 76);
-            this.lblBalance.Name = "lblBalance";
-            this.lblBalance.Size = new System.Drawing.Size(28, 13);
-            this.lblBalance.TabIndex = 23;
-            this.lblBalance.Text = "00.0";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(16, 111);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(63, 13);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "No. of Days";
             // 
-            // label13
+            // txtNoOfDays
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(54, 76);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(52, 13);
-            this.label13.TabIndex = 22;
-            this.label13.Text = "Balance :";
+            this.txtNoOfDays.Location = new System.Drawing.Point(87, 108);
+            this.txtNoOfDays.Name = "txtNoOfDays";
+            this.txtNoOfDays.ReadOnly = true;
+            this.txtNoOfDays.Size = new System.Drawing.Size(113, 20);
+            this.txtNoOfDays.TabIndex = 24;
             // 
             // lblTotal
             // 
@@ -221,6 +220,50 @@
             this.label10.Size = new System.Drawing.Size(34, 13);
             this.label10.TabIndex = 20;
             this.label10.Text = "Total ";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(34, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 13);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Venue";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(49, 140);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(30, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Rate";
+            // 
+            // txtRate
+            // 
+            this.txtRate.Location = new System.Drawing.Point(89, 137);
+            this.txtRate.Name = "txtRate";
+            this.txtRate.ReadOnly = true;
+            this.txtRate.Size = new System.Drawing.Size(112, 20);
+            this.txtRate.TabIndex = 11;
+            // 
+            // lblBalance
+            // 
+            this.lblBalance.AutoSize = true;
+            this.lblBalance.Location = new System.Drawing.Point(108, 76);
+            this.lblBalance.Name = "lblBalance";
+            this.lblBalance.Size = new System.Drawing.Size(28, 13);
+            this.lblBalance.TabIndex = 23;
+            this.lblBalance.Text = "00.0";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(54, 76);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(52, 13);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Balance :";
             // 
             // lblPaidAtleast
             // 
@@ -282,15 +325,6 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Enter Payment";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(49, 140);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(30, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Rate";
-            // 
             // txtPayment
             // 
             this.txtPayment.Location = new System.Drawing.Point(111, 104);
@@ -299,23 +333,6 @@
             this.txtPayment.TabIndex = 2;
             this.txtPayment.TextChanged += new System.EventHandler(this.txtPayment_TextChanged);
             this.txtPayment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPayment_KeyPress);
-            // 
-            // txtRate
-            // 
-            this.txtRate.Location = new System.Drawing.Point(89, 137);
-            this.txtRate.Name = "txtRate";
-            this.txtRate.ReadOnly = true;
-            this.txtRate.Size = new System.Drawing.Size(112, 20);
-            this.txtRate.TabIndex = 11;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(34, 22);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 13);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Venue";
             // 
             // btnPost
             // 
@@ -342,7 +359,7 @@
             // rbReservation
             // 
             this.rbReservation.AutoSize = true;
-            this.rbReservation.Location = new System.Drawing.Point(209, 86);
+            this.rbReservation.Location = new System.Drawing.Point(200, 86);
             this.rbReservation.Name = "rbReservation";
             this.rbReservation.Size = new System.Drawing.Size(82, 17);
             this.rbReservation.TabIndex = 1;
@@ -392,23 +409,6 @@
             this.lblStatus.Size = new System.Drawing.Size(74, 16);
             this.lblStatus.TabIndex = 7;
             this.lblStatus.Text = "CheckOut";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(16, 111);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(63, 13);
-            this.label12.TabIndex = 25;
-            this.label12.Text = "No. of Days";
-            // 
-            // txtNoOfDays
-            // 
-            this.txtNoOfDays.Location = new System.Drawing.Point(87, 108);
-            this.txtNoOfDays.Name = "txtNoOfDays";
-            this.txtNoOfDays.ReadOnly = true;
-            this.txtNoOfDays.Size = new System.Drawing.Size(113, 20);
-            this.txtNoOfDays.TabIndex = 24;
             // 
             // groupBox3
             // 
