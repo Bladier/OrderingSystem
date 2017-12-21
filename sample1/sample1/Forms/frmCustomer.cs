@@ -279,22 +279,24 @@ namespace sample1
             MessageBox.Show("Successfully updated.", "Confirmation", MessageBoxButtons.OK);
             clearfield();
 
+
+            Customer tmpCustomer = new Customer();
             if (isReservation)
             {
-                cus.LoadCust(tmpcust.ID);
+                tmpCustomer.LoadCust(tmpcust.ID);
                 if (Application.OpenForms["frmreservation2"] != null)
                 {
 
-                    (Application.OpenForms["frmreservation2"] as frmreservation2).loadcustomer(tmpcust);
+                    (Application.OpenForms["frmreservation2"] as frmreservation2).loadcustomer(tmpCustomer);
                     this.Close();
                     return;
                 }
                 else
                 {
-                    cus.LoadCust(tmpcust.ID);
+                    tmpCustomer.LoadCust(tmpcust.ID);
                     frmBooking frm = new frmBooking();
                     frm.Show();
-                    frm.loadcustomer(tmpcust);
+                    frm.loadcustomer(tmpCustomer);
                     this.Close();
                     return;
                 }
@@ -302,20 +304,20 @@ namespace sample1
 
             if (isBooking)
             {
-                cus.LoadCust(tmpcust.ID);
+                tmpCustomer.LoadCust(tmpcust.ID);
                 if (Application.OpenForms["frmBooking"] != null)
                 {
 
-                    (Application.OpenForms["frmBooking"] as frmBooking).loadcustomer(tmpcust);
+                    (Application.OpenForms["frmBooking"] as frmBooking).loadcustomer(tmpCustomer);
                     this.Close();
                     return;
                 }
                 else
                 {
-                    cus.LoadCust(tmpcust.ID);
+                    tmpCustomer.LoadCust(tmpcust.ID);
                     frmBooking frm = new frmBooking();
                     frm.Show();
-                    frm.loadcustomer(tmpcust);
+                    frm.loadcustomer(tmpCustomer);
                     this.Close();
                     return;
                 }

@@ -234,16 +234,27 @@ namespace sample1
             string tmpDate = Res_startDate.ToString("yyyy-MM-dd") + " " + Convert.ToString(Res_startDate.ToShortTimeString());
             
             string mySql = string.Format("SELECT  * FROM {0}", MainTable);
-            mySql += " where (EndDate >= '" + tmpDate + "')";
-            mySql += " and (status = 'Booked' or status ='Reserved')";
+            mySql += " WHere (status = 'Booked' or status ='Reserved')";
 
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
-            if (ds.Tables[0].Rows.Count > 0)
+            foreach (DataRow dr in ds.Tables[0].Rows)
             {
-                return true;
-            }
+                DateTime tmpDates =Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]).ToShortDateString());
+                DateTime tmpStartDate = Convert.ToDateTime(Res_startDate.ToShortDateString());
 
+                if (tmpStartDate == tmpDates)
+
+                {
+                    DateTime tmpStartTime= Convert.ToDateTime(Res_startDate.ToShortTimeString());
+                    DateTime tmpTime = Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]).ToShortTimeString());
+                    if ( tmpTime >= tmpStartTime)
+                    {
+                        return true;
+                    }
+                }
+            }
+         
             return false;
         }
         #endregion

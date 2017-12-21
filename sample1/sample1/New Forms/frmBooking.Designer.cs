@@ -316,6 +316,7 @@
             this.dtStartDate.Size = new System.Drawing.Size(221, 20);
             this.dtStartDate.TabIndex = 1;
             this.dtStartDate.Value = new System.DateTime(2017, 12, 14, 14, 15, 2, 0);
+            this.dtStartDate.ValueChanged += new System.EventHandler(this.dtStartDate_ValueChanged);
             // 
             // btnAvailability
             // 
@@ -466,6 +467,7 @@
             this.txtTransactionNum.ForeColor = System.Drawing.Color.Red;
             this.txtTransactionNum.Location = new System.Drawing.Point(94, 15);
             this.txtTransactionNum.Name = "txtTransactionNum";
+            this.txtTransactionNum.ReadOnly = true;
             this.txtTransactionNum.Size = new System.Drawing.Size(149, 20);
             this.txtTransactionNum.TabIndex = 0;
             this.txtTransactionNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

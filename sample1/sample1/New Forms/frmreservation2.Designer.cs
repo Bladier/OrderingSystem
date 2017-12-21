@@ -208,6 +208,7 @@
             this.dtStartDate.Size = new System.Drawing.Size(221, 20);
             this.dtStartDate.TabIndex = 1;
             this.dtStartDate.Value = new System.DateTime(2017, 12, 14, 14, 15, 2, 0);
+            this.dtStartDate.ValueChanged += new System.EventHandler(this.dtStartDate_ValueChanged);
             // 
             // label16
             // 
@@ -423,6 +424,7 @@
             this.txtTransactionNum.ForeColor = System.Drawing.Color.Red;
             this.txtTransactionNum.Location = new System.Drawing.Point(94, 15);
             this.txtTransactionNum.Name = "txtTransactionNum";
+            this.txtTransactionNum.ReadOnly = true;
             this.txtTransactionNum.Size = new System.Drawing.Size(149, 20);
             this.txtTransactionNum.TabIndex = 0;
             this.txtTransactionNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -504,6 +506,7 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmreservation2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmreservation2";
             this.Load += new System.EventHandler(this.frmreservation2_Load);
             this.groupBox2.ResumeLayout(false);

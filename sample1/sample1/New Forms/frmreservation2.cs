@@ -53,23 +53,35 @@ namespace sample1
                 return;
             }
 
-            transaction res = new transaction();
+            transaction trans = new transaction();
+            trans.venueID = venudID;
+            trans.CusID = custID;
+            trans.Transdate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            trans.StartDate = Convert.ToDateTime(dtStartDate.Text);
+            trans.EndDate = Convert.ToDateTime(dtEndDate.Text);
+            trans.Status = "Reserved";
+
+            trans.Total = Convert.ToDouble(lblTotal.Text);
+            trans.Balance = Convert.ToDouble(lblBalance.Text);
+            trans.Rate = Convert.ToDouble(txtRate.Text);
+
+            if (rbCash.Checked)
+            { trans.mod = "Full Payment"; }
+            if (rbInstallment.Checked)
+            { trans.mod = "Installment"; }
+            trans.TransactionNum = Convert.ToInt32(txtTransactionNum.Text);
+            trans.saveRes();
+
+            reservation res = new reservation();
             res.venueID = venudID;
             res.CusID = custID;
             res.Transdate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             res.StartDate = Convert.ToDateTime(dtStartDate.Text);
             res.EndDate = Convert.ToDateTime(dtEndDate.Text);
-            res.Status = "Booked";
 
-            //if (rbReservation.Checked)
-            //{
-            //    res.ForfeitDate = Convert.ToDateTime(DateTime.Now.AddDays(5));
-            //}
-            //else
-            //{
-            //    res.ForfeitDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-            //}
-
+            res.Status = "Reserved";
+            res.ForfeitDate = Convert.ToDateTime(DateTime.Now.AddDays(5));
+          
             res.Total = Convert.ToDouble(lblTotal.Text);
             res.Balance = Convert.ToDouble(lblBalance.Text);
             res.Rate = Convert.ToDouble(txtRate.Text);
@@ -78,12 +90,12 @@ namespace sample1
             { res.mod = "Full Payment"; }
             if (rbInstallment.Checked)
             { res.mod = "Installment"; }
-            res.TransactionNum = Convert.ToInt32(txtTransactionNum.Text);
 
+            res.TransactionNum = Convert.ToInt32(txtTransactionNum.Text);
             res.saveRes();
 
             bill bl = new bill();
-            bl.resID = res.GetLastID();
+            bl.resID = trans.GetLastID();
 
             if (rbCash.Checked)
             {
@@ -95,7 +107,12 @@ namespace sample1
             }
 
             bl.tranSDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            bl.TransNum =Convert.ToInt32(txtTransactionNum.Text);
             bl.saveBill();
+
+
+            int transNum = Convert.ToInt32(txtTransactionNum.Text) + 1;
+            mod_system.UpdateOptions("TransactionNum", transNum.ToString());
             MessageBox.Show("Transaction Posted.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -152,6 +169,7 @@ namespace sample1
             }
 
             bl.tranSDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            bl.TransNum = Convert.ToInt32(txtTransactionNum.Text);
             bl.saveBill();
 
             MessageBox.Show("Transaction updated.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -212,10 +230,18 @@ namespace sample1
                     }
                 }
 
-                transaction rs = new transaction();
-                if (rs.isHasReserved_or_Booked(Convert.ToDateTime(dtStartDate.Text)))
+                transaction tr = new transaction();
+                if (tr.isHasReserved_or_Booked(Convert.ToDateTime(dtStartDate.Text)))
                 {
-                    MessageBox.Show("This date has already reserved or booked by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Selected date is already booked by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+
+
+                reservation rs = new reservation();
+                if (rs.isHasReserved(Convert.ToDateTime(dtStartDate.Text)))
+                {
+                    MessageBox.Show("Selected date is already reserved by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
                 }
             }
@@ -258,6 +284,7 @@ namespace sample1
 
         private void frmreservation2_Load(object sender, EventArgs e)
         {
+            //mod_system.UpdateOptions("TransactionNum", "1");
             txtTransactionNum.Text = string.Format("00000{0}", GetTransNum());
 
             dtStartDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
@@ -305,7 +332,7 @@ namespace sample1
             else
             {
                 frmSchedule frm = new frmSchedule();
-                frm.Show();
+                frm.ShowDialog();
             }
         }
 
@@ -394,5 +421,10 @@ namespace sample1
             tmpcus = cus;
         }
 
+        private void dtStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (cboVenue.Text == "") { return; }
+            Calculate();
+        }
     }
 }

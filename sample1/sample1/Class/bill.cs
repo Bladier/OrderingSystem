@@ -54,6 +54,15 @@ namespace sample1
             get { return _status; }
             set { _status = value; }
         }
+
+        private int _TransNum;
+        public int TransNum
+        {
+            get { return _TransNum; }
+            set { _TransNum = value; }
+        }
+
+
         #endregion
 
         #region "Functions"
@@ -87,11 +96,11 @@ namespace sample1
             _with2["payment"] = _Payment;
             _with2["TransDate"] = _tranSDate;
              _with2["status"] = 1;
+             _with2["TransactionNum"] = _TransNum;
 
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
-
 
         public void LoadByRow(DataRow dr)
         {
@@ -105,7 +114,7 @@ namespace sample1
             if (Convert.ToInt32(_with3["status"]) == 1)
             { _status = true; }
             else { _status = false; }
-
+            _TransNum= Convert.ToInt32(_with3["TransactionNum"]);
         }
 
         public void updatebill()
@@ -120,6 +129,7 @@ namespace sample1
                 _with2["payment"] = _Payment;
                 _with2["TransDate"] = _tranSDate;
                 _with2["status"] = 1;
+                _with2["TransactionNum"] = _TransNum;
                 Database.SaveEntry(ds, false);
             }
             else
@@ -131,6 +141,7 @@ namespace sample1
                 _with2["payment"] = _Payment;
                 _with2["TransDate"] = _tranSDate;
                 _with2["status"] = 1;
+                _with2["TransactionNum"] = _TransNum;
                 ds.Tables[0].Rows.Add(dsNewRow);
                 Database.SaveEntry(ds);
             }

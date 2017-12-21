@@ -206,6 +206,16 @@ namespace sample1
            return lastOfMonth;
        }
 
+       public static void UpdateOptions(string keys, string tmpValues)
+       {
+           string mysql = "SELECT * FROM maintenancetbl where Op_key ='" + keys + "'";
+           DataSet ds = Database.LoadSQL(mysql, "maintenancetbl");
+
+           var _with2 = ds.Tables["maintenancetbl"].Rows[0];
+           _with2["Op_values"] = tmpValues;
+           Database.SaveEntry(ds, false);
+       }
+
       #endregion
   }
 }

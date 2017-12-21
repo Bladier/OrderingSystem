@@ -105,7 +105,7 @@ namespace sample1
             else
             {
                 frmSchedule frm = new frmSchedule();
-                frm.Show();
+                frm.ShowDialog();
             }
         }
 
@@ -176,16 +176,6 @@ namespace sample1
             res.StartDate = Convert.ToDateTime(dtStartDate.Text);
             res.EndDate = Convert.ToDateTime(dtEndDate.Text);
             res.Status = "Booked";
-    
-            //if (rbReservation.Checked)
-            //{
-            //    res.ForfeitDate = Convert.ToDateTime(DateTime.Now.AddDays(5));
-            //}
-            //else
-            //{
-            //    res.ForfeitDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-            //}
-
             res.Total = Convert.ToDouble(lblTotal.Text);
             res.Balance = Convert.ToDouble(lblBalance.Text);
             res.Rate = Convert.ToDouble(txtRate.Text);
@@ -211,7 +201,11 @@ namespace sample1
             }
 
             bl.tranSDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            bl.TransNum = Convert.ToInt32(txtTransactionNum.Text);
             bl.saveBill();
+
+            int transNum = Convert.ToInt32(txtTransactionNum.Text) + 1;
+            mod_system.UpdateOptions("TransactionNum", transNum.ToString());
             MessageBox.Show("Transaction Posted.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -328,10 +322,19 @@ namespace sample1
                     }
                 }
 
-                transaction rs = new transaction();
-                if (rs.isHasReserved_or_Booked(Convert.ToDateTime(dtStartDate.Text)))
+
+                transaction tr = new transaction();
+                if (tr.isHasReserved_or_Booked(Convert.ToDateTime(dtStartDate.Text)))
                 {
-                    MessageBox.Show("This date has already reserved or booked by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Selected date is already booked by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+
+
+                reservation rs = new reservation();
+                if (rs.isHasReserved(Convert.ToDateTime(dtStartDate.Text)))
+                {
+                    MessageBox.Show("Selected date is already reserved by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
                 }
             }
@@ -396,5 +399,11 @@ namespace sample1
             txtContactNum.Text = cus.ContactNum;
             tmpcus = cus;
         }
+
+         private void dtStartDate_ValueChanged(object sender, EventArgs e)
+         {
+             if (cboVenue.Text == "") { return; }
+             Calculate();
+         }
     }
 }

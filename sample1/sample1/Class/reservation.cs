@@ -203,7 +203,7 @@ namespace sample1
                 _with2["EndDate"] = _EndDate;
                 _with2["Status"] = _status;
                 _with2["Total"] = _Total;
-                 _with2["ForfeitDate"] = _ForfeitDate;
+                _with2["ForfeitDate"] = _ForfeitDate;
                 _with2["Balance"] = _Balance;
                 _with2["Rate"] = _Rate;
                 _with2["MOD"] = _mod;
@@ -237,18 +237,32 @@ namespace sample1
             string tmpDate = Res_startDate.ToString("yyyy-MM-dd") + " " + Convert.ToString(Res_startDate.ToShortTimeString());
 
             string mySql = string.Format("SELECT  * FROM {0}", MainTable);
-            mySql += " where (EndDate >= '" + tmpDate + "')";
-            mySql += " and (status <> 'Cancel' or status ='Expired')";
+            mySql += " WHere (status ='Reserved')";
 
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
-            if (ds.Tables[0].Rows.Count > 0)
+            foreach (DataRow dr in ds.Tables[0].Rows)
             {
-                return true;
-            }
+                DateTime tmpDates = Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]).ToShortDateString());
+                DateTime tmpStartDate = Convert.ToDateTime(Res_startDate.ToShortDateString());
 
-            return false;
+                if (tmpStartDate == tmpDates)
+                {
+                    DateTime tmpStartTime = Convert.ToDateTime(Res_startDate.ToShortTimeString());
+                    DateTime tmpTime = Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]).ToShortTimeString());
+                    if (tmpTime >= tmpStartTime)
+                    {
+                        return true;
+                    }
+                }
+ 
+            }
+             return false;
         }
+
         #endregion
+        }
     }
-}
+
+
+
