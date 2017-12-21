@@ -24,6 +24,7 @@ namespace sample1
 
         private void frmBooking_Load(object sender, EventArgs e)
         {
+          
             txtTransactionNum.Text = string.Format("00000{0}", GetTransNum());
 
             dtStartDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
@@ -88,6 +89,16 @@ namespace sample1
                 lblBalance.Text = (Convert.ToDouble(lblTotal.Text) - Convert.ToDouble(txtPayment.Text)).ToString();
             }
 
+            if (rbInstallment.Checked)
+            {
+                txtPayment.Enabled = true;
+                if (txtRate.Text == "") { return; }
+
+                double paidAtleast = Convert.ToDouble(lblTotal.Text) * 0.5;
+                lblPaidAtleast.Text = paidAtleast.ToString();
+                lblBalance.Text = Convert.ToDouble(lblTotal.Text).ToString();
+            }
+          
         }
 
         private void dtEndDate_ValueChanged(object sender, EventArgs e)
@@ -207,6 +218,7 @@ namespace sample1
             int transNum = Convert.ToInt32(txtTransactionNum.Text) + 1;
             mod_system.UpdateOptions("TransactionNum", transNum.ToString());
             MessageBox.Show("Transaction Posted.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ClearFields();
         }
 
         private void UpdateTrans()
@@ -265,7 +277,7 @@ namespace sample1
             bl.saveBill();
 
             MessageBox.Show("Transaction updated.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            ClearFields();
         }
 
         private bool isValid()
@@ -404,6 +416,32 @@ namespace sample1
          {
              if (cboVenue.Text == "") { return; }
              Calculate();
+         }
+
+         private void ClearFields()
+         {
+             txtTransactionNum.Clear();
+             txtTransactionNum.Text = string.Format("00000{0}", GetTransNum());
+             custID = 0;
+             txtContactNum.Clear();
+             txtAddress.Clear();
+             txtContactNum.Clear();
+             txtNote.Clear();
+             cboVenue.SelectedItem = null;
+
+             dtStartDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
+             dtEndDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
+
+             txtNoOfDays.Clear();
+             txtRate.Clear();
+             lblBalance.Text = "0.00";
+             lblPaidAtleast.Text = "0.00";
+             lblTotal.Text = "0.00";
+         }
+
+         private void btnCancel_Click(object sender, EventArgs e)
+         {
+             ClearFields();
          }
     }
 }

@@ -16,6 +16,9 @@ namespace sample1
 {
     class transaction
     {
+        DateTime tmpStartTime;
+        DateTime tmpTime;
+        int maxi;
         private string MainTable = "transactiontbl";
 
         #region "Properties"
@@ -170,7 +173,7 @@ namespace sample1
             _EndDate = Convert.ToDateTime(_with3["EndDate"]);
             _status = _with3["Status"].ToString();
             _Total = Convert.ToDouble(_with3["Total"]);
-         //   _ForfeitDate = Convert.ToDateTime(_with3["ForfeitDate"]);
+            //   _ForfeitDate = Convert.ToDateTime(_with3["ForfeitDate"]);
             _Balance = Convert.ToDouble(_with3["Balance"]);
             _Rate = Convert.ToDouble(_with3["Rate"]);
             _mod = _with3["MOD"].ToString();
@@ -200,7 +203,7 @@ namespace sample1
                 _with2["EndDate"] = _EndDate;
                 _with2["Status"] = _status;
                 _with2["Total"] = _Total;
-               // _with2["ForfeitDate"] = _ForfeitDate;
+                // _with2["ForfeitDate"] = _ForfeitDate;
                 _with2["Balance"] = _Balance;
                 _with2["Rate"] = _Rate;
                 _with2["MOD"] = _mod;
@@ -232,7 +235,7 @@ namespace sample1
         public bool isHasReserved_or_Booked(DateTime Res_startDate)
         {
             string tmpDate = Res_startDate.ToString("yyyy-MM-dd") + " " + Convert.ToString(Res_startDate.ToShortTimeString());
-            
+
             string mySql = string.Format("SELECT  * FROM {0}", MainTable);
             mySql += " WHere (status = 'Booked' or status ='Reserved')";
 
@@ -240,24 +243,68 @@ namespace sample1
 
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
-                DateTime tmpDates =Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]).ToShortDateString());
+                DateTime tmpDates = Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]).ToShortDateString());
                 DateTime tmpStartDate = Convert.ToDateTime(Res_startDate.ToShortDateString());
 
-                if (tmpStartDate == tmpDates)
+                tmpStartTime = Convert.ToDateTime(Res_startDate.ToShortTimeString());
+                tmpTime = Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]).ToShortTimeString());
 
+                DateTime d1 = Convert.ToDateTime(Convert.ToDateTime(dr["StartDate"]));
+                DateTime d2 = Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]));
+
+                TimeSpan t = d2 - d1;
+                double NrOfDays = Math.Round(t.TotalDays) + 1;
+
+
+                if (NrOfDays > 2)
                 {
-                    DateTime tmpStartTime= Convert.ToDateTime(Res_startDate.ToShortTimeString());
-                    DateTime tmpTime = Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]).ToShortTimeString());
-                    if ( tmpTime >= tmpStartTime)
+                    for (int i = 0; i < NrOfDays; i++)
+                    {
+                        Console.WriteLine(i);
+                        maxi = i;
+                    }
+                }
+
+                if (NrOfDays > 2)
+                {
+                    for (int i = 0; i < NrOfDays; i++)
+                    {
+                        if (i == 0)
+                        {
+                            continue;
+                        }
+
+                        if (i == maxi)
+                        {
+                            continue;
+                        }
+
+                        d1 = d1.AddDays(i);
+
+                        if (tmpStartDate == Convert.ToDateTime(d1.ToShortDateString()))
+                        {
+                            return true;
+                        }
+                        d1 = Convert.ToDateTime(Convert.ToDateTime(dr["StartDate"]));
+                    }
+                }
+
+
+                if (tmpStartDate == tmpDates)
+                {
+                   
+                    if (tmpTime >= tmpStartTime)
                     {
                         return true;
                     }
                 }
+
             }
-         
             return false;
-        }
+
+
         #endregion
-    } 
+        }
+    }
     
 }
