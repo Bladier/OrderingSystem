@@ -13,6 +13,9 @@ namespace sample1
 {
     public partial class frmCustomer : Form
     {
+        public bool isReservation = false;
+        public bool isBooking = false;
+
         public static bool isView = false;
         int age;
         int CustomerID;
@@ -172,6 +175,46 @@ namespace sample1
 
             MessageBox.Show("Successfully saved.", "Confirmation", MessageBoxButtons.OK);
             clearfield();
+
+            if (isBooking)
+           {
+                cus.LoadCust(cus.GetLastID());
+                if (Application.OpenForms["frmBooking"] != null)
+                {
+
+                    (Application.OpenForms["frmBooking"] as frmBooking).loadcustomer(cus);
+                    this.Close();
+                }
+                else
+                {
+                    frmBooking frm = new frmBooking();
+                    frm.Show();
+                    frm.loadcustomer(cus);
+                    this.Close();
+                }
+            }
+
+          
+           if (isReservation)
+           {
+               cus.LoadCust(cus.GetLastID());
+                if (Application.OpenForms["frmreservation2"] != null)
+                {
+
+                    (Application.OpenForms["frmreservation2"] as frmreservation2).loadcustomer(cus);
+                    this.Close();
+
+                }
+            }
+           if (isBooking)
+           {
+               cus.LoadCust(cus.GetLastID());
+               frmreservation2 frm = new frmreservation2();
+               frm.Show();
+               frm.loadcustomer(cus);
+               this.Close();
+           }
+          
         }
 
         private void UPdateCustomer()
@@ -235,6 +278,48 @@ namespace sample1
             
             MessageBox.Show("Successfully updated.", "Confirmation", MessageBoxButtons.OK);
             clearfield();
+
+            if (isReservation)
+            {
+                cus.LoadCust(tmpcust.ID);
+                if (Application.OpenForms["frmreservation2"] != null)
+                {
+
+                    (Application.OpenForms["frmreservation2"] as frmreservation2).loadcustomer(tmpcust);
+                    this.Close();
+                    return;
+                }
+                else
+                {
+                    cus.LoadCust(tmpcust.ID);
+                    frmBooking frm = new frmBooking();
+                    frm.Show();
+                    frm.loadcustomer(tmpcust);
+                    this.Close();
+                    return;
+                }
+            }
+
+            if (isBooking)
+            {
+                cus.LoadCust(tmpcust.ID);
+                if (Application.OpenForms["frmBooking"] != null)
+                {
+
+                    (Application.OpenForms["frmBooking"] as frmBooking).loadcustomer(tmpcust);
+                    this.Close();
+                    return;
+                }
+                else
+                {
+                    cus.LoadCust(tmpcust.ID);
+                    frmBooking frm = new frmBooking();
+                    frm.Show();
+                    frm.loadcustomer(tmpcust);
+                    this.Close();
+                    return;
+                }
+            }
         }
 
 
@@ -276,13 +361,15 @@ namespace sample1
 
             txtContactNo.Text = cus.ContactNum.ToString();
             cboStreet.Text = cus.street;
+
+            cboCity.DropDownStyle = ComboBoxStyle.DropDown;
             cboCity.Text = cus.city;
             if (view)
             {
                 cboBrgy.DropDownStyle = ComboBoxStyle.DropDown;
                 cboBrgy.Text = cus.brgy;
             }
-
+            BID = cus.brgyID;
         
             cboProvince.Text = cus.province;
             Disbled();

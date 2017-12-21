@@ -15,7 +15,7 @@ namespace sample1
         public bool isView=false;
         int custID;
         int venudID;
-        reservation tmpres;
+        transaction tmpres;
         public frmReservation()
         {
             InitializeComponent();
@@ -167,7 +167,7 @@ namespace sample1
                 return;
             }
 
-            reservation res = new reservation();
+            transaction res = new transaction();
             res.venueID = venudID;
             res.CusID = custID;
             res.Transdate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
@@ -226,7 +226,7 @@ namespace sample1
         {
             if (!isValid()){ return; }
 
-            reservation res = new reservation();
+            transaction res = new transaction();
 
             //if (tmpres.Balance == 0.0)
             //{
@@ -334,7 +334,7 @@ namespace sample1
                     }
                 }
 
-                reservation rs = new reservation();
+                transaction rs = new transaction();
                 if (rs.isHasReserved_or_Booked(Convert.ToDateTime(dtStartDate.Text)))
                 {
                     MessageBox.Show("This date has already reserved or booked by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -380,7 +380,7 @@ namespace sample1
         }
 
 
-        internal void loadtrans(reservation rs)
+        internal void loadtrans(transaction rs)
         {
             lblStatus.Visible = true;
             if (rs.Balance == 0.0)

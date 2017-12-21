@@ -248,6 +248,15 @@ namespace sample1
                 Database.SaveEntry(ds);
             }
         }
+
+        public int GetLastID()
+        {
+            string mySql = string.Format("SELECT top 1 * FROM {0} Order by ID desc", MainTable);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+            return Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]);
+                
+        }
         #endregion
     }
 }

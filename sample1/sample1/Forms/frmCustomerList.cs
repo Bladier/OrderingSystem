@@ -11,6 +11,8 @@ namespace sample1
 {
     public partial class frmCustomerList : Form
     {
+        public  bool isResevation = false;
+        public  bool isbooking = false;
         public frmCustomerList()
         {
             InitializeComponent();
@@ -82,8 +84,35 @@ namespace sample1
 
         private void btnadd_Click(object sender, EventArgs e)
         {
-            frmCustomer frm = new frmCustomer();
-            frm.Show();
+            
+            if (Application.OpenForms["frmCustomer"] != null)
+            {
+                if (isbooking)
+                {
+                    (Application.OpenForms["frmCustomer"] as frmCustomer).isBooking = true;
+                }
+                if (isResevation)
+                {
+                    (Application.OpenForms["frmCustomer"] as frmCustomer).isReservation = true;
+                }
+
+            }
+            else
+            {
+                frmCustomer frm = new frmCustomer();
+                if (isbooking)
+                {
+                    frm.isBooking = true;
+                }
+                if (isResevation)
+                {
+                    frm.isReservation = true;
+                }
+             
+                frm.Show();
+            }
+            this.Close();
+          
         }
 
         private void lvPassList_SelectedIndexChanged(object sender, EventArgs e)
@@ -120,20 +149,44 @@ namespace sample1
             Customer cust = new Customer();
             cust.LoadCust(idx);
 
-            if (Application.OpenForms["frmCustomer"] != null)
+            if (isbooking)
             {
-        
-                (Application.OpenForms["frmCustomer"] as frmCustomer).loadcustomer(cust,true);
-              
+                if (Application.OpenForms["frmCustomer"] != null)
+                {
+                    (Application.OpenForms["frmCustomer"] as frmCustomer).isBooking=true;
+                    (Application.OpenForms["frmCustomer"] as frmCustomer).loadcustomer(cust, true);
+                    (Application.OpenForms["frmCustomer"] as frmCustomer).TopMost = true;
+                }
+                else
+                {
+                    frmCustomer frm = new frmCustomer();
+                    frm.loadcustomer(cust, true);
+                    frm.isBooking = true;
+                    frm.TopMost = true;
+                    frm.Show();
+                  
+                }
             }
-            else
+            if (isResevation)
             {
-                frmCustomer frm = new frmCustomer();
-                frm.Show();
-                frm.loadcustomer(cust, true);
-              
+                if (Application.OpenForms["frmCustomer"] != null)
+                {
+                    (Application.OpenForms["frmCustomer"] as frmCustomer).isReservation = true;
+                    (Application.OpenForms["frmCustomer"] as frmCustomer).loadcustomer(cust, true);
+                    (Application.OpenForms["frmCustomer"] as frmCustomer).TopMost = true;
+                }
+                else
+                {
+                    frmCustomer frm = new frmCustomer();
+                    frm.loadcustomer(cust, true);
+                    frm.isReservation = true;
+                    frm.TopMost = true;
+                    frm.Show();
+
+                }
             }
-           // this.Close();
+            
+           this.Close();
       
         }
 
@@ -160,7 +213,32 @@ namespace sample1
 
         private void lvPassList_DoubleClick(object sender, EventArgs e)
         {
-            btnView.PerformClick();
+            if (isbooking)
+            {
+                btnSelect.PerformClick();
+                this.Close();
+                return;
+            }
+
+            if (isResevation)
+            {
+                btnSelect.PerformClick();
+                this.Close();
+                return;
+            }
+
+            if (btnView.Visible)
+            {
+                btnView.PerformClick();
+                this.Close();
+                return;
+            }
+            else
+            {
+                btnSelect.PerformClick();
+                this.Close();
+                return;
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -177,12 +255,69 @@ namespace sample1
 
         private void lvPassList_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (mod_system.isEnter(e)) { btnView.PerformClick(); }
+            if (mod_system.isEnter(e)) 
+            {
+                if (btnView.Visible)
+                {
+                    btnView.PerformClick();
+                }
+                else
+                {
+                    btnSelect.PerformClick();
+                }
+              
+            }
         }
 
         private void txtsearch_TextChanged(object sender, EventArgs e)
         {
             if (txtsearch.Text == "") { LoadCustomer(); }
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            if (lvPassList.SelectedItems.Count == 0) { return; }
+            int idx = Convert.ToInt32(lvPassList.SelectedItems[0].Tag);
+
+            Customer cust = new Customer();
+            cust.LoadCust(idx);
+
+            if (isbooking)
+            {
+                if (Application.OpenForms["frmBooking"] != null)
+                {
+
+                    (Application.OpenForms["frmBooking"] as frmBooking).loadcustomer(cust);
+
+                }
+                else
+                {
+                    frmBooking frm = new frmBooking();
+                    frm.Show();
+                    frm.loadcustomer(cust);
+
+                }
+            }
+            else
+            {
+
+                if (Application.OpenForms["frmreservation2"] != null)
+                {
+
+                    (Application.OpenForms["frmreservation2"] as frmreservation2).loadcustomer(cust);
+
+                }
+                else
+                {
+                    frmreservation2 frm = new frmreservation2();
+                    frm.Show();
+                    frm.loadcustomer(cust);
+
+                }
+            }
+           
+           this.Close();
+      
         }
 
         }

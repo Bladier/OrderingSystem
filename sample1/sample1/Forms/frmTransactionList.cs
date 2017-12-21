@@ -63,7 +63,7 @@ namespace sample1
 
             int idx = Convert.ToInt32(lvTransList.SelectedItems[0].Tag);
 
-            reservation rs = new reservation();
+            transaction rs = new transaction();
             rs.loadTrans(idx);
 
             if (Application.OpenForms["frmSettings"] != null)

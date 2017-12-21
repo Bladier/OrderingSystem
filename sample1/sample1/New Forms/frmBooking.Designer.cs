@@ -42,6 +42,8 @@
             this.txtPayment = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtContactNum = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
@@ -65,8 +67,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtTransactionNum = new System.Windows.Forms.TextBox();
-            this.txtContactNum = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.Panel2.SuspendLayout();
@@ -84,6 +84,7 @@
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = ". . .";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // rbCash
             // 
@@ -227,10 +228,28 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Client";
             // 
+            // txtContactNum
+            // 
+            this.txtContactNum.Location = new System.Drawing.Point(78, 118);
+            this.txtContactNum.Name = "txtContactNum";
+            this.txtContactNum.ReadOnly = true;
+            this.txtContactNum.Size = new System.Drawing.Size(295, 20);
+            this.txtContactNum.TabIndex = 5;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(15, 121);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(54, 13);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "Contact #";
+            // 
             // txtCustomer
             // 
             this.txtCustomer.Location = new System.Drawing.Point(78, 15);
             this.txtCustomer.Name = "txtCustomer";
+            this.txtCustomer.ReadOnly = true;
             this.txtCustomer.Size = new System.Drawing.Size(255, 20);
             this.txtCustomer.TabIndex = 0;
             // 
@@ -451,23 +470,6 @@
             this.txtTransactionNum.TabIndex = 0;
             this.txtTransactionNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtContactNum
-            // 
-            this.txtContactNum.Location = new System.Drawing.Point(78, 118);
-            this.txtContactNum.Name = "txtContactNum";
-            this.txtContactNum.ReadOnly = true;
-            this.txtContactNum.Size = new System.Drawing.Size(295, 20);
-            this.txtContactNum.TabIndex = 5;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(15, 121);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(54, 13);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "Contact #";
-            // 
             // txtNote
             // 
             this.txtNote.Location = new System.Drawing.Point(38, 323);
@@ -489,7 +491,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 504);
+            this.ClientSize = new System.Drawing.Size(774, 504);
             this.Controls.Add(this.txtNote);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.groupBox4);

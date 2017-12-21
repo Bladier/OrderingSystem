@@ -12,12 +12,11 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 
-
 namespace sample1
 {
-    class reservation
+    class transaction
     {
-        private string MainTable = "reservationtbl";
+        private string MainTable = "transactiontbl";
 
         #region "Properties"
         private int _ID;
@@ -70,7 +69,6 @@ namespace sample1
             get { return _EndDate; }
             set { _EndDate = value; }
         }
-
 
         private string _status;
         public string Status
@@ -149,7 +147,6 @@ namespace sample1
             _with2["TransDate"] = _Transdate;
             _with2["StartDate"] = _StartDate;
             _with2["EndDate"] = _EndDate;
-            _with2["ForfeitDate"] = _ForfeitDate;
             _with2["Status"] = _status;
             _with2["Total"] = _Total;
             _with2["Balance"] = _Balance;
@@ -173,7 +170,7 @@ namespace sample1
             _EndDate = Convert.ToDateTime(_with3["EndDate"]);
             _status = _with3["Status"].ToString();
             _Total = Convert.ToDouble(_with3["Total"]);
-            _ForfeitDate = Convert.ToDateTime(_with3["ForfeitDate"]);
+         //   _ForfeitDate = Convert.ToDateTime(_with3["ForfeitDate"]);
             _Balance = Convert.ToDouble(_with3["Balance"]);
             _Rate = Convert.ToDouble(_with3["Rate"]);
             _mod = _with3["MOD"].ToString();
@@ -203,7 +200,7 @@ namespace sample1
                 _with2["EndDate"] = _EndDate;
                 _with2["Status"] = _status;
                 _with2["Total"] = _Total;
-                 _with2["ForfeitDate"] = _ForfeitDate;
+               // _with2["ForfeitDate"] = _ForfeitDate;
                 _with2["Balance"] = _Balance;
                 _with2["Rate"] = _Rate;
                 _with2["MOD"] = _mod;
@@ -232,13 +229,13 @@ namespace sample1
         }
 
 
-        public bool isHasReserved(DateTime Res_startDate)
+        public bool isHasReserved_or_Booked(DateTime Res_startDate)
         {
             string tmpDate = Res_startDate.ToString("yyyy-MM-dd") + " " + Convert.ToString(Res_startDate.ToShortTimeString());
-
+            
             string mySql = string.Format("SELECT  * FROM {0}", MainTable);
             mySql += " where (EndDate >= '" + tmpDate + "')";
-            mySql += " and (status <> 'Cancel' or status ='Expired')";
+            mySql += " and (status = 'Booked' or status ='Reserved')";
 
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
@@ -250,5 +247,6 @@ namespace sample1
             return false;
         }
         #endregion
-    }
+    } 
+    
 }

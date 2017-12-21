@@ -54,6 +54,7 @@
     <Compile Include="Class\bill.cs" />
     <Compile Include="Class\Customer.cs" />
     <Compile Include="Class\reservation.cs" />
+    <Compile Include="Class\Transaction.cs" />
     <Compile Include="Class\User.cs" />
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
@@ -84,6 +85,12 @@
     </Compile>
     <Compile Include="Forms\frmCustomerList.designer.cs">
       <DependentUpon>frmCustomerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="New Forms\frmreservation2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New Forms\frmreservation2.Designer.cs">
+      <DependentUpon>frmreservation2.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmSchedule.cs">
       <SubType>Form</SubType>
@@ -127,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCustomerList.resx">
       <DependentUpon>frmCustomerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New Forms\frmreservation2.resx">
+      <DependentUpon>frmreservation2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSchedule.resx">
       <DependentUpon>frmSchedule.cs</DependentUpon>
