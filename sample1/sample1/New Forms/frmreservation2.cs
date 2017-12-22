@@ -230,6 +230,14 @@ namespace sample1
                     }
                 }
 
+
+                //reservation rs = new reservation();
+                //if (rs.isHasReserved(Convert.ToDateTime(dtStartDate.Text)))
+                //{
+                //    MessageBox.Show("Selected date is already reserved by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //    return false;
+                //}
+
                 transaction tr = new transaction();
                 if (tr.isHasReserved_or_Booked(Convert.ToDateTime(dtStartDate.Text)))
                 {
@@ -237,13 +245,6 @@ namespace sample1
                     return false;
                 }
 
-
-                reservation rs = new reservation();
-                if (rs.isHasReserved(Convert.ToDateTime(dtStartDate.Text)))
-                {
-                    MessageBox.Show("Selected date is already reserved by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return false;
-                }
             }
 
             return true;

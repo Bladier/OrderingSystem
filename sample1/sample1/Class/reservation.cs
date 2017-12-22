@@ -17,6 +17,9 @@ namespace sample1
 {
     class reservation
     {
+        DateTime tmpStartTime;
+        DateTime tmpTime;
+        int maxi;
         private string MainTable = "reservationtbl";
 
         #region "Properties"
@@ -232,34 +235,76 @@ namespace sample1
         }
 
 
-        public bool isHasReserved(DateTime Res_startDate)
-        {
-            string tmpDate = Res_startDate.ToString("yyyy-MM-dd") + " " + Convert.ToString(Res_startDate.ToShortTimeString());
+        //public bool isHasReserved(DateTime Res_startDate)
+        //{
+        //    string tmpDate = Res_startDate.ToString("yyyy-MM-dd") + " " + Convert.ToString(Res_startDate.ToShortTimeString());
 
-            string mySql = string.Format("SELECT  * FROM {0}", MainTable);
-            mySql += " WHere (status ='Reserved')";
+        //    string mySql = string.Format("SELECT  * FROM {0}", MainTable);
+        //    mySql += " WHere (status ='Reserved')";
 
-            DataSet ds = Database.LoadSQL(mySql, MainTable);
+        //    DataSet ds = Database.LoadSQL(mySql, MainTable);
 
-            foreach (DataRow dr in ds.Tables[0].Rows)
-            {
-                DateTime tmpDates = Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]).ToShortDateString());
-                DateTime tmpStartDate = Convert.ToDateTime(Res_startDate.ToShortDateString());
+        //    foreach (DataRow dr in ds.Tables[0].Rows)
+        //    {
+        //        DateTime tmpDates = Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]).ToShortDateString());
+        //        DateTime tmpStartDate = Convert.ToDateTime(Res_startDate.ToShortDateString());
 
-                if (tmpStartDate == tmpDates)
-                {
-                    DateTime tmpStartTime = Convert.ToDateTime(Res_startDate.ToShortTimeString());
-                    DateTime tmpTime = Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]).ToShortTimeString());
-                    if (tmpTime >= tmpStartTime)
-                    {
-                        return true;
-                    }
-                }
- 
-            }
-             return false;
-        }
+        //        tmpStartTime = Convert.ToDateTime(Res_startDate.ToShortTimeString());
+        //        tmpTime = Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]).ToShortTimeString());
 
+        //        DateTime d1 = Convert.ToDateTime(Convert.ToDateTime(dr["StartDate"]));
+        //        DateTime d2 = Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]));
+
+        //        TimeSpan t = d2 - d1;
+        //        double NrOfDays = Math.Round(t.TotalDays) + 1;
+
+
+        //        if (NrOfDays > 2)
+        //        {
+        //            for (int i = 0; i < NrOfDays; i++)
+        //            {
+        //                Console.WriteLine(i);
+        //                maxi = i;
+        //            }
+        //        }
+
+        //        if (NrOfDays > 2)
+        //        {
+        //            for (int i = 0; i < NrOfDays; i++)
+        //            {
+        //                if (i == 0)
+        //                {
+        //                    continue;
+        //                }
+
+        //                if (i == maxi)
+        //                {
+        //                    continue;
+        //                }
+
+        //                d1 = d1.AddDays(i);
+
+        //                if (tmpStartDate == Convert.ToDateTime(d1.ToShortDateString()))
+        //                {
+        //                    return true;
+        //                }
+        //                d1 = Convert.ToDateTime(Convert.ToDateTime(dr["StartDate"]));
+        //            }
+        //        }
+
+
+        //        if (tmpStartDate == tmpDates)
+        //        {
+
+        //            if (tmpTime >= tmpStartTime)
+        //            {
+        //                return true;
+        //            }
+        //        }
+
+        //    }
+        //    return false;
+        //}
         #endregion
         }
     }

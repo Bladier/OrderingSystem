@@ -19,23 +19,25 @@ namespace sample1
         private void frmTransactionList_Load(object sender, EventArgs e)
         {
             LoadTransaction();
+            LoadReservation();
         }
 
-        private void LoadTransaction(string mysql = "select top 50 * from reservationtbl")
+        private void LoadTransaction(string mysql = "select top 50 * from Transactiontbl where status = 'Booked' and status <> 'Cancel' order by transdate desc")
         {
-            DataSet ds = Database.LoadSQL(mysql, "reservationtbl");
+            DataSet ds = Database.LoadSQL(mysql, "Transactiontbl");
             if (ds.Tables[0].Rows.Count == 0) { return; }
 
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 int cusID = Convert.ToInt32(dr["customerID"]);
                 int vID = Convert.ToInt32(dr["venueID"]);
-                ListViewItem lv = lvTransList.Items.Add(dr["TransDate"].ToString());
+                ListViewItem lv = lvTransList.Items.Add(Convert.ToDateTime(dr["TransDate"].ToString()).ToShortDateString());
                 lv.SubItems.Add(getFullName(cusID));
                 lv.SubItems.Add(getVenue(vID));
                 lv.SubItems.Add(dr["Total"].ToString());
                 lv.SubItems.Add(Convert.ToDateTime(dr["StartDate"]).ToShortDateString());
                 lv.SubItems.Add(Convert.ToDateTime(dr["EndDate"]).ToShortDateString());
+                lv.SubItems.Add(dr["Status"].ToString());
 
                 lv.Tag = dr["ID"];
             }
@@ -66,19 +68,46 @@ namespace sample1
             transaction rs = new transaction();
             rs.loadTrans(idx);
 
-            if (Application.OpenForms["frmSettings"] != null)
+            if (Application.OpenForms["frmBooking"] != null)
             {
-                (Application.OpenForms["frmSettings"] as frmReservation).loadtrans(rs);
+                (Application.OpenForms["frmBooking"] as frmBooking).loadtrans(rs);
             }
 
             {
-                frmReservation frm = new frmReservation();
+                frmBooking frm = new frmBooking();
                 frm.Show();
                 frm.isView = true;
                 frm.loadtrans(rs);
             }
+        }
 
+
+        private void LoadReservation(string mysql = "select top 50 * from Transactiontbl where status = 'Reserved' and status <> 'Cancel' order by transdate desc")
+        {
+            DataSet ds = Database.LoadSQL(mysql, "Transactiontbl");
+            if (ds.Tables[0].Rows.Count == 0) { return; }
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                int cusID = Convert.ToInt32(dr["customerID"]);
+                int vID = Convert.ToInt32(dr["venueID"]);
+                ListViewItem lv = lvReserved.Items.Add(Convert.ToDateTime(dr["TransDate"].ToString()).ToShortDateString());
+                lv.SubItems.Add(getFullName(cusID));
+                lv.SubItems.Add(getVenue(vID));
+                lv.SubItems.Add(dr["Total"].ToString());
+                lv.SubItems.Add(Convert.ToDateTime(dr["StartDate"]).ToShortDateString());
+                lv.SubItems.Add(Convert.ToDateTime(dr["EndDate"]).ToShortDateString());
+                lv.SubItems.Add(dr["Status"].ToString());
+
+                lv.Tag = dr["ID"];
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
 
         }
+
+  
     }
     }

@@ -27,23 +27,32 @@ namespace sample1
             System.DateTime st =mod_system.GetFirstDate(monCal.SelectionStart);
             System.DateTime en = mod_system.GetLastDate(monCal.SelectionStart);
 
-            string mysql = "SELECT * FROM RESERVATIONTBL where enddate Between '" + st + "'and '" + en + "' and status <> 'Cancel'";
-            DataSet ds = Database.LoadSQL(mysql, "RESERVATIONTBL");
-
-            foreach (DataRow dr in ds.Tables[0].Rows)
-            {
-                monCal.AddBoldedDate(DateTime.Parse(Convert.ToDateTime(dr["EndDate"]).ToShortDateString()));
-                monCal.UpdateBoldedDates();
-            }
-
-            string mysql1 = "SELECT * FROM transactiontbl where enddate Between '" + st + "'and '" + en + "' and status <> 'Cancel'";
+            string mysql1 = "SELECT * FROM transactiontbl where enddate Between '" + st + "'and '" + en + "' and (status <> 'Cancel' and status = 'Booked') OR (status ='Reserved')";
             DataSet ds1 = Database.LoadSQL(mysql1, "transactiontbl");
 
             foreach (DataRow dr in ds1.Tables[0].Rows)
             {
-                monCal.AddBoldedDate(DateTime.Parse(Convert.ToDateTime(dr["EndDate"]).ToShortDateString()));
-                monCal.UpdateBoldedDates();
 
+                DateTime d1 = Convert.ToDateTime(Convert.ToDateTime(dr["StartDate"]));
+                DateTime d2 = Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]));
+
+                TimeSpan t = d2 - d1;
+                double NrOfDays = Math.Round(t.TotalDays) + 1;
+
+
+                if (NrOfDays > 2)
+                {
+                    for (int i = 0; i < NrOfDays; i++)
+                    {
+                        d1 = d1.AddDays(i);
+                     
+                          monCal.AddBoldedDate(DateTime.Parse(Convert.ToDateTime(d1).ToShortDateString()));
+                          monCal.UpdateBoldedDates();
+          
+                        d1 = Convert.ToDateTime(Convert.ToDateTime(dr["StartDate"]));
+                        
+                    }
+                }
             }
 
         }

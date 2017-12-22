@@ -265,12 +265,16 @@ namespace sample1
                     }
                 }
 
-                if (NrOfDays > 2)
+                if (NrOfDays > 1)
                 {
                     for (int i = 0; i < NrOfDays; i++)
                     {
                         if (i == 0)
                         {
+                            if (tmpStartDate == Convert.ToDateTime(d1.ToShortDateString()))
+                            {
+                                    return true;
+                            }
                             continue;
                         }
 

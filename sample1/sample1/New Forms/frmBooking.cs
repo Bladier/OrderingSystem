@@ -15,7 +15,7 @@ namespace sample1
         public bool isView = false;
         int custID;
         int venudID;
-        transaction tmpres;
+        transaction tmptrans;
         Customer tmpcus;
         public frmBooking()
         {
@@ -59,6 +59,8 @@ namespace sample1
 
         private void cboVenue_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+
             if (cboVenue.Text == "") { txtRate.Clear(); return; }
             txtRate.Clear();
             string mySql = "SELECT * from venuetbl where description ='" + cboVenue.Text + "'";
@@ -155,13 +157,14 @@ namespace sample1
                 SaveTrans();
                 return;
             }
+
             if (btnPost.Text == "&Edit")
             {
-        
-                btnPost.Text = "&Update";
-                groupBox1.Enabled = true;
-                return;
+                    btnPost.Text = "&Update";
+                    groupBox1.Enabled = true;
+                    return;
             }
+
             if (btnPost.Text == "&Update")
             {
                 UpdateTrans();
@@ -225,21 +228,21 @@ namespace sample1
         {
             if (!isValid()) { return; }
 
-            transaction res = new transaction();
+            transaction trans = new transaction();
 
-            //if (tmpres.Balance == 0.0)
-            //{
-            //    DialogResult result = MessageBox.Show("This transaction is ready for checkOut. Do you want to continue?", "Confirmation", MessageBoxButtons.YesNo);
-            //    if (result == DialogResult.No)
-            //    {
-            //        return;
-            //    }
+            if (tmptrans.Balance == 0.0)
+            {
+                DialogResult result = MessageBox.Show("This transaction is ready for checkOut. Do you want to continue?", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
 
-            //    res.ID = tmpres.ID;
-            //    res.Status = "CheckOut";
-            //    res.CheckOut();
-            //    return;
-            //}
+                trans.ID = tmptrans.ID;
+                trans.Status = "CheckOut";
+                trans.CheckOut();
+                return;
+            }
 
             DialogResult result1 = MessageBox.Show("Do you want to update this transaction?", "Confirmation", MessageBoxButtons.YesNo);
             if (result1 == DialogResult.No)
@@ -247,22 +250,14 @@ namespace sample1
                 return;
             }
 
-            res.ID = tmpres.ID;
-            //if (rbBoking.Checked)
-            //{
-            //    res.Status = "Booked";
-            //}
+            trans.ID = tmptrans.ID;
+            
 
-            //if (rbReservation.Checked)
-            //{
-            //    res.Status = "Reserved";
-            //}
-
-            res.Balance = Convert.ToDouble(lblBalance.Text);
-            res.UpdateTrans();
+            trans.Balance = Convert.ToDouble(lblBalance.Text);
+            trans.UpdateTrans();
 
             bill bl = new bill();
-            bl.resID = tmpres.ID;
+            bl.resID = tmptrans.ID;
 
             if (rbCash.Checked)
             {
@@ -280,16 +275,26 @@ namespace sample1
             ClearFields();
         }
 
+        private void CheckOut()
+        {
+            if(lblBalance.Text != "0.00")
+            {
+                MessageBox.Show("Please settle your account ve", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+        }
+
+
         private bool isValid()
         {
             if (isView)
             {
-                if (tmpres.Balance != 0.0)
+                if (tmptrans.Balance != 0.0)
                 {
                     if (txtPayment.Text == "") { txtPayment.Focus(); return false; }
-                    if (Convert.ToDouble(txtPayment.Text) > Convert.ToDouble(tmpres.Balance))
+                    if (Convert.ToDouble(txtPayment.Text) > Convert.ToDouble(tmptrans.Balance))
                     {
-                        MessageBox.Show("The balance is: " + tmpres.Balance + " only.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("The balance is: " + tmptrans.Balance + " only.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtPayment.Clear();
                         return false;
                     }
@@ -342,13 +347,12 @@ namespace sample1
                     return false;
                 }
 
-
-                reservation rs = new reservation();
-                if (rs.isHasReserved(Convert.ToDateTime(dtStartDate.Text)))
-                {
-                    MessageBox.Show("Selected date is already reserved by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return false;
-                }
+                //reservation rs = new reservation();
+                //if (rs.isHasReserved(Convert.ToDateTime(dtStartDate.Text)))
+                //{
+                //    MessageBox.Show("Selected date is already reserved by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //    return false;
+                //}
             }
 
             return true;
@@ -360,11 +364,11 @@ namespace sample1
             {
                 if (txtPayment.Text == "")
                 {
-                    lblBalance.Text = tmpres.Balance.ToString();
+                    lblBalance.Text = tmptrans.Balance.ToString();
                     return;
                 }
 
-                lblBalance.Text = Convert.ToDouble(GetBalance(tmpres.ID) - Convert.ToDouble(txtPayment.Text)).ToString();
+                lblBalance.Text = Convert.ToDouble(GetBalance(tmptrans.ID) - Convert.ToDouble(txtPayment.Text)).ToString();
                 return;
             }
             else
@@ -380,8 +384,8 @@ namespace sample1
 
         private double GetBalance(int idx)
         {
-            string mysql = "SELECT * FROM reservationtbl WHERE id = " + idx;
-            DataSet ds = Database.LoadSQL(mysql, "reservationtbl");
+            string mysql = "SELECT * FROM transactiontbl WHERE id = " + idx;
+            DataSet ds = Database.LoadSQL(mysql, "transactiontbl");
 
             return Convert.ToDouble(ds.Tables[0].Rows[0]["Balance"]);
         }
@@ -442,6 +446,80 @@ namespace sample1
          private void btnCancel_Click(object sender, EventArgs e)
          {
              ClearFields();
+         }
+
+         internal void loadtrans(transaction tr,bool isViewTrans = true)
+         {
+             if (isViewTrans)
+             {
+                 isView = true;
+             }
+
+             txtTransactionNum.Text = string.Format("00000{0}", tr.TransactionNum);
+
+             Customer cus = new Customer();
+             cus.LoadCust(tr.CusID);
+             txtCustomer.Text = cus.fullname;
+             txtAddress.Text = cus.fulladdress;
+             txtContactNum.Text = cus.ContactNum;
+             cboVenue.Text = getVenue(tr.venueID);
+             dtStartDate.Text = tr.StartDate.ToString();
+             dtEndDate.Text = tr.EndDate.ToString();
+
+             DateTime d1 = Convert.ToDateTime(tr.StartDate);
+             DateTime d2 = Convert.ToDateTime(tr.EndDate).AddDays(1);
+
+             TimeSpan t = d2 - d1;
+             double NrOfDays = Math.Round(t.TotalDays);
+
+             txtNoOfDays.Text = NrOfDays.ToString();
+             txtRate.Text = tr.Rate.ToString();
+             lblTotal.Text = tr.Total.ToString();
+
+             if (tr.mod == "Full Payment")
+             {
+                 rbCash.Checked = true;
+             }
+             if (tr.mod == "Installment")
+             {
+                 rbInstallment.Checked = true;
+             }
+
+             lblBalance.Text = tr.Balance.ToString();
+            
+             tmptrans = tr;
+
+             disAbledFields(false);
+         }
+
+         private void disAbledFields(bool st =true)
+         {
+             btnSearch.Enabled = st;
+             txtNote.Enabled = st;
+             cboVenue.Enabled = st;
+             dtStartDate.Enabled = st;
+             dtEndDate.Enabled = st;
+             rbCash.Enabled = st;
+             rbInstallment.Enabled = st;
+
+             if (rbInstallment.Checked)
+             {
+                 txtPayment.Enabled = true;
+             }
+             else
+             {
+                 txtPayment.Enabled = false;
+             }
+
+             btnPost.Text = "&Edit";
+             btnAvailability.Enabled = st;
+         }
+
+         private string getVenue(int idx)
+         {
+             string mysql = "SELECT * FROM VENUETBL WHERE ID =" + idx + "";
+             DataSet ds = Database.LoadSQL(mysql, "VENUETBL");
+             return ds.Tables[0].Rows[0]["Description"].ToString();
          }
     }
 }
