@@ -241,6 +241,9 @@ namespace sample1
                 trans.ID = tmptrans.ID;
                 trans.Status = "CheckOut";
                 trans.CheckOut();
+
+                MessageBox.Show("Transaction updated.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearFields();
                 return;
             }
 
@@ -252,7 +255,6 @@ namespace sample1
 
             trans.ID = tmptrans.ID;
             
-
             trans.Balance = Convert.ToDouble(lblBalance.Text);
             trans.UpdateTrans();
 
@@ -269,6 +271,7 @@ namespace sample1
             }
 
             bl.tranSDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            bl.TransNum = Convert.ToInt32(txtTransactionNum.Text);
             bl.saveBill();
 
             MessageBox.Show("Transaction updated.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -299,8 +302,7 @@ namespace sample1
                         return false;
                     }
                 }
-                if (txtPayment.Text == "") { txtPayment.Focus(); return false; }
-
+             
             }
             else
             {

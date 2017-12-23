@@ -37,6 +37,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -49,12 +50,13 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnVoid = new System.Windows.Forms.Button();
+            this.btnView = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -100,6 +102,8 @@
             this.lvTransList.TabIndex = 2;
             this.lvTransList.UseCompatibleStateImageBehavior = false;
             this.lvTransList.View = System.Windows.Forms.View.Details;
+            this.lvTransList.DockChanged += new System.EventHandler(this.lvTransList_DockChanged);
+            this.lvTransList.DoubleClick += new System.EventHandler(this.lvTransList_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -130,6 +134,11 @@
             // 
             this.columnHeader6.Text = "End Date";
             this.columnHeader6.Width = 106;
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "TransType";
+            this.columnHeader13.Width = 122;
             // 
             // btnCancel
             // 
@@ -164,6 +173,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnView);
+            this.tabPage1.Controls.Add(this.btnVoid);
             this.tabPage1.Controls.Add(this.lvTransList);
             this.tabPage1.Controls.Add(this.btnSelect);
             this.tabPage1.Controls.Add(this.txtSearch);
@@ -244,6 +255,11 @@
             this.columnHeader12.Text = "End Date";
             this.columnHeader12.Width = 106;
             // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "TransType";
+            this.columnHeader14.Width = 108;
+            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -284,15 +300,26 @@
             this.button3.Text = "&Search";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // columnHeader13
+            // btnVoid
             // 
-            this.columnHeader13.Text = "TransType";
-            this.columnHeader13.Width = 122;
+            this.btnVoid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVoid.Location = new System.Drawing.Point(6, 333);
+            this.btnVoid.Name = "btnVoid";
+            this.btnVoid.Size = new System.Drawing.Size(75, 23);
+            this.btnVoid.TabIndex = 5;
+            this.btnVoid.Text = "&Void";
+            this.btnVoid.UseVisualStyleBackColor = true;
             // 
-            // columnHeader14
+            // btnView
             // 
-            this.columnHeader14.Text = "TransType";
-            this.columnHeader14.Width = 108;
+            this.btnView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnView.Location = new System.Drawing.Point(87, 333);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(97, 23);
+            this.btnView.TabIndex = 6;
+            this.btnView.Text = "&View Payment";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // frmTransactionList
             // 
@@ -341,5 +368,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.Button btnVoid;
+        private System.Windows.Forms.Button btnView;
     }
 }

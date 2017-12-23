@@ -108,6 +108,37 @@ namespace sample1
 
         }
 
-  
+        private void lvTransList_DockChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvTransList_DoubleClick(object sender, EventArgs e)
+        {
+            btnSelect.PerformClick();
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            if (lvTransList.SelectedItems.Count == 0) { return; }
+
+            int idx = Convert.ToInt32(lvTransList.SelectedItems[0].Tag);
+
+            transaction rs = new transaction();
+            rs.loadTrans(idx);
+
+            if (Application.OpenForms["frmPayList"] != null)
+            {
+                (Application.OpenForms["frmPayList"] as frmPayList).loadtrans(rs);
+            }
+
+            {
+                frmPayList frm = new frmPayList();
+                frm.loadtrans(rs);
+                frm.ShowDialog(); ;
+            
+            }
+        }
     }
+
     }

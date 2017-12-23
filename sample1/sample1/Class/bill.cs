@@ -71,7 +71,7 @@ namespace sample1
             string mySql = string.Format("SELECT * FROM " + MainTable + " WHERE resID = {0}", id);
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
-            if (ds.Tables[0].Rows.Count != 1)
+            if (ds.Tables[0].Rows.Count == 0)
             {
                 MessageBox.Show("Unable load bills", "Notification",
     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
