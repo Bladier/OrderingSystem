@@ -68,17 +68,21 @@ namespace sample1
             transaction rs = new transaction();
             rs.loadTrans(idx);
 
+            frmBooking frm = new frmBooking();
             if (Application.OpenForms["frmBooking"] != null)
             {
                 (Application.OpenForms["frmBooking"] as frmBooking).loadtrans(rs);
             }
 
             {
-                frmBooking frm = new frmBooking();
-                frm.Show();
+            
+              //  frm.Show();
                 frm.isView = true;
                 frm.loadtrans(rs);
             }
+
+     
+            mod_system.LoadForm(frm);
         }
 
 

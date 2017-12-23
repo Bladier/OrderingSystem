@@ -64,7 +64,7 @@
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem1.Text = "&Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
@@ -106,6 +106,7 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(110, 22);
             this.toolStripButton3.Text = "Transaction List";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // panel1
             // 
@@ -144,6 +145,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Panel panel1;
     }
 }

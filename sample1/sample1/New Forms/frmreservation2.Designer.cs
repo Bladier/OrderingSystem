@@ -104,7 +104,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtAddress);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(30, 135);
+            this.groupBox2.Location = new System.Drawing.Point(38, 138);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(381, 152);
             this.groupBox2.TabIndex = 39;
@@ -213,7 +213,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(27, 299);
+            this.label16.Location = new System.Drawing.Point(35, 302);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(30, 13);
             this.label16.TabIndex = 38;
@@ -276,7 +276,7 @@
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(30, 320);
+            this.txtNote.Location = new System.Drawing.Point(38, 323);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(375, 134);
@@ -297,7 +297,7 @@
             this.Panel2.BackColor = System.Drawing.Color.DarkSlateGray;
             this.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Panel2.Controls.Add(this.label14);
-            this.Panel2.Location = new System.Drawing.Point(30, 12);
+            this.Panel2.Location = new System.Drawing.Point(38, 15);
             this.Panel2.Name = "Panel2";
             this.Panel2.Size = new System.Drawing.Size(697, 62);
             this.Panel2.TabIndex = 44;
@@ -325,7 +325,7 @@
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.txtPayment);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(417, 299);
+            this.groupBox3.Location = new System.Drawing.Point(425, 302);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(316, 136);
             this.groupBox3.TabIndex = 41;
@@ -433,7 +433,7 @@
             // 
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.txtTransactionNum);
-            this.groupBox4.Location = new System.Drawing.Point(30, 83);
+            this.groupBox4.Location = new System.Drawing.Point(38, 86);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(381, 45);
             this.groupBox4.TabIndex = 46;
@@ -441,7 +441,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(655, 441);
+            this.btnCancel.Location = new System.Drawing.Point(663, 444);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 43;
@@ -450,7 +450,7 @@
             // 
             // btnPost
             // 
-            this.btnPost.Location = new System.Drawing.Point(576, 441);
+            this.btnPost.Location = new System.Drawing.Point(584, 444);
             this.btnPost.Name = "btnPost";
             this.btnPost.Size = new System.Drawing.Size(75, 23);
             this.btnPost.TabIndex = 42;
@@ -460,7 +460,7 @@
             // 
             // btnAvailability
             // 
-            this.btnAvailability.Location = new System.Drawing.Point(495, 442);
+            this.btnAvailability.Location = new System.Drawing.Point(503, 445);
             this.btnAvailability.Name = "btnAvailability";
             this.btnAvailability.Size = new System.Drawing.Size(75, 23);
             this.btnAvailability.TabIndex = 45;
@@ -482,7 +482,7 @@
             this.groupBox1.Controls.Add(this.dtEndDate);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtRate);
-            this.groupBox1.Location = new System.Drawing.Point(417, 83);
+            this.groupBox1.Location = new System.Drawing.Point(425, 86);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(316, 204);
             this.groupBox1.TabIndex = 40;
