@@ -110,7 +110,6 @@ namespace sample1
             bl.TransNum =Convert.ToInt32(txtTransactionNum.Text);
             bl.saveBill();
 
-
             int transNum = Convert.ToInt32(txtTransactionNum.Text) + 1;
             mod_system.UpdateOptions("TransactionNum", transNum.ToString());
             MessageBox.Show("Transaction Posted.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
