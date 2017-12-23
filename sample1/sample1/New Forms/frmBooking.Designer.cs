@@ -302,10 +302,10 @@
             // 
             // txtRate
             // 
-            this.txtRate.Location = new System.Drawing.Point(89, 137);
+            this.txtRate.Location = new System.Drawing.Point(87, 137);
             this.txtRate.Name = "txtRate";
             this.txtRate.ReadOnly = true;
-            this.txtRate.Size = new System.Drawing.Size(112, 20);
+            this.txtRate.Size = new System.Drawing.Size(113, 20);
             this.txtRate.TabIndex = 11;
             // 
             // dtStartDate
@@ -494,6 +494,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(769, 504);
             this.Controls.Add(this.txtNote);
             this.Controls.Add(this.label16);

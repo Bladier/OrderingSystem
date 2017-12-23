@@ -23,7 +23,22 @@ namespace sample1
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
+            panel1.Controls.Clear();
+            frmreservation2 frm = new frmreservation2();
+            frm.TopLevel = false;
+            frm.AutoScroll = true;
+            this.panel1.Controls.Add(frm);
+            frm.Show();
+        }
 
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            frmBooking frm = new frmBooking();
+            frm.TopLevel = false;
+            frm.AutoScroll = true;
+            this.panel1.Controls.Add(frm);
+            frm.Show();
         }
     }
 }

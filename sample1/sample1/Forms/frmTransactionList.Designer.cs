@@ -42,6 +42,8 @@
             this.btnSelect = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnView = new System.Windows.Forms.Button();
+            this.btnVoid = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.lvReserved = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -55,8 +57,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnVoid = new System.Windows.Forms.Button();
-            this.btnView = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -188,6 +188,27 @@
             this.tabPage1.Text = "Booked List";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnView
+            // 
+            this.btnView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnView.Location = new System.Drawing.Point(87, 333);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(97, 23);
+            this.btnView.TabIndex = 6;
+            this.btnView.Text = "&View Payment";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            // 
+            // btnVoid
+            // 
+            this.btnVoid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVoid.Location = new System.Drawing.Point(6, 333);
+            this.btnVoid.Name = "btnVoid";
+            this.btnVoid.Size = new System.Drawing.Size(75, 23);
+            this.btnVoid.TabIndex = 5;
+            this.btnVoid.Text = "&Void";
+            this.btnVoid.UseVisualStyleBackColor = true;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.lvReserved);
@@ -198,7 +219,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1003, 362);
+            this.tabPage2.Size = new System.Drawing.Size(966, 362);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Reserved List";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -300,33 +321,13 @@
             this.button3.Text = "&Search";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // btnVoid
-            // 
-            this.btnVoid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVoid.Location = new System.Drawing.Point(6, 333);
-            this.btnVoid.Name = "btnVoid";
-            this.btnVoid.Size = new System.Drawing.Size(75, 23);
-            this.btnVoid.TabIndex = 5;
-            this.btnVoid.Text = "&Void";
-            this.btnVoid.UseVisualStyleBackColor = true;
-            // 
-            // btnView
-            // 
-            this.btnView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnView.Location = new System.Drawing.Point(87, 333);
-            this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(97, 23);
-            this.btnView.TabIndex = 6;
-            this.btnView.Text = "&View Payment";
-            this.btnView.UseVisualStyleBackColor = true;
-            this.btnView.Click += new System.EventHandler(this.btnView_Click);
-            // 
             // frmTransactionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1035, 405);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmTransactionList";
             this.Text = "Transaction List";
             this.Load += new System.EventHandler(this.frmTransactionList_Load);
