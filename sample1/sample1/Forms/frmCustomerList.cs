@@ -293,9 +293,9 @@ namespace sample1
                 else
                 {
                     frmBooking frm = new frmBooking();
-                    frm.Show();
                     frm.loadcustomer(cust);
-
+                    frm.Show();
+              
                 }
             }
             else

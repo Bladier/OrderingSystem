@@ -218,6 +218,27 @@ namespace sample1
 
         public static void LoadForm(Form frm)
         {
+      
+            List<string> formNames = new List<string>();
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Name == "frmMain")
+                {
+                    continue;
+                }
+                if (f.Name == frm.ToString())
+                {
+                    continue;
+                }
+                formNames.Add(f.Name);
+            }
+
+            foreach (string currentFormName in formNames)
+            {
+                Application.OpenForms[currentFormName].Close();
+            }
+
+
             if (Application.OpenForms["frmMain"] != null)
             {
                 (Application.OpenForms["frmMain"] as frmMain).panel1.Controls.Clear();

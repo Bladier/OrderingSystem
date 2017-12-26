@@ -136,7 +136,7 @@ namespace sample1
             }
         }
 
-        public void saveRes()
+        public void saveTrans()
         {
             string mySql = "Select top 1 * From " + MainTable + "";
             DataSet ds = Database.LoadSQL(mySql, MainTable);

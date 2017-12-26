@@ -79,7 +79,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(16, 111);
+            this.label12.Location = new System.Drawing.Point(9, 108);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(63, 13);
             this.label12.TabIndex = 25;
@@ -113,7 +113,7 @@
             // 
             // txtContactNum
             // 
-            this.txtContactNum.Location = new System.Drawing.Point(78, 118);
+            this.txtContactNum.Location = new System.Drawing.Point(77, 118);
             this.txtContactNum.Name = "txtContactNum";
             this.txtContactNum.ReadOnly = true;
             this.txtContactNum.Size = new System.Drawing.Size(295, 20);
@@ -140,10 +140,10 @@
             // 
             // txtCustomer
             // 
-            this.txtCustomer.Location = new System.Drawing.Point(78, 15);
+            this.txtCustomer.Location = new System.Drawing.Point(76, 15);
             this.txtCustomer.Name = "txtCustomer";
             this.txtCustomer.ReadOnly = true;
-            this.txtCustomer.Size = new System.Drawing.Size(255, 20);
+            this.txtCustomer.Size = new System.Drawing.Size(257, 20);
             this.txtCustomer.TabIndex = 0;
             // 
             // label1
@@ -193,7 +193,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(34, 22);
+            this.label7.Location = new System.Drawing.Point(6, 22);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(38, 13);
             this.label7.TabIndex = 11;
@@ -222,7 +222,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(47, 170);
+            this.label10.Location = new System.Drawing.Point(9, 171);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(34, 13);
             this.label10.TabIndex = 20;
@@ -231,7 +231,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 52);
+            this.label3.Location = new System.Drawing.Point(6, 52);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 5;
@@ -240,7 +240,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 85);
+            this.label4.Location = new System.Drawing.Point(8, 79);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 7;
@@ -260,7 +260,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(49, 140);
+            this.label5.Location = new System.Drawing.Point(10, 140);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 12;
@@ -447,12 +447,13 @@
             this.btnCancel.TabIndex = 43;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnPost
             // 
             this.btnPost.Location = new System.Drawing.Point(584, 444);
             this.btnPost.Name = "btnPost";
-            this.btnPost.Size = new System.Drawing.Size(75, 23);
+            this.btnPost.Size = new System.Drawing.Size(75, 24);
             this.btnPost.TabIndex = 42;
             this.btnPost.Text = "&Post";
             this.btnPost.UseVisualStyleBackColor = true;
@@ -488,6 +489,7 @@
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rate Info";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // frmreservation2
             // 

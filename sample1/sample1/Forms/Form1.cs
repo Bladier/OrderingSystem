@@ -202,7 +202,7 @@ namespace sample1
             if (rbInstallment.Checked)
             { res.mod = "Installment"; }
 
-            res.saveRes();
+            res.saveTrans();
 
             bill bl = new bill();
             bl.resID = res.GetLastID();

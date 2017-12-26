@@ -73,16 +73,16 @@ namespace sample1
             {
                 (Application.OpenForms["frmBooking"] as frmBooking).loadtrans(rs);
             }
-
+            else
             {
             
-              //  frm.Show();
+            //  frm.Show();
                 frm.isView = true;
                 frm.loadtrans(rs);
             }
 
      
-            mod_system.LoadForm(frm);
+           mod_system.LoadForm(frm);
         }
 
 
@@ -109,7 +109,27 @@ namespace sample1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (lvReserved.SelectedItems.Count == 0) { return; }
 
+            int idx = Convert.ToInt32(lvReserved.SelectedItems[0].Tag);
+
+            transaction tr = new transaction();
+            tr.loadTrans(idx);
+
+            frmreservation2 frm = new frmreservation2();
+            if (Application.OpenForms["frmreservation2"] != null)
+            {
+                (Application.OpenForms["frmreservation2"] as frmreservation2).isView=true;
+                (Application.OpenForms["frmreservation2"] as frmreservation2).loadtrans(tr);
+            }
+            else
+            {
+                frm.isView = true;
+                frm.loadtrans(tr);
+               // frm.Show();
+            }
+
+            mod_system.LoadForm(frm);
         }
 
         private void lvTransList_DockChanged(object sender, EventArgs e)

@@ -31,7 +31,7 @@ namespace sample1
             }
             if (btnPost.Text == "&Edit")
             {
-
+          
                 btnPost.Text = "&Update";
                 groupBox1.Enabled = true;
                 return;
@@ -70,7 +70,7 @@ namespace sample1
             if (rbInstallment.Checked)
             { trans.mod = "Installment"; }
             trans.TransactionNum = Convert.ToInt32(txtTransactionNum.Text);
-            trans.saveRes();
+            trans.saveTrans();
 
             reservation res = new reservation();
             res.venueID = venudID;
@@ -113,6 +113,7 @@ namespace sample1
             int transNum = Convert.ToInt32(txtTransactionNum.Text) + 1;
             mod_system.UpdateOptions("TransactionNum", transNum.ToString());
             MessageBox.Show("Transaction Posted.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ClearFields();
         }
 
         private void UpdateTrans()
@@ -172,7 +173,7 @@ namespace sample1
             bl.saveBill();
 
             MessageBox.Show("Transaction updated.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            ClearFields();
         }
 
         private bool isValid()
@@ -264,6 +265,7 @@ namespace sample1
 
         private void Calculate()
         {
+            if (isView) { return; }
             DateTime d1 = Convert.ToDateTime(dtStartDate.Text);
             DateTime d2 = Convert.ToDateTime(dtEndDate.Text).AddDays(1);
 
@@ -284,7 +286,7 @@ namespace sample1
 
         private void frmreservation2_Load(object sender, EventArgs e)
         {
-            //mod_system.UpdateOptions("TransactionNum", "1");
+            if (isView) { return; }
             txtTransactionNum.Text = string.Format("00000{0}", GetTransNum());
 
             dtStartDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
@@ -423,8 +425,135 @@ namespace sample1
 
         private void dtStartDate_ValueChanged(object sender, EventArgs e)
         {
+            if (isView)
+            {
+                return;
+            }
             if (cboVenue.Text == "") { return; }
             Calculate();
         }
+
+
+        internal void loadtrans(transaction tr, bool isViewTrans = true)
+        {
+            if (isViewTrans)
+            {
+                isView = true;
+            }
+
+            txtTransactionNum.Text = string.Format("00000{0}", tr.TransactionNum);
+
+            cboVenue.DropDownStyle = ComboBoxStyle.DropDown;
+
+            Customer cus = new Customer();
+            cus.LoadCust(tr.CusID);
+            txtCustomer.Text = cus.fullname;
+            txtAddress.Text = cus.fulladdress;
+            txtContactNum.Text = cus.ContactNum;
+            cboVenue.Text = getVenue(tr.venueID);
+            dtStartDate.Text = tr.StartDate.ToString("MMMM, dd yyyy hh:mm tt");
+            dtEndDate.Text = tr.EndDate.ToString("MMMM, dd yyyy hh:mm tt"); 
+ 
+            DateTime d1 = Convert.ToDateTime(tr.StartDate);
+            DateTime d2 = Convert.ToDateTime(tr.EndDate).AddDays(1);
+
+            TimeSpan t = d2 - d1;
+            double NrOfDays = Math.Round(t.TotalDays);
+
+            txtNoOfDays.Text = NrOfDays.ToString();
+            txtRate.Text = tr.Rate.ToString();
+            lblTotal.Text = tr.Total.ToString();
+
+            if (tr.mod == "Full Payment")
+            {
+                rbCash.Checked = true;
+            }
+            if (tr.mod == "Installment")
+            {
+                rbInstallment.Checked = true;
+            }
+
+            lblBalance.Text = tr.Balance.ToString();
+
+            tmpres = tr;
+
+            if (tmpres.Balance == 0.0)
+            {
+                txtPayment.Enabled = false;
+            }
+
+            disAbledFields(false);
+        }
+
+        private void disAbledFields(bool st = true)
+        {
+            btnSearch.Enabled = st;
+            txtNote.Enabled = st;
+            cboVenue.Enabled = st;
+            dtStartDate.Enabled = st;
+            dtEndDate.Enabled = st;
+            rbCash.Enabled = st;
+            rbInstallment.Enabled = st;
+
+            if (rbInstallment.Checked)
+            {
+                txtPayment.Enabled = true;
+            }
+            else
+            {
+                txtPayment.Enabled = false;
+            }
+
+            btnPost.Text = "&Edit";
+            btnAvailability.Enabled = st;
+        }
+
+        private string getVenue(int idx)
+        {
+            string mysql = "SELECT * FROM VENUETBL WHERE ID =" + idx + "";
+            DataSet ds = Database.LoadSQL(mysql, "VENUETBL");
+            Console.WriteLine(ds.Tables[0].Rows[0]["Description"].ToString());
+            return ds.Tables[0].Rows[0]["Description"].ToString();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        
+         private void ClearFields()
+         {
+             txtTransactionNum.Clear();
+             txtTransactionNum.Text = string.Format("00000{0}", GetTransNum());
+             custID = 0;
+             txtContactNum.Clear();
+             txtAddress.Clear();
+             txtContactNum.Clear();
+             txtNote.Clear();
+             cboVenue.SelectedItem = null;
+
+             dtStartDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
+             dtEndDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
+
+             txtNoOfDays.Clear();
+             txtRate.Clear();
+             lblBalance.Text = "0.00";
+             lblPaidAtleast.Text = "0.00";
+             lblTotal.Text = "0.00";
+             isView = false;
+             tmpres = null;
+
+         }
+
+         private void btnCancel_Click(object sender, EventArgs e)
+         {
+             ClearFields();
+             btnPost.Text = "&Post";
+             disAbledFields();
+             txtCustomer.Clear();
+             cboVenue.DropDownStyle = ComboBoxStyle.DropDownList;
+             cboVenue.Items.AddRange(GetDistinct("Description"));
+         }
     }
 }

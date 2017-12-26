@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblTotalPayment = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.lvPaymentList = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -41,8 +43,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblTotalPayment = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.Panel2.SuspendLayout();
@@ -59,6 +59,26 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Payment List";
+            // 
+            // lblTotalPayment
+            // 
+            this.lblTotalPayment.AutoSize = true;
+            this.lblTotalPayment.ForeColor = System.Drawing.Color.Red;
+            this.lblTotalPayment.Location = new System.Drawing.Point(93, 217);
+            this.lblTotalPayment.Name = "lblTotalPayment";
+            this.lblTotalPayment.Size = new System.Drawing.Size(28, 13);
+            this.lblTotalPayment.TabIndex = 6;
+            this.lblTotalPayment.Text = "0.00";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(10, 216);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(84, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Total Payment  :";
             // 
             // lvPaymentList
             // 
@@ -171,31 +191,11 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "Payment List";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(10, 216);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Total Payment  :";
-            // 
-            // lblTotalPayment
-            // 
-            this.lblTotalPayment.AutoSize = true;
-            this.lblTotalPayment.ForeColor = System.Drawing.Color.Red;
-            this.lblTotalPayment.Location = new System.Drawing.Point(93, 217);
-            this.lblTotalPayment.Name = "lblTotalPayment";
-            this.lblTotalPayment.Size = new System.Drawing.Size(28, 13);
-            this.lblTotalPayment.TabIndex = 6;
-            this.lblTotalPayment.Text = "0.00";
-            // 
             // frmPayList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(746, 427);
+            this.ClientSize = new System.Drawing.Size(746, 431);
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -203,7 +203,7 @@
             this.MaximumSize = new System.Drawing.Size(762, 465);
             this.MinimumSize = new System.Drawing.Size(762, 465);
             this.Name = "frmPayList";
-            this.Text = "Pay List";
+            this.Text = "Payment List";
             this.Load += new System.EventHandler(this.frmPayList_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

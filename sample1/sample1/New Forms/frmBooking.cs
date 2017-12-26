@@ -24,7 +24,7 @@ namespace sample1
 
         private void frmBooking_Load(object sender, EventArgs e)
         {
-          
+            if (isView) { return; }
             txtTransactionNum.Text = string.Format("00000{0}", GetTransNum());
 
             dtStartDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
@@ -59,8 +59,7 @@ namespace sample1
 
         private void cboVenue_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-
+           
             if (cboVenue.Text == "") { txtRate.Clear(); return; }
             txtRate.Clear();
             string mySql = "SELECT * from venuetbl where description ='" + cboVenue.Text + "'";
@@ -75,6 +74,7 @@ namespace sample1
 
         private void Calculate()
         {
+            if (isView) { return; }
             DateTime d1 = Convert.ToDateTime(dtStartDate.Text);
             DateTime d2 = Convert.ToDateTime(dtEndDate.Text).AddDays(1);
 
@@ -200,7 +200,7 @@ namespace sample1
             { res.mod = "Installment"; }
             res.TransactionNum = Convert.ToInt32(txtTransactionNum.Text);
 
-            res.saveRes();
+            res.saveTrans();
 
             bill bl = new bill();
             bl.resID = res.GetLastID();
@@ -395,7 +395,6 @@ namespace sample1
         private void btnSearch_Click(object sender, EventArgs e)
         {
 
-
             if (Application.OpenForms["frmCustomer"] != null)
             {
 
@@ -443,6 +442,16 @@ namespace sample1
              lblBalance.Text = "0.00";
              lblPaidAtleast.Text = "0.00";
              lblTotal.Text = "0.00";
+             isView = false;
+             txtPayment.Enabled = true;
+             btnPost.Text = "&Post";
+             disAbledFields();
+             txtCustomer.Clear();
+             cboVenue.DropDownStyle = ComboBoxStyle.DropDownList;
+             cboVenue.Items.AddRange(GetDistinct("Description"));
+
+             tmptrans = null;
+             tmptrans = null;
          }
 
          private void btnCancel_Click(object sender, EventArgs e)
@@ -459,14 +468,16 @@ namespace sample1
 
              txtTransactionNum.Text = string.Format("00000{0}", tr.TransactionNum);
 
+             cboVenue.DropDownStyle = ComboBoxStyle.DropDown;
+
              Customer cus = new Customer();
              cus.LoadCust(tr.CusID);
              txtCustomer.Text = cus.fullname;
              txtAddress.Text = cus.fulladdress;
              txtContactNum.Text = cus.ContactNum;
              cboVenue.Text = getVenue(tr.venueID);
-             dtStartDate.Text = tr.StartDate.ToString();
-             dtEndDate.Text = tr.EndDate.ToString();
+             dtStartDate.Text = tr.StartDate.ToString("MMMM, dd yyyy hh:mm tt");
+             dtEndDate.Text = tr.EndDate.ToString("MMMM, dd yyyy hh:mm tt"); 
 
              DateTime d1 = Convert.ToDateTime(tr.StartDate);
              DateTime d2 = Convert.ToDateTime(tr.EndDate).AddDays(1);
@@ -491,6 +502,7 @@ namespace sample1
             
              tmptrans = tr;
 
+             if (tmptrans.Balance == 0.0) { txtPayment.Enabled = false; }
              disAbledFields(false);
          }
 
