@@ -11,6 +11,7 @@ namespace sample1
 {
     public partial class frmMain : Form
     {
+        public static bool dateSet;
         public frmMain()
         {
             InitializeComponent();
@@ -36,6 +37,12 @@ namespace sample1
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             frmTransactionList frm = new frmTransactionList();
+            mod_system.LoadForm(frm);
+        }
+
+        private void openDateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSetDate frm = new frmSetDate();
             mod_system.LoadForm(frm);
         }
     }

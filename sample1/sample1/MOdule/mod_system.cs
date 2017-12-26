@@ -89,21 +89,21 @@ namespace sample1
             return false;
         }
 
-        //public static void LoadCurrentDate()
-        //{
-        //    string mysql = "SELECT * FROM TBLDAILY WHERE Status = '1'";
-        //    DataSet ds = Database.LoadSQL(mysql, "TBLDAILY");
+        public static void LoadCurrentDate()
+        {
+            string mysql = "SELECT * FROM TBLDAILY WHERE Status = '1'";
+            DataSet ds = Database.LoadSQL(mysql, "TBLDAILY");
 
-        //    if (ds.Tables[0].Rows.Count == 1)
-        //    {
-        //        CurrentDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CurrentDate"]);
-        //        frmMain.dateSet = true;
-        //    }
-        //    else
-        //    {
-        //        frmMain.dateSet = false;
-        //    }
-        //}
+            if (ds.Tables[0].Rows.Count == 1)
+            {
+                CurrentDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CurrentDate"]);
+                frmMain.dateSet = true;
+            }
+            else
+            {
+                frmMain.dateSet = false;
+            }
+        }
 
         public static void OpenDate()
         {
