@@ -68,7 +68,7 @@ namespace sample1
         #region "Functions"
         public void loadbill(int id)
         {
-            string mySql = string.Format("SELECT * FROM " + MainTable + " WHERE resID = {0}", id);
+            string mySql = string.Format("SELECT * FROM " + MainTable + " WHERE ID = {0}", id);
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
             if (ds.Tables[0].Rows.Count == 0)
@@ -146,7 +146,29 @@ namespace sample1
                 Database.SaveEntry(ds);
             }
         }
-           
+
+
+        public bool VoidPayMent(int transidx)
+        {
+            string mySql = string.Format("SELECT * FROM {0} where resID = {1}", MainTable, transidx);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                string mySql1 = string.Format("SELECT * FROM {0} where ID = {1}", MainTable, dr["ID"]);
+                DataSet ds1 = Database.LoadSQL(mySql1, MainTable);
+                var _with2 = ds1.Tables[MainTable].Rows[0];
+                _with2["Status"] = 0;
+                Database.SaveEntry(ds1, false);
+            }
+
+            return true;
+        }
         #endregion
         }
     }

@@ -54,9 +54,11 @@
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.txtsearch2 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.bntViewReserved = new System.Windows.Forms.Button();
+            this.btnVoidReserved = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -65,12 +67,13 @@
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(656, 5);
+            this.btnSearch.Location = new System.Drawing.Point(790, 5);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 0;
             this.btnSearch.Text = "&Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearch
             // 
@@ -78,8 +81,10 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Location = new System.Drawing.Point(6, 6);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(644, 20);
+            this.txtSearch.Size = new System.Drawing.Size(778, 20);
             this.txtSearch.TabIndex = 1;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
             // lvTransList
             // 
@@ -98,7 +103,7 @@
             this.lvTransList.GridLines = true;
             this.lvTransList.Location = new System.Drawing.Point(6, 32);
             this.lvTransList.Name = "lvTransList";
-            this.lvTransList.Size = new System.Drawing.Size(725, 395);
+            this.lvTransList.Size = new System.Drawing.Size(859, 395);
             this.lvTransList.TabIndex = 2;
             this.lvTransList.UseCompatibleStateImageBehavior = false;
             this.lvTransList.View = System.Windows.Forms.View.Details;
@@ -143,7 +148,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(656, 432);
+            this.btnCancel.Location = new System.Drawing.Point(790, 432);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 3;
@@ -153,7 +158,7 @@
             // btnSelect
             // 
             this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelect.Location = new System.Drawing.Point(575, 433);
+            this.btnSelect.Location = new System.Drawing.Point(709, 433);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(75, 23);
             this.btnSelect.TabIndex = 4;
@@ -168,7 +173,7 @@
             this.tabControl1.Location = new System.Drawing.Point(14, 5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(745, 487);
+            this.tabControl1.Size = new System.Drawing.Size(879, 487);
             this.tabControl1.TabIndex = 5;
             // 
             // tabPage1
@@ -183,7 +188,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(737, 461);
+            this.tabPage1.Size = new System.Drawing.Size(871, 461);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Booked List";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -191,7 +196,7 @@
             // btnView
             // 
             this.btnView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnView.Location = new System.Drawing.Point(85, 435);
+            this.btnView.Location = new System.Drawing.Point(87, 432);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(97, 23);
             this.btnView.TabIndex = 6;
@@ -202,24 +207,27 @@
             // btnVoid
             // 
             this.btnVoid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVoid.Location = new System.Drawing.Point(4, 435);
+            this.btnVoid.Location = new System.Drawing.Point(6, 432);
             this.btnVoid.Name = "btnVoid";
             this.btnVoid.Size = new System.Drawing.Size(75, 23);
             this.btnVoid.TabIndex = 5;
             this.btnVoid.Text = "&Void";
             this.btnVoid.UseVisualStyleBackColor = true;
+            this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.bntViewReserved);
+            this.tabPage2.Controls.Add(this.btnVoidReserved);
             this.tabPage2.Controls.Add(this.lvReserved);
             this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.txtsearch2);
             this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(737, 461);
+            this.tabPage2.Size = new System.Drawing.Size(871, 461);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Reserved List";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -241,7 +249,7 @@
             this.lvReserved.GridLines = true;
             this.lvReserved.Location = new System.Drawing.Point(6, 32);
             this.lvReserved.Name = "lvReserved";
-            this.lvReserved.Size = new System.Drawing.Size(725, 395);
+            this.lvReserved.Size = new System.Drawing.Size(859, 395);
             this.lvReserved.TabIndex = 7;
             this.lvReserved.UseCompatibleStateImageBehavior = false;
             this.lvReserved.View = System.Windows.Forms.View.Details;
@@ -284,7 +292,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(575, 432);
+            this.button1.Location = new System.Drawing.Point(709, 432);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 9;
@@ -292,41 +300,66 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(6, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(644, 20);
-            this.textBox1.TabIndex = 6;
-            // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(656, 431);
+            this.button2.Location = new System.Drawing.Point(790, 431);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 8;
             this.button2.Text = "&Cancel";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // txtsearch2
+            // 
+            this.txtsearch2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtsearch2.Location = new System.Drawing.Point(6, 6);
+            this.txtsearch2.Name = "txtsearch2";
+            this.txtsearch2.Size = new System.Drawing.Size(778, 20);
+            this.txtsearch2.TabIndex = 6;
+            this.txtsearch2.TextChanged += new System.EventHandler(this.txtsearch2_TextChanged);
+            this.txtsearch2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtsearch2_KeyPress);
+            // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(656, 5);
+            this.button3.Location = new System.Drawing.Point(790, 5);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 5;
             this.button3.Text = "&Search";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // bntViewReserved
+            // 
+            this.bntViewReserved.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bntViewReserved.Location = new System.Drawing.Point(87, 431);
+            this.bntViewReserved.Name = "bntViewReserved";
+            this.bntViewReserved.Size = new System.Drawing.Size(97, 23);
+            this.bntViewReserved.TabIndex = 11;
+            this.bntViewReserved.Text = "&View Payment";
+            this.bntViewReserved.UseVisualStyleBackColor = true;
+            this.bntViewReserved.Click += new System.EventHandler(this.bntViewReserved_Click);
+            // 
+            // btnVoidReserved
+            // 
+            this.btnVoidReserved.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVoidReserved.Location = new System.Drawing.Point(6, 431);
+            this.btnVoidReserved.Name = "btnVoidReserved";
+            this.btnVoidReserved.Size = new System.Drawing.Size(75, 23);
+            this.btnVoidReserved.TabIndex = 10;
+            this.btnVoidReserved.Text = "&Void";
+            this.btnVoidReserved.UseVisualStyleBackColor = true;
+            this.btnVoidReserved.Click += new System.EventHandler(this.btnVoidReserved_Click);
             // 
             // frmTransactionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
-            this.ClientSize = new System.Drawing.Size(769, 504);
+            this.ClientSize = new System.Drawing.Size(910, 504);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmTransactionList";
@@ -365,12 +398,14 @@
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtsearch2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.Button btnVoid;
         private System.Windows.Forms.Button btnView;
+        private System.Windows.Forms.Button bntViewReserved;
+        private System.Windows.Forms.Button btnVoidReserved;
     }
 }

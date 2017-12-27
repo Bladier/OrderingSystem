@@ -232,7 +232,7 @@ namespace sample1
 
             if (tmptrans.Balance == 0.0)
             {
-                DialogResult result = MessageBox.Show("This transaction is ready for checkOut. Do you want to continue?", "Confirmation", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show("This transaction is ready for checkOut. Do you want to continue?", "Confirmation", MessageBoxButtons.YesNo,MessageBoxIcon.Information);
                 if (result == DialogResult.No)
                 {
                     return;
@@ -256,6 +256,7 @@ namespace sample1
             trans.ID = tmptrans.ID;
             
             trans.Balance = Convert.ToDouble(lblBalance.Text);
+            trans.Status = "Booked";
             trans.UpdateTrans();
 
             bill bl = new bill();
@@ -302,7 +303,11 @@ namespace sample1
                         return false;
                     }
                 }
-             
+                if (tmptrans.Status == "CheckOut")
+                {
+                    MessageBox.Show("This transaction already check out.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
             }
             else
             {
@@ -431,7 +436,7 @@ namespace sample1
              txtContactNum.Clear();
              txtAddress.Clear();
              txtContactNum.Clear();
-             txtNote.Clear();
+        
              cboVenue.SelectedItem = null;
 
              dtStartDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
@@ -452,6 +457,7 @@ namespace sample1
 
              tmptrans = null;
              tmptrans = null;
+             rbCash.Checked = true;
          }
 
          private void btnCancel_Click(object sender, EventArgs e)
@@ -509,7 +515,7 @@ namespace sample1
          private void disAbledFields(bool st =true)
          {
              btnSearch.Enabled = st;
-             txtNote.Enabled = st;
+        
              cboVenue.Enabled = st;
              dtStartDate.Enabled = st;
              dtEndDate.Enabled = st;
@@ -535,5 +541,25 @@ namespace sample1
              DataSet ds = Database.LoadSQL(mysql, "VENUETBL");
              return ds.Tables[0].Rows[0]["Description"].ToString();
          }
+
+        #region "Print"
+         private void printtransaction(int idx)
+         {
+             
+             string mysql = " select t.ID,v.Description,c.FirstName + ' ' + c.MiddleName + ' ' + c.LastName as Fullname,";
+                    mysql += "c.Street + ' ' + b.barangay + ' ' + ci.city + ' ' + c.province as Address,";
+                    mysql += "t.transdate,t.startDate,t.EndDate,t.status,t.total,t.balance,t.rate,t.Mod,";
+                    mysql += "t.transactionNum,p.status as PayMent_Status,p.payment";
+                    mysql += "from transactiontbl t";
+                    mysql += "inner join venuetbl v on v.ID = t.venueID";
+                    mysql += "inner join customertbl c on c.ID=t.customerID";
+                    mysql += "inner join barangaytbl b on b.ID=c.barangayID";
+                    mysql += "inner join citytbl ci on ci.ID=b.cityID";
+                    mysql += "inner join paymenttbl p on p.resID =t.ID";
+
+         }
+
+        #endregion
+
     }
 }

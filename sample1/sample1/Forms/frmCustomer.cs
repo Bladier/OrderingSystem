@@ -277,9 +277,7 @@ namespace sample1
             cus.Update();
             
             MessageBox.Show("Successfully updated.", "Confirmation", MessageBoxButtons.OK);
-            clearfield();
-
-
+          
             Customer tmpCustomer = new Customer();
             if (isReservation)
             {
@@ -322,11 +320,14 @@ namespace sample1
                     return;
                 }
             }
+            clearfield();
         }
 
 
         private void clearfield()
         {
+            cboCity.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboBrgy.DropDownStyle = ComboBoxStyle.DropDownList;
             txtFname.Clear();
             txtMname.Clear();
             txtLname.Clear();
@@ -337,6 +338,8 @@ namespace sample1
             txtContactNo.Clear();
           
             cboCity.SelectedItem = null;
+            cboStreet.Text = "";
+            cboProvince.Text = "";
             cboStreet.Items.Clear();
             cboProvince.Items.Clear();
             cboBrgy.Items.Clear();
@@ -345,6 +348,8 @@ namespace sample1
             cboProvince.Items.AddRange(GetProvince("Province"));
             cboCity.SelectedItem = null;
             cboProvince.SelectedItem = null;
+           
+          
         }
 
         internal void loadcustomer(Customer cus,bool view=false)

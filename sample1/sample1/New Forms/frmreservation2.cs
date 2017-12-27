@@ -120,7 +120,7 @@ namespace sample1
         {
             if (!isValid()) { return; }
 
-            transaction res = new transaction();
+            transaction trans = new transaction();
 
             //if (tmpres.Balance == 0.0)
             //{
@@ -142,18 +142,14 @@ namespace sample1
                 return;
             }
 
-            res.ID = tmpres.ID;
-            //if (rbBoking.Checked)
-            //{
-            //    res.Status = "Booked";
-            //}
+            trans.ID = tmpres.ID;
+            trans.Status = "Booked";
+            trans.Balance = Convert.ToDouble(lblBalance.Text);
+            trans.UpdateTrans();
 
-            //if (rbReservation.Checked)
-            //{
-            //    res.Status = "Reserved";
-            //}
-
-            res.Balance = Convert.ToDouble(lblBalance.Text);
+            reservation res = new reservation();
+            res.TransactionNum = Convert.ToInt32(txtTransactionNum.Text);
+            res.Status = "Confirmed";
             res.UpdateTrans();
 
             bill bl = new bill();
@@ -190,8 +186,6 @@ namespace sample1
                         return false;
                     }
                 }
-                if (txtPayment.Text == "") { txtPayment.Focus(); return false; }
-
             }
             else
             {
@@ -375,9 +369,12 @@ namespace sample1
                     lblBalance.Text = tmpres.Balance.ToString();
                     return;
                 }
-
-                lblBalance.Text = Convert.ToDouble(GetBalance(tmpres.ID) - Convert.ToDouble(txtPayment.Text)).ToString();
-                return;
+                else
+                {
+                    lblBalance.Text = Convert.ToDouble(GetBalance(tmpres.TransactionNum) - Convert.ToDouble(txtPayment.Text)).ToString();
+                    return;
+                }
+                
             }
             else
             {
@@ -391,7 +388,7 @@ namespace sample1
 
         private double GetBalance(int idx)
         {
-            string mysql = "SELECT * FROM reservationtbl WHERE id = " + idx;
+            string mysql = "SELECT * FROM reservationtbl WHERE transactionNUm = " + idx;
             DataSet ds = Database.LoadSQL(mysql, "reservationtbl");
 
             return Convert.ToDouble(ds.Tables[0].Rows[0]["Balance"]);
@@ -488,7 +485,7 @@ namespace sample1
         private void disAbledFields(bool st = true)
         {
             btnSearch.Enabled = st;
-            txtNote.Enabled = st;
+       
             cboVenue.Enabled = st;
             dtStartDate.Enabled = st;
             dtEndDate.Enabled = st;
@@ -530,7 +527,7 @@ namespace sample1
              txtContactNum.Clear();
              txtAddress.Clear();
              txtContactNum.Clear();
-             txtNote.Clear();
+      
              cboVenue.SelectedItem = null;
 
              dtStartDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
@@ -543,7 +540,7 @@ namespace sample1
              lblTotal.Text = "0.00";
              isView = false;
              tmpres = null;
-
+             rbCash.Checked = true;
          }
 
          private void btnCancel_Click(object sender, EventArgs e)

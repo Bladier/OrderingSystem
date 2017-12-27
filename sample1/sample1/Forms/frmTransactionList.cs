@@ -25,8 +25,9 @@ namespace sample1
         private void LoadTransaction(string mysql = "select top 50 * from Transactiontbl where status = 'Booked' and status <> 'Cancel' order by transdate desc")
         {
             DataSet ds = Database.LoadSQL(mysql, "Transactiontbl");
-            if (ds.Tables[0].Rows.Count == 0) { return; }
+            if (ds.Tables[0].Rows.Count == 0) { lvTransList.Items.Clear(); return; }
 
+            lvTransList.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 int cusID = Convert.ToInt32(dr["customerID"]);
@@ -48,7 +49,7 @@ namespace sample1
             string mysql = "SELECT * FROM CUSTOMERTBL WHERE ID ='" + ID + "'";
             DataSet ds = Database.LoadSQL(mysql, "Customertbl");
 
-            return ds.Tables[0].Rows[0]["firstname"] + " " + ds.Tables[0].Rows[0]["firstname"];
+            return ds.Tables[0].Rows[0]["firstname"] + " " + ds.Tables[0].Rows[0]["Lastname"];
         }
 
         private string getVenue(int ID)
@@ -86,11 +87,12 @@ namespace sample1
         }
 
 
-        private void LoadReservation(string mysql = "select top 50 * from Transactiontbl where status = 'Reserved' and status <> 'Cancel' order by transdate desc")
+        private void LoadReservation(string mysql = "select top 50 * from Transactiontbl where status = 'Reserved' order by transdate desc")
         {
             DataSet ds = Database.LoadSQL(mysql, "Transactiontbl");
-            if (ds.Tables[0].Rows.Count == 0) { return; }
+            if (ds.Tables[0].Rows.Count == 0) { lvReserved.Items.Clear(); return; }
 
+            lvReserved.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 int cusID = Convert.ToInt32(dr["customerID"]);
@@ -161,6 +163,161 @@ namespace sample1
                 frm.loadtrans(rs);
                 frm.ShowDialog(); ;
             
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == "") { LoadTransaction(); return; }
+
+            string secured_str = txtSearch.Text;
+		    secured_str = mod_system.DreadKnight(secured_str);
+            string str = txtSearch.Text;
+            string[] strWords = str.Split(new char[] { ' ' });
+            string name = null;
+
+            string mysql= " SELECT t.*,FirstName + ' ' + MiddleName + ' ' + LastName as Fullname ";
+                 mysql += " from transactiontbl t";
+                 mysql += " inner join customertbl c on c.ID = t.customerID where";
+           foreach (string name_loopVariable in strWords)
+            {
+                name = name_loopVariable;
+                mysql += " ((FirstName + ' ' + MiddleName + ' ' + LastName) LIKE UPPER('%" + name + "%') OR ";
+                if (object.ReferenceEquals(name, strWords.Last()))
+                {
+                    mysql += " (FirstName + ' ' + MiddleName + ' ' + LastName) LIKE UPPER('%" + name + "%')) ";
+                    break;
+                }
+            }
+            
+           mysql += " and status = 'Booked' or status = 'CheckOut'";
+
+           LoadTransaction(mysql);
+              
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (txtsearch2.Text == "") { LoadReservation(); return; }
+
+            string secured_str = txtsearch2.Text;
+            secured_str = mod_system.DreadKnight(secured_str);
+            string str = txtsearch2.Text;
+            string[] strWords = str.Split(new char[] { ' ' });
+            string name = null;
+
+            string mysql = " SELECT t.*,FirstName + ' ' + MiddleName + ' ' + LastName as Fullname ";
+            mysql += " from transactiontbl t";
+            mysql += " inner join customertbl c on c.ID = t.customerID where";
+            foreach (string name_loopVariable in strWords)
+            {
+                name = name_loopVariable;
+                mysql += " ((FirstName + ' ' + MiddleName + ' ' + LastName) LIKE UPPER('%" + name + "%') OR ";
+                if (object.ReferenceEquals(name, strWords.Last()))
+                {
+                    mysql += " (FirstName + ' ' + MiddleName + ' ' + LastName) LIKE UPPER('%" + name + "%')) ";
+                    break;
+                }
+            }
+
+            mysql += " and status = 'Reserved'";
+
+            LoadReservation(mysql);
+        }
+
+        private void bntViewReserved_Click(object sender, EventArgs e)
+        {
+            if (lvReserved.SelectedItems.Count == 0) { return; }
+
+            int idx = Convert.ToInt32(lvReserved.SelectedItems[0].Tag);
+
+            transaction rs = new transaction();
+            rs.loadTrans(idx);
+
+            if (Application.OpenForms["frmPayList"] != null)
+            {
+                (Application.OpenForms["frmPayList"] as frmPayList).loadtrans(rs);
+            }
+
+            {
+                frmPayList frm = new frmPayList();
+                frm.loadtrans(rs);
+                frm.ShowDialog(); ;
+
+            }
+        }
+
+        private void btnVoidReserved_Click(object sender, EventArgs e)
+        {
+            if (lvReserved.SelectedItems.Count == 0) { return; }
+            
+            DialogResult result = MessageBox.Show("Do you want void this transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            transaction tr = new transaction();
+            int idx = Convert.ToInt32(lvReserved.SelectedItems[0].Tag);
+            tr.loadTrans(idx);
+
+            tr.Voidtransaction(idx);
+
+            bill bl = new bill();
+            bl.VoidPayMent(idx);
+
+            reservation res = new reservation();
+            res.VoidReservation(tr.TransactionNum);
+
+            MessageBox.Show("Transaction sucessully voided.?", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LoadReservation();
+        }
+
+        private void btnVoid_Click(object sender, EventArgs e)
+        {
+            if (lvTransList.SelectedItems.Count == 0) { return; }
+
+            DialogResult result = MessageBox.Show("Do you want void this transaction?", "Confirmation", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            transaction tr = new transaction();
+            int idx = Convert.ToInt32(lvTransList.SelectedItems[0].Tag);
+
+            tr.Voidtransaction(idx);
+
+            bill bl = new bill();
+            bl.VoidPayMent(idx);
+
+           MessageBox.Show("Transaction sucessully voided.?", "Confirmation", MessageBoxButtons.OK,MessageBoxIcon.Information);
+           LoadTransaction();
+        }
+
+        private void txtsearch2_TextChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (mod_system.isEnter(e))
+            {
+                btnSearch.PerformClick();
+            }
+        }
+
+        private void txtsearch2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (mod_system.isEnter(e))
+            {
+                button3.PerformClick();
             }
         }
     }

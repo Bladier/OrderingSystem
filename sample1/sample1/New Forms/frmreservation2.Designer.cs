@@ -42,14 +42,12 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dtStartDate = new System.Windows.Forms.DateTimePicker();
-            this.label16 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dtEndDate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.txtRate = new System.Windows.Forms.TextBox();
-            this.txtNote = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
@@ -175,7 +173,7 @@
             // 
             // txtNoOfDays
             // 
-            this.txtNoOfDays.Location = new System.Drawing.Point(87, 108);
+            this.txtNoOfDays.Location = new System.Drawing.Point(85, 108);
             this.txtNoOfDays.Name = "txtNoOfDays";
             this.txtNoOfDays.ReadOnly = true;
             this.txtNoOfDays.Size = new System.Drawing.Size(113, 20);
@@ -209,15 +207,6 @@
             this.dtStartDate.TabIndex = 1;
             this.dtStartDate.Value = new System.DateTime(2017, 12, 14, 14, 15, 2, 0);
             this.dtStartDate.ValueChanged += new System.EventHandler(this.dtStartDate_ValueChanged);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(35, 302);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(30, 13);
-            this.label16.TabIndex = 38;
-            this.label16.Text = "Note";
             // 
             // label10
             // 
@@ -268,19 +257,11 @@
             // 
             // txtRate
             // 
-            this.txtRate.Location = new System.Drawing.Point(89, 137);
+            this.txtRate.Location = new System.Drawing.Point(85, 137);
             this.txtRate.Name = "txtRate";
             this.txtRate.ReadOnly = true;
             this.txtRate.Size = new System.Drawing.Size(112, 20);
             this.txtRate.TabIndex = 11;
-            // 
-            // txtNote
-            // 
-            this.txtNote.Location = new System.Drawing.Point(38, 323);
-            this.txtNote.Multiline = true;
-            this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(375, 134);
-            this.txtNote.TabIndex = 37;
             // 
             // label11
             // 
@@ -335,7 +316,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(23, 23);
+            this.label8.Location = new System.Drawing.Point(18, 23);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(82, 13);
             this.label8.TabIndex = 13;
@@ -368,7 +349,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(37, 50);
+            this.label9.Location = new System.Drawing.Point(19, 50);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 13);
             this.label9.TabIndex = 17;
@@ -395,7 +376,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(54, 76);
+            this.label13.Location = new System.Drawing.Point(20, 76);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(52, 13);
             this.label13.TabIndex = 22;
@@ -412,7 +393,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(30, 107);
+            this.label6.Location = new System.Drawing.Point(20, 106);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 13);
             this.label6.TabIndex = 12;
@@ -443,7 +424,7 @@
             // 
             this.btnCancel.Location = new System.Drawing.Point(663, 444);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(75, 35);
             this.btnCancel.TabIndex = 43;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -453,7 +434,7 @@
             // 
             this.btnPost.Location = new System.Drawing.Point(584, 444);
             this.btnPost.Name = "btnPost";
-            this.btnPost.Size = new System.Drawing.Size(75, 24);
+            this.btnPost.Size = new System.Drawing.Size(75, 36);
             this.btnPost.TabIndex = 42;
             this.btnPost.Text = "&Post";
             this.btnPost.UseVisualStyleBackColor = true;
@@ -463,7 +444,7 @@
             // 
             this.btnAvailability.Location = new System.Drawing.Point(503, 445);
             this.btnAvailability.Name = "btnAvailability";
-            this.btnAvailability.Size = new System.Drawing.Size(75, 23);
+            this.btnAvailability.Size = new System.Drawing.Size(75, 35);
             this.btnAvailability.TabIndex = 45;
             this.btnAvailability.Text = "&Availability";
             this.btnAvailability.UseVisualStyleBackColor = true;
@@ -498,8 +479,6 @@
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(769, 504);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.txtNote);
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
@@ -523,7 +502,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -543,14 +521,12 @@
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dtStartDate;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtEndDate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtRate;
-        private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Label label11;
         internal System.Windows.Forms.Panel Panel2;
         internal System.Windows.Forms.Label label14;

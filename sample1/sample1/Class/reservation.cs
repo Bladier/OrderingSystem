@@ -185,13 +185,13 @@ namespace sample1
 
         public void UpdateTrans()
         {
-            string mySql = string.Format("SELECT * FROM {0} WHERE ID = {1}", MainTable, _ID);
+            string mySql = string.Format("SELECT * FROM {0} WHERE TransactionnUm = {1}", MainTable, _TransactionNum);
             DataSet ds = Database.LoadSQL(mySql, MainTable);
 
             if (ds.Tables[0].Rows.Count == 1)
             {
                 var _with2 = ds.Tables[MainTable].Rows[0];
-                _with2["Balance"] = _Balance;
+                _with2["Status"] = _status;
                 Database.SaveEntry(ds, false);
             }
             else
@@ -234,7 +234,24 @@ namespace sample1
             Database.SaveEntry(ds, false);
         }
 
+        public bool VoidReservation(int transNumx)
+        {
+            string mySql = string.Format("SELECT * FROM {0} where transactionNum = {1}", MainTable, transNumx);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
 
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+
+            var _with2 = ds.Tables[MainTable].Rows[0];
+
+            _with2["Status"] = "Cancel";
+            Database.SaveEntry(ds, false);
+
+            return true;
+        }
+       
         //public bool isHasReserved(DateTime Res_startDate)
         //{
         //    string tmpDate = Res_startDate.ToString("yyyy-MM-dd") + " " + Convert.ToString(Res_startDate.ToShortTimeString());

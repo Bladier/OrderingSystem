@@ -189,6 +189,7 @@ namespace sample1
             {
                 var _with2 = ds.Tables[MainTable].Rows[0];
                 _with2["Balance"] = _Balance;
+                _with2["Status"] = _status;
                 Database.SaveEntry(ds, false);
             }
             else
@@ -305,10 +306,28 @@ namespace sample1
 
             }
             return false;
-
-
-        #endregion
         }
+
+        public bool Voidtransaction(int transIdx)
+        {
+            string mySql = string.Format("SELECT * FROM {0} where id = {1}", MainTable,transIdx);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+
+            var _with2 = ds.Tables[MainTable].Rows[0];
+    
+            _with2["Status"] = "Cancel";
+             Database.SaveEntry(ds, false);
+      
+            return true;
+        }
+       
+        #endregion
+      
     }
     
 }

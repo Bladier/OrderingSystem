@@ -29,6 +29,9 @@ namespace sample1
             txtName.Text = cus.fullname;
             txtAddres.Text = cus.fulladdress;
             txtContactNumber.Text = cus.ContactNum;
+            txtVenUe.Text = getVenue(tr.venueID);
+            txtTotalDue.Text = tr.Total.ToString();
+            txtBalance.Text = tr.Balance.ToString();
 
             string mysql = "select * from paymenttbl where transactionnum = " + tr.TransactionNum +"";
             DataSet ds = Database.LoadSQL(mysql,"paymenttbl");
@@ -36,11 +39,19 @@ namespace sample1
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 bill bl = new bill();
-                bl.loadbill(Convert.ToInt32(dr["resID"]));
+                bl.loadbill(Convert.ToInt32(dr["ID"]));
                 addPaymentList(bl);
             }
 
             lblTotalPayment.Text = totalPayment.ToString();
+        }
+
+        private string getVenue(int ID)
+        {
+            string mysql = "SELECT * FROM venuetbl WHERE ID ='" + ID + "'";
+            DataSet ds = Database.LoadSQL(mysql, "venuetbl");
+
+            return ds.Tables[0].Rows[0]["description"].ToString();
         }
 
         private void addPaymentList(bill bl)

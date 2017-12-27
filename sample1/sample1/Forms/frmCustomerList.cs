@@ -56,32 +56,7 @@ namespace sample1
 
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            if (txtsearch.Text == "") { LoadCustomer(); return; }
-
-            if (txtsearch.Text == "") { LoadCustomer(); return; }
-            string str = txtsearch.Text;
-            string[] strWords = str.Split(new char[] { ' ' });
-            string name = null;
-
-            string mysql = "SELECT * FROM customer WHERE ";
-            foreach (string name_loopVariable in strWords)
-            {
-                name = name_loopVariable;
-                mysql += " CONCAT(firstname, ',', lastname) LIKE UPPER('%" + name + "%') or ";
-                if (object.ReferenceEquals(name, strWords.Last()))
-                {
-                    mysql += " CONCAT(firstname, ',', lastname) LIKE UPPER('%" + name + "%') ";
-                    break;
-                }
-                //mysql += " CONCAT(Fname, ' ' , Mname, ' ' , Lname) Like '%" + txtsearch.Text + "%'";
-            }
-            LoadCustomer(mysql);
-        }
-
-      
-
+   
         private void btnadd_Click(object sender, EventArgs e)
         {
             
@@ -163,9 +138,10 @@ namespace sample1
                     frm.loadcustomer(cust, true);
                     frm.isBooking = true;
                     frm.TopMost = true;
-                    frm.Show();
-                  
+                   frm.Show();
+                   // mod_system.LoadForm(frm);
                 }
+          
             }
             if (isResevation)
             {
@@ -185,7 +161,21 @@ namespace sample1
 
                 }
             }
-            
+
+            if (Application.OpenForms["frmCustomer"] != null)
+            {
+                (Application.OpenForms["frmCustomer"] as frmCustomer).loadcustomer(cust, true);
+                (Application.OpenForms["frmCustomer"] as frmCustomer).TopMost = true;
+            }
+            else
+            {
+                frmCustomer frm = new frmCustomer();
+                frm.loadcustomer(cust, true);
+         
+               // frm.Show();
+                 mod_system.LoadForm(frm);
+            }
+
            this.Close();
       
         }
@@ -201,10 +191,10 @@ namespace sample1
             foreach (string name_loopVariable in strWords)
             {
                 name = name_loopVariable;
-                mysql += " CONCAT(firstname, ',', Lastname) LIKE UPPER('%" + name + "%') OR ";
+                mysql += " (FirstName + ' ' + MiddleName + ' ' + LastName) LIKE UPPER('%" + name + "%') OR ";
                 if (object.ReferenceEquals(name, strWords.Last()))
                 {
-                    mysql += " CONCAT(firstname, ',', Lastname) LIKE UPPER('%" + name + "%') )";
+                    mysql += " (FirstName + ' ' + MiddleName + ' ' + LastName) LIKE UPPER('%" + name + "%')";
                     break;
                 }
             }

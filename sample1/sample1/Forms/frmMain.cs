@@ -45,5 +45,11 @@ namespace sample1
             frmSetDate frm = new frmSetDate();
             mod_system.LoadForm(frm);
         }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            frmCustomerList frm = new frmCustomerList();
+            mod_system.LoadForm(frm);
+        }
     }
 }
