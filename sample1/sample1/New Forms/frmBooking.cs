@@ -220,6 +220,8 @@ namespace sample1
 
             int transNum = Convert.ToInt32(txtTransactionNum.Text) + 1;
             mod_system.UpdateOptions("TransactionNum", transNum.ToString());
+
+            printtransaction(bl.resID);
             MessageBox.Show("Transaction Posted.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ClearFields();
         }
@@ -556,9 +558,17 @@ namespace sample1
                     mysql += "inner join barangaytbl b on b.ID=c.barangayID";
                     mysql += "inner join citytbl ci on ci.ID=b.cityID";
                     mysql += "inner join paymenttbl p on p.resID =t.ID";
+                    mysql += " where t.ID = " + idx;
 
-         }
+            Dictionary<string, string> rptPara = new Dictionary<string, string>();
 
+            frmReport frm = new frmReport();
+            frm.ReportInit(mysql, "dsReceipt", @"Report\rptReceipt.rdlc", rptPara);
+            frm.Show();
+
+        }
+
+       
         #endregion
 
     }
