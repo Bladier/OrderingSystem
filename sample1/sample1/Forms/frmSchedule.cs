@@ -27,7 +27,7 @@ namespace sample1
             System.DateTime st =mod_system.GetFirstDate(monCal.SelectionStart);
             System.DateTime en = mod_system.GetLastDate(monCal.SelectionStart);
 
-            string mysql1 = "SELECT * FROM transactiontbl where enddate Between '" + st + "'and '" + en + "' and (status <> 'Cancel' and status = 'Booked') OR (status ='Reserved')";
+            string mysql1 = "SELECT * FROM transactiontbl where enddate Between '" + st + "'and '" + en + "' and (status <> 'Cancel' OR status = 'Expired')";
             DataSet ds1 = Database.LoadSQL(mysql1, "transactiontbl");
 
             foreach (DataRow dr in ds1.Tables[0].Rows)

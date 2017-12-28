@@ -251,7 +251,26 @@ namespace sample1
 
             return true;
         }
-       
+
+
+        public void loadbyTransNum(int transidx)
+        {
+            string mySql = string.Format("SELECT * FROM " + MainTable + " WHERE TransactionNum = {0}", transidx);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+            if (ds.Tables[0].Rows.Count != 1)
+            {
+                MessageBox.Show("Unable load information", "Error",
+    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                LoadByRow(dr);
+            }
+        }
+
         //public bool isHasReserved(DateTime Res_startDate)
         //{
         //    string tmpDate = Res_startDate.ToString("yyyy-MM-dd") + " " + Convert.ToString(Res_startDate.ToShortTimeString());

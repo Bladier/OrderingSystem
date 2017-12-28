@@ -22,8 +22,8 @@ namespace sample1
 
         private void btnOkay_Click(object sender, EventArgs e)
         {
-            if (txtusername.Text == "") { txtusername.Focus(); }
-            if (txtPassword.Text == "") { txtPassword.Focus(); }
+            if (txtusername.Text == "") { txtusername.Focus(); return; }
+            if (txtPassword.Text == "") { txtPassword.Focus(); return; }
 
             string username = txtusername.Text;
          

@@ -249,7 +249,35 @@ namespace sample1
                 frm.Show();
 
             }
-        #endregion
         }
+
+        public static bool CheckExpiry()
+        {
+            DateTime cur = Convert.ToDateTime(CurrentDate.AddDays(-1).ToString("yyyy-MM-dd"));
+         
+            string mysql = "select * from reservationtbl where forfeitDate = '" + cur + "' and status ='Reserved'";
+            DataSet ds = Database.LoadSQL(mysql, "reservationtbl");
+
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+
+            int i = 0;
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                ds.Tables[0].Rows[i]["Status"] = "Expired";
+                Database.SaveEntry(ds, false);
+
+                string mysql1 = "SELECT * FROM TRANSACTIONTBL WHERE TRANSACTIONNUM = " + dr["TransactionNum"];
+                DataSet ds1 = Database.LoadSQL(mysql1, "TRANSACTIONTBL");
+
+                ds1.Tables[0].Rows[0]["Status"] = "Expired";
+                Database.SaveEntry(ds1, false);
+            }
+            return true;
+        }
+        #endregion
+       
     }
 }

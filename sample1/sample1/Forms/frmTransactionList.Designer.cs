@@ -38,10 +38,12 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
             this.btnVoid = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -55,14 +57,27 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.txtsearch2 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lvExpired = new System.Windows.Forms.ListView();
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txtsearchExpiry = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSearch
@@ -99,7 +114,8 @@
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6,
-            this.columnHeader13});
+            this.columnHeader13,
+            this.columnHeader15});
             this.lvTransList.FullRowSelect = true;
             this.lvTransList.GridLines = true;
             this.lvTransList.Location = new System.Drawing.Point(6, 32);
@@ -124,12 +140,12 @@
             // columnHeader3
             // 
             this.columnHeader3.Text = "Venue";
-            this.columnHeader3.Width = 140;
+            this.columnHeader3.Width = 123;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Total";
-            this.columnHeader4.Width = 108;
+            this.columnHeader4.Width = 87;
             // 
             // columnHeader5
             // 
@@ -139,12 +155,17 @@
             // columnHeader6
             // 
             this.columnHeader6.Text = "End Date";
-            this.columnHeader6.Width = 106;
+            this.columnHeader6.Width = 75;
             // 
             // columnHeader13
             // 
-            this.columnHeader13.Text = "TransType";
-            this.columnHeader13.Width = 122;
+            this.columnHeader13.Text = "Status";
+            this.columnHeader13.Width = 77;
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Transaction #";
+            this.columnHeader15.Width = 113;
             // 
             // btnCancel
             // 
@@ -171,6 +192,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(14, 5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -194,6 +216,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Booked List";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(190, 432);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 23);
+            this.btnPrint.TabIndex = 7;
+            this.btnPrint.Text = "&Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnView
             // 
@@ -268,7 +300,8 @@
             this.columnHeader10,
             this.columnHeader11,
             this.columnHeader12,
-            this.columnHeader14});
+            this.columnHeader14,
+            this.columnHeader24});
             this.lvReserved.FullRowSelect = true;
             this.lvReserved.GridLines = true;
             this.lvReserved.Location = new System.Drawing.Point(6, 32);
@@ -286,7 +319,7 @@
             // columnHeader8
             // 
             this.columnHeader8.Text = "Customer Name";
-            this.columnHeader8.Width = 197;
+            this.columnHeader8.Width = 180;
             // 
             // columnHeader9
             // 
@@ -301,17 +334,22 @@
             // columnHeader11
             // 
             this.columnHeader11.Text = "Start Date";
-            this.columnHeader11.Width = 109;
+            this.columnHeader11.Width = 85;
             // 
             // columnHeader12
             // 
             this.columnHeader12.Text = "End Date";
-            this.columnHeader12.Width = 106;
+            this.columnHeader12.Width = 93;
             // 
             // columnHeader14
             // 
-            this.columnHeader14.Text = "TransType";
-            this.columnHeader14.Width = 108;
+            this.columnHeader14.Text = "Status";
+            this.columnHeader14.Width = 68;
+            // 
+            // columnHeader24
+            // 
+            this.columnHeader24.Text = "Transaction #";
+            this.columnHeader24.Width = 105;
             // 
             // button1
             // 
@@ -356,15 +394,101 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // btnPrint
+            // tabPage3
             // 
-            this.btnPrint.Location = new System.Drawing.Point(190, 432);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(75, 23);
-            this.btnPrint.TabIndex = 7;
-            this.btnPrint.Text = "&Print";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            this.tabPage3.Controls.Add(this.txtsearchExpiry);
+            this.tabPage3.Controls.Add(this.button5);
+            this.tabPage3.Controls.Add(this.lvExpired);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(871, 461);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Expiry";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // lvExpired
+            // 
+            this.lvExpired.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvExpired.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader16,
+            this.columnHeader17,
+            this.columnHeader18,
+            this.columnHeader19,
+            this.columnHeader20,
+            this.columnHeader21,
+            this.columnHeader22,
+            this.columnHeader23});
+            this.lvExpired.FullRowSelect = true;
+            this.lvExpired.GridLines = true;
+            this.lvExpired.Location = new System.Drawing.Point(6, 47);
+            this.lvExpired.Name = "lvExpired";
+            this.lvExpired.Size = new System.Drawing.Size(850, 395);
+            this.lvExpired.TabIndex = 3;
+            this.lvExpired.UseCompatibleStateImageBehavior = false;
+            this.lvExpired.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "TransDate";
+            this.columnHeader16.Width = 85;
+            // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "Customer Name";
+            this.columnHeader17.Width = 197;
+            // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "Venue";
+            this.columnHeader18.Width = 113;
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "Total";
+            this.columnHeader19.Width = 83;
+            // 
+            // columnHeader20
+            // 
+            this.columnHeader20.Text = "Start Date";
+            this.columnHeader20.Width = 78;
+            // 
+            // columnHeader21
+            // 
+            this.columnHeader21.Text = "End Date";
+            this.columnHeader21.Width = 70;
+            // 
+            // columnHeader22
+            // 
+            this.columnHeader22.Text = "TransType";
+            this.columnHeader22.Width = 122;
+            // 
+            // columnHeader23
+            // 
+            this.columnHeader23.Text = "Transaction #";
+            this.columnHeader23.Width = 91;
+            // 
+            // txtsearchExpiry
+            // 
+            this.txtsearchExpiry.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtsearchExpiry.Location = new System.Drawing.Point(6, 11);
+            this.txtsearchExpiry.Name = "txtsearchExpiry";
+            this.txtsearchExpiry.Size = new System.Drawing.Size(778, 20);
+            this.txtsearchExpiry.TabIndex = 8;
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.Location = new System.Drawing.Point(790, 10);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "&Search";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // frmTransactionList
             // 
@@ -382,6 +506,8 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -420,5 +546,19 @@
         private System.Windows.Forms.Button bntViewReserved;
         private System.Windows.Forms.Button btnVoidReserved;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.ListView lvExpired;
+        private System.Windows.Forms.ColumnHeader columnHeader16;
+        private System.Windows.Forms.ColumnHeader columnHeader17;
+        private System.Windows.Forms.ColumnHeader columnHeader18;
+        private System.Windows.Forms.ColumnHeader columnHeader19;
+        private System.Windows.Forms.ColumnHeader columnHeader20;
+        private System.Windows.Forms.ColumnHeader columnHeader21;
+        private System.Windows.Forms.ColumnHeader columnHeader22;
+        private System.Windows.Forms.ColumnHeader columnHeader23;
+        private System.Windows.Forms.ColumnHeader columnHeader24;
+        private System.Windows.Forms.TextBox txtsearchExpiry;
+        private System.Windows.Forms.Button button5;
     }
 }

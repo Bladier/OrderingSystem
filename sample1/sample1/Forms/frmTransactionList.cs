@@ -20,9 +20,10 @@ namespace sample1
         {
             LoadTransaction();
             LoadReservation();
+            LoadExpiry();
         }
 
-        private void LoadTransaction(string mysql = "select top 50 * from Transactiontbl where status = 'Booked' and status <> 'Cancel' order by transdate desc")
+        private void LoadTransaction(string mysql = "select top 50 * from Transactiontbl where status = 'Booked' and status <> 'Cancel' and status <> 'Expired' order by transdate desc")
         {
             DataSet ds = Database.LoadSQL(mysql, "Transactiontbl");
             if (ds.Tables[0].Rows.Count == 0) { lvTransList.Items.Clear(); return; }
@@ -39,6 +40,7 @@ namespace sample1
                 lv.SubItems.Add(Convert.ToDateTime(dr["StartDate"]).ToShortDateString());
                 lv.SubItems.Add(Convert.ToDateTime(dr["EndDate"]).ToShortDateString());
                 lv.SubItems.Add(dr["Status"].ToString());
+                lv.SubItems.Add(string.Format("0000{0}",dr["TransactionNum"].ToString()));
 
                 lv.Tag = dr["ID"];
             }
@@ -69,6 +71,17 @@ namespace sample1
             transaction rs = new transaction();
             rs.loadTrans(idx);
 
+
+            reservation res = new reservation();
+            res.loadbyTransNum(rs.TransactionNum);
+
+
+            if (res.Status == "Expired")
+            {
+                MessageBox.Show("This transaction is already expired you cannot select it.","Notification",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                return;
+            }
+
             frmBooking frm = new frmBooking();
             if (Application.OpenForms["frmBooking"] != null)
             {
@@ -87,7 +100,7 @@ namespace sample1
         }
 
 
-        private void LoadReservation(string mysql = "select top 50 * from Transactiontbl where status = 'Reserved' order by transdate desc")
+        private void LoadReservation(string mysql = "select top 50 * from Transactiontbl where status = 'Reserved' and status <> 'Expired' and status <> 'Cancel' order by transdate desc")
         {
             DataSet ds = Database.LoadSQL(mysql, "Transactiontbl");
             if (ds.Tables[0].Rows.Count == 0) { lvReserved.Items.Clear(); return; }
@@ -104,6 +117,7 @@ namespace sample1
                 lv.SubItems.Add(Convert.ToDateTime(dr["StartDate"]).ToShortDateString());
                 lv.SubItems.Add(Convert.ToDateTime(dr["EndDate"]).ToShortDateString());
                 lv.SubItems.Add(dr["Status"].ToString());
+                lv.SubItems.Add(dr["TransactionNum"].ToString());
 
                 lv.Tag = dr["ID"];
             }
@@ -117,6 +131,16 @@ namespace sample1
 
             transaction tr = new transaction();
             tr.loadTrans(idx);
+
+            
+            reservation res = new reservation();
+            res.loadbyTransNum(tr.TransactionNum);
+
+            if (res.Status == "Expired")
+            {
+                MessageBox.Show("This transaction is already expired you cannot select it.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
 
             frmreservation2 frm = new frmreservation2();
             if (Application.OpenForms["frmreservation2"] != null)
@@ -190,7 +214,7 @@ namespace sample1
                 }
             }
             
-           mysql += " and status = 'Booked' or status = 'CheckOut'";
+           mysql += " OR (TransactionNum like '%" + txtSearch.Text + "%' ) and status <> 'Cancel' ";
 
            LoadTransaction(mysql);
               
@@ -220,7 +244,7 @@ namespace sample1
                 }
             }
 
-            mysql += " and status = 'Reserved'";
+            mysql += "OR (TransactionNum like '%" + txtSearch.Text + "%' ) and status ='Reserved' or status ='Expired' or status = 'CheckOut' ";
 
             LoadReservation(mysql);
         }
@@ -251,15 +275,25 @@ namespace sample1
         {
             if (lvReserved.SelectedItems.Count == 0) { return; }
             
+          
+            transaction tr = new transaction();
+            int idx = Convert.ToInt32(lvReserved.SelectedItems[0].Tag);
+            tr.loadTrans(idx);
+
+            reservation checkexpired = new reservation();
+            checkexpired.loadbyTransNum(tr.TransactionNum);
+
+            if (checkexpired.Status == "Expired")
+            {
+                MessageBox.Show("This transaction is already expired you cannot void it.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
             DialogResult result = MessageBox.Show("Do you want void this transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.No)
             {
                 return;
             }
-
-            transaction tr = new transaction();
-            int idx = Convert.ToInt32(lvReserved.SelectedItems[0].Tag);
-            tr.loadTrans(idx);
 
             tr.Voidtransaction(idx);
 
@@ -277,14 +311,24 @@ namespace sample1
         {
             if (lvTransList.SelectedItems.Count == 0) { return; }
 
+            transaction tr = new transaction();
+            int idx = Convert.ToInt32(lvTransList.SelectedItems[0].Tag);
+            tr.loadTrans(idx);
+
+            reservation checkexpired = new reservation();
+            checkexpired.loadbyTransNum(tr.TransactionNum);
+
+            if (checkexpired.Status == "Expired")
+            {
+                MessageBox.Show("This transaction is already expired you cannot void it.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
             DialogResult result = MessageBox.Show("Do you want void this transaction?", "Confirmation", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (result == DialogResult.No)
             {
                 return;
             }
-
-            transaction tr = new transaction();
-            int idx = Convert.ToInt32(lvTransList.SelectedItems[0].Tag);
 
             tr.Voidtransaction(idx);
 
@@ -352,6 +396,63 @@ namespace sample1
 
         }
         #endregion
+
+        #region "Load Expiry"
+        private void LoadExpiry(string mysql = "select * from reservationtbl where status = 'Expired' order by transdate desc")
+        {
+            DataSet ds = Database.LoadSQL(mysql, "reservationtbl");
+            if (ds.Tables[0].Rows.Count == 0) { lvExpired.Items.Clear(); return; }
+
+            lvExpired.Items.Clear();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                int cusID = Convert.ToInt32(dr["customerID"]);
+                int vID = Convert.ToInt32(dr["venueID"]);
+                ListViewItem lv = lvExpired.Items.Add(Convert.ToDateTime(dr["TransDate"].ToString()).ToShortDateString());
+                lv.SubItems.Add(getFullName(cusID));
+                lv.SubItems.Add(getVenue(vID));
+                lv.SubItems.Add(dr["Total"].ToString());
+                lv.SubItems.Add(Convert.ToDateTime(dr["StartDate"]).ToShortDateString());
+                lv.SubItems.Add(Convert.ToDateTime(dr["EndDate"]).ToShortDateString());
+                lv.SubItems.Add(dr["Status"].ToString());
+                lv.SubItems.Add(string.Format("0000{0}", dr["TransactionNum"].ToString()));
+
+                lv.Tag = dr["ID"];
+            }
+        }
+
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (txtsearchExpiry.Text == "") { LoadExpiry(); return; }
+
+            string secured_str = txtsearchExpiry.Text;
+            secured_str = mod_system.DreadKnight(secured_str);
+            string str = txtsearch2.Text;
+            string[] strWords = str.Split(new char[] { ' ' });
+            string name = null;
+
+            string mysql = " SELECT t.*,FirstName + ' ' + MiddleName + ' ' + LastName as Fullname ";
+            mysql += " from reservationtbl t";
+            mysql += " inner join customertbl c on c.ID = t.customerID where";
+            foreach (string name_loopVariable in strWords)
+            {
+                name = name_loopVariable;
+                mysql += " (FirstName + ' ' + MiddleName + ' ' + LastName LIKE UPPER('%" + name + "%') OR ";
+                if (object.ReferenceEquals(name, strWords.Last()))
+                {
+                    mysql += " FirstName + ' ' + MiddleName + ' ' + LastName LIKE UPPER('%" + name + "%') ";
+                    break;
+                }
+            }
+
+            mysql += "OR TransactionNum like '%" + txtSearch.Text + "%' ) and (status ='Expired')";
+
+            LoadExpiry(mysql);
+        }
+        #endregion
+
+
 
     }
 

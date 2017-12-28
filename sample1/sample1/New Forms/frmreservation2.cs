@@ -75,12 +75,12 @@ namespace sample1
             reservation res = new reservation();
             res.venueID = venudID;
             res.CusID = custID;
-            res.Transdate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            res.Transdate = Convert.ToDateTime(mod_system.CurrentDate.ToShortDateString());
             res.StartDate = Convert.ToDateTime(dtStartDate.Text);
             res.EndDate = Convert.ToDateTime(dtEndDate.Text);
 
             res.Status = "Reserved";
-            res.ForfeitDate = Convert.ToDateTime(DateTime.Now.AddDays(5));
+            res.ForfeitDate = Convert.ToDateTime(res.StartDate.AddDays(5));
           
             res.Total = Convert.ToDouble(lblTotal.Text);
             res.Balance = Convert.ToDouble(lblBalance.Text);
@@ -278,6 +278,16 @@ namespace sample1
                 lblBalance.Text = (Convert.ToDouble(lblTotal.Text) - Convert.ToDouble(txtPayment.Text)).ToString();
             }
 
+            if (cboVenue.Text != "")
+            {
+                txtPayment.Enabled = true;
+                if (txtRate.Text == "") { return; }
+
+                double paidAtleast = Convert.ToDouble(lblTotal.Text) * 0.5;
+                lblPaidAtleast.Text = paidAtleast.ToString();
+                lblBalance.Text = Convert.ToDouble(lblTotal.Text).ToString();
+            }
+       
         }
 
         private void frmreservation2_Load(object sender, EventArgs e)
@@ -543,16 +553,18 @@ namespace sample1
              isView = false;
              tmpres = null;
              rbCash.Checked = true;
+
+             cboVenue.Items.Clear();
+             cboVenue.Items.AddRange(GetDistinct("Description"));
          }
 
          private void btnCancel_Click(object sender, EventArgs e)
          {
              ClearFields();
-             btnPost.Text = "&Post";
              disAbledFields();
              txtCustomer.Clear();
              cboVenue.DropDownStyle = ComboBoxStyle.DropDownList;
-             cboVenue.Items.AddRange(GetDistinct("Description"));
+             btnPost.Text = "&Post";
          }
 
 

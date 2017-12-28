@@ -38,6 +38,7 @@
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(355, 43);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button1.Name = "button1";
@@ -50,16 +51,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(17, 48);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 15);
+            this.label1.Size = new System.Drawing.Size(33, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Date";
             // 
             // txtCurrent
             // 
             this.txtCurrent.CustomFormat = "MMM/dd/yyyy";
+            this.txtCurrent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCurrent.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.txtCurrent.Location = new System.Drawing.Point(62, 46);
             this.txtCurrent.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
