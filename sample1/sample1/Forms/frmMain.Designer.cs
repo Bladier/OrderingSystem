@@ -37,18 +37,20 @@
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tmpTimer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsDateset = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.dailySalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.monthlySalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -79,19 +81,22 @@
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(130, 22);
             this.exitToolStripMenuItem1.Text = "&Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
             // openDateToolStripMenuItem
             // 
             this.openDateToolStripMenuItem.Name = "openDateToolStripMenuItem";
-            this.openDateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openDateToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.openDateToolStripMenuItem.Text = "&Open Date";
             this.openDateToolStripMenuItem.Click += new System.EventHandler(this.openDateToolStripMenuItem_Click);
             // 
             // reportsToolStripMenuItem
             // 
+            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dailySalesToolStripMenuItem,
+            this.monthlySalesToolStripMenuItem});
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.reportsToolStripMenuItem.Text = "&Reports";
@@ -124,6 +129,11 @@
             this.toolStripButton1.Text = "Booking";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // toolStripButton2
             // 
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
@@ -132,6 +142,11 @@
             this.toolStripButton2.Size = new System.Drawing.Size(88, 22);
             this.toolStripButton2.Text = "Reservation";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton3
             // 
@@ -142,6 +157,11 @@
             this.toolStripButton3.Text = "Transaction List";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
             // toolStripButton4
             // 
             this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
@@ -150,13 +170,6 @@
             this.toolStripButton4.Size = new System.Drawing.Size(124, 22);
             this.toolStripButton4.Text = "Client Registration";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(42, 72);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(910, 504);
-            this.panel1.TabIndex = 2;
             // 
             // toolStripButton5
             // 
@@ -167,6 +180,20 @@
             this.toolStripButton5.Size = new System.Drawing.Size(57, 22);
             this.toolStripButton5.Text = "&Login";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(52, 22);
+            this.toolStripLabel1.Text = "No, User";
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(42, 72);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(910, 504);
+            this.panel1.TabIndex = 2;
             // 
             // tmpTimer
             // 
@@ -190,27 +217,19 @@
             this.tsDateset.Size = new System.Drawing.Size(70, 17);
             this.tsDateset.Text = "Date not set";
             // 
-            // toolStripLabel1
+            // dailySalesToolStripMenuItem
             // 
-            this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(52, 22);
-            this.toolStripLabel1.Text = "No, User";
+            this.dailySalesToolStripMenuItem.Name = "dailySalesToolStripMenuItem";
+            this.dailySalesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dailySalesToolStripMenuItem.Text = "&Daily Sales";
+            this.dailySalesToolStripMenuItem.Click += new System.EventHandler(this.dailySalesToolStripMenuItem_Click);
             // 
-            // toolStripSeparator1
+            // monthlySalesToolStripMenuItem
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.monthlySalesToolStripMenuItem.Name = "monthlySalesToolStripMenuItem";
+            this.monthlySalesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.monthlySalesToolStripMenuItem.Text = "&Monthly Sales";
+            this.monthlySalesToolStripMenuItem.Click += new System.EventHandler(this.monthlySalesToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -261,5 +280,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         internal System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripMenuItem dailySalesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem monthlySalesToolStripMenuItem;
     }
 }

@@ -56,7 +56,7 @@ namespace sample1
             transaction trans = new transaction();
             trans.venueID = venudID;
             trans.CusID = custID;
-            trans.Transdate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            trans.Transdate = Convert.ToDateTime(mod_system.CurrentDate.ToShortDateString());
             trans.StartDate = Convert.ToDateTime(dtStartDate.Text);
             trans.EndDate = Convert.ToDateTime(dtEndDate.Text);
             trans.Status = "Reserved";

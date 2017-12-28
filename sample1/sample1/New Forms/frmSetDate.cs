@@ -42,7 +42,7 @@ namespace sample1
                     button1.Text = "&Set Date";
                     this.Text = "Openning";
                 }
-
+                this.Close();
                 return;
             }
 
@@ -77,6 +77,7 @@ namespace sample1
                 button1.Text = "&Set Date";
                 this.Text = "Openning";
             }
+            this.Close();
         }
 
         private void frmSetDate_Load(object sender, EventArgs e)

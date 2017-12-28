@@ -44,34 +44,82 @@ namespace sample1
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            frmreservation2 frm = new frmreservation2();
-            mod_system.LoadForm(frm);
+            if (!dateSet)
+            {
+                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+            if (Application.OpenForms["frmreservation2"] != null)
+            {
+
+            }
+            else
+            {
+                frmreservation2 frm = new frmreservation2();
+                mod_system.LoadForm(frm);
+            }
+           
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            frmBooking frm = new frmBooking();
-            mod_system.LoadForm(frm);
+            if (!dateSet)
+            {
+                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+            if (Application.OpenForms["frmBooking"] != null)
+            {
+
+            }
+            else
+            {
+                frmBooking frm = new frmBooking();
+                mod_system.LoadForm(frm);
+            }
+
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            frmTransactionList frm = new frmTransactionList();
-            mod_system.LoadForm(frm);
+            if (!dateSet)
+            {
+                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+            if (Application.OpenForms["frmTransactionList"] != null)
+            {
+
+            }
+            else
+            {
+                frmTransactionList frm = new frmTransactionList();
+                mod_system.LoadForm(frm);
+            }
+          
         }
 
         private void openDateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmSetDate frm = new frmSetDate();
-            mod_system.LoadForm(frm);
+             frmSetDate frm = new frmSetDate();
+              mod_system.LoadForm(frm);
         }
+
+    
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-            frmCustomerList frm = new frmCustomerList();
-            frm.isFromCustomerForm = true;
-            mod_system.LoadForm(frm);
-            
+            if (!dateSet)
+            {
+                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+            if (Application.OpenForms["frmCustomerList"] != null)
+            {
+
+            }
+            else
+            {
+                frmCustomerList frm = new frmCustomerList();
+                frm.isFromCustomerForm = true;
+                mod_system.LoadForm(frm);
+            }
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -116,6 +164,47 @@ namespace sample1
             {
                 tsDateset.Text = "Date not set";
                 openDateToolStripMenuItem.Text = "&Open Date";
+            }
+        }
+
+        private void dailySalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!dateSet)
+            {
+                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+            if (Application.OpenForms["frmQeuryDate"] != null)
+            {
+
+            }
+            else
+            {
+                frmQeuryDate frm = new frmQeuryDate();
+                mod_system.LoadForm(frm);
+            }
+        }
+
+        internal void CheckDateStatus()
+        {
+            mod_system.LoadCurrentDate();
+        }
+
+        private void monthlySalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            if (!dateSet)
+            {
+                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+            if (Application.OpenForms["frmQeuryDate"] != null)
+            {
+                (Application.OpenForms["frmQeuryDate"] as frmQeuryDate).isMonthly = true;
+            }
+            else
+            {
+                frmQeuryDate frm = new frmQeuryDate();
+                frm.isMonthly = true;
+                mod_system.LoadForm(frm);
             }
         }
     }

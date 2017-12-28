@@ -44,7 +44,7 @@ namespace sample1
 		// Success!
 		mod_system.ORuser = loginUser;
 		mod_system.UserID = mod_system.ORuser.ID;
-		Interaction.MsgBox("Welcome " + mod_system.ORuser.Username);
+		MessageBox.Show("Welcome " + mod_system.ORuser.Username,"LogIn",MessageBoxButtons.OK,MessageBoxIcon.Information);
 
         if (loginUser.Userrule.Replace(" ","") == "Admin")
         {
@@ -52,12 +52,14 @@ namespace sample1
             {
                 (Application.OpenForms["frmMain"] as frmMain).NotYetLogin(true);
                 (Application.OpenForms["frmMain"] as frmMain).toolStripLabel1.Text = "Welcome, " + mod_system.ORuser.Username;
+                (Application.OpenForms["frmMain"] as frmMain).CheckDateStatus();
             }
             else
             {
                 frmMain frm2 = new frmMain();
                 frm2.NotYetLogin(true);
                 frm2.toolStripLabel1.Text = "Welcome, " + mod_system.ORuser.Username;
+                frm2.CheckDateStatus();
             }
         }
 

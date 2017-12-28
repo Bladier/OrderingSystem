@@ -205,6 +205,9 @@
     <EmbeddedResource Include="Report\rptReceipt.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptSalesReport.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\sample1.Report.dsReport+transactionDataTable.datasource" />
     <None Include="Properties\DataSources\sample1.Report.dsReport+transactionRow.datasource" />
     <None Include="Properties\DataSources\sample1.Report.dsReport+transactionRowChangeEvent.datasource" />
