@@ -13,6 +13,7 @@ namespace sample1
     {
         public  bool isResevation = false;
         public  bool isbooking = false;
+        public bool isFromCustomerForm = false;
         public frmCustomerList()
         {
             InitializeComponent();
@@ -28,6 +29,8 @@ namespace sample1
             {
                 btnSearch.PerformClick();
             }
+
+            if (isFromCustomerForm) { btnSelect.Visible = false; }
         }
 
         private void LoadCustomer(string mysql = "SELECT top 20 * FROM customertbl ORDER BY ID ASC")

@@ -309,6 +309,8 @@ namespace sample1.Report {
             
             private global::System.Data.DataColumn columnPAYMENT;
             
+            private global::System.Data.DataColumn columntransdate;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public transactionDataTable() {
@@ -464,6 +466,14 @@ namespace sample1.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn transdateColumn {
+                get {
+                    return this.columntransdate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -499,7 +509,23 @@ namespace sample1.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public transactionRow AddtransactionRow(string ID, string DESCRIPTION, string FULLNAME, string ADDRESS, string TRANSDATE, string STARTDATE, string ENDDATE, string STATUS, string TOTAL, string BALANCE, string RATE, string MOD, string TRANSACTIONNUM, string PAYMENT_STATUS, string PAYMENT) {
+            public transactionRow AddtransactionRow(
+                        string ID, 
+                        string DESCRIPTION, 
+                        string FULLNAME, 
+                        string ADDRESS, 
+                        string TRANSDATE, 
+                        string STARTDATE, 
+                        string ENDDATE, 
+                        string STATUS, 
+                        string TOTAL, 
+                        string BALANCE, 
+                        string RATE, 
+                        string MOD, 
+                        string TRANSACTIONNUM, 
+                        string PAYMENT_STATUS, 
+                        string PAYMENT, 
+                        string transdate1) {
                 transactionRow rowtransactionRow = ((transactionRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -516,7 +542,8 @@ namespace sample1.Report {
                         MOD,
                         TRANSACTIONNUM,
                         PAYMENT_STATUS,
-                        PAYMENT};
+                        PAYMENT,
+                        transdate1};
                 rowtransactionRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtransactionRow);
                 return rowtransactionRow;
@@ -554,6 +581,7 @@ namespace sample1.Report {
                 this.columnTRANSACTIONNUM = base.Columns["TRANSACTIONNUM"];
                 this.columnPAYMENT_STATUS = base.Columns["PAYMENT_STATUS"];
                 this.columnPAYMENT = base.Columns["PAYMENT"];
+                this.columntransdate = base.Columns["transdate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -589,6 +617,8 @@ namespace sample1.Report {
                 base.Columns.Add(this.columnPAYMENT_STATUS);
                 this.columnPAYMENT = new global::System.Data.DataColumn("PAYMENT", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPAYMENT);
+                this.columntransdate = new global::System.Data.DataColumn("transdate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntransdate);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -971,6 +1001,22 @@ namespace sample1.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string transdate {
+                get {
+                    try {
+                        return ((string)(this[this.tabletransaction.transdateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'transdate\' in table \'transaction\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletransaction.transdateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIDNull() {
                 return this.IsNull(this.tabletransaction.IDColumn);
             }
@@ -1147,6 +1193,18 @@ namespace sample1.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPAYMENTNull() {
                 this[this.tabletransaction.PAYMENTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstransdateNull() {
+                return this.IsNull(this.tabletransaction.transdateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettransdateNull() {
+                this[this.tabletransaction.transdateColumn] = global::System.Convert.DBNull;
             }
         }
         

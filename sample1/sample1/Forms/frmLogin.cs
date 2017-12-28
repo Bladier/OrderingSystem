@@ -48,32 +48,19 @@ namespace sample1
 
         if (loginUser.Userrule.Replace(" ","") == "Admin")
         {
-
-            frmMain frm1 = new frmMain();
-            frm1.Show();
-            txtPassword.Clear();
-            txtusername.Clear();
-            i = 0;
-
-            if (Application.OpenForms["Form1"] != null)
+            if (Application.OpenForms["frmMain"] != null)
             {
-               
+                (Application.OpenForms["frmMain"] as frmMain).NotYetLogin(true);
+                (Application.OpenForms["frmMain"] as frmMain).toolStripLabel1.Text = "Welcome, " + mod_system.ORuser.Username;
             }
             else
             {
-
-               // frmMain frm2 = new frmMain();
-               // frm2.CheckDateStatus();
+                frmMain frm2 = new frmMain();
+                frm2.NotYetLogin(true);
+                frm2.toolStripLabel1.Text = "Welcome, " + mod_system.ORuser.Username;
             }
-
-            this.Hide();
-            return;
         }
 
-        // frmMain frm = new frmMain();
-        // frm.Show();
-        // frm.CheckDateStatus();
-        // frm.notYetLogin(false);  
         txtPassword.Clear();
         txtusername.Clear();
         i = 0;
@@ -103,7 +90,7 @@ namespace sample1
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
             
         }

@@ -277,6 +277,7 @@ namespace sample1
             bl.TransNum = Convert.ToInt32(txtTransactionNum.Text);
             bl.saveBill();
 
+            printtransaction(bl.resID);
             MessageBox.Show("Transaction updated.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ClearFields();
         }
@@ -544,32 +545,31 @@ namespace sample1
              return ds.Tables[0].Rows[0]["Description"].ToString();
          }
 
+      
         #region "Print"
-         private void printtransaction(int idx)
-         {
-             
-             string mysql = " select t.ID,v.Description,c.FirstName + ' ' + c.MiddleName + ' ' + c.LastName as Fullname,";
-                    mysql += "c.Street + ' ' + b.barangay + ' ' + ci.city + ' ' + c.province as Address,";
-                    mysql += "t.transdate,t.startDate,t.EndDate,t.status,t.total,t.balance,t.rate,t.Mod,";
-                    mysql += "t.transactionNum,p.status as PayMent_Status,p.payment";
-                    mysql += "from transactiontbl t";
-                    mysql += "inner join venuetbl v on v.ID = t.venueID";
-                    mysql += "inner join customertbl c on c.ID=t.customerID";
-                    mysql += "inner join barangaytbl b on b.ID=c.barangayID";
-                    mysql += "inner join citytbl ci on ci.ID=b.cityID";
-                    mysql += "inner join paymenttbl p on p.resID =t.ID";
-                    mysql += " where t.ID = " + idx;
+        private void printtransaction(int idx)
+        {
+
+            string mysql = " select t.ID,v.Description,c.FirstName + ' ' + c.MiddleName + ' ' + c.LastName as Fullname,";
+            mysql += "c.Street + ' ' + b.barangay + ' ,' + ci.city + ' ,' + c.province as Address,";
+            mysql += "t.transdate,t.startDate,t.EndDate,t.status,t.total,t.balance,t.rate,t.Mod,";
+            mysql += "t.transactionNum,p.status as PayMent_Status,p.payment,p.transdate ";
+            mysql += "from transactiontbl t ";
+            mysql += "inner join venuetbl v on v.ID = t.venueID ";
+            mysql += "inner join customertbl c on c.ID=t.customerID ";
+            mysql += "inner join barangaytbl b on b.ID=c.barangayID ";
+            mysql += "inner join citytbl ci on ci.ID=b.cityID ";
+            mysql += "inner join paymenttbl p on p.resID =t.ID ";
+            mysql += " where t.ID = " + idx;
 
             Dictionary<string, string> rptPara = new Dictionary<string, string>();
 
             frmReport frm = new frmReport();
-            frm.ReportInit(mysql, "dsReceipt", @"Report\rptReceipt.rdlc", rptPara);
+            frm.ReportInit(mysql, "dsReceipt", @"Report\rptReceipt.rdlc");
             frm.Show();
 
         }
-
-       
         #endregion
-
+     
     }
 }

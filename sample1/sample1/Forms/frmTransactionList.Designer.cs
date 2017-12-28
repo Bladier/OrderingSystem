@@ -45,6 +45,8 @@
             this.btnView = new System.Windows.Forms.Button();
             this.btnVoid = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.bntViewReserved = new System.Windows.Forms.Button();
+            this.btnVoidReserved = new System.Windows.Forms.Button();
             this.lvReserved = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -57,8 +59,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.txtsearch2 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.bntViewReserved = new System.Windows.Forms.Button();
-            this.btnVoidReserved = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -178,6 +179,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnPrint);
             this.tabPage1.Controls.Add(this.btnView);
             this.tabPage1.Controls.Add(this.lvTransList);
             this.tabPage1.Controls.Add(this.btnVoid);
@@ -231,6 +233,28 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Reserved List";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // bntViewReserved
+            // 
+            this.bntViewReserved.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bntViewReserved.Location = new System.Drawing.Point(87, 431);
+            this.bntViewReserved.Name = "bntViewReserved";
+            this.bntViewReserved.Size = new System.Drawing.Size(97, 23);
+            this.bntViewReserved.TabIndex = 11;
+            this.bntViewReserved.Text = "&View Payment";
+            this.bntViewReserved.UseVisualStyleBackColor = true;
+            this.bntViewReserved.Click += new System.EventHandler(this.bntViewReserved_Click);
+            // 
+            // btnVoidReserved
+            // 
+            this.btnVoidReserved.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVoidReserved.Location = new System.Drawing.Point(6, 431);
+            this.btnVoidReserved.Name = "btnVoidReserved";
+            this.btnVoidReserved.Size = new System.Drawing.Size(75, 23);
+            this.btnVoidReserved.TabIndex = 10;
+            this.btnVoidReserved.Text = "&Void";
+            this.btnVoidReserved.UseVisualStyleBackColor = true;
+            this.btnVoidReserved.Click += new System.EventHandler(this.btnVoidReserved_Click);
             // 
             // lvReserved
             // 
@@ -332,27 +356,15 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // bntViewReserved
+            // btnPrint
             // 
-            this.bntViewReserved.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bntViewReserved.Location = new System.Drawing.Point(87, 431);
-            this.bntViewReserved.Name = "bntViewReserved";
-            this.bntViewReserved.Size = new System.Drawing.Size(97, 23);
-            this.bntViewReserved.TabIndex = 11;
-            this.bntViewReserved.Text = "&View Payment";
-            this.bntViewReserved.UseVisualStyleBackColor = true;
-            this.bntViewReserved.Click += new System.EventHandler(this.bntViewReserved_Click);
-            // 
-            // btnVoidReserved
-            // 
-            this.btnVoidReserved.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVoidReserved.Location = new System.Drawing.Point(6, 431);
-            this.btnVoidReserved.Name = "btnVoidReserved";
-            this.btnVoidReserved.Size = new System.Drawing.Size(75, 23);
-            this.btnVoidReserved.TabIndex = 10;
-            this.btnVoidReserved.Text = "&Void";
-            this.btnVoidReserved.UseVisualStyleBackColor = true;
-            this.btnVoidReserved.Click += new System.EventHandler(this.btnVoidReserved_Click);
+            this.btnPrint.Location = new System.Drawing.Point(190, 432);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 23);
+            this.btnPrint.TabIndex = 7;
+            this.btnPrint.Text = "&Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // frmTransactionList
             // 
@@ -407,5 +419,6 @@
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Button bntViewReserved;
         private System.Windows.Forms.Button btnVoidReserved;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

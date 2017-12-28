@@ -155,6 +155,11 @@ namespace sample1
                 MessageBox.Show("Customer already exists. Try to search in the list.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
             }
 
+            string str = txtContactNo.Text.Substring(0, 2);
+            if (!str.Contains("09"))
+            {
+                MessageBox.Show("Invalid contact number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
+            }
 
             DialogResult result = MessageBox.Show("Do you want to save this customer?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)

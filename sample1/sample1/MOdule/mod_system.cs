@@ -143,7 +143,7 @@ namespace sample1
             Database.SaveEntry(ds);
 
             Console.WriteLine("successfully open.");
-            //  frmMain.dateSet = true;
+            frmMain.dateSet = true;
             return;
         }
 

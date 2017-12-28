@@ -320,6 +320,39 @@ namespace sample1
                 button3.PerformClick();
             }
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (lvTransList.SelectedItems.Count == 0) { return; }
+            printtransaction(Convert.ToInt32(lvTransList.SelectedItems[0].Tag));
+        }
+
+
+        #region "Print"
+        private void printtransaction(int idx)
+        {
+
+            string mysql = " select t.ID,v.Description,c.FirstName + ' ' + c.MiddleName + ' ' + c.LastName as Fullname,";
+            mysql += "c.Street + ' ' + b.barangay + ' ,' + ci.city + ' ,' + c.province as Address,";
+            mysql += "t.transdate,t.startDate,t.EndDate,t.status,t.total,t.balance,t.rate,t.Mod,";
+            mysql += "t.transactionNum,p.status as PayMent_Status,p.payment,p.transdate ";
+            mysql += "from transactiontbl t ";
+            mysql += "inner join venuetbl v on v.ID = t.venueID ";
+            mysql += "inner join customertbl c on c.ID=t.customerID ";
+            mysql += "inner join barangaytbl b on b.ID=c.barangayID ";
+            mysql += "inner join citytbl ci on ci.ID=b.cityID ";
+            mysql += "inner join paymenttbl p on p.resID =t.ID ";
+            mysql += " where t.ID = " + idx;
+
+            Dictionary<string, string> rptPara = new Dictionary<string, string>();
+
+            frmReport frm = new frmReport();
+            frm.ReportInit(mysql, "dsReceipt", @"Report\rptReceipt.rdlc");
+            frm.Show();
+
+        }
+        #endregion
+
     }
 
     }
