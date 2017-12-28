@@ -40,7 +40,7 @@ namespace sample1
                 double NrOfDays = Math.Round(t.TotalDays) + 1;
 
 
-                if (NrOfDays > 2)
+                if (NrOfDays >= 2)
                 {
                     for (int i = 0; i < NrOfDays; i++)
                     {
