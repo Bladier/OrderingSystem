@@ -452,6 +452,20 @@ namespace sample1
         }
         #endregion
 
+        private void txtsearchExpiry_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (mod_system.isEnter(e))
+            {
+                button5.PerformClick();
+            }
+
+        }
+
+        private void lvReserved_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
 
 
     }

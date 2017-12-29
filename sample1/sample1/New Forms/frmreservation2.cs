@@ -592,6 +592,11 @@ namespace sample1
 
          }
          #endregion
+
+         private void txtPayment_KeyPress(object sender, KeyPressEventArgs e)
+         {
+             mod_system.DigitOnly(e);
+         }
      
     }
 }

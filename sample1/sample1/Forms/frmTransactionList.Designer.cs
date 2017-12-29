@@ -63,6 +63,8 @@
             this.txtsearch2 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtsearchExpiry = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.lvExpired = new System.Windows.Forms.ListView();
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -72,8 +74,6 @@
             this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.txtsearchExpiry = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -310,6 +310,7 @@
             this.lvReserved.TabIndex = 7;
             this.lvReserved.UseCompatibleStateImageBehavior = false;
             this.lvReserved.View = System.Windows.Forms.View.Details;
+            this.lvReserved.DoubleClick += new System.EventHandler(this.lvReserved_DoubleClick);
             // 
             // columnHeader7
             // 
@@ -407,6 +408,27 @@
             this.tabPage3.Text = "Expiry";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // txtsearchExpiry
+            // 
+            this.txtsearchExpiry.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtsearchExpiry.Location = new System.Drawing.Point(6, 11);
+            this.txtsearchExpiry.Name = "txtsearchExpiry";
+            this.txtsearchExpiry.Size = new System.Drawing.Size(778, 20);
+            this.txtsearchExpiry.TabIndex = 8;
+            this.txtsearchExpiry.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtsearchExpiry_KeyPress);
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.Location = new System.Drawing.Point(790, 10);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "&Search";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // lvExpired
             // 
             this.lvExpired.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -469,26 +491,6 @@
             // 
             this.columnHeader23.Text = "Transaction #";
             this.columnHeader23.Width = 91;
-            // 
-            // txtsearchExpiry
-            // 
-            this.txtsearchExpiry.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtsearchExpiry.Location = new System.Drawing.Point(6, 11);
-            this.txtsearchExpiry.Name = "txtsearchExpiry";
-            this.txtsearchExpiry.Size = new System.Drawing.Size(778, 20);
-            this.txtsearchExpiry.TabIndex = 8;
-            // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(790, 10);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "&Search";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // frmTransactionList
             // 
