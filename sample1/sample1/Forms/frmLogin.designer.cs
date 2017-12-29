@@ -104,7 +104,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(39, 10);
+            this.label3.Location = new System.Drawing.Point(39, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(290, 22);
             this.label3.TabIndex = 4;
