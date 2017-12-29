@@ -98,8 +98,7 @@
             this.cboUserTYpe.FormattingEnabled = true;
             this.cboUserTYpe.Items.AddRange(new object[] {
             "Admin",
-            "Inspector",
-            "Clerk"});
+            "User"});
             this.cboUserTYpe.Location = new System.Drawing.Point(87, 240);
             this.cboUserTYpe.Name = "cboUserTYpe";
             this.cboUserTYpe.Size = new System.Drawing.Size(159, 21);

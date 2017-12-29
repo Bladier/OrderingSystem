@@ -27,9 +27,11 @@ namespace sample1
             System.DateTime st =mod_system.GetFirstDate(monCal.SelectionStart);
             System.DateTime en = mod_system.GetLastDate(monCal.SelectionStart);
 
-            string mysql1 = "SELECT * FROM transactiontbl where enddate Between '" + st + "'and '" + en + "' and (status <> 'Cancel' OR status = 'Expired')";
+            string mysql1 = "SELECT * FROM transactiontbl where enddate Between '" + st + "'and '" + en + "' and (status = 'Reserved' OR status = 'Booked')";
             DataSet ds1 = Database.LoadSQL(mysql1, "transactiontbl");
 
+            if (ds1.Tables[0].Rows.Count == 0) { return; }
+            lvSchedule.Items.Clear();
             foreach (DataRow dr in ds1.Tables[0].Rows)
             {
 
@@ -53,6 +55,9 @@ namespace sample1
                         
                     }
                 }
+                transaction tr = new transaction();
+                tr.loadTrans(Convert.ToInt32(dr["ID"]));
+                AddSchedule(tr);
             }
 
         }
@@ -65,6 +70,20 @@ namespace sample1
         private void btnOk_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void monCal_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddSchedule(transaction tr)
+        {
+            Customer cs = new Customer();
+            cs.LoadCust(tr.CusID);
+            ListViewItem lv = lvSchedule.Items.Add(cs.fullname);
+            lv.SubItems.Add(tr.StartDate.ToShortDateString() + " - " + tr.EndDate.ToShortDateString());
+            lv.SubItems.Add(tr.Status);
         }
     }
 }

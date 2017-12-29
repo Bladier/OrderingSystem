@@ -25,6 +25,7 @@ namespace sample1
             toolStripButton3.Enabled = st;
             toolStripButton4.Enabled = st;
             openDateToolStripMenuItem.Enabled = st;
+            userManagementToolStripMenuItem.Enabled = st;
 
             if (st)
             {
@@ -208,6 +209,24 @@ namespace sample1
                 frm.isMonthly = true;
                 mod_system.LoadForm(frm);
             }
+        }
+
+        private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!dateSet)
+            {
+                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+            if (Application.OpenForms["frmreservation2"] != null)
+            {
+
+            }
+            else
+            {
+                frmUserManagement frm = new frmUserManagement();
+                mod_system.LoadForm(frm);
+            }
+           
         }
     }
 }

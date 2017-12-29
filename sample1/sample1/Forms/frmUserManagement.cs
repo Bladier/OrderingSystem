@@ -66,6 +66,9 @@ namespace sample1
             txtMname.Text = u.MidName;
             txtLname.Text = u.Lastname;
             txtUsername.Text = u.Username;
+
+            cboUserTYpe.DropDownStyle = ComboBoxStyle.DropDown;
+
             cboUserTYpe.Text = u.Userrule;
 
             isUpdate = true;
@@ -159,6 +162,7 @@ namespace sample1
 
         private void clearfield()
         {
+            cboUserTYpe.DropDownStyle = ComboBoxStyle.DropDownList;
             txtFname.Clear();
             txtMname.Clear();
             txtLname.Clear();
@@ -208,20 +212,24 @@ namespace sample1
                 }
             }
 
-            User us = new User();
-            if (us.IsUserNameExists(txtUsername.Text))
+            if (!isUpdate)
             {
-                MessageBox.Show("UserName already exists. Try unique username!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+                User us = new User();
+                if (us.IsUserNameExists(txtUsername.Text))
+                {
+                    MessageBox.Show("UserName already exists. Try unique username!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
 
-            User userex = new User();
-            if (userex.ifUserIxists(txtFname.Text ,txtMname.Text,txtLname.Text))
-            {
-                MessageBox.Show("This user already exists, Please check in the list.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                User userex = new User();
+                if (userex.ifUserIxists(txtFname.Text, txtMname.Text, txtLname.Text))
+                {
+                    MessageBox.Show("This user already exists, Please check in the list.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
-
+          
+            
             if (cboUserTYpe.Text == "") { cboUserTYpe.Focus(); return false; }
 
             return true;

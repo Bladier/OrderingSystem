@@ -241,6 +241,12 @@ namespace sample1
                     return false;
                 }
 
+                transaction tr1 = new transaction();
+                if (tr1.isHasReserved_or_Booked(Convert.ToDateTime(dtEndDate.Text)))
+                {
+                    MessageBox.Show("Selected date is already booked by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
             }
 
             return true;
