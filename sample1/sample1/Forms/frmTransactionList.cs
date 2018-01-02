@@ -76,11 +76,11 @@ namespace sample1
             //res.loadbyTransNum(rs.TransactionNum);
 
 
-            //if (res.Status == "Expired")
-            //{
-            //    MessageBox.Show("This transaction is already expired you cannot select it.","Notification",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-            //    return;
-            //}
+            if (rs.Status == "Expired")
+            {
+                MessageBox.Show("This transaction is already expired you cannot select it.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
 
             //if (res.Status == "CheckOut")
             //{
@@ -212,15 +212,15 @@ namespace sample1
            foreach (string name_loopVariable in strWords)
             {
                 name = name_loopVariable;
-                mysql += " ((FirstName + ' ' + MiddleName + ' ' + LastName) LIKE UPPER('%" + name + "%') OR ";
+                mysql += " (UPPER(FirstName + ' ' + MiddleName + ' ' + LastName) LIKE UPPER('%" + name + "%') OR ";
                 if (object.ReferenceEquals(name, strWords.Last()))
                 {
-                    mysql += " (FirstName + ' ' + MiddleName + ' ' + LastName) LIKE UPPER('%" + name + "%')) ";
+                    mysql += " UPPER(FirstName + ' ' + MiddleName + ' ' + LastName) LIKE UPPER('%" + name + "%')) ";
                     break;
                 }
             }
             
-           mysql += " OR (TransactionNum like '%" + txtSearch.Text + "%' ) and status <> 'Cancel' ";
+           mysql += " OR (TransactionNum like '%" + txtSearch.Text + "%' ) and (status <> 'Cancel' or status <> 'Reserved')";
 
            LoadTransaction(mysql);
               
@@ -242,15 +242,15 @@ namespace sample1
             foreach (string name_loopVariable in strWords)
             {
                 name = name_loopVariable;
-                mysql += " ((FirstName + ' ' + MiddleName + ' ' + LastName) LIKE UPPER('%" + name + "%') OR ";
+                mysql += " (UPPER(FirstName + ' ' + MiddleName + ' ' + LastName) LIKE UPPER('%" + name + "%') OR ";
                 if (object.ReferenceEquals(name, strWords.Last()))
                 {
-                    mysql += " (FirstName + ' ' + MiddleName + ' ' + LastName) LIKE UPPER('%" + name + "%')) ";
+                    mysql += " UPPER(FirstName + ' ' + MiddleName + ' ' + LastName) LIKE UPPER('%" + name + "%')) ";
                     break;
                 }
             }
 
-            mysql += "OR (TransactionNum like '%" + txtSearch.Text + "%' ) and (status ='Reserved' or status ='Expired' or status = 'CheckOut') ";
+            mysql += "OR (TransactionNum like '%" + txtSearch.Text + "%' ) and (status ='Reserved') ";
 
             LoadReservation(mysql);
         }
@@ -286,10 +286,10 @@ namespace sample1
             int idx = Convert.ToInt32(lvReserved.SelectedItems[0].Tag);
             tr.loadTrans(idx);
 
-            reservation checkexpired = new reservation();
-            checkexpired.loadbyTransNum(tr.TransactionNum);
+            //reservation checkexpired = new reservation();
+            //checkexpired.loadbyTransNum(tr.TransactionNum);
 
-            if (checkexpired.Status == "Expired")
+            if (tr.Status == "Expired")
             {
                 MessageBox.Show("This transaction is already expired you cannot void it.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
