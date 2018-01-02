@@ -72,15 +72,21 @@ namespace sample1
             rs.loadTrans(idx);
 
 
-            reservation res = new reservation();
-            res.loadbyTransNum(rs.TransactionNum);
+            //reservation res = new reservation();
+            //res.loadbyTransNum(rs.TransactionNum);
 
 
-            if (res.Status == "Expired")
-            {
-                MessageBox.Show("This transaction is already expired you cannot select it.","Notification",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-                return;
-            }
+            //if (res.Status == "Expired")
+            //{
+            //    MessageBox.Show("This transaction is already expired you cannot select it.","Notification",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+            //    return;
+            //}
+
+            //if (res.Status == "CheckOut")
+            //{
+            //    MessageBox.Show("This transaction is already CHECKOUT you cannot select it.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    return;
+            //}
 
             frmBooking frm = new frmBooking();
             if (Application.OpenForms["frmBooking"] != null)
@@ -133,14 +139,14 @@ namespace sample1
             tr.loadTrans(idx);
 
             
-            reservation res = new reservation();
-            res.loadbyTransNum(tr.TransactionNum);
+            //reservation res = new reservation();
+            //res.loadbyTransNum(tr.TransactionNum);
 
-            if (res.Status == "Expired")
-            {
-                MessageBox.Show("This transaction is already expired you cannot select it.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+            //if (res.Status == "Expired")
+            //{
+            //    MessageBox.Show("This transaction is already expired you cannot select it.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    return;
+            //}
 
             frmreservation2 frm = new frmreservation2();
             if (Application.OpenForms["frmreservation2"] != null)
