@@ -250,7 +250,7 @@ namespace sample1
                 }
             }
 
-            mysql += "OR (TransactionNum like '%" + txtSearch.Text + "%' ) and status ='Reserved' or status ='Expired' or status = 'CheckOut' ";
+            mysql += "OR (TransactionNum like '%" + txtSearch.Text + "%' ) and (status ='Reserved' or status ='Expired' or status = 'CheckOut') ";
 
             LoadReservation(mysql);
         }
