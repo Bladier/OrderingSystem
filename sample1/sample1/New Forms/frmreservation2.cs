@@ -306,13 +306,14 @@ namespace sample1
 
         private void frmreservation2_Load(object sender, EventArgs e)
         {
-            if (isView) { return; }
+            if (isView) { btnExtent.Visible = true; return; }
             txtTransactionNum.Text = string.Format("00000{0}", GetTransNum());
 
             dtStartDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
             dtEndDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
 
             cboVenue.Items.AddRange(GetDistinct("Description"));
+            btnExtent.Visible = false;
         }
 
         private int GetTransNum()
@@ -610,6 +611,11 @@ namespace sample1
          private void txtPayment_KeyPress(object sender, KeyPressEventArgs e)
          {
              mod_system.DigitOnly(e);
+         }
+
+         private void btnExtent_Click(object sender, EventArgs e)
+         {
+             dtEndDate.Enabled = true;
          }
      
     }

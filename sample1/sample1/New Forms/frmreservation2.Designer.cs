@@ -67,6 +67,7 @@
             this.btnPost = new System.Windows.Forms.Button();
             this.btnAvailability = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnExtent = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -423,6 +424,7 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(663, 444);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 35);
@@ -433,6 +435,7 @@
             // 
             // btnPost
             // 
+            this.btnPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPost.Location = new System.Drawing.Point(584, 444);
             this.btnPost.Name = "btnPost";
             this.btnPost.Size = new System.Drawing.Size(75, 36);
@@ -443,9 +446,10 @@
             // 
             // btnAvailability
             // 
-            this.btnAvailability.Location = new System.Drawing.Point(503, 445);
+            this.btnAvailability.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAvailability.Location = new System.Drawing.Point(496, 445);
             this.btnAvailability.Name = "btnAvailability";
-            this.btnAvailability.Size = new System.Drawing.Size(75, 35);
+            this.btnAvailability.Size = new System.Drawing.Size(82, 35);
             this.btnAvailability.TabIndex = 45;
             this.btnAvailability.Text = "&Availability";
             this.btnAvailability.UseVisualStyleBackColor = true;
@@ -473,12 +477,24 @@
             this.groupBox1.Text = "Rate Info";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // btnExtent
+            // 
+            this.btnExtent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExtent.Location = new System.Drawing.Point(12, 444);
+            this.btnExtent.Name = "btnExtent";
+            this.btnExtent.Size = new System.Drawing.Size(86, 35);
+            this.btnExtent.TabIndex = 47;
+            this.btnExtent.Text = "&Extend";
+            this.btnExtent.UseVisualStyleBackColor = true;
+            this.btnExtent.Click += new System.EventHandler(this.btnExtent_Click);
+            // 
             // frmreservation2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(769, 504);
+            this.Controls.Add(this.btnExtent);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.groupBox3);
@@ -547,5 +563,6 @@
         private System.Windows.Forms.Button btnPost;
         private System.Windows.Forms.Button btnAvailability;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnExtent;
     }
 }
