@@ -267,7 +267,12 @@ namespace sample1
 
         private void Calculate()
         {
-            if (isView) { return; }
+            if (isView) 
+            {
+                
+                return;
+            }
+
             DateTime d1 = Convert.ToDateTime(dtStartDate.Text);
             DateTime d2 = Convert.ToDateTime(dtEndDate.Text).AddDays(1);
 
@@ -306,14 +311,14 @@ namespace sample1
 
         private void frmreservation2_Load(object sender, EventArgs e)
         {
-            if (isView) { btnExtent.Visible = true; return; }
+            if (isView) {  return; }
             txtTransactionNum.Text = string.Format("00000{0}", GetTransNum());
 
             dtStartDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
             dtEndDate.Text = DateTime.Now.ToString("MMMM, dd yyyy hh:mm tt");
 
             cboVenue.Items.AddRange(GetDistinct("Description"));
-            btnExtent.Visible = false;
+          
         }
 
         private int GetTransNum()
@@ -613,10 +618,29 @@ namespace sample1
              mod_system.DigitOnly(e);
          }
 
-         private void btnExtent_Click(object sender, EventArgs e)
+         private void numExtend_ValueChanged(object sender, EventArgs e)
          {
-             dtEndDate.Enabled = true;
+             DateTime d1 = Convert.ToDateTime(tmpres.StartDate);
+             DateTime d2 = Convert.ToDateTime(tmpres.EndDate).AddDays(1);
+
+             TimeSpan t = d2 - d1;
+             double NrOfDays = Math.Round(t.TotalDays);
+
+             if (numExtend.Value <= 0)
+             {
+                 txtNoOfDays.Text = NrOfDays.ToString();
+                 return;
+             }
+
+           
+
+             int extend = Convert.ToInt32(numExtend.Value);
+
+             extend = extend + Convert.ToInt32(NrOfDays);
+             txtNoOfDays.Text = extend.ToString();
          }
+
+        
      
     }
 }

@@ -67,12 +67,13 @@
             this.btnPost = new System.Windows.Forms.Button();
             this.btnAvailability = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnExtent = new System.Windows.Forms.Button();
+            this.numExtend = new System.Windows.Forms.NumericUpDown();
             this.groupBox2.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numExtend)).BeginInit();
             this.SuspendLayout();
             // 
             // label12
@@ -457,6 +458,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.numExtend);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.txtNoOfDays);
             this.groupBox1.Controls.Add(this.cboVenue);
@@ -477,16 +479,13 @@
             this.groupBox1.Text = "Rate Info";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // btnExtent
+            // numExtend
             // 
-            this.btnExtent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExtent.Location = new System.Drawing.Point(12, 444);
-            this.btnExtent.Name = "btnExtent";
-            this.btnExtent.Size = new System.Drawing.Size(86, 35);
-            this.btnExtent.TabIndex = 47;
-            this.btnExtent.Text = "&Extend";
-            this.btnExtent.UseVisualStyleBackColor = true;
-            this.btnExtent.Click += new System.EventHandler(this.btnExtent_Click);
+            this.numExtend.Location = new System.Drawing.Point(204, 109);
+            this.numExtend.Name = "numExtend";
+            this.numExtend.Size = new System.Drawing.Size(41, 20);
+            this.numExtend.TabIndex = 26;
+            this.numExtend.ValueChanged += new System.EventHandler(this.numExtend_ValueChanged);
             // 
             // frmreservation2
             // 
@@ -494,7 +493,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(769, 504);
-            this.Controls.Add(this.btnExtent);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.groupBox3);
@@ -518,6 +516,7 @@
             this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numExtend)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -563,6 +562,6 @@
         private System.Windows.Forms.Button btnPost;
         private System.Windows.Forms.Button btnAvailability;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnExtent;
+        private System.Windows.Forms.NumericUpDown numExtend;
     }
 }
