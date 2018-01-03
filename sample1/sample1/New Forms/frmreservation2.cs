@@ -640,7 +640,5 @@ namespace sample1
              txtNoOfDays.Text = extend.ToString();
          }
 
-        
-     
     }
 }
