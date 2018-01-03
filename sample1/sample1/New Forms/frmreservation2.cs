@@ -289,8 +289,16 @@ namespace sample1
                 txtPayment.Enabled = true;
                 if (txtRate.Text == "") { return; }
 
-                double paidAtleast = Convert.ToDouble(lblTotal.Text) * 0.5;
-                lblPaidAtleast.Text = paidAtleast.ToString();
+                if (rbInstallment.Checked)
+                {
+                    double paidAtleast = Convert.ToDouble(lblTotal.Text) * 0.5;
+                    lblPaidAtleast.Text = paidAtleast.ToString();
+                }
+                else
+                {
+                    lblPaidAtleast.Text ="0.00";
+                }
+               
                 lblBalance.Text = Convert.ToDouble(lblTotal.Text).ToString();
             }
        

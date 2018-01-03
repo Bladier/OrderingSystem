@@ -45,6 +45,7 @@
             this.monCal.ForeColor = System.Drawing.Color.Black;
             this.monCal.Location = new System.Drawing.Point(8, 6);
             this.monCal.Name = "monCal";
+            this.monCal.ShowTodayCircle = false;
             this.monCal.ShowWeekNumbers = true;
             this.monCal.TabIndex = 0;
             this.monCal.TitleBackColor = System.Drawing.Color.White;
