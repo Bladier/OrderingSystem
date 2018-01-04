@@ -47,14 +47,21 @@ namespace sample1
                     for (int i = 0; i < NrOfDays; i++)
                     {
                         d1 = d1.AddDays(i);
-                     
-                          monCal.AddBoldedDate(DateTime.Parse(Convert.ToDateTime(d1).ToShortDateString()));
-                          monCal.UpdateBoldedDates();
-          
+
+                        monCal.AddBoldedDate(DateTime.Parse(Convert.ToDateTime(d1).ToShortDateString()));
+                        monCal.UpdateBoldedDates();
+
                         d1 = Convert.ToDateTime(Convert.ToDateTime(dr["StartDate"]));
-                        
+
                     }
                 }
+                else
+
+                {
+                    monCal.AddBoldedDate(DateTime.Parse(Convert.ToDateTime(d1).ToShortDateString()));
+                    monCal.UpdateBoldedDates();
+                }
+
                 transaction tr = new transaction();
                 tr.loadTrans(Convert.ToInt32(dr["ID"]));
                 AddSchedule(tr);

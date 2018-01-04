@@ -265,7 +265,8 @@ namespace sample1
                         maxi = i;
                     }
                 }
-
+               
+               
                 if (NrOfDays > 1)
                 {
                     for (int i = 0; i < NrOfDays; i++)
@@ -294,7 +295,6 @@ namespace sample1
                     }
                 }
 
-
                 if (tmpStartDate == tmpDates)
                 {
                    
@@ -305,6 +305,33 @@ namespace sample1
                 }
 
             }
+            return false;
+        }
+
+
+        public bool isExists(DateTime Res_startDate)
+        {
+            string tmpDate = Res_startDate.ToString("yyyy-MM-dd");
+
+            string mySql = string.Format("SELECT * FROM {0} where StartDate = '{1}'", MainTable, tmpDate);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+
+                tmpStartTime = Convert.ToDateTime(Res_startDate.ToShortTimeString());
+                tmpTime = Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]).ToShortTimeString());
+
+                DateTime d1 = Convert.ToDateTime(Convert.ToDateTime(dr["StartDate"]));
+                DateTime d2 = Convert.ToDateTime(Convert.ToDateTime(dr["EndDate"]));
+
+                if (tmpStartTime <= tmpTime)
+                {
+                    return true;
+                }
+            }
+
             return false;
         }
 

@@ -370,6 +370,14 @@ namespace sample1
                     MessageBox.Show("Selected date is already booked by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
                 }
+
+                transaction tr2 = new transaction();
+                if (tr2.isExists(Convert.ToDateTime(dtStartDate.Text)))
+                {
+                    MessageBox.Show("Selected date is already booked by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+
                 //reservation rs = new reservation();
                 //if (rs.isHasReserved(Convert.ToDateTime(dtStartDate.Text)))
                 //{

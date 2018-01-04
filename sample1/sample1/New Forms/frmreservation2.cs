@@ -247,6 +247,14 @@ namespace sample1
                     MessageBox.Show("Selected date is already booked by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
                 }
+
+                transaction tr2 = new transaction();
+                if (tr2.isExists(Convert.ToDateTime(dtStartDate.Text)))
+                {
+                    MessageBox.Show("Selected date is already booked by another client.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+
             }
 
             return true;
@@ -620,6 +628,7 @@ namespace sample1
 
          private void numExtend_ValueChanged(object sender, EventArgs e)
          {
+             if (txtNoOfDays.Text == "") { return; }
              DateTime d1 = Convert.ToDateTime(tmpres.StartDate);
              DateTime d2 = Convert.ToDateTime(tmpres.EndDate).AddDays(1);
 
@@ -632,8 +641,7 @@ namespace sample1
                  return;
              }
 
-           
-
+          
              int extend = Convert.ToInt32(numExtend.Value);
 
              extend = extend + Convert.ToInt32(NrOfDays);
