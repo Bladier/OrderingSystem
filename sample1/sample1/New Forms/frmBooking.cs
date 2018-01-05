@@ -79,7 +79,7 @@ namespace sample1
             DateTime d2 = Convert.ToDateTime(dtEndDate.Text).AddDays(1);
 
             TimeSpan t = d2 - d1;
-            double NrOfDays = Math.Round(t.TotalDays);
+           double NrOfDays = Math.Round(t.TotalDays);
 
             txtNoOfDays.Text = NrOfDays.ToString();
             NrOfDays = Convert.ToDouble(txtRate.Text) * NrOfDays;

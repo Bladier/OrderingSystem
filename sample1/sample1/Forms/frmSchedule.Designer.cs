@@ -34,6 +34,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnPrint = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // monCal
@@ -56,7 +57,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(94, 200);
+            this.btnOk.Location = new System.Drawing.Point(87, 201);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 1;
@@ -92,11 +93,22 @@
             this.columnHeader3.Text = "Status";
             this.columnHeader3.Width = 98;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(182, 201);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 23);
+            this.btnPrint.TabIndex = 3;
+            this.btnPrint.Text = "&Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // frmSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(814, 235);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.lvSchedule);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.monCal);
@@ -117,5 +129,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Button btnPrint;
     }
 }
