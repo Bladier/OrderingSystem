@@ -286,7 +286,22 @@ namespace sample1
 
             TimeSpan t = d2 - d1;
             double NrOfDays = Math.Round(t.TotalDays);
+        
+            /////////////////
+                TimeSpan TS = d2 - d1;
+                int hour = TS.Hours;
+                int mins = TS.Minutes;
 
+                if (hour <= 4)
+                {
+                    if (mins == 0)
+                    {
+                        NrOfDays = NrOfDays / 2;
+                    } 
+                }
+              
+         ////////////////////
+             
             txtNoOfDays.Text = NrOfDays.ToString();
             NrOfDays = Convert.ToDouble(txtRate.Text) * NrOfDays;
             lblTotal.Text = NrOfDays.ToString();
@@ -314,7 +329,15 @@ namespace sample1
                
                 lblBalance.Text = Convert.ToDouble(lblTotal.Text).ToString();
             }
-       
+
+            if (rbCash.Checked)
+            {
+                lblPaidAtleast.Text = "00.0";
+                txtPayment.Enabled = false;
+                lblBalance.Text = "00.0";
+                txtPayment.Text = "";
+
+            }
         }
 
         private void frmreservation2_Load(object sender, EventArgs e)
@@ -496,6 +519,18 @@ namespace sample1
 
             TimeSpan t = d2 - d1;
             double NrOfDays = Math.Round(t.TotalDays);
+
+            TimeSpan TS = d2 - d1;
+            int hour = TS.Hours;
+            int mins = TS.Minutes;
+
+            if (hour <= 4)
+            {
+                if (mins == 0)
+                {
+                    NrOfDays = NrOfDays / 2;
+                }
+            }
 
             txtNoOfDays.Text = NrOfDays.ToString();
             txtRate.Text = tr.Rate.ToString();

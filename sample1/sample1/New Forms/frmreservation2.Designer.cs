@@ -485,6 +485,7 @@
             this.numExtend.Name = "numExtend";
             this.numExtend.Size = new System.Drawing.Size(41, 20);
             this.numExtend.TabIndex = 26;
+            this.numExtend.Visible = false;
             this.numExtend.ValueChanged += new System.EventHandler(this.numExtend_ValueChanged);
             // 
             // frmreservation2
