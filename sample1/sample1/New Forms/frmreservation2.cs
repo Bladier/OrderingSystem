@@ -286,19 +286,34 @@ namespace sample1
 
             TimeSpan t = d2 - d1;
             double NrOfDays = Math.Round(t.TotalDays);
-        
-            /////////////////
-                TimeSpan TS = d2 - d1;
-                int hour = TS.Hours;
-                int mins = TS.Minutes;
 
-                if (hour <= 4)
+            if (NrOfDays >= 2)
+            {
+                NrOfDays = NrOfDays - 1;
+
+                if (d2.ToString("tt") == "AM")
                 {
-                    if (mins == 0)
-                    {
-                        NrOfDays = NrOfDays / 2;
-                    } 
+                    NrOfDays = NrOfDays + 0.5;
                 }
+                else
+                {
+                    NrOfDays = NrOfDays + 1;
+                }
+
+            }
+
+            /////////////////
+                //TimeSpan TS = d2 - d1;
+                //int hour = TS.Hours;
+                //int mins = TS.Minutes;
+
+                //if (hour <= 4)
+                //{
+                //    if (mins == 0)
+                //    {
+                //        NrOfDays = NrOfDays / 2;
+                //    } 
+                //}
               
          ////////////////////
              
