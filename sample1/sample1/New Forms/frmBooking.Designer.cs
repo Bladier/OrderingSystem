@@ -173,7 +173,7 @@
             this.lblPaidAtleast.Name = "lblPaidAtleast";
             this.lblPaidAtleast.Size = new System.Drawing.Size(28, 13);
             this.lblPaidAtleast.TabIndex = 18;
-            this.lblPaidAtleast.Text = "00.0";
+            this.lblPaidAtleast.Text = "0.00";
             // 
             // lblBalance
             // 
@@ -182,7 +182,7 @@
             this.lblBalance.Name = "lblBalance";
             this.lblBalance.Size = new System.Drawing.Size(28, 13);
             this.lblBalance.TabIndex = 23;
-            this.lblBalance.Text = "00.0";
+            this.lblBalance.Text = "0.00";
             // 
             // label13
             // 
@@ -421,7 +421,7 @@
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(28, 13);
             this.lblTotal.TabIndex = 21;
-            this.lblTotal.Text = "00.0";
+            this.lblTotal.Text = "0.00";
             // 
             // label10
             // 

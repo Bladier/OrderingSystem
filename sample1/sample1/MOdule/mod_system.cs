@@ -216,6 +216,25 @@ namespace sample1
             Database.SaveEntry(ds, false);
         }
 
+        public static void ShowForm(Form frm, Form frm1)
+        {
+            Int32 L = default(Int32);
+            Int32 M = default(Int32);
+            L = (frm1.Width - frm.Width) / 2;
+            M = (frm1.ClientSize.Height - frm.Height) / 2;
+
+            frm.MdiParent = frm1;
+            if (frm.IsHandleCreated == true)
+            {
+                frm.BringToFront();
+            }
+            else
+            {
+                frm.Show();
+                frm.SetBounds(L, M, frm.Width, frm.Height);
+            }
+        }
+
         public static void LoadForm(Form frm)
         {
       
@@ -241,6 +260,7 @@ namespace sample1
 
             if (Application.OpenForms["frmMain"] != null)
             {
+               
                 (Application.OpenForms["frmMain"] as frmMain).panel1.Controls.Clear();
 
                 frm.TopLevel = false;

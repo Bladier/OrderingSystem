@@ -44,7 +44,7 @@
             // btnView
             // 
             this.btnView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnView.Location = new System.Drawing.Point(85, 359);
+            this.btnView.Location = new System.Drawing.Point(101, 397);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(64, 22);
             this.btnView.TabIndex = 2;
@@ -55,7 +55,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(708, 359);
+            this.btnCancel.Location = new System.Drawing.Point(724, 397);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(64, 22);
             this.btnCancel.TabIndex = 5;
@@ -66,7 +66,7 @@
             // btnadd
             // 
             this.btnadd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnadd.Location = new System.Drawing.Point(14, 359);
+            this.btnadd.Location = new System.Drawing.Point(14, 397);
             this.btnadd.Name = "btnadd";
             this.btnadd.Size = new System.Drawing.Size(64, 22);
             this.btnadd.TabIndex = 4;
@@ -80,7 +80,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtsearch.Location = new System.Drawing.Point(11, 15);
             this.txtsearch.Name = "txtsearch";
-            this.txtsearch.Size = new System.Drawing.Size(695, 20);
+            this.txtsearch.Size = new System.Drawing.Size(711, 20);
             this.txtsearch.TabIndex = 0;
             this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged);
             this.txtsearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtsearch_KeyPress);
@@ -88,7 +88,7 @@
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(711, 12);
+            this.btnSearch.Location = new System.Drawing.Point(727, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(68, 23);
             this.btnSearch.TabIndex = 1;
@@ -110,7 +110,7 @@
             this.lvPassList.GridLines = true;
             this.lvPassList.Location = new System.Drawing.Point(11, 40);
             this.lvPassList.Name = "lvPassList";
-            this.lvPassList.Size = new System.Drawing.Size(770, 301);
+            this.lvPassList.Size = new System.Drawing.Size(786, 339);
             this.lvPassList.TabIndex = 6;
             this.lvPassList.UseCompatibleStateImageBehavior = false;
             this.lvPassList.View = System.Windows.Forms.View.Details;
@@ -141,7 +141,7 @@
             // btnSelect
             // 
             this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelect.Location = new System.Drawing.Point(638, 360);
+            this.btnSelect.Location = new System.Drawing.Point(654, 398);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(64, 22);
             this.btnSelect.TabIndex = 7;
@@ -153,6 +153,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(791, 392);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.lvPassList);
@@ -162,6 +163,7 @@
             this.Controls.Add(this.txtsearch);
             this.Controls.Add(this.btnSearch);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximumSize = new System.Drawing.Size(807, 430);
             this.MinimumSize = new System.Drawing.Size(807, 430);
             this.Name = "frmCustomerList";
