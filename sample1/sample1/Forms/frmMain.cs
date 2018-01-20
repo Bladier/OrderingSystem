@@ -230,5 +230,22 @@ namespace sample1
             }
            
         }
+
+        private void venueManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!dateSet)
+            {
+                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+            if (Application.OpenForms["frmreservation2"] != null)
+            {
+
+            }
+            else
+            {
+                frmVenueManagement frm = new frmVenueManagement();
+                mod_system.LoadForm(frm);
+            }
+        }
     }
 }

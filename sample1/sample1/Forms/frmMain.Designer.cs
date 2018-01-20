@@ -52,6 +52,7 @@
             this.tmpTimer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsDateset = new System.Windows.Forms.ToolStripStatusLabel();
+            this.venueManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -75,7 +76,8 @@
             this.exitToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem1,
             this.openDateToolStripMenuItem,
-            this.userManagementToolStripMenuItem});
+            this.userManagementToolStripMenuItem,
+            this.venueManagementToolStripMenuItem});
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.exitToolStripMenuItem.Text = "&File";
@@ -83,21 +85,21 @@
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(171, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
             this.exitToolStripMenuItem1.Text = "&Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
             // openDateToolStripMenuItem
             // 
             this.openDateToolStripMenuItem.Name = "openDateToolStripMenuItem";
-            this.openDateToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.openDateToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.openDateToolStripMenuItem.Text = "&Open Date";
             this.openDateToolStripMenuItem.Click += new System.EventHandler(this.openDateToolStripMenuItem_Click);
             // 
             // userManagementToolStripMenuItem
             // 
             this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.userManagementToolStripMenuItem.Text = "&User Management";
             this.userManagementToolStripMenuItem.Click += new System.EventHandler(this.userManagementToolStripMenuItem_Click);
             // 
@@ -240,6 +242,13 @@
             this.tsDateset.Size = new System.Drawing.Size(70, 17);
             this.tsDateset.Text = "Date not set";
             // 
+            // venueManagementToolStripMenuItem
+            // 
+            this.venueManagementToolStripMenuItem.Name = "venueManagementToolStripMenuItem";
+            this.venueManagementToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.venueManagementToolStripMenuItem.Text = "&Venue Management";
+            this.venueManagementToolStripMenuItem.Click += new System.EventHandler(this.venueManagementToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,5 +300,6 @@
         private System.Windows.Forms.ToolStripMenuItem dailySalesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem monthlySalesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userManagementToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem venueManagementToolStripMenuItem;
     }
 }
