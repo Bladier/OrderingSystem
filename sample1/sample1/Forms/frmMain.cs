@@ -26,6 +26,7 @@ namespace sample1
             toolStripButton4.Enabled = st;
             openDateToolStripMenuItem.Enabled = st;
             userManagementToolStripMenuItem.Enabled = st;
+            venueManagementToolStripMenuItem.Enabled = st;
 
             if (st)
             {

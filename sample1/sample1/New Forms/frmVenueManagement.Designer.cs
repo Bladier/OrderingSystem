@@ -154,8 +154,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lvvenue);
+            this.MaximizeBox = false;
             this.Name = "frmVenueManagement";
-            this.Text = "frmVenueManagement";
+            this.Text = "Venue Management";
             this.Load += new System.EventHandler(this.frmVenueManagement_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
