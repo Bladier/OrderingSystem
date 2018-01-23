@@ -95,6 +95,13 @@ namespace sample1
                }
 
            }
+           else
+           {
+               if (d2.ToString("tt") == "AM")
+               {
+                   NrOfDays = NrOfDays / 2;
+               }
+           }
                    
            
            /////////////////
