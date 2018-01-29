@@ -35,6 +35,7 @@
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.venueManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dailySalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.monthlySalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +53,7 @@
             this.tmpTimer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsDateset = new System.Windows.Forms.ToolStripStatusLabel();
-            this.venueManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.schedulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -103,11 +104,19 @@
             this.userManagementToolStripMenuItem.Text = "&User Management";
             this.userManagementToolStripMenuItem.Click += new System.EventHandler(this.userManagementToolStripMenuItem_Click);
             // 
+            // venueManagementToolStripMenuItem
+            // 
+            this.venueManagementToolStripMenuItem.Name = "venueManagementToolStripMenuItem";
+            this.venueManagementToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.venueManagementToolStripMenuItem.Text = "&Venue Management";
+            this.venueManagementToolStripMenuItem.Click += new System.EventHandler(this.venueManagementToolStripMenuItem_Click);
+            // 
             // reportsToolStripMenuItem
             // 
             this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dailySalesToolStripMenuItem,
-            this.monthlySalesToolStripMenuItem});
+            this.monthlySalesToolStripMenuItem,
+            this.schedulesToolStripMenuItem});
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.reportsToolStripMenuItem.Text = "&Reports";
@@ -115,14 +124,14 @@
             // dailySalesToolStripMenuItem
             // 
             this.dailySalesToolStripMenuItem.Name = "dailySalesToolStripMenuItem";
-            this.dailySalesToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.dailySalesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.dailySalesToolStripMenuItem.Text = "&Daily Sales";
             this.dailySalesToolStripMenuItem.Click += new System.EventHandler(this.dailySalesToolStripMenuItem_Click);
             // 
             // monthlySalesToolStripMenuItem
             // 
             this.monthlySalesToolStripMenuItem.Name = "monthlySalesToolStripMenuItem";
-            this.monthlySalesToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.monthlySalesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.monthlySalesToolStripMenuItem.Text = "&Monthly Sales";
             this.monthlySalesToolStripMenuItem.Click += new System.EventHandler(this.monthlySalesToolStripMenuItem_Click);
             // 
@@ -242,12 +251,12 @@
             this.tsDateset.Size = new System.Drawing.Size(70, 17);
             this.tsDateset.Text = "Date not set";
             // 
-            // venueManagementToolStripMenuItem
+            // schedulesToolStripMenuItem
             // 
-            this.venueManagementToolStripMenuItem.Name = "venueManagementToolStripMenuItem";
-            this.venueManagementToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.venueManagementToolStripMenuItem.Text = "&Venue Management";
-            this.venueManagementToolStripMenuItem.Click += new System.EventHandler(this.venueManagementToolStripMenuItem_Click);
+            this.schedulesToolStripMenuItem.Name = "schedulesToolStripMenuItem";
+            this.schedulesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.schedulesToolStripMenuItem.Text = "&Schedules";
+            this.schedulesToolStripMenuItem.Click += new System.EventHandler(this.schedulesToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -301,5 +310,6 @@
         private System.Windows.Forms.ToolStripMenuItem monthlySalesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userManagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem venueManagementToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem schedulesToolStripMenuItem;
     }
 }

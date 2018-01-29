@@ -12,6 +12,7 @@ namespace sample1
     public partial class frmQeuryDate : Form
     {
         internal bool isMonthly = false;
+        
         public frmQeuryDate()
         {
             InitializeComponent();

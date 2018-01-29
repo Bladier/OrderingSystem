@@ -248,5 +248,22 @@ namespace sample1
                 mod_system.LoadForm(frm);
             }
         }
+
+        private void schedulesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!dateSet)
+            {
+                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            }
+            if (Application.OpenForms["frmreservation2"] != null)
+            {
+
+            }
+            else
+            {
+                frmReport1 frm = new frmReport1();
+                mod_system.LoadForm(frm);
+            }
+        }
     }
 }

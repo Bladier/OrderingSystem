@@ -163,6 +163,12 @@
     <Compile Include="Report\frmReport.designer.cs">
       <DependentUpon>frmReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\frmReport1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmReport1.Designer.cs">
+      <DependentUpon>frmReport1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\Reporting.cs" />
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -220,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\frmReport.resx">
       <DependentUpon>frmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmReport1.resx">
+      <DependentUpon>frmReport1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rptReceipt.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
