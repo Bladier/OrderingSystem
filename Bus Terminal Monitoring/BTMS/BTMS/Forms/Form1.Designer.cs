@@ -115,7 +115,9 @@
             this.txtPinCode.Name = "txtPinCode";
             this.txtPinCode.Size = new System.Drawing.Size(211, 21);
             this.txtPinCode.TabIndex = 27;
+            this.txtPinCode.Text = "1234";
             this.txtPinCode.UseSystemPasswordChar = true;
+            this.txtPinCode.Visible = false;
             // 
             // label16
             // 
@@ -127,6 +129,7 @@
             this.label16.Size = new System.Drawing.Size(54, 15);
             this.label16.TabIndex = 26;
             this.label16.Text = "PinCode";
+            this.label16.Visible = false;
             // 
             // txtCardExpiration
             // 
