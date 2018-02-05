@@ -67,6 +67,12 @@
     <Compile Include="Class\QueueLines.cs" />
     <Compile Include="Class\Reporting.cs" />
     <Compile Include="Class\User.cs" />
+    <Compile Include="Form\frmAutorize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmAutorize.Designer.cs">
+      <DependentUpon>frmAutorize.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\frmClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,11 +97,35 @@
     <Compile Include="Form\frmCasher.Designer.cs">
       <DependentUpon>frmCasher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmOrderHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmOrderHistory.Designer.cs">
+      <DependentUpon>frmOrderHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\frmProductList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\frmProductList.Designer.cs">
       <DependentUpon>frmProductList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmSample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmSample.Designer.cs">
+      <DependentUpon>frmSample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmTransactionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmTransactionList.Designer.cs">
+      <DependentUpon>frmTransactionList.cs</DependentUpon>
     </Compile>
     <Compile Include="Module\Interface1.cs" />
     <Compile Include="Module\Database.cs" />
@@ -107,12 +137,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsReport.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Report\frmQeuryDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmQeuryDate.Designer.cs">
+      <DependentUpon>frmQeuryDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\frmReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Report\frmReport.Designer.cs">
       <DependentUpon>frmReport.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\frmAutorize.resx">
+      <DependentUpon>frmAutorize.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\frmClient.resx">
       <DependentUpon>frmClient.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,8 +164,20 @@
     <EmbeddedResource Include="Form\frmCasher.resx">
       <DependentUpon>frmCasher.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmOrderHistory.resx">
+      <DependentUpon>frmOrderHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\frmProductList.resx">
       <DependentUpon>frmProductList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmSample.resx">
+      <DependentUpon>frmSample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmTransactionList.resx">
+      <DependentUpon>frmTransactionList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -137,6 +188,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report\frmQeuryDate.resx">
+      <DependentUpon>frmQeuryDate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\frmReport.resx">
       <DependentUpon>frmReport.cs</DependentUpon>
     </EmbeddedResource>

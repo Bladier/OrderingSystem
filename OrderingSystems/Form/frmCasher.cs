@@ -108,9 +108,10 @@ namespace OrderingSystems
                 lv.SubItems.Add(ds1.Tables[0].Rows[0]["Price"].ToString());
                 lv.SubItems.Add(dr[3].ToString());
                 lv.SubItems.Add(dr[0].ToString());
-             
+
+                double calc = Convert.ToDouble(ds1.Tables[0].Rows[0]["Price"]) * Convert.ToDouble(dr[3].ToString());
                 lv.Tag = Convert.ToInt32(dr["ID"]);
-                Total_Amount += Convert.ToDouble(ds1.Tables[0].Rows[0]["Price"]);
+                Total_Amount += calc;
                 Application.DoEvents();
                 
             }
@@ -334,7 +335,7 @@ namespace OrderingSystems
 
             else
             {
-                string mysql = "SELECT * FROM customer_order WHERE QUEUEID = " + queueID + " and QIStatus =1";
+                string mysql = "SELECT * FROM customer_order WHERE menuID = " + queueID + " and QIStatus =1";
 
                 DataSet ds = null;
                 string fillData = "TBLQUEUE";
