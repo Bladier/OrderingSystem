@@ -241,30 +241,30 @@ namespace BTMS
                 return;
             }
 
-            bool isCardValid = false;
-            while (isCardValid == false)
-            {
-                string promptValue = ShowDialog("Enter Pin Code", "Confirmation");
+        //    bool isCardValid = false;
+        //    while (isCardValid == false)
+        //    {
+        //        string promptValue = ShowDialog("Enter Pin Code", "Confirmation");
 
-                if (promptValue == "") { isCardValid = false; }
-                if (promptValue.Length != 4)
-                {
-                    isCardValid = false;
-                    goto Gohere;
-                }
-                if (promptValue != pin)
-                {
-                    isCardValid = false;
-                    goto Gohere;
-                }
-                isCardValid = true;
-            }
-        Gohere:
-            if (!isCardValid)
-            {
-                MessageBox.Show("Invalid Pin.", "Confirmation failed.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+        //        if (promptValue == "") { isCardValid = false; }
+        //        if (promptValue.Length != 4)
+        //        {
+        //            isCardValid = false;
+        //            goto Gohere;
+        //        }
+        //        if (promptValue != pin)
+        //        {
+        //            isCardValid = false;
+        //            goto Gohere;
+        //        }
+        //        isCardValid = true;
+        //    }
+        //Gohere:
+        //    if (!isCardValid)
+        //    {
+        //        MessageBox.Show("Invalid Pin.", "Confirmation failed.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return;
+        //    }
 
             //Void status will be 0
             loadhistory lh = new loadhistory();
