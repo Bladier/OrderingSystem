@@ -192,11 +192,11 @@ namespace OrderingSystems
             lvOrderList.Items.Clear();
 
             string optPrint = tmpMain.GetValue("ORDERPRINT");
-            if (optPrint == "YES") 
-            {
+            //if (optPrint == "YES") 
+            //{
                 Reporting AutoPrint = new Reporting();
                 string printerName = tmpMain.GetValue("PrinterOrder");
-                if (canPrint(printerName)==false) {return ;}
+                //if (canPrint(printerName)==false) {return ;}
                 LocalReport report = new LocalReport();
                 String dsName = "dsOrderPrint";
 
@@ -228,17 +228,26 @@ namespace OrderingSystems
                 paperSize.Add("height", 2.5);
 
 
-                try
+                if (optPrint == "YES")
                 {
-                    AutoPrint.Export(report, paperSize);
-                    AutoPrint.m_currentPageIndex = 0;
-                    AutoPrint.Print(printerName);
+                    try
+                    {
+                        AutoPrint.Export(report, paperSize);
+                        AutoPrint.m_currentPageIndex = 0;
+                        AutoPrint.Print(printerName);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "PRINT FAILED");
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "PRINT FAILED");
+                    frmReport frm = new frmReport();
+                    frm.ReportInit(mysql, "dsOrderPrint", @"Report\rpt_OrderPrint.rdlc");
+                    frm.Show();
                 }
-            }
+
         }
 
         private bool canPrint(string printerName)

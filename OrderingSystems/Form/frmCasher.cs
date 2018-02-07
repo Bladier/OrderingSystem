@@ -496,6 +496,28 @@ namespace OrderingSystems
             this.Close();
         }
 
+        private void btnCancelTransaction_Click(object sender, EventArgs e)
+        {
+            if (LVQueue.SelectedItems.Count == 0) { return; }
+
+
+            DialogResult result = MessageBox.Show("Do you want to cancel this transaction?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            int i =Convert.ToInt32(LVQueue.SelectedItems[0].Tag);
+            Queue q = new Queue();
+            q.Set_Cancel(i);
+
+            MessageBox.Show("Transaction successfully cancelled", "Cancel",
+                             MessageBoxButtons.OK,
+                             MessageBoxIcon.Information);
+            ClearField();
+            frmCasher_Load(sender, e);
+        }
+
    
 
         /////////////////Break////////////////////

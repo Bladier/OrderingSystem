@@ -140,6 +140,15 @@ namespace OrderingSystems
             Database.SaveEntry(ds, false);
         }
 
+        public void Set_Cancel(int idx)
+        {
+            string mySql = "SELECT * FROM tblQueue Where id = " + idx;
+            DataSet ds = Database.LoadSQL(mySql, "tblQueue");
+
+            ds.Tables["tblQueue"].Rows[0]["Status"] = "C";
+            Database.SaveEntry(ds, false);
+        }
+
         internal void Void_Oueue(int idx)
         {
             string mySql = "SELECT * FROM tblQueue Where ID = " + idx;
