@@ -46,57 +46,57 @@ namespace sample1
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            if (!dateSet)
-            {
-                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-            }
-            if (Application.OpenForms["frmreservation2"] != null)
-            {
+            //if (!dateSet)
+            //{
+            //    MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            //}
+            //if (Application.OpenForms["frmreservation2"] != null)
+            //{
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 frmreservation2 frm = new frmreservation2();
                 mod_system.LoadForm(frm);
-            }
+         //   }
            
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            if (!dateSet)
-            {
-                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-            }
-            if (Application.OpenForms["frmBooking"] != null)
-            {
+            //if (!dateSet)
+            //{
+            //    MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            //}
+            //if (Application.OpenForms["frmBooking"] != null)
+            //{
 
-            }
+            //}
 
 
-            else
-            {
+            //else
+            //{
                 frmBooking frm = new frmBooking();
                 mod_system.LoadForm(frm);
-            }
+           // }
 
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            if (!dateSet)
-            {
-                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-            }
-            if (Application.OpenForms["frmTransactionList"] != null)
-            {
+            //if (!dateSet)
+            //{
+            //    MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            //}
+            //if (Application.OpenForms["frmTransactionList"] != null)
+            //{
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 frmTransactionList frm = new frmTransactionList();
                 mod_system.LoadForm(frm);
-            }
+          //  }
           
         }
 
@@ -110,20 +110,20 @@ namespace sample1
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-            if (!dateSet)
-            {
-                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-            }
-            if (Application.OpenForms["frmCustomerList"] != null)
-            {
+            //if (!dateSet)
+            //{
+            //    MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            //}
+            //if (Application.OpenForms["frmCustomerList"] != null)
+            //{
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 frmCustomerList frm = new frmCustomerList();
                 frm.isFromCustomerForm = true;
                 mod_system.LoadForm(frm);
-            }
+          //  }
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -160,34 +160,34 @@ namespace sample1
 
         private void tmpTimer_Tick(object sender, EventArgs e)
         {
-            if (dateSet)
-            {
-                tsDateset.Text = mod_system.CurrentDate.ToShortDateString() + " " + DateTime.Now.ToString("T");
-                openDateToolStripMenuItem.Text = "&Close Date";
-                mod_system.CheckExpiry();
-            }
-            else
-            {
-                tsDateset.Text = "Date not set";
-                openDateToolStripMenuItem.Text = "&Open Date";
-            }
+            //if (dateSet)
+            //{
+            //    tsDateset.Text = mod_system.CurrentDate.ToShortDateString() + " " + DateTime.Now.ToString("T");
+            //    openDateToolStripMenuItem.Text = "&Close Date";
+            //    mod_system.CheckExpiry();
+            //}
+            //else
+            //{
+            //    tsDateset.Text = "Date not set";
+            //    openDateToolStripMenuItem.Text = "&Open Date";
+            //}
         }
 
         private void dailySalesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!dateSet)
-            {
-                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-            }
-            if (Application.OpenForms["frmQeuryDate"] != null)
-            {
+            //if (!dateSet)
+            //{
+            //    MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            //}
+            //if (Application.OpenForms["frmQeuryDate"] != null)
+            //{
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 frmQeuryDate frm = new frmQeuryDate();
                 mod_system.LoadForm(frm);
-            }
+           // }
         }
 
         internal void CheckDateStatus()
@@ -198,72 +198,72 @@ namespace sample1
         private void monthlySalesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
-            if (!dateSet)
-            {
-                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-            }
-            if (Application.OpenForms["frmQeuryDate"] != null)
-            {
-                (Application.OpenForms["frmQeuryDate"] as frmQeuryDate).isMonthly = true;
-            }
-            else
-            {
+            //if (!dateSet)
+            //{
+            //    MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            //}
+            //if (Application.OpenForms["frmQeuryDate"] != null)
+            //{
+            //    (Application.OpenForms["frmQeuryDate"] as frmQeuryDate).isMonthly = true;
+            //}
+            //else
+            //{
                 frmQeuryDate frm = new frmQeuryDate();
                 frm.isMonthly = true;
                 mod_system.LoadForm(frm);
-            }
+           // }
         }
 
         private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!dateSet)
-            {
-                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-            }
-            if (Application.OpenForms["frmreservation2"] != null)
-            {
+        //    if (!dateSet)
+        //    {
+        //        MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+        //    }
+        //    if (Application.OpenForms["frmreservation2"] != null)
+        //    {
 
-            }
-            else
-            {
+        //    }
+        //    else
+        //    {
                 frmUserManagement frm = new frmUserManagement();
                 mod_system.LoadForm(frm);
-            }
+           // }
            
         }
 
         private void venueManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!dateSet)
-            {
-                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-            }
-            if (Application.OpenForms["frmreservation2"] != null)
-            {
+        //    if (!dateSet)
+        //    {
+        //        MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+        //    }
+        //    if (Application.OpenForms["frmreservation2"] != null)
+        //    {
 
-            }
-            else
-            {
+        //    }
+        //    else
+        //    {
                 frmVenueManagement frm = new frmVenueManagement();
                 mod_system.LoadForm(frm);
-            }
+           // }
         }
 
         private void schedulesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!dateSet)
-            {
-                MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-            }
-            if (Application.OpenForms["frmreservation2"] != null)
-            {
+            //if (!dateSet)
+            //{
+            //    MessageBox.Show("Date was not set yet.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            //}
+            //if (Application.OpenForms["frmreservation2"] != null)
+            //{
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 frmReport1 frm = new frmReport1();
                 mod_system.LoadForm(frm);
-            }
+           // }
         }
     }
 }

@@ -39,6 +39,7 @@
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dailySalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.monthlySalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.schedulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -53,7 +54,6 @@
             this.tmpTimer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsDateset = new System.Windows.Forms.ToolStripStatusLabel();
-            this.schedulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -95,6 +95,7 @@
             this.openDateToolStripMenuItem.Name = "openDateToolStripMenuItem";
             this.openDateToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.openDateToolStripMenuItem.Text = "&Open Date";
+            this.openDateToolStripMenuItem.Visible = false;
             this.openDateToolStripMenuItem.Click += new System.EventHandler(this.openDateToolStripMenuItem_Click);
             // 
             // userManagementToolStripMenuItem
@@ -124,16 +125,23 @@
             // dailySalesToolStripMenuItem
             // 
             this.dailySalesToolStripMenuItem.Name = "dailySalesToolStripMenuItem";
-            this.dailySalesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dailySalesToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.dailySalesToolStripMenuItem.Text = "&Daily Sales";
             this.dailySalesToolStripMenuItem.Click += new System.EventHandler(this.dailySalesToolStripMenuItem_Click);
             // 
             // monthlySalesToolStripMenuItem
             // 
             this.monthlySalesToolStripMenuItem.Name = "monthlySalesToolStripMenuItem";
-            this.monthlySalesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.monthlySalesToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.monthlySalesToolStripMenuItem.Text = "&Monthly Sales";
             this.monthlySalesToolStripMenuItem.Click += new System.EventHandler(this.monthlySalesToolStripMenuItem_Click);
+            // 
+            // schedulesToolStripMenuItem
+            // 
+            this.schedulesToolStripMenuItem.Name = "schedulesToolStripMenuItem";
+            this.schedulesToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.schedulesToolStripMenuItem.Text = "&Schedules";
+            this.schedulesToolStripMenuItem.Click += new System.EventHandler(this.schedulesToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -250,13 +258,6 @@
             this.tsDateset.Name = "tsDateset";
             this.tsDateset.Size = new System.Drawing.Size(70, 17);
             this.tsDateset.Text = "Date not set";
-            // 
-            // schedulesToolStripMenuItem
-            // 
-            this.schedulesToolStripMenuItem.Name = "schedulesToolStripMenuItem";
-            this.schedulesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.schedulesToolStripMenuItem.Text = "&Schedules";
-            this.schedulesToolStripMenuItem.Click += new System.EventHandler(this.schedulesToolStripMenuItem_Click);
             // 
             // frmMain
             // 

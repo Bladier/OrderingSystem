@@ -240,7 +240,8 @@ namespace sample1
             transaction res = new transaction();
             res.venueID = venudID;
             res.CusID = custID;
-            res.Transdate = Convert.ToDateTime(mod_system.CurrentDate.ToShortDateString());
+            res.Transdate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+           // res.Transdate = Convert.ToDateTime(mod_system.CurrentDate.ToShortDateString());
             res.StartDate = Convert.ToDateTime(dtStartDate.Text);
             res.EndDate = Convert.ToDateTime(dtEndDate.Text);
             res.Status = "Booked";

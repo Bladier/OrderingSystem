@@ -56,7 +56,8 @@ namespace sample1
             transaction trans = new transaction();
             trans.venueID = venudID;
             trans.CusID = custID;
-            trans.Transdate = Convert.ToDateTime(mod_system.CurrentDate.ToShortDateString());
+            trans.Transdate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            //trans.Transdate = Convert.ToDateTime(mod_system.CurrentDate.ToShortDateString());
             trans.StartDate = Convert.ToDateTime(dtStartDate.Text);
             trans.EndDate = Convert.ToDateTime(dtEndDate.Text);
             trans.Status = "Reserved";
@@ -75,7 +76,8 @@ namespace sample1
             reservation res = new reservation();
             res.venueID = venudID;
             res.CusID = custID;
-            res.Transdate = Convert.ToDateTime(mod_system.CurrentDate.ToShortDateString());
+            res.Transdate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+           // res.Transdate = Convert.ToDateTime(mod_system.CurrentDate.ToShortDateString());
             res.StartDate = Convert.ToDateTime(dtStartDate.Text);
             res.EndDate = Convert.ToDateTime(dtEndDate.Text);
 
