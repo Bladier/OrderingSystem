@@ -95,5 +95,19 @@ namespace OrderingSystems
             frmQeuryDate frm = new frmQeuryDate();
             frm.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (mod_system.ORuser.Userrule == "Admin")
+            {
+                frmUserManagement frm = new frmUserManagement();
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("You don't have access in this module!", "Verification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+        }
     }
 }

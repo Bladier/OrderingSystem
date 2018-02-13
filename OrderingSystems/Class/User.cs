@@ -118,7 +118,7 @@ namespace OrderingSystems
         {
             string mySql = "SELECT * FROM " + " tblUser";
             if (!isNew)
-                mySql += " WHERE UserID = " + _id;
+                mySql += " WHERE ID = " + _id;
 
             DataSet ds = Database.LoadSQL(mySql, "tblUser");
             if (isNew)
@@ -132,6 +132,7 @@ namespace OrderingSystems
                 _with3["Middlename"] = _Midname;
                 _with3["Lastname"] = _Lastname;
                 _with3["UserType"] = _UserRule;
+                _with3["status"] = 1;
                 ds.Tables["tblUser"].Rows.Add(dsNewRow);
             }
             else
@@ -193,6 +194,41 @@ namespace OrderingSystems
             Database.SaveEntry(ds, false);
             // End If
         }
+
+
+        public bool IsUserNameExists(string u)
+        {
+            string mySql = "SELECT * FROM tblUser WHERE username = '" + u + "'";
+            DataSet ds = Database.LoadSQL(mySql, "tbluser");
+
+            if (ds.Tables[0].Rows.Count >0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool ifUserIxists(string f,string m, string l)
+        {
+            string mySql = "SELECT * FROM tblUser WHERE Firstname = '" + f + "' and lastname ='" + l + "'";
+
+            if (m != "")
+            {
+                mysql += " and middlename ='" + m +"'";
+            }
+        
+            DataSet ds = Database.LoadSQL(mySql, "tbluser");
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+      
         #endregion
         }
     }
