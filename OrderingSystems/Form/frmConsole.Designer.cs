@@ -62,11 +62,13 @@
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnSavePrinter = new System.Windows.Forms.Button();
-            this.cboOrderNum = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.cboReciept = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cboOrderNum = new System.Windows.Forms.ComboBox();
+            this.btnSavePrinter = new System.Windows.Forms.Button();
+            this.txtQty = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -86,6 +88,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.txtQty);
+            this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.cboStatusMenu);
             this.tabPage1.Controls.Add(this.btnSaveMenu);
             this.tabPage1.Controls.Add(this.label5);
@@ -225,9 +229,9 @@
             this.columnHeader6});
             this.lvMenu.FullRowSelect = true;
             this.lvMenu.GridLines = true;
-            this.lvMenu.Location = new System.Drawing.Point(6, 107);
+            this.lvMenu.Location = new System.Drawing.Point(6, 148);
             this.lvMenu.Name = "lvMenu";
-            this.lvMenu.Size = new System.Drawing.Size(809, 286);
+            this.lvMenu.Size = new System.Drawing.Size(809, 245);
             this.lvMenu.TabIndex = 0;
             this.lvMenu.UseCompatibleStateImageBehavior = false;
             this.lvMenu.View = System.Windows.Forms.View.Details;
@@ -399,36 +403,15 @@
             this.tabPage3.Text = "Printer";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // btnSavePrinter
+            // cboReciept
             // 
-            this.btnSavePrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSavePrinter.Location = new System.Drawing.Point(411, 54);
-            this.btnSavePrinter.Name = "btnSavePrinter";
-            this.btnSavePrinter.Size = new System.Drawing.Size(124, 53);
-            this.btnSavePrinter.TabIndex = 0;
-            this.btnSavePrinter.Text = "&Save";
-            this.btnSavePrinter.UseVisualStyleBackColor = true;
-            this.btnSavePrinter.Click += new System.EventHandler(this.btnSavePrinter_Click);
-            // 
-            // cboOrderNum
-            // 
-            this.cboOrderNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboOrderNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboOrderNum.FormattingEnabled = true;
-            this.cboOrderNum.Location = new System.Drawing.Point(145, 32);
-            this.cboOrderNum.Name = "cboOrderNum";
-            this.cboOrderNum.Size = new System.Drawing.Size(218, 28);
-            this.cboOrderNum.TabIndex = 1;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(6, 35);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(109, 20);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Order Number";
+            this.cboReciept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboReciept.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboReciept.FormattingEnabled = true;
+            this.cboReciept.Location = new System.Drawing.Point(145, 99);
+            this.cboReciept.Name = "cboReciept";
+            this.cboReciept.Size = new System.Drawing.Size(218, 28);
+            this.cboReciept.TabIndex = 4;
             // 
             // label10
             // 
@@ -440,15 +423,54 @@
             this.label10.TabIndex = 3;
             this.label10.Text = "Reciept";
             // 
-            // cboReciept
+            // label9
             // 
-            this.cboReciept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboReciept.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboReciept.FormattingEnabled = true;
-            this.cboReciept.Location = new System.Drawing.Point(145, 99);
-            this.cboReciept.Name = "cboReciept";
-            this.cboReciept.Size = new System.Drawing.Size(218, 28);
-            this.cboReciept.TabIndex = 4;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(6, 35);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(109, 20);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Order Number";
+            // 
+            // cboOrderNum
+            // 
+            this.cboOrderNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboOrderNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboOrderNum.FormattingEnabled = true;
+            this.cboOrderNum.Location = new System.Drawing.Point(145, 32);
+            this.cboOrderNum.Name = "cboOrderNum";
+            this.cboOrderNum.Size = new System.Drawing.Size(218, 28);
+            this.cboOrderNum.TabIndex = 1;
+            // 
+            // btnSavePrinter
+            // 
+            this.btnSavePrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSavePrinter.Location = new System.Drawing.Point(411, 54);
+            this.btnSavePrinter.Name = "btnSavePrinter";
+            this.btnSavePrinter.Size = new System.Drawing.Size(124, 53);
+            this.btnSavePrinter.TabIndex = 0;
+            this.btnSavePrinter.Text = "&Save";
+            this.btnSavePrinter.UseVisualStyleBackColor = true;
+            this.btnSavePrinter.Click += new System.EventHandler(this.btnSavePrinter_Click);
+            // 
+            // txtQty
+            // 
+            this.txtQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQty.Location = new System.Drawing.Point(107, 94);
+            this.txtQty.Name = "txtQty";
+            this.txtQty.Size = new System.Drawing.Size(83, 26);
+            this.txtQty.TabIndex = 15;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(6, 100);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(68, 20);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "Quantity";
             // 
             // frmConsole
             // 
@@ -511,5 +533,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cboOrderNum;
         private System.Windows.Forms.Button btnSavePrinter;
+        private System.Windows.Forms.TextBox txtQty;
+        private System.Windows.Forms.Label label11;
     }
 }

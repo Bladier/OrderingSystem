@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Microsoft.VisualBasic;
+using Microsoft.Reporting.WinForms;
 
 namespace OrderingSystems
 {
@@ -57,6 +67,13 @@ namespace OrderingSystems
             get { return _qty; }
             set { _qty = value; }
         }
+
+        private int _PQTY;
+        public virtual int PQTY
+        {
+            get { return _PQTY; }
+            set { _PQTY = value; }
+        }
         #endregion
 
         #region Procedures
@@ -71,6 +88,31 @@ namespace OrderingSystems
             }
         }
 
+        public bool Hasqty(int inputQTY)
+        {
+            string mysql = "Select * From tblMenu Where ID = " + _id;
+            DataSet ds = Database.LoadSQL(mysql, "tblMenu");
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                int q = Convert.ToInt32(ds.Tables[0].Rows[0]["QTY"]);
+
+                if (q == 0)
+                {
+                    MessageBox.Show("Not enough stocks.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+
+                if (q < inputQTY)
+                {
+                    MessageBox.Show("Not enough stocks.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+                return true;
+            }
+            return true;
+        }
+
         public void LoadbyRows(DataRow dr)
         {
             _id = Convert.ToInt32(dr["ID"]);
@@ -79,6 +121,8 @@ namespace OrderingSystems
             _menuSize = dr["MenuSize"].ToString();
             _price = Convert.ToDouble(dr["Price"]);
             _status = dr["Status"].ToString();
+            _price = Convert.ToInt32(dr["qty"]);
+           
 
         }
 
@@ -98,9 +142,9 @@ namespace OrderingSystems
                 with["MenuSize"] = _menuSize;
                 with["Price"] = _price;
                 with["Status"] = _status;
+                with["qty"] = _PQTY;
                 ds.Tables[0].Rows.Add(dsNewRow);
                 Database.SaveEntry(ds, true);
-
             }
             else
             {
@@ -110,9 +154,32 @@ namespace OrderingSystems
                 with["MenuSize"] = _menuSize;
                 with["Price"] = _price;
                 with["Status"] = _status;
+
+                int _q = Convert.ToInt32(ds.Tables[0].Rows[0]["qty"]);
+
+                _q = _q + _PQTY;
+                with["qty"] = _q;
                 Database.SaveEntry(ds, false);
             }
         }
+
+            public void deduct(int inputQTY,int idx)
+            {
+                string mysql = "Select * From tblMenu Where ID = " + idx;
+                DataSet ds = Database.LoadSQL(mysql, "tblMenu");
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    int q = Convert.ToInt32(ds.Tables[0].Rows[0]["qty"]);
+
+                    q = q - inputQTY;
+                    var with = ds.Tables[0].Rows[0];
+                    with["qty"] = q;
+                    Database.SaveEntry(ds, false);
+
+                }
+
+            }
 
         #endregion
     }

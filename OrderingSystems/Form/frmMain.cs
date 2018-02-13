@@ -74,12 +74,20 @@ namespace OrderingSystems
             {
                 return;
             }
-            if (Application.OpenForms["frmLogin"] != null)
+            else
             {
-                (Application.OpenForms["frmLogin"] as frmLogin).Show();
-                mod_system.ORuser = null;
-                this.Close();
+                frmAutorize frm = new frmAutorize();
+                frm.isLogout = true;
+                frm.ShowDialog();
+                //if (Application.OpenForms["frmLogin"] != null)
+                //{
+                //    (Application.OpenForms["frmLogin"] as frmLogin).Show();
+                //    mod_system.ORuser = null;
+                //    this.Close();
+                //}
             }
+
+    
         }
 
         private void btnReport_Click(object sender, EventArgs e)

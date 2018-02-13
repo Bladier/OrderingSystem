@@ -14,6 +14,7 @@ namespace OrderingSystems
 {
     public partial class frmAutorize : Form
     {
+        public  bool isLogout = false;
         public frmAutorize()
         {
             InitializeComponent();
@@ -54,15 +55,34 @@ namespace OrderingSystems
                 return;
             }
 
-            if (u.Userrule != "Admin") 
+            if (!isLogout)
             {
-                Interaction.MsgBox("Your not authorized in this module!", MsgBoxStyle.Critical);
-                return; 
+                if (u.Userrule != "Admin")
+                {
+                    Interaction.MsgBox("Your not authorized in this module!", MsgBoxStyle.Critical);
+                    return;
+                }
+                else
+                {
+                    frmOrderHistory frm = new frmOrderHistory();
+                    frm.Show();
+                    this.Close();
+                    return;
+                }
+            }
+            if (Application.OpenForms["frmLogin"] != null)
+            {
+                (Application.OpenForms["frmLogin"] as frmLogin).Show();
+                mod_system.ORuser = null;
+                if (Application.OpenForms["frmMain"] != null)
+                {
+                    (Application.OpenForms["frmMain"] as frmMain).Close();
+                    mod_system.ORuser = null;
+                }
+
+                this.Close();
             }
 
-            frmOrderHistory frm = new frmOrderHistory();
-            frm.Show();
-            this.Close();
         }
     }
 }

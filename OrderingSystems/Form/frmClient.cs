@@ -135,9 +135,14 @@ namespace OrderingSystems
            
             MenuItem tmpMenu = new MenuItem();
             tmpMenu.ID = idx;
-            tmpMenu.LoadMenuItem();
-            tmpMenu.Qty = Convert.ToInt32(tmpQty);
-            AddItemOrder(tmpMenu);
+
+            if (tmpMenu.Hasqty(Convert.ToInt32(tmpQty)))
+            {
+                tmpMenu.LoadMenuItem();
+                tmpMenu.Qty = Convert.ToInt32(tmpQty);
+                AddItemOrder(tmpMenu);
+            }
+
         }
 
         private void btnClearOrder_Click(object sender, EventArgs e)
@@ -180,6 +185,9 @@ namespace OrderingSystems
                 tmpLines.Price = Convert.ToDouble(lv.SubItems[3].Text.ToString());
                 tmpLines.Status = true;
                 tmpLines.SaveInfo();
+
+                MenuItem mi = new MenuItem();
+                mi.deduct(Convert.ToInt32(lv.SubItems[4].Text), tmpLines.MenuID);
 
             }
             MessageBox.Show("Order Post", "Information");

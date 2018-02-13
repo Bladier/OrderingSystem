@@ -94,7 +94,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAutorize";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Admin";
+            this.Text = "Autorization";
             this.Load += new System.EventHandler(this.frmAutorize_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

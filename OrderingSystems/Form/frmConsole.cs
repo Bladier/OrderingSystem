@@ -136,6 +136,16 @@ namespace OrderingSystems
                 {
                     tmpMenu.Status = "0";
                 }
+
+                if (txtQty.Text == "")
+                {
+                    tmpMenu.PQTY = 0;
+                }
+                else
+                {
+                    tmpMenu.PQTY = Convert.ToInt32(txtQty.Text);
+                }
+             
                 tmpMenu.SaveMenu();
             }
             else
@@ -147,6 +157,16 @@ namespace OrderingSystems
                 tmpMenu.MenuType = txtName.Text;
                 tmpMenu.MenuSize = txtSize.Text;
                 tmpMenu.Price = Convert.ToDouble(txtPrice.Text);
+
+                if (txtQty.Text == "")
+                {
+                    tmpMenu.PQTY = 0;
+                }
+                else
+                {
+                    tmpMenu.PQTY = Convert.ToInt32(txtQty.Text);
+                }
+
                 if (cboStatusMenu.Text == "Active")
                 {
                     tmpMenu.Status = "1";
@@ -159,7 +179,18 @@ namespace OrderingSystems
             }
 
             MessageBox.Show("Data Save");
+            clearfi();
             LoadMenu();
+        }
+
+        private void clearfi()
+        {
+            cboCategory.SelectedItem = null;
+            txtName.Clear();
+            txtSize.Clear();
+            txtPrice.Clear();
+            cboStatusMenu.SelectedItem = null;
+            txtQty.Clear();
         }
 
         private bool isValidMenu()
