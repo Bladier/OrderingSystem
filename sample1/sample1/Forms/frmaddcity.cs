@@ -58,6 +58,8 @@ namespace sample1
         {
             if (cboCity.Text == "") { return; }
             loadbyrowCity();
+            btnSave.Text = "&Modify";
+            disabled(false);
 
         }
 
@@ -93,6 +95,104 @@ namespace sample1
 
             txtbarangay.Clear();
             btnadd.Text = "&+";
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (btnSave.Text == "&Modify")
+            {
+                btnSave.Text = "&Update";
+                disabled(true);
+                return;
+            }
+            if (btnSave.Text == "&Save")
+            {
+                savecity();
+            }
+            else
+            {
+                updates();
+            }
+
+            clearfields();
+        }
+
+        private void savecity()
+        {
+            if (cboCity.Text == "") { cboCity.Focus(); return; }
+            if (lvBarangay.Items.Count == 0) { MessageBox.Show("No barangay to save?", "Error", MessageBoxButtons.OK); return; }
+
+            DialogResult result = MessageBox.Show("Do you want to save this city?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            addcitys ac = new addcitys();
+            ac.city = cboCity.Text;
+            ac.savecity();
+
+            int i = ac.getlastCIty();
+
+            foreach (ListViewItem lv in lvBarangay.Items)
+            {
+                barangays b = new barangays();
+                b.barangay = lv.Text;
+                b.cityID = i;
+                b.savebarangay();
+            }
+         
+            MessageBox.Show("Successfully saved?", "Information", MessageBoxButtons.OK);
+            clearfields();
+        }
+
+        private void updates()
+        {
+            if (cboCity.Text == "") { cboCity.Focus(); return; }
+            if (lvBarangay.Items.Count == 0) { MessageBox.Show("No barangay to update?", "Error", MessageBoxButtons.OK); return; }
+
+            DialogResult result = MessageBox.Show("Do you want to update this city?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            addcitys ac = new addcitys();
+            ac.ID = idx;
+            ac.city = cboCity.Text;
+            ac.updatecity();
+
+
+            foreach (ListViewItem lv in lvBarangay.Items)
+            {
+                barangays b = new barangays();
+                b.ID =Convert.ToInt32(lv.Tag);
+                b.barangay = lv.Text;
+                b.cityID = idx;
+                b.updateBarangay();
+            }
+            MessageBox.Show("Successfully updated?", "Information", MessageBoxButtons.OK);
+            clearfields();
+        }
+
+
+        private void clearfields()
+        {
+            txtbarangay.Text = "";
+            lvBarangay.Items.Clear();
+            cboCity.SelectedItem = null;
+            btnSave.Text = "&Save";
+            btnadd.Text = "&+";
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            clearfields();
+        }
+
+        private void disabled(bool st)
+        {
+            lvBarangay.Enabled = st;
+            txtbarangay.Enabled = st;
         }
     }
 }

@@ -115,6 +115,13 @@ namespace sample1
             get { return _mod; }
             set { _mod = value; }
         }
+
+        private string _comments;
+        public string comments
+        {
+            get { return _comments; }
+            set { _comments = value; }
+        }
         #endregion
 
         #region "Functions
@@ -156,6 +163,7 @@ namespace sample1
             _with2["Rate"] = _Rate;
             _with2["MOD"] = _mod;
             _with2["TransactionnUm"] = _TransactionNum;
+            _with2["comments"] = _comments;
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
@@ -178,6 +186,7 @@ namespace sample1
             _Rate = Convert.ToDouble(_with3["Rate"]);
             _mod = _with3["MOD"].ToString();
             _TransactionNum = Convert.ToInt32(_with3["TransactionnUm"]);
+            _comments = _with3["comments"].ToString();
         }
 
         public void UpdateTrans()
@@ -209,6 +218,7 @@ namespace sample1
                 _with2["Rate"] = _Rate;
                 _with2["MOD"] = _mod;
                 _with2["TransactionnUm"] = _TransactionNum;
+                _with2["comments"] = _comments;
                 ds.Tables[0].Rows.Add(dsNewRow);
                 Database.SaveEntry(ds);
             }

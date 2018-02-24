@@ -159,6 +159,7 @@ namespace sample1
             _with2["Rate"] = _Rate;
             _with2["MOD"] = _mod;
             _with2["TransactionnUm"] = _TransactionNum;
+    
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
@@ -181,6 +182,7 @@ namespace sample1
             _Rate = Convert.ToDouble(_with3["Rate"]);
             _mod = _with3["MOD"].ToString();
             _TransactionNum = Convert.ToInt32(_with3["TransactionnUm"]);
+      
         }
 
         public void UpdateTrans()
@@ -211,6 +213,7 @@ namespace sample1
                 _with2["Rate"] = _Rate;
                 _with2["MOD"] = _mod;
                 _with2["TransactionnUm"] = _TransactionNum;
+              
                 ds.Tables[0].Rows.Add(dsNewRow);
                 Database.SaveEntry(ds);
             }

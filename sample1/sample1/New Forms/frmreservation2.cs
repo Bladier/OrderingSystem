@@ -71,6 +71,7 @@ namespace sample1
             if (rbInstallment.Checked)
             { trans.mod = "Installment"; }
             trans.TransactionNum = Convert.ToInt32(txtTransactionNum.Text);
+            trans.comments = txtcomments.Text;
             trans.saveTrans();
 
             reservation res = new reservation();

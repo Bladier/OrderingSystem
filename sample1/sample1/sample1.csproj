@@ -52,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\addcitys.cs" />
+    <Compile Include="Class\barangays.cs" />
     <Compile Include="Class\bill.cs" />
     <Compile Include="Class\Customer.cs" />
     <Compile Include="Class\reservation.cs" />

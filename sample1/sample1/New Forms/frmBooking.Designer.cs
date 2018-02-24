@@ -67,6 +67,8 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtTransactionNum = new System.Windows.Forms.TextBox();
+            this.txtcomments = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.Panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -472,6 +474,23 @@
             this.txtTransactionNum.TabIndex = 0;
             this.txtTransactionNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // txtcomments
+            // 
+            this.txtcomments.Location = new System.Drawing.Point(38, 325);
+            this.txtcomments.Multiline = true;
+            this.txtcomments.Name = "txtcomments";
+            this.txtcomments.Size = new System.Drawing.Size(375, 113);
+            this.txtcomments.TabIndex = 37;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(35, 302);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(56, 13);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "Comments";
+            // 
             // frmBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -479,6 +498,8 @@
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(769, 504);
             this.ControlBox = false;
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.txtcomments);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.groupBox3);
@@ -503,6 +524,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -547,5 +569,7 @@
         private System.Windows.Forms.TextBox txtTransactionNum;
         private System.Windows.Forms.TextBox txtContactNum;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtcomments;
+        private System.Windows.Forms.Label label16;
     }
 }

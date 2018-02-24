@@ -453,6 +453,13 @@ namespace sample1
             BID = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            frmaddcity frm = new frmaddcity();
+            frm.Show();
+        }
+
       
     }
 }

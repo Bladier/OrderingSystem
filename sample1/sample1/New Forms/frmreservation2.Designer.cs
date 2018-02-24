@@ -68,6 +68,8 @@
             this.btnAvailability = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numExtend = new System.Windows.Forms.NumericUpDown();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtcomments = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -488,12 +490,31 @@
             this.numExtend.Visible = false;
             this.numExtend.ValueChanged += new System.EventHandler(this.numExtend_ValueChanged);
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(32, 299);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(56, 13);
+            this.label16.TabIndex = 47;
+            this.label16.Text = "Comments";
+            // 
+            // txtcomments
+            // 
+            this.txtcomments.Location = new System.Drawing.Point(35, 322);
+            this.txtcomments.Multiline = true;
+            this.txtcomments.Name = "txtcomments";
+            this.txtcomments.Size = new System.Drawing.Size(375, 113);
+            this.txtcomments.TabIndex = 48;
+            // 
             // frmreservation2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(769, 504);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.txtcomments);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.groupBox3);
@@ -519,6 +540,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numExtend)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -564,5 +586,7 @@
         private System.Windows.Forms.Button btnAvailability;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.NumericUpDown numExtend;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtcomments;
     }
 }

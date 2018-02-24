@@ -35,6 +35,7 @@
             this.txtbarangay = new System.Windows.Forms.TextBox();
             this.btnadd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cboCity
@@ -72,6 +73,7 @@
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtbarangay
             // 
@@ -99,11 +101,22 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "City";
             // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(15, 222);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 6;
+            this.btnClear.Text = "&Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // frmaddcity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(506, 249);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnadd);
             this.Controls.Add(this.txtbarangay);
@@ -127,5 +140,6 @@
         private System.Windows.Forms.TextBox txtbarangay;
         private System.Windows.Forms.Button btnadd;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnClear;
     }
 }

@@ -255,7 +255,7 @@ namespace sample1
             if (rbInstallment.Checked)
             { res.mod = "Installment"; }
             res.TransactionNum = Convert.ToInt32(txtTransactionNum.Text);
-
+            res.comments =txtcomments.Text;
             res.saveTrans();
 
             bill bl = new bill();
