@@ -95,7 +95,6 @@
             this.openDateToolStripMenuItem.Name = "openDateToolStripMenuItem";
             this.openDateToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.openDateToolStripMenuItem.Text = "&Open Date";
-            this.openDateToolStripMenuItem.Visible = false;
             this.openDateToolStripMenuItem.Click += new System.EventHandler(this.openDateToolStripMenuItem_Click);
             // 
             // userManagementToolStripMenuItem
