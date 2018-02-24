@@ -121,7 +121,7 @@ namespace OrderingSystems
             _menuSize = dr["MenuSize"].ToString();
             _price = Convert.ToDouble(dr["Price"]);
             _status = dr["Status"].ToString();
-            _price = Convert.ToInt32(dr["qty"]);
+            _qty = Convert.ToInt32(dr["qty"]);
            
 
         }

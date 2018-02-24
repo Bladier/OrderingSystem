@@ -15,6 +15,7 @@ namespace OrderingSystems
     {
         string tmpQty ;
         Queue QueOrder;
+        double tmpTotalDue = 0;
         public frmClient()
         {
             InitializeComponent();
@@ -189,7 +190,11 @@ namespace OrderingSystems
                 MenuItem mi = new MenuItem();
                 mi.deduct(Convert.ToInt32(lv.SubItems[4].Text), tmpLines.MenuID);
 
+                double calc = tmpLines.QTY * tmpLines.Price;
+                tmpTotalDue += calc;
             }
+
+
             MessageBox.Show("Order Post", "Information");
 
             int tmpNum = Convert.ToInt32(tmpOrderNum) + 1;
@@ -212,12 +217,13 @@ namespace OrderingSystems
                 DataSet ds = Database.LoadSQL(mysql,"tblQueue");
 
     
-               
                 report.ReportPath = @"Report\rpt_OrderPrint.rdlc";
                 report.DataSources.Clear();
                 report.DataSources.Add(new ReportDataSource(dsName, ds.Tables[0]));
 
                 Dictionary<string, string> addParameters = new Dictionary<string, string>();
+                addParameters.Add("TotalAmountDue","Total Amount Due: P" +  tmpTotalDue.ToString());
+
 
                 if ((addParameters != null))
                 {
@@ -252,7 +258,7 @@ namespace OrderingSystems
                 else
                 {
                     frmReport frm = new frmReport();
-                    frm.ReportInit(mysql, "dsOrderPrint", @"Report\rpt_OrderPrint.rdlc");
+                    frm.ReportInit(mysql, "dsOrderPrint", @"Report\rpt_OrderPrint.rdlc", addParameters);
                     frm.Show();
                 }
 
