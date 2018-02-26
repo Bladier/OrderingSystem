@@ -101,6 +101,13 @@ namespace sample1
                {
                    NrOfDays = NrOfDays / 2;
                }
+               else
+               {
+                   if (d1.ToString("tt") == "PM")
+                   {
+                       NrOfDays = NrOfDays / 2;
+                   }
+               }
 
            }
                    
@@ -405,6 +412,13 @@ namespace sample1
                     }
                 }
 
+                if (txtcomments.Text == "")
+                {
+                    MessageBox.Show("Please enter comments below", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtcomments.Focus();
+                    return false;
+                }
+
 
                 transaction tr = new transaction();
                 if (tr.isHasReserved_or_Booked(Convert.ToDateTime(dtStartDate.Text)))
@@ -579,6 +593,7 @@ namespace sample1
              txtNoOfDays.Text = NrOfDays.ToString();
              txtRate.Text = tr.Rate.ToString();
              lblTotal.Text = tr.Total.ToString();
+             txtcomments.Text = tr.comments;
 
              if (tr.mod == "Full Payment")
              {

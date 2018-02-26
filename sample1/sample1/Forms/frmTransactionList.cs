@@ -41,6 +41,7 @@ namespace sample1
                 lv.SubItems.Add(Convert.ToDateTime(dr["EndDate"]).ToShortDateString());
                 lv.SubItems.Add(dr["Status"].ToString());
                 lv.SubItems.Add(string.Format("0000{0}",dr["TransactionNum"].ToString()));
+                lv.SubItems.Add(dr["Comments"].ToString());
 
                 lv.Tag = dr["ID"];
             }
@@ -385,7 +386,7 @@ namespace sample1
             string mysql = " select t.ID,v.Description,c.FirstName + ' ' + c.MiddleName + ' ' + c.LastName as Fullname,";
             mysql += "c.Street + ' ' + b.barangay + ' ,' + ci.city + ' ,' + c.province as Address,";
             mysql += "t.transdate,t.startDate,t.EndDate,t.status,t.total,t.balance,t.rate,t.Mod,";
-            mysql += "t.transactionNum,p.status as PayMent_Status,p.payment,p.transdate ";
+            mysql += "t.transactionNum,p.status as PayMent_Status,p.payment,p.transdate,t.comments ";
             mysql += "from transactiontbl t ";
             mysql += "inner join venuetbl v on v.ID = t.venueID ";
             mysql += "inner join customertbl c on c.ID=t.customerID ";

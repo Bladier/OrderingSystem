@@ -311,6 +311,8 @@ namespace sample1.Report {
             
             private global::System.Data.DataColumn columntransdate;
             
+            private global::System.Data.DataColumn columncomments;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public transactionDataTable() {
@@ -474,6 +476,14 @@ namespace sample1.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn commentsColumn {
+                get {
+                    return this.columncomments;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -525,7 +535,8 @@ namespace sample1.Report {
                         string TRANSACTIONNUM, 
                         string PAYMENT_STATUS, 
                         string PAYMENT, 
-                        string transdate1) {
+                        string transdate1, 
+                        string comments) {
                 transactionRow rowtransactionRow = ((transactionRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -543,7 +554,8 @@ namespace sample1.Report {
                         TRANSACTIONNUM,
                         PAYMENT_STATUS,
                         PAYMENT,
-                        transdate1};
+                        transdate1,
+                        comments};
                 rowtransactionRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtransactionRow);
                 return rowtransactionRow;
@@ -582,6 +594,7 @@ namespace sample1.Report {
                 this.columnPAYMENT_STATUS = base.Columns["PAYMENT_STATUS"];
                 this.columnPAYMENT = base.Columns["PAYMENT"];
                 this.columntransdate = base.Columns["transdate"];
+                this.columncomments = base.Columns["comments"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -619,6 +632,8 @@ namespace sample1.Report {
                 base.Columns.Add(this.columnPAYMENT);
                 this.columntransdate = new global::System.Data.DataColumn("transdate", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntransdate);
+                this.columncomments = new global::System.Data.DataColumn("comments", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncomments);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1017,6 +1032,22 @@ namespace sample1.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string comments {
+                get {
+                    try {
+                        return ((string)(this[this.tabletransaction.commentsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'comments\' in table \'transaction\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletransaction.commentsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIDNull() {
                 return this.IsNull(this.tabletransaction.IDColumn);
             }
@@ -1205,6 +1236,18 @@ namespace sample1.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SettransdateNull() {
                 this[this.tabletransaction.transdateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscommentsNull() {
+                return this.IsNull(this.tabletransaction.commentsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcommentsNull() {
+                this[this.tabletransaction.commentsColumn] = global::System.Convert.DBNull;
             }
         }
         

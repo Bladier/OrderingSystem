@@ -74,6 +74,7 @@
             this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -115,7 +116,8 @@
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader13,
-            this.columnHeader15});
+            this.columnHeader15,
+            this.columnHeader25});
             this.lvTransList.FullRowSelect = true;
             this.lvTransList.GridLines = true;
             this.lvTransList.Location = new System.Drawing.Point(6, 32);
@@ -135,7 +137,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Customer Name";
-            this.columnHeader2.Width = 197;
+            this.columnHeader2.Width = 153;
             // 
             // columnHeader3
             // 
@@ -493,6 +495,11 @@
             this.columnHeader23.Text = "Transaction #";
             this.columnHeader23.Width = 91;
             // 
+            // columnHeader25
+            // 
+            this.columnHeader25.Text = "Description";
+            this.columnHeader25.Width = 120;
+            // 
             // frmTransactionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -563,5 +570,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader24;
         private System.Windows.Forms.TextBox txtsearchExpiry;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ColumnHeader columnHeader25;
     }
 }
