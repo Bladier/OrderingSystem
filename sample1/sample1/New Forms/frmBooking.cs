@@ -162,6 +162,14 @@ namespace sample1
                 txtPayment.Text = "";
 
             }
+
+            double addservices = 0;
+            foreach (ListViewItem lv in lvAdditionalServices.Items)
+            {
+                addservices += Convert.ToDouble(lv.SubItems[1].Text);
+            }
+
+            lblTotal.Text = (addservices + Convert.ToDouble(lblTotal.Text)).ToString();
         }
 
            
@@ -281,6 +289,17 @@ namespace sample1
             bl.TransNum = Convert.ToInt32(txtTransactionNum.Text);
             bl.saveBill();
 
+            foreach (ListViewItem lv in lvAdditionalServices.Items)
+            {
+            addServices aser= new addServices();
+            aser.servicesID = Convert.ToInt32(lv.Tag);
+            aser.transNum = Convert.ToInt32(txtTransactionNum.Text);
+            aser.status = 1;
+
+            aser.saveTservices();
+            }
+
+         
             int transNum = Convert.ToInt32(txtTransactionNum.Text) + 1;
             mod_system.UpdateOptions("TransactionNum", transNum.ToString());
 
@@ -712,6 +731,7 @@ namespace sample1
 
             lv.Tag = ds.Tables[0].Rows[0]["id"].ToString();
 
+            Calculate();
         }
      
     }
