@@ -69,6 +69,12 @@
             this.txtTransactionNum = new System.Windows.Forms.TextBox();
             this.txtcomments = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.lvAdditionalServices = new System.Windows.Forms.ListView();
+            this.btnSearchServices = new System.Windows.Forms.Button();
+            this.txtSearchservices = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -117,9 +123,9 @@
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(310, 18);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(86, 24);
+            this.label14.Size = new System.Drawing.Size(37, 24);
             this.label14.TabIndex = 0;
-            this.label14.Text = "Booking";
+            this.label14.Text = "sfd";
             // 
             // groupBox3
             // 
@@ -224,14 +230,14 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(38, 138);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(381, 152);
+            this.groupBox2.Size = new System.Drawing.Size(381, 121);
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Client";
             // 
             // txtContactNum
             // 
-            this.txtContactNum.Location = new System.Drawing.Point(78, 118);
+            this.txtContactNum.Location = new System.Drawing.Point(78, 94);
             this.txtContactNum.Name = "txtContactNum";
             this.txtContactNum.ReadOnly = true;
             this.txtContactNum.Size = new System.Drawing.Size(295, 20);
@@ -240,7 +246,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(13, 120);
+            this.label15.Location = new System.Drawing.Point(13, 96);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(54, 13);
             this.label15.TabIndex = 6;
@@ -269,7 +275,7 @@
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.ReadOnly = true;
-            this.txtAddress.Size = new System.Drawing.Size(297, 71);
+            this.txtAddress.Size = new System.Drawing.Size(297, 47);
             this.txtAddress.TabIndex = 2;
             // 
             // label2
@@ -476,20 +482,68 @@
             // 
             // txtcomments
             // 
-            this.txtcomments.Location = new System.Drawing.Point(38, 325);
+            this.txtcomments.Location = new System.Drawing.Point(39, 278);
             this.txtcomments.Multiline = true;
             this.txtcomments.Name = "txtcomments";
-            this.txtcomments.Size = new System.Drawing.Size(375, 113);
+            this.txtcomments.Size = new System.Drawing.Size(375, 53);
             this.txtcomments.TabIndex = 37;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(35, 302);
+            this.label16.Location = new System.Drawing.Point(36, 260);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(56, 13);
             this.label16.TabIndex = 7;
             this.label16.Text = "Comments";
+            // 
+            // lvAdditionalServices
+            // 
+            this.lvAdditionalServices.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.lvAdditionalServices.Location = new System.Drawing.Point(39, 380);
+            this.lvAdditionalServices.Name = "lvAdditionalServices";
+            this.lvAdditionalServices.Size = new System.Drawing.Size(375, 112);
+            this.lvAdditionalServices.TabIndex = 38;
+            this.lvAdditionalServices.UseCompatibleStateImageBehavior = false;
+            this.lvAdditionalServices.View = System.Windows.Forms.View.Details;
+            // 
+            // btnSearchServices
+            // 
+            this.btnSearchServices.Location = new System.Drawing.Point(377, 352);
+            this.btnSearchServices.Name = "btnSearchServices";
+            this.btnSearchServices.Size = new System.Drawing.Size(36, 23);
+            this.btnSearchServices.TabIndex = 8;
+            this.btnSearchServices.Text = ". . .";
+            this.btnSearchServices.UseVisualStyleBackColor = true;
+            this.btnSearchServices.Click += new System.EventHandler(this.btnSearchServices_Click);
+            // 
+            // txtSearchservices
+            // 
+            this.txtSearchservices.Location = new System.Drawing.Point(39, 354);
+            this.txtSearchservices.Name = "txtSearchservices";
+            this.txtSearchservices.Size = new System.Drawing.Size(332, 20);
+            this.txtSearchservices.TabIndex = 7;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(36, 336);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(97, 13);
+            this.label17.TabIndex = 39;
+            this.label17.Text = "Additional Services";
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Service Description";
+            this.columnHeader1.Width = 258;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Fee";
+            this.columnHeader2.Width = 112;
             // 
             // frmBooking
             // 
@@ -498,6 +552,10 @@
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(769, 504);
             this.ControlBox = false;
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.btnSearchServices);
+            this.Controls.Add(this.lvAdditionalServices);
+            this.Controls.Add(this.txtSearchservices);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtcomments);
             this.Controls.Add(this.groupBox4);
@@ -571,5 +629,11 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtcomments;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ListView lvAdditionalServices;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.Button btnSearchServices;
+        private System.Windows.Forms.TextBox txtSearchservices;
+        private System.Windows.Forms.Label label17;
     }
 }

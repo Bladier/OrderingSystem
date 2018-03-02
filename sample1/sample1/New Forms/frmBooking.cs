@@ -672,6 +672,47 @@ namespace sample1
         {
             mod_system.DigitOnly(e);
         }
+
+        private void btnSearchServices_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["frmAdditionalServices"] != null)
+            {
+
+            }
+            else
+            {
+                frmAdditionalServices frm = new frmAdditionalServices(txtSearchservices.Text);
+                frm.ShowDialog();
+             
+            }
+        }
+
+
+        public void loadservices(int servicesid)
+        {
+            
+            string mysql = "select * from addservicestbl where id = " + servicesid  +"";
+            DataSet ds = Database.LoadSQL(mysql, "addservicestbl");
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return;
+            }
+
+            foreach (ListViewItem lv1 in lvAdditionalServices.Items)
+            {
+                if (lv1.Text == ds.Tables[0].Rows[0]["description"].ToString())
+                {
+                  MessageBox.Show("Already added in the list.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+            }
+
+            ListViewItem lv = lvAdditionalServices.Items.Add(ds.Tables[0].Rows[0]["description"].ToString());
+            lv.SubItems.Add(ds.Tables[0].Rows[0]["fee"].ToString());
+
+            lv.Tag = ds.Tables[0].Rows[0]["id"].ToString();
+
+        }
      
     }
 }
