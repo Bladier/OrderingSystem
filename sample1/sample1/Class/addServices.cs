@@ -96,6 +96,18 @@ namespace sample1
             _status = Convert.ToInt32(_with3["status"]);
         }
 
+        public void voidServices(int transNum)
+        {
+            string mySql = string.Format("SELECT * FROM {0} WHERE transactionNum = {1}", MainTable, transNum);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+            if (ds.Tables[0].Rows.Count == 1)
+            {
+                var _with2 = ds.Tables[MainTable].Rows[0];
+                _with2["status"] = 0;
+                Database.SaveEntry(ds, false);
+            }
+        }
         //public void updateBarangay()
         //{
         //    string mySql = string.Format("SELECT * FROM {0} WHERE ID = {1}", MainTable, _ID);

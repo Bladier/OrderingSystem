@@ -15,7 +15,7 @@ namespace sample1
         {
            // Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmBooking());
+            Application.Run(new frmMain());
         }
     }
 }

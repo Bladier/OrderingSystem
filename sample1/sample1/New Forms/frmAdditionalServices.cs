@@ -12,10 +12,12 @@ namespace sample1
     public partial class frmAdditionalServices : Form
     {
         public string str = "";
-        public frmAdditionalServices(string st)
+        public bool isBooking;
+        public frmAdditionalServices(string st,bool isBook=true)
         {
             InitializeComponent();
             str = st;
+            isBooking = isBook;
         }
 
         private void frmAdditionalServices_Load(object sender, EventArgs e)
@@ -78,18 +80,36 @@ namespace sample1
                 return;
             }
 
-
-            if (Application.OpenForms["frmBooking"] != null)
+            if (isBooking)
             {
-                (Application.OpenForms["frmBooking"] as frmBooking).loadservices(Convert.ToInt32(lvServices.SelectedItems[0].Tag));
-                this.Close();
+                if (Application.OpenForms["frmBooking"] != null)
+                {
+                    (Application.OpenForms["frmBooking"] as frmBooking).loadservices(Convert.ToInt32(lvServices.SelectedItems[0].Tag));
+                    this.Close();
+                }
+                else
+                {
+                    frmBooking frm = new frmBooking();
+                    frm.ShowDialog();
+
+                }
             }
             else
             {
-                frmBooking frm = new frmBooking();
-                frm.ShowDialog();
+                if (Application.OpenForms["frmreservation2"] != null)
+                {
+                    (Application.OpenForms["frmreservation2"] as frmreservation2).loadservices(Convert.ToInt32(lvServices.SelectedItems[0].Tag));
+                    this.Close();
+                }
+                else
+                {
+                    frmreservation2 frm = new frmreservation2();
+                    frm.ShowDialog();
 
+                }
             }
+
+           
         }
     }
 }

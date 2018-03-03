@@ -70,6 +70,12 @@
             this.numExtend = new System.Windows.Forms.NumericUpDown();
             this.label16 = new System.Windows.Forms.Label();
             this.txtcomments = new System.Windows.Forms.TextBox();
+            this.btnSearchServices = new System.Windows.Forms.Button();
+            this.lvAdditionalServices = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txtSearchservices = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -108,14 +114,14 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(38, 138);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(381, 152);
+            this.groupBox2.Size = new System.Drawing.Size(381, 120);
             this.groupBox2.TabIndex = 39;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Client";
             // 
             // txtContactNum
             // 
-            this.txtContactNum.Location = new System.Drawing.Point(77, 118);
+            this.txtContactNum.Location = new System.Drawing.Point(76, 92);
             this.txtContactNum.Name = "txtContactNum";
             this.txtContactNum.ReadOnly = true;
             this.txtContactNum.Size = new System.Drawing.Size(295, 20);
@@ -124,7 +130,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(15, 121);
+            this.label15.Location = new System.Drawing.Point(14, 95);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(54, 13);
             this.label15.TabIndex = 6;
@@ -163,7 +169,7 @@
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.ReadOnly = true;
-            this.txtAddress.Size = new System.Drawing.Size(297, 71);
+            this.txtAddress.Size = new System.Drawing.Size(297, 45);
             this.txtAddress.TabIndex = 2;
             // 
             // label2
@@ -493,7 +499,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(32, 299);
+            this.label16.Location = new System.Drawing.Point(35, 265);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(56, 13);
             this.label16.TabIndex = 47;
@@ -501,11 +507,59 @@
             // 
             // txtcomments
             // 
-            this.txtcomments.Location = new System.Drawing.Point(35, 322);
+            this.txtcomments.Location = new System.Drawing.Point(38, 280);
             this.txtcomments.Multiline = true;
             this.txtcomments.Name = "txtcomments";
-            this.txtcomments.Size = new System.Drawing.Size(375, 113);
+            this.txtcomments.Size = new System.Drawing.Size(375, 52);
             this.txtcomments.TabIndex = 48;
+            // 
+            // btnSearchServices
+            // 
+            this.btnSearchServices.Location = new System.Drawing.Point(376, 352);
+            this.btnSearchServices.Name = "btnSearchServices";
+            this.btnSearchServices.Size = new System.Drawing.Size(36, 23);
+            this.btnSearchServices.TabIndex = 50;
+            this.btnSearchServices.Text = ". . .";
+            this.btnSearchServices.UseVisualStyleBackColor = true;
+            this.btnSearchServices.Click += new System.EventHandler(this.btnSearchServices_Click);
+            // 
+            // lvAdditionalServices
+            // 
+            this.lvAdditionalServices.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.lvAdditionalServices.Location = new System.Drawing.Point(38, 380);
+            this.lvAdditionalServices.Name = "lvAdditionalServices";
+            this.lvAdditionalServices.Size = new System.Drawing.Size(375, 112);
+            this.lvAdditionalServices.TabIndex = 51;
+            this.lvAdditionalServices.UseCompatibleStateImageBehavior = false;
+            this.lvAdditionalServices.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Service Description";
+            this.columnHeader1.Width = 258;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Fee";
+            this.columnHeader2.Width = 112;
+            // 
+            // txtSearchservices
+            // 
+            this.txtSearchservices.Location = new System.Drawing.Point(38, 354);
+            this.txtSearchservices.Name = "txtSearchservices";
+            this.txtSearchservices.Size = new System.Drawing.Size(332, 20);
+            this.txtSearchservices.TabIndex = 49;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(35, 335);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(97, 13);
+            this.label17.TabIndex = 52;
+            this.label17.Text = "Additional Services";
             // 
             // frmreservation2
             // 
@@ -513,6 +567,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(769, 504);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.btnSearchServices);
+            this.Controls.Add(this.lvAdditionalServices);
+            this.Controls.Add(this.txtSearchservices);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtcomments);
             this.Controls.Add(this.groupBox2);
@@ -588,5 +646,11 @@
         private System.Windows.Forms.NumericUpDown numExtend;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtcomments;
+        private System.Windows.Forms.Button btnSearchServices;
+        private System.Windows.Forms.ListView lvAdditionalServices;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.TextBox txtSearchservices;
+        private System.Windows.Forms.Label label17;
     }
 }

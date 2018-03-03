@@ -135,6 +135,7 @@ namespace sample1
             else
             {
                 NotYetLogin(true);
+                mod_system.CheckExpiry();
                
             }
             toolStripButton5.PerformClick();
@@ -164,7 +165,7 @@ namespace sample1
             {
                 tsDateset.Text = mod_system.CurrentDate.ToShortDateString() + " " + DateTime.Now.ToString("T");
                 openDateToolStripMenuItem.Text = "&Close Date";
-                mod_system.CheckExpiry();
+           
             }
             else
             {

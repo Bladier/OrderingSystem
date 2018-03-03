@@ -310,6 +310,10 @@ namespace sample1
             reservation res = new reservation();
             res.VoidReservation(tr.TransactionNum);
 
+
+            addServices ad = new addServices();
+            ad.voidServices(tr.TransactionNum);
+
             MessageBox.Show("Transaction sucessully voided.?", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LoadReservation();
         }
@@ -341,6 +345,9 @@ namespace sample1
 
             bill bl = new bill();
             bl.VoidPayMent(idx);
+
+            addServices ad = new addServices();
+            ad.voidServices(tr.TransactionNum);
 
            MessageBox.Show("Transaction sucessully voided.?", "Confirmation", MessageBoxButtons.OK,MessageBoxIcon.Information);
            LoadTransaction();
@@ -383,10 +390,14 @@ namespace sample1
         private void printtransaction(int idx)
         {
 
+            Dictionary<string, string> subReportSQL = new Dictionary<string, string>();
+            Dictionary<string, string> rptSQL = new Dictionary<string, string>();
+
+            string filldata = "dsReceipt";
             string mysql = " select t.ID,v.Description,c.FirstName + ' ' + c.MiddleName + ' ' + c.LastName as Fullname,";
             mysql += "c.Street + ' ' + b.barangay + ' ,' + ci.city + ' ,' + c.province as Address,";
             mysql += "t.transdate,t.startDate,t.EndDate,t.status,t.total,t.balance,t.rate,t.Mod,";
-            mysql += "t.transactionNum,p.status as PayMent_Status,p.payment,p.transdate,t.comments ";
+            mysql += "t.transactionNum,p.status as PayMent_Status,p.payment,p.transdate,t.comments  ";
             mysql += "from transactiontbl t ";
             mysql += "inner join venuetbl v on v.ID = t.venueID ";
             mysql += "inner join customertbl c on c.ID=t.customerID ";
@@ -394,14 +405,49 @@ namespace sample1
             mysql += "inner join citytbl ci on ci.ID=b.cityID ";
             mysql += "inner join paymenttbl p on p.resID =t.ID ";
             mysql += " where t.ID = " + idx;
+            rptSQL.Add(filldata, mysql);
+
+            DataSet ds = Database.LoadSQL(mysql, "transactiontbl");
 
             Dictionary<string, string> rptPara = new Dictionary<string, string>();
+            rptPara.Add("txtUsername", mod_system.ORuser.Username.ToString());
+
+            string mysql1 = "select tl.id,tl.servicesID,tl.transactionNum,tl.status,ad.description,ad.fee from tbltransAddServices tl";
+            mysql1 += " INNER JOIN ADDservicestbl ad on ad.id = tl.servicesID where tl.status =1 and tl.transactionNum=" + ds.Tables[0].Rows[0]["transactionNum"];
+            filldata = "dsAddservices";
+            subReportSQL.Add(filldata, mysql1);
+
+            //DataSet d1 = Database.LoadSQL(mysql1, "tbltransAddServices");
+            //rptPara.Add("desc", d1.Tables[0].Rows[0]["description"].ToString());
+            //rptPara.Add("fee", d1.Tables[0].Rows[0]["fee"].ToString());
 
             frmReport frm = new frmReport();
-            frm.ReportInit(mysql, "dsReceipt", @"Report\rptReceipt.rdlc");
+            frm.MultiDbSetReport(rptSQL, @"Report\rptReceipt.rdlc", rptPara, true, subReportSQL);
             frm.Show();
 
         }
+        //private void printtransaction(int idx)
+        //{
+
+        //    string mysql = " select t.ID,v.Description,c.FirstName + ' ' + c.MiddleName + ' ' + c.LastName as Fullname,";
+        //    mysql += "c.Street + ' ' + b.barangay + ' ,' + ci.city + ' ,' + c.province as Address,";
+        //    mysql += "t.transdate,t.startDate,t.EndDate,t.status,t.total,t.balance,t.rate,t.Mod,";
+        //    mysql += "t.transactionNum,p.status as PayMent_Status,p.payment,p.transdate,t.comments ";
+        //    mysql += "from transactiontbl t ";
+        //    mysql += "inner join venuetbl v on v.ID = t.venueID ";
+        //    mysql += "inner join customertbl c on c.ID=t.customerID ";
+        //    mysql += "inner join barangaytbl b on b.ID=c.barangayID ";
+        //    mysql += "inner join citytbl ci on ci.ID=b.cityID ";
+        //    mysql += "inner join paymenttbl p on p.resID =t.ID ";
+        //    mysql += " where t.ID = " + idx;
+
+        //    Dictionary<string, string> rptPara = new Dictionary<string, string>();
+
+        //    frmReport frm = new frmReport();
+        //    frm.ReportInit(mysql, "dsReceipt", @"Report\rptReceipt.rdlc");
+        //    frm.Show();
+
+        //}
         #endregion
 
         #region "Load Expiry"

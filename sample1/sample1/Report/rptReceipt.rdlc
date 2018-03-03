@@ -604,8 +604,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>dsReceipt</DataSetName>
-        <Top>1.90986in</Top>
-        <Left>0.15625in</Left>
+        <Top>2.63556in</Top>
+        <Left>0.14236in</Left>
         <Height>0.75in</Height>
         <Width>5.48972in</Width>
         <ZIndex>7</ZIndex>
@@ -696,7 +696,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>TOTAL</rd:DefaultName>
-        <Top>2.72931in</Top>
+        <Top>3.455in</Top>
         <Left>1.58334in</Left>
         <Height>0.25in</Height>
         <Width>1.27083in</Width>
@@ -728,7 +728,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>2.72931in</Top>
+        <Top>3.455in</Top>
         <Left>0.15625in</Left>
         <Height>0.25in</Height>
         <Width>1.42708in</Width>
@@ -933,8 +933,21 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Subreport Name="AdditionalServices">
+        <ReportName>rpt_addservices</ReportName>
+        <Top>1.90986in</Top>
+        <Left>0.14236in</Left>
+        <Height>0.65625in</Height>
+        <Width>5.48972in</Width>
+        <ZIndex>18</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Subreport>
     </ReportItems>
-    <Height>3.11459in</Height>
+    <Height>3.87861in</Height>
     <Style />
   </Body>
   <ReportParameters>

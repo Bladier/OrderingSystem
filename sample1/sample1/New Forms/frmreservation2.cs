@@ -11,6 +11,7 @@ namespace sample1
 {
     public partial class frmreservation2 : Form
     {
+
         string address;
         public bool isView = false;
         int custID;
@@ -112,6 +113,17 @@ namespace sample1
             bl.tranSDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             bl.TransNum =Convert.ToInt32(txtTransactionNum.Text);
             bl.saveBill();
+
+
+            foreach (ListViewItem lv in lvAdditionalServices.Items)
+            {
+                addServices aser = new addServices();
+                aser.servicesID = Convert.ToInt32(lv.Tag);
+                aser.transNum = Convert.ToInt32(txtTransactionNum.Text);
+                aser.status = 1;
+
+                aser.saveTservices();
+            }
 
             int transNum = Convert.ToInt32(txtTransactionNum.Text) + 1;
             mod_system.UpdateOptions("TransactionNum", transNum.ToString());
@@ -285,6 +297,7 @@ namespace sample1
 
         private void Calculate()
         {
+            if (cboVenue.Text == "") { return; }
             if (isView) 
             {
                 
@@ -377,6 +390,14 @@ namespace sample1
                 txtPayment.Text = "";
 
             }
+
+            double addservices = 0;
+            foreach (ListViewItem lv in lvAdditionalServices.Items)
+            {
+                addservices += Convert.ToDouble(lv.SubItems[1].Text);
+            }
+
+            lblTotal.Text = (addservices + Convert.ToDouble(lblTotal.Text)).ToString();
         }
 
         private void frmreservation2_Load(object sender, EventArgs e)
@@ -586,7 +607,7 @@ namespace sample1
             }
 
             lblBalance.Text = tr.Balance.ToString();
-
+            loadtranservices(tr.TransactionNum);
             tmpres = tr;
 
             if (tmpres.Balance == 0.0)
@@ -595,6 +616,27 @@ namespace sample1
             }
 
             disAbledFields(false);
+        }
+
+
+        private void loadtranservices(int transNum)
+        {
+            string mysql = "select * from tbltransAddservices where transactionNum =" + transNum;
+            DataSet ds = Database.LoadSQL(mysql, "tbltransAddservices");
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return;
+            }
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                string mysql1 = "select * from addservicestbl where id =" + dr["servicesID"];
+                DataSet ds1 = Database.LoadSQL(mysql1, "addservicestbl");
+
+                ListViewItem lv2 = lvAdditionalServices.Items.Add(ds1.Tables[0].Rows[0]["Description"].ToString());
+                lv2.SubItems.Add(ds1.Tables[0].Rows[0]["Fee"].ToString());
+                lv2.Tag = ds1.Tables[0].Rows[0]["id"].ToString();
+            }
         }
 
         private void disAbledFields(bool st = true)
@@ -675,10 +717,14 @@ namespace sample1
          private void printtransaction(int idx)
          {
 
+             Dictionary<string, string> subReportSQL = new Dictionary<string, string>();
+             Dictionary<string, string> rptSQL = new Dictionary<string, string>();
+
+             string filldata = "dsReceipt";
              string mysql = " select t.ID,v.Description,c.FirstName + ' ' + c.MiddleName + ' ' + c.LastName as Fullname,";
              mysql += "c.Street + ' ' + b.barangay + ' ,' + ci.city + ' ,' + c.province as Address,";
              mysql += "t.transdate,t.startDate,t.EndDate,t.status,t.total,t.balance,t.rate,t.Mod,";
-             mysql += "t.transactionNum,p.status as PayMent_Status,p.payment,p.transdate ";
+             mysql += "t.transactionNum,p.status as PayMent_Status,p.payment,p.transdate,t.comments  ";
              mysql += "from transactiontbl t ";
              mysql += "inner join venuetbl v on v.ID = t.venueID ";
              mysql += "inner join customertbl c on c.ID=t.customerID ";
@@ -686,11 +732,24 @@ namespace sample1
              mysql += "inner join citytbl ci on ci.ID=b.cityID ";
              mysql += "inner join paymenttbl p on p.resID =t.ID ";
              mysql += " where t.ID = " + idx;
+             rptSQL.Add(filldata, mysql);
+
+             DataSet ds = Database.LoadSQL(mysql, "transactiontbl");
 
              Dictionary<string, string> rptPara = new Dictionary<string, string>();
+            rptPara.Add("txtUsername",mod_system.ORuser.Username.ToString());
+
+             string mysql1 = "select tl.id,tl.servicesID,tl.transactionNum,tl.status,ad.description,ad.fee from tbltransAddServices tl";
+             mysql1 += " INNER JOIN ADDservicestbl ad on ad.id = tl.servicesID where tl.status =1 and tl.transactionNum=" + ds.Tables[0].Rows[0]["transactionNum"];
+             filldata = "dsAddservices";
+             subReportSQL.Add(filldata, mysql1);
+
+             //DataSet d1 = Database.LoadSQL(mysql1, "tbltransAddServices");
+             //rptPara.Add("desc", d1.Tables[0].Rows[0]["description"].ToString());
+             //rptPara.Add("fee", d1.Tables[0].Rows[0]["fee"].ToString());
 
              frmReport frm = new frmReport();
-             frm.ReportInit(mysql, "dsReceipt", @"Report\rptReceipt.rdlc");
+             frm.MultiDbSetReport(rptSQL, @"Report\rptReceipt.rdlc", rptPara, true, subReportSQL);
              frm.Show();
 
          }
@@ -721,6 +780,49 @@ namespace sample1
 
              extend = extend + Convert.ToInt32(NrOfDays);
              txtNoOfDays.Text = extend.ToString();
+         }
+
+         private void btnSearchServices_Click(object sender, EventArgs e)
+         {
+
+             if (Application.OpenForms["frmAdditionalServices"] != null)
+             {
+
+             }
+             else
+             {
+                 frmAdditionalServices frm = new frmAdditionalServices(txtSearchservices.Text,false);
+                 frm.ShowDialog();
+
+             }
+         }
+
+
+         public void loadservices(int servicesid)
+         {
+
+             string mysql = "select * from addservicestbl where id = " + servicesid + "";
+             DataSet ds = Database.LoadSQL(mysql, "addservicestbl");
+             if (ds.Tables[0].Rows.Count == 0)
+             {
+                 return;
+             }
+
+             foreach (ListViewItem lv1 in lvAdditionalServices.Items)
+             {
+                 if (lv1.Text == ds.Tables[0].Rows[0]["description"].ToString())
+                 {
+                     MessageBox.Show("Already added in the list.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                     return;
+                 }
+             }
+
+             ListViewItem lv = lvAdditionalServices.Items.Add(ds.Tables[0].Rows[0]["description"].ToString());
+             lv.SubItems.Add(ds.Tables[0].Rows[0]["fee"].ToString());
+
+             lv.Tag = ds.Tables[0].Rows[0]["id"].ToString();
+
+             Calculate();
          }
 
     }
