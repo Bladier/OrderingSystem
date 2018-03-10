@@ -82,14 +82,14 @@ namespace sample1
 
             if (isBooking)
             {
-                if (Application.OpenForms["frmBooking"] != null)
+                if (Application.OpenForms["frmBookingV2"] != null)
                 {
-                    (Application.OpenForms["frmBooking"] as frmBooking).loadservices(Convert.ToInt32(lvServices.SelectedItems[0].Tag));
+                    (Application.OpenForms["frmBookingV2"] as frmBookingV2).loadservices(Convert.ToInt32(lvServices.SelectedItems[0].Tag));
                     this.Close();
                 }
                 else
                 {
-                    frmBooking frm = new frmBooking();
+                    frmBookingV2 frm = new frmBookingV2();
                     frm.ShowDialog();
 
                 }

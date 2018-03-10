@@ -103,6 +103,12 @@
     <Compile Include="New Forms\frmAdditionalServices.Designer.cs">
       <DependentUpon>frmAdditionalServices.cs</DependentUpon>
     </Compile>
+    <Compile Include="New Forms\frmBookingV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New Forms\frmBookingV2.Designer.cs">
+      <DependentUpon>frmBookingV2.cs</DependentUpon>
+    </Compile>
     <Compile Include="New Forms\frmExtend.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="New Forms\frmAdditionalServices.resx">
       <DependentUpon>frmAdditionalServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New Forms\frmBookingV2.resx">
+      <DependentUpon>frmBookingV2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="New Forms\frmExtend.resx">
       <DependentUpon>frmExtend.cs</DependentUpon>

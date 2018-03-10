@@ -277,15 +277,15 @@ namespace sample1
 
             if (isbooking)
             {
-                if (Application.OpenForms["frmBooking"] != null)
+                if (Application.OpenForms["frmBookingV2"] != null)
                 {
 
-                    (Application.OpenForms["frmBooking"] as frmBooking).loadcustomer(cust);
+                    (Application.OpenForms["frmBookingV2"] as frmBookingV2).loadcustomer(cust);
 
                 }
                 else
                 {
-                    frmBooking frm = new frmBooking();
+                    frmBookingV2 frm = new frmBookingV2();
                     frm.loadcustomer(cust);
                     frm.Show();
               
