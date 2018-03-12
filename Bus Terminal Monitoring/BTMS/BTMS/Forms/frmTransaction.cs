@@ -177,6 +177,9 @@ namespace BTMS
             Credit cr = new Credit();
             cr.UpdateCredit(Convert.ToDouble(lblAmountDue.Text), tmpPassenger.ID);
 
+            Credit cbal = new Credit();
+              txtbalance.Text = cr.getbal(tmpPassenger.ID).ToString();
+
             busTransaction bt = new busTransaction();
             bt.Bus = tmpBus;
             bt.ID = tmpBusTrans.ID;
@@ -187,7 +190,6 @@ namespace BTMS
 
             int availseat = Convert.ToInt32(txtAvailableSeat.Text) - 1;
             txtAvailableSeat.Text = Convert.ToString(availseat);
-
             label14.Text= "You are successfully tag in this bus";
       
             clearfield();

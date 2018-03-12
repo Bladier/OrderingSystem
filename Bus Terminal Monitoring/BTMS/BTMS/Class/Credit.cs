@@ -158,6 +158,18 @@ namespace BTMS
                }
                return false;
            }
+
+           public double getbal(int pdID)
+           {
+               string mySql = string.Format("SELECT * FROM {0} WHERE PassID = {1}", MainTable, pdID);
+               DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+               if (ds.Tables[0].Rows.Count == 1)
+               {
+                   return Convert.ToDouble(ds.Tables[0].Rows[0]["Credit"]);
+               }
+               return 0;
+           }
         #endregion
         
     }

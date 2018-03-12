@@ -419,6 +419,19 @@ goHere:
         private void txtBday_ValueChanged(object sender, EventArgs e)
         {
 
+            int age =mod_system.GetCurrentAge(Convert.ToDateTime(txtBday.Text));
+
+            if (age >= 60)
+            {
+                cboPassTyp.Text = "Senior";
+                cboPassTyp.Enabled = false;
+            }
+
+            else
+            {
+                cboPassTyp.SelectedItem = null;
+                cboPassTyp.Enabled = true;
+            }
         }
 
         internal void ComputeBirthday()

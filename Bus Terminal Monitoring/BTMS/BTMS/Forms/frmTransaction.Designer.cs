@@ -61,6 +61,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtPassengerCount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtbalance = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -367,11 +369,31 @@
             this.label2.TabIndex = 23;
             this.label2.Text = "Passenger";
             // 
+            // txtbalance
+            // 
+            this.txtbalance.Location = new System.Drawing.Point(408, 273);
+            this.txtbalance.Name = "txtbalance";
+            this.txtbalance.ReadOnly = true;
+            this.txtbalance.Size = new System.Drawing.Size(101, 21);
+            this.txtbalance.TabIndex = 24;
+            this.txtbalance.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(315, 276);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 15);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Credit Balance";
+            // 
             // frmTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 339);
+            this.Controls.Add(this.txtbalance);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPassengerCount);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtAvailableSeat);
@@ -433,5 +455,7 @@
         private System.Windows.Forms.Label label2;
         internal System.Windows.Forms.TextBox txtAvailableSeat;
         internal System.Windows.Forms.TextBox txtPassengerCount;
+        internal System.Windows.Forms.TextBox txtbalance;
+        private System.Windows.Forms.Label label3;
     }
 }
