@@ -89,10 +89,10 @@ namespace sample1
             //    return;
             //}
 
-            frmBooking frm = new frmBooking();
-            if (Application.OpenForms["frmBooking"] != null)
+            frmbookingv2 frm = new frmbookingv2();
+            if (Application.OpenForms["frmbookingv2"] != null)
             {
-                (Application.OpenForms["frmBooking"] as frmBooking).loadtrans(rs);
+                (Application.OpenForms["frmbookingv2"] as frmbookingv2).loadtrans(rs);
             }
             else
             {
@@ -149,11 +149,11 @@ namespace sample1
             //    return;
             //}
 
-            frmreservation2 frm = new frmreservation2();
-            if (Application.OpenForms["frmreservation2"] != null)
+            frmReservationV2 frm = new frmReservationV2();
+            if (Application.OpenForms["frmReservationV2"] != null)
             {
-                (Application.OpenForms["frmreservation2"] as frmreservation2).isView=true;
-                (Application.OpenForms["frmreservation2"] as frmreservation2).loadtrans(tr);
+                (Application.OpenForms["frmReservationV2"] as frmReservationV2).isView = true;
+                (Application.OpenForms["frmReservationV2"] as frmReservationV2).loadtrans(tr);
             }
             else
             {

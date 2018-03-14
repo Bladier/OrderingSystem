@@ -82,28 +82,28 @@ namespace sample1
 
             if (isBooking)
             {
-                if (Application.OpenForms["frmBookingV2"] != null)
+                if (Application.OpenForms["frmbookingv2"] != null)
                 {
-                    (Application.OpenForms["frmBookingV2"] as frmBookingV2).loadservices(Convert.ToInt32(lvServices.SelectedItems[0].Tag));
+                    (Application.OpenForms["frmbookingv2"] as frmbookingv2).loadservices(Convert.ToInt32(lvServices.SelectedItems[0].Tag));
                     this.Close();
                 }
                 else
                 {
-                    frmBookingV2 frm = new frmBookingV2();
+                    frmbookingv2 frm = new frmbookingv2();
                     frm.ShowDialog();
 
                 }
             }
             else
             {
-                if (Application.OpenForms["frmreservation2"] != null)
+                if (Application.OpenForms["frmReservationV2"] != null)
                 {
-                    (Application.OpenForms["frmreservation2"] as frmreservation2).loadservices(Convert.ToInt32(lvServices.SelectedItems[0].Tag));
+                    (Application.OpenForms["frmReservationV2"] as frmReservationV2).loadservices(Convert.ToInt32(lvServices.SelectedItems[0].Tag));
                     this.Close();
                 }
                 else
                 {
-                    frmreservation2 frm = new frmreservation2();
+                    frmReservationV2 frm = new frmReservationV2();
                     frm.ShowDialog();
 
                 }

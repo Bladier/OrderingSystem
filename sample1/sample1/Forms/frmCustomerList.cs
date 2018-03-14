@@ -277,15 +277,15 @@ namespace sample1
 
             if (isbooking)
             {
-                if (Application.OpenForms["frmBookingV2"] != null)
+                if (Application.OpenForms["frmbookingv2"] != null)
                 {
 
-                    (Application.OpenForms["frmBookingV2"] as frmBookingV2).loadcustomer(cust);
+                    (Application.OpenForms["frmbookingv2"] as frmbookingv2).loadcustomer(cust);
 
                 }
                 else
                 {
-                    frmBookingV2 frm = new frmBookingV2();
+                    frmbookingv2 frm = new frmbookingv2();
                     frm.loadcustomer(cust);
                     frm.Show();
               
@@ -294,15 +294,15 @@ namespace sample1
             else
             {
 
-                if (Application.OpenForms["frmreservation2"] != null)
+                if (Application.OpenForms["frmReservationV2"] != null)
                 {
 
-                    (Application.OpenForms["frmreservation2"] as frmreservation2).loadcustomer(cust);
+                    (Application.OpenForms["frmReservationV2"] as frmReservationV2).loadcustomer(cust);
 
                 }
                 else
                 {
-                    frmreservation2 frm = new frmreservation2();
+                    frmReservationV2 frm = new frmReservationV2();
                     frm.Show();
                     frm.loadcustomer(cust);
 

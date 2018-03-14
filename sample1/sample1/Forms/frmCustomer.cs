@@ -184,15 +184,15 @@ namespace sample1
             if (isBooking)
            {
                 cus.LoadCust(cus.GetLastID());
-                if (Application.OpenForms["frmBooking"] != null)
+                if (Application.OpenForms["frmbookingv2"] != null)
                 {
 
-                    (Application.OpenForms["frmBooking"] as frmBooking).loadcustomer(cus);
+                    (Application.OpenForms["frmbookingv2"] as frmbookingv2).loadcustomer(cus);
                     this.Close();
                 }
                 else
                 {
-                    frmBooking frm = new frmBooking();
+                    frmbookingv2 frm = new frmbookingv2();
                     frm.Show();
                     frm.loadcustomer(cus);
                     this.Close();
@@ -203,10 +203,10 @@ namespace sample1
            if (isReservation)
            {
                cus.LoadCust(cus.GetLastID());
-                if (Application.OpenForms["frmreservation2"] != null)
+               if (Application.OpenForms["frmReservationV2"] != null)
                 {
 
-                    (Application.OpenForms["frmreservation2"] as frmreservation2).loadcustomer(cus);
+                    (Application.OpenForms["frmReservationV2"] as frmReservationV2).loadcustomer(cus);
                     this.Close();
 
                 }
@@ -214,7 +214,7 @@ namespace sample1
            if (isBooking)
            {
                cus.LoadCust(cus.GetLastID());
-               frmreservation2 frm = new frmreservation2();
+               frmReservationV2 frm = new frmReservationV2();
                frm.Show();
                frm.loadcustomer(cus);
                this.Close();

@@ -56,6 +56,7 @@
     <Compile Include="Class\addServices.cs" />
     <Compile Include="Class\barangays.cs" />
     <Compile Include="Class\bill.cs" />
+    <Compile Include="Class\packTransaction.cs" />
     <Compile Include="Class\Customer.cs" />
     <Compile Include="Class\reservation.cs" />
     <Compile Include="Class\Transaction.cs" />
@@ -103,11 +104,11 @@
     <Compile Include="New Forms\frmAdditionalServices.Designer.cs">
       <DependentUpon>frmAdditionalServices.cs</DependentUpon>
     </Compile>
-    <Compile Include="New Forms\frmBookingV2.cs">
+    <Compile Include="New Forms\frmbookingv2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="New Forms\frmBookingV2.Designer.cs">
-      <DependentUpon>frmBookingV2.cs</DependentUpon>
+    <Compile Include="New Forms\frmbookingv2.designer.cs">
+      <DependentUpon>frmbookingv2.cs</DependentUpon>
     </Compile>
     <Compile Include="New Forms\frmExtend.cs">
       <SubType>Form</SubType>
@@ -152,6 +153,12 @@
     </Compile>
     <Compile Include="New Forms\frmBooking.Designer.cs">
       <DependentUpon>frmBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="New Forms\frmReservationV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New Forms\frmReservationV2.designer.cs">
+      <DependentUpon>frmReservationV2.cs</DependentUpon>
     </Compile>
     <Compile Include="New Forms\frmSetDate.cs">
       <SubType>Form</SubType>
@@ -212,8 +219,8 @@
     <EmbeddedResource Include="New Forms\frmAdditionalServices.resx">
       <DependentUpon>frmAdditionalServices.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="New Forms\frmBookingV2.resx">
-      <DependentUpon>frmBookingV2.cs</DependentUpon>
+    <EmbeddedResource Include="New Forms\frmbookingv2.resx">
+      <DependentUpon>frmbookingv2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="New Forms\frmExtend.resx">
       <DependentUpon>frmExtend.cs</DependentUpon>
@@ -235,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="New Forms\frmBooking.resx">
       <DependentUpon>frmBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New Forms\frmReservationV2.resx">
+      <DependentUpon>frmReservationV2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="New Forms\frmSetDate.resx">
       <DependentUpon>frmSetDate.cs</DependentUpon>

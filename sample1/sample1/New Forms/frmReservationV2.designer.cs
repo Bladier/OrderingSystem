@@ -1,6 +1,6 @@
 ﻿namespace sample1
 {
-    partial class frmbookingv2
+    partial class frmReservationV2
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnPost = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.rbCash = new System.Windows.Forms.RadioButton();
+            this.rbInstallment = new System.Windows.Forms.RadioButton();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblPaidAtleast = new System.Windows.Forms.Label();
+            this.lblBalance = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtPayment = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
             this.btnSearchServices = new System.Windows.Forms.Button();
             this.lvAdditionalServices = new System.Windows.Forms.ListView();
@@ -39,6 +51,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtTransactionNum = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -48,8 +61,11 @@
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cboPackage = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.dtStartDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.cbotime = new System.Windows.Forms.ComboBox();
@@ -60,44 +76,151 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtRate = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.rbCash = new System.Windows.Forms.RadioButton();
-            this.rbInstallment = new System.Windows.Forms.RadioButton();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblPaidAtleast = new System.Windows.Forms.Label();
-            this.lblBalance = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtPayment = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnPost = new System.Windows.Forms.Button();
-            this.cboPackage = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(595, 464);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 32);
+            this.btnCancel.TabIndex = 65;
+            this.btnCancel.Text = "&Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnPost
+            // 
+            this.btnPost.Location = new System.Drawing.Point(516, 464);
+            this.btnPost.Name = "btnPost";
+            this.btnPost.Size = new System.Drawing.Size(75, 32);
+            this.btnPost.TabIndex = 64;
+            this.btnPost.Text = "&Post";
+            this.btnPost.UseVisualStyleBackColor = true;
+            this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(82, 13);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "PayMent Mode:";
+            // 
+            // rbCash
+            // 
+            this.rbCash.AutoSize = true;
+            this.rbCash.Checked = true;
+            this.rbCash.Location = new System.Drawing.Point(106, 14);
+            this.rbCash.Name = "rbCash";
+            this.rbCash.Size = new System.Drawing.Size(85, 17);
+            this.rbCash.TabIndex = 0;
+            this.rbCash.TabStop = true;
+            this.rbCash.Text = "Full Payment";
+            this.rbCash.UseVisualStyleBackColor = true;
+            this.rbCash.CheckedChanged += new System.EventHandler(this.rbCash_CheckedChanged);
+            // 
+            // rbInstallment
+            // 
+            this.rbInstallment.AutoSize = true;
+            this.rbInstallment.Location = new System.Drawing.Point(197, 15);
+            this.rbInstallment.Name = "rbInstallment";
+            this.rbInstallment.Size = new System.Drawing.Size(75, 17);
+            this.rbInstallment.TabIndex = 1;
+            this.rbInstallment.Text = "Installment";
+            this.rbInstallment.UseVisualStyleBackColor = true;
+            this.rbInstallment.CheckedChanged += new System.EventHandler(this.rbInstallment_CheckedChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(10, 37);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(69, 13);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Paid Atleast :";
+            // 
+            // lblPaidAtleast
+            // 
+            this.lblPaidAtleast.AutoSize = true;
+            this.lblPaidAtleast.Location = new System.Drawing.Point(105, 37);
+            this.lblPaidAtleast.Name = "lblPaidAtleast";
+            this.lblPaidAtleast.Size = new System.Drawing.Size(28, 13);
+            this.lblPaidAtleast.TabIndex = 18;
+            this.lblPaidAtleast.Text = "0.00";
+            // 
+            // lblBalance
+            // 
+            this.lblBalance.AutoSize = true;
+            this.lblBalance.Location = new System.Drawing.Point(105, 56);
+            this.lblBalance.Name = "lblBalance";
+            this.lblBalance.Size = new System.Drawing.Size(28, 13);
+            this.lblBalance.TabIndex = 23;
+            this.lblBalance.Text = "0.00";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(10, 54);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(52, 13);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Balance :";
+            // 
+            // txtPayment
+            // 
+            this.txtPayment.Location = new System.Drawing.Point(106, 74);
+            this.txtPayment.Name = "txtPayment";
+            this.txtPayment.Size = new System.Drawing.Size(195, 20);
+            this.txtPayment.TabIndex = 2;
+            this.txtPayment.TextChanged += new System.EventHandler(this.txtPayment_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 76);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Enter Payment";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.rbCash);
+            this.groupBox3.Controls.Add(this.rbInstallment);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.lblPaidAtleast);
+            this.groupBox3.Controls.Add(this.lblBalance);
+            this.groupBox3.Controls.Add(this.label13);
+            this.groupBox3.Controls.Add(this.txtPayment);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Location = new System.Drawing.Point(433, 355);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(316, 102);
+            this.groupBox3.TabIndex = 63;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Payments";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(42, 331);
+            this.label17.Location = new System.Drawing.Point(34, 332);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(97, 13);
-            this.label17.TabIndex = 48;
+            this.label17.TabIndex = 61;
             this.label17.Text = "Additional Services";
             // 
             // btnSearchServices
             // 
-            this.btnSearchServices.Location = new System.Drawing.Point(383, 348);
+            this.btnSearchServices.Location = new System.Drawing.Point(375, 348);
             this.btnSearchServices.Name = "btnSearchServices";
             this.btnSearchServices.Size = new System.Drawing.Size(36, 23);
-            this.btnSearchServices.TabIndex = 42;
+            this.btnSearchServices.TabIndex = 55;
             this.btnSearchServices.Text = ". . .";
             this.btnSearchServices.UseVisualStyleBackColor = true;
             this.btnSearchServices.Click += new System.EventHandler(this.btnSearchServices_Click);
@@ -107,10 +230,10 @@
             this.lvAdditionalServices.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            this.lvAdditionalServices.Location = new System.Drawing.Point(45, 376);
+            this.lvAdditionalServices.Location = new System.Drawing.Point(37, 376);
             this.lvAdditionalServices.Name = "lvAdditionalServices";
             this.lvAdditionalServices.Size = new System.Drawing.Size(375, 112);
-            this.lvAdditionalServices.TabIndex = 47;
+            this.lvAdditionalServices.TabIndex = 60;
             this.lvAdditionalServices.UseCompatibleStateImageBehavior = false;
             this.lvAdditionalServices.View = System.Windows.Forms.View.Details;
             // 
@@ -126,36 +249,36 @@
             // 
             // txtSearchservices
             // 
-            this.txtSearchservices.Location = new System.Drawing.Point(45, 350);
+            this.txtSearchservices.Location = new System.Drawing.Point(37, 350);
             this.txtSearchservices.Name = "txtSearchservices";
             this.txtSearchservices.Size = new System.Drawing.Size(332, 20);
-            this.txtSearchservices.TabIndex = 40;
+            this.txtSearchservices.TabIndex = 53;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(42, 252);
+            this.label16.Location = new System.Drawing.Point(34, 256);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(56, 13);
-            this.label16.TabIndex = 41;
+            this.label16.TabIndex = 54;
             this.label16.Text = "Comments";
             // 
             // txtcomments
             // 
-            this.txtcomments.Location = new System.Drawing.Point(45, 273);
+            this.txtcomments.Location = new System.Drawing.Point(37, 274);
             this.txtcomments.Multiline = true;
             this.txtcomments.Name = "txtcomments";
             this.txtcomments.Size = new System.Drawing.Size(375, 53);
-            this.txtcomments.TabIndex = 46;
+            this.txtcomments.TabIndex = 59;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.txtTransactionNum);
-            this.groupBox4.Location = new System.Drawing.Point(44, 62);
+            this.groupBox4.Location = new System.Drawing.Point(36, 82);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(381, 42);
-            this.groupBox4.TabIndex = 45;
+            this.groupBox4.Size = new System.Drawing.Size(381, 45);
+            this.groupBox4.TabIndex = 58;
             this.groupBox4.TabStop = false;
             // 
             // label11
@@ -179,15 +302,24 @@
             this.txtTransactionNum.TabIndex = 0;
             this.txtTransactionNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 44);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Address";
+            // 
             // Panel2
             // 
             this.Panel2.BackColor = System.Drawing.Color.DarkSlateGray;
             this.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Panel2.Controls.Add(this.label14);
-            this.Panel2.Location = new System.Drawing.Point(44, 11);
+            this.Panel2.Location = new System.Drawing.Point(36, 11);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(697, 45);
-            this.Panel2.TabIndex = 44;
+            this.Panel2.Size = new System.Drawing.Size(697, 49);
+            this.Panel2.TabIndex = 57;
             // 
             // label14
             // 
@@ -195,11 +327,11 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(310, 10);
+            this.label14.Location = new System.Drawing.Point(295, 11);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(86, 24);
+            this.label14.Size = new System.Drawing.Size(120, 24);
             this.label14.TabIndex = 0;
-            this.label14.Text = "Booking";
+            this.label14.Text = "Reservation";
             // 
             // groupBox2
             // 
@@ -210,10 +342,10 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtAddress);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(44, 119);
+            this.groupBox2.Location = new System.Drawing.Point(36, 134);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(381, 121);
-            this.groupBox2.TabIndex = 43;
+            this.groupBox2.TabIndex = 56;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Client";
             // 
@@ -270,15 +402,6 @@
             this.txtAddress.Size = new System.Drawing.Size(297, 47);
             this.txtAddress.TabIndex = 2;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Address";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.listView1);
@@ -294,13 +417,47 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtRate);
-            this.groupBox1.Location = new System.Drawing.Point(440, 62);
+            this.groupBox1.Location = new System.Drawing.Point(426, 63);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(316, 279);
-            this.groupBox1.TabIndex = 49;
+            this.groupBox1.Size = new System.Drawing.Size(316, 282);
+            this.groupBox1.TabIndex = 66;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rate Info";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader5});
+            this.listView1.Location = new System.Drawing.Point(9, 106);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(297, 95);
+            this.listView1.TabIndex = 53;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Package Details";
+            this.columnHeader5.Width = 293;
+            // 
+            // cboPackage
+            // 
+            this.cboPackage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPackage.FormattingEnabled = true;
+            this.cboPackage.Location = new System.Drawing.Point(84, 79);
+            this.cboPackage.Name = "cboPackage";
+            this.cboPackage.Size = new System.Drawing.Size(222, 21);
+            this.cboPackage.TabIndex = 26;
+            this.cboPackage.SelectedIndexChanged += new System.EventHandler(this.cboPackage_SelectedIndexChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(10, 82);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(50, 13);
+            this.label12.TabIndex = 27;
+            this.label12.Text = "Package";
             // 
             // dtStartDate
             // 
@@ -330,7 +487,7 @@
             this.cbotime.Name = "cbotime";
             this.cbotime.Size = new System.Drawing.Size(222, 21);
             this.cbotime.TabIndex = 22;
-            this.cbotime.SelectedIndexChanged += new System.EventHandler(this.cbotime_SelectedIndexChanged);
+            this.cbotime.SelectedIndexChanged += new System.EventHandler(this.cbotime_SelectedIndexChanged_1);
             // 
             // label3
             // 
@@ -349,7 +506,7 @@
             this.cboVenue.Name = "cboVenue";
             this.cboVenue.Size = new System.Drawing.Size(222, 21);
             this.cboVenue.TabIndex = 0;
-            this.cboVenue.SelectedIndexChanged += new System.EventHandler(this.cboVenue_SelectedIndexChanged);
+            this.cboVenue.SelectedIndexChanged += new System.EventHandler(this.cboVenue_SelectedIndexChanged_1);
             // 
             // lblTotal
             // 
@@ -395,174 +552,16 @@
             this.txtRate.Size = new System.Drawing.Size(113, 20);
             this.txtRate.TabIndex = 11;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.rbCash);
-            this.groupBox3.Controls.Add(this.rbInstallment);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.lblPaidAtleast);
-            this.groupBox3.Controls.Add(this.lblBalance);
-            this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.txtPayment);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(440, 347);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(316, 106);
-            this.groupBox3.TabIndex = 50;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Payments";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 13);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(82, 13);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "PayMent Mode:";
-            // 
-            // rbCash
-            // 
-            this.rbCash.AutoSize = true;
-            this.rbCash.Checked = true;
-            this.rbCash.Location = new System.Drawing.Point(111, 11);
-            this.rbCash.Name = "rbCash";
-            this.rbCash.Size = new System.Drawing.Size(85, 17);
-            this.rbCash.TabIndex = 0;
-            this.rbCash.TabStop = true;
-            this.rbCash.Text = "Full Payment";
-            this.rbCash.UseVisualStyleBackColor = true;
-            this.rbCash.CheckedChanged += new System.EventHandler(this.rbCash_CheckedChanged);
-            // 
-            // rbInstallment
-            // 
-            this.rbInstallment.AutoSize = true;
-            this.rbInstallment.Location = new System.Drawing.Point(202, 13);
-            this.rbInstallment.Name = "rbInstallment";
-            this.rbInstallment.Size = new System.Drawing.Size(75, 17);
-            this.rbInstallment.TabIndex = 1;
-            this.rbInstallment.Text = "Installment";
-            this.rbInstallment.UseVisualStyleBackColor = true;
-            this.rbInstallment.CheckedChanged += new System.EventHandler(this.rbInstallment_CheckedChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(13, 32);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 13);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Paid Atleast :";
-            // 
-            // lblPaidAtleast
-            // 
-            this.lblPaidAtleast.AutoSize = true;
-            this.lblPaidAtleast.Location = new System.Drawing.Point(108, 32);
-            this.lblPaidAtleast.Name = "lblPaidAtleast";
-            this.lblPaidAtleast.Size = new System.Drawing.Size(28, 13);
-            this.lblPaidAtleast.TabIndex = 18;
-            this.lblPaidAtleast.Text = "0.00";
-            // 
-            // lblBalance
-            // 
-            this.lblBalance.AutoSize = true;
-            this.lblBalance.Location = new System.Drawing.Point(108, 52);
-            this.lblBalance.Name = "lblBalance";
-            this.lblBalance.Size = new System.Drawing.Size(28, 13);
-            this.lblBalance.TabIndex = 23;
-            this.lblBalance.Text = "0.00";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(13, 52);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(52, 13);
-            this.label13.TabIndex = 22;
-            this.label13.Text = "Balance :";
-            // 
-            // txtPayment
-            // 
-            this.txtPayment.Location = new System.Drawing.Point(107, 74);
-            this.txtPayment.Name = "txtPayment";
-            this.txtPayment.Size = new System.Drawing.Size(195, 20);
-            this.txtPayment.TabIndex = 2;
-            this.txtPayment.TextChanged += new System.EventHandler(this.txtPayment_TextChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 76);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Enter Payment";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(592, 459);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 31);
-            this.btnCancel.TabIndex = 52;
-            this.btnCancel.Text = "&Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnPost
-            // 
-            this.btnPost.Location = new System.Drawing.Point(513, 459);
-            this.btnPost.Name = "btnPost";
-            this.btnPost.Size = new System.Drawing.Size(75, 31);
-            this.btnPost.TabIndex = 51;
-            this.btnPost.Text = "&Post";
-            this.btnPost.UseVisualStyleBackColor = true;
-            this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
-            // 
-            // cboPackage
-            // 
-            this.cboPackage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPackage.FormattingEnabled = true;
-            this.cboPackage.Location = new System.Drawing.Point(84, 79);
-            this.cboPackage.Name = "cboPackage";
-            this.cboPackage.Size = new System.Drawing.Size(222, 21);
-            this.cboPackage.TabIndex = 26;
-            this.cboPackage.SelectedIndexChanged += new System.EventHandler(this.cboPackage_SelectedIndexChanged);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(10, 82);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(50, 13);
-            this.label12.TabIndex = 27;
-            this.label12.Text = "Package";
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader5});
-            this.listView1.Location = new System.Drawing.Point(9, 106);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(297, 95);
-            this.listView1.TabIndex = 53;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Package Details";
-            this.columnHeader5.Width = 293;
-            // 
-            // frmbookingv2
+            // frmReservationV2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(783, 498);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnPost);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.btnSearchServices);
             this.Controls.Add(this.lvAdditionalServices);
@@ -573,9 +572,11 @@
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmbookingv2";
-            this.Text = "frmbookingv2";
-            this.Load += new System.EventHandler(this.frmbookingv2_Load);
+            this.Name = "frmReservationV2";
+            this.Text = "frmReservationV2";
+            this.Load += new System.EventHandler(this.frmReservationV2_Load);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.Panel2.ResumeLayout(false);
@@ -584,8 +585,6 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -593,6 +592,18 @@
 
         #endregion
 
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnPost;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.RadioButton rbCash;
+        private System.Windows.Forms.RadioButton rbInstallment;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblPaidAtleast;
+        private System.Windows.Forms.Label lblBalance;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtPayment;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnSearchServices;
         private System.Windows.Forms.ListView lvAdditionalServices;
@@ -604,6 +615,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtTransactionNum;
+        private System.Windows.Forms.Label label2;
         internal System.Windows.Forms.Panel Panel2;
         internal System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -613,8 +625,13 @@
         private System.Windows.Forms.TextBox txtCustomer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ComboBox cboPackage;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DateTimePicker dtStartDate;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbotime;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboVenue;
@@ -623,23 +640,5 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtRate;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.RadioButton rbCash;
-        private System.Windows.Forms.RadioButton rbInstallment;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label lblPaidAtleast;
-        private System.Windows.Forms.Label lblBalance;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtPayment;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnPost;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dtStartDate;
-        private System.Windows.Forms.ComboBox cboPackage;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }

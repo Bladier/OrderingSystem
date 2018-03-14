@@ -56,7 +56,7 @@ namespace sample1
             }
             else
             {
-                frmreservation2 frm = new frmreservation2();
+                frmReservationV2 frm = new frmReservationV2();
                 mod_system.LoadForm(frm);
             }
            
@@ -76,7 +76,7 @@ namespace sample1
 
             else
             {
-                frmBooking frm = new frmBooking();
+                frmbookingv2 frm = new frmbookingv2();
                 mod_system.LoadForm(frm);
             }
 

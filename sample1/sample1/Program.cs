@@ -12,10 +12,10 @@ namespace sample1
         /// </summary>
         [STAThread]
         static void Main()
-        {
+       {
            // Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmBookingV2());
+            Application.Run(new frmMain());
         }
     }
 }

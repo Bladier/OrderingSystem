@@ -122,6 +122,22 @@ namespace sample1
             get { return _comments; }
             set { _comments = value; }
         }
+
+
+        private string _timelaps;
+        public string timelaps
+        {
+            get { return _timelaps; }
+            set { _timelaps = value; }
+        }
+
+
+        private int _packageId;
+        public int packageId
+        {
+            get { return _packageId; }
+            set { _packageId = value; }
+        }
         #endregion
 
         #region "Functions
@@ -164,6 +180,9 @@ namespace sample1
             _with2["MOD"] = _mod;
             _with2["TransactionnUm"] = _TransactionNum;
             _with2["comments"] = _comments;
+            _with2["TimeLaps"] = _timelaps;
+            _with2["packageID"] = _packageId;
+
             ds.Tables[0].Rows.Add(dsNewRow);
             Database.SaveEntry(ds);
         }
@@ -187,6 +206,8 @@ namespace sample1
             _mod = _with3["MOD"].ToString();
             _TransactionNum = Convert.ToInt32(_with3["TransactionnUm"]);
             _comments = _with3["comments"].ToString();
+            _timelaps = _with3["timelaps"].ToString();
+            _packageId = Convert.ToInt32(_with3["packageID"].ToString());
         }
 
         public void UpdateTrans()
@@ -219,6 +240,8 @@ namespace sample1
                 _with2["MOD"] = _mod;
                 _with2["TransactionnUm"] = _TransactionNum;
                 _with2["comments"] = _comments;
+                _with2["TimeLaps"] = _timelaps;
+                _with2["packageID"] = _packageId;
                 ds.Tables[0].Rows.Add(dsNewRow);
                 Database.SaveEntry(ds);
             }
@@ -362,9 +385,35 @@ namespace sample1
       
             return true;
         }
-       
-        #endregion
-      
-    }
+
+
+        ///New
+        public bool ifNotAvailable(DateTime startdate, string tl,int vID)
+        {
+            string tmpDate = startdate.ToString("yyyy-MM-dd");
+
+            string mySql = string.Format("SELECT * FROM {0} where StartDate = '{1}'", MainTable, tmpDate);
+            DataSet ds = Database.LoadSQL(mySql, MainTable);
+
+            if (ds.Tables[0].Rows.Count == 0) { return true; }
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                if (dr["timelaps"].ToString() ==tl.ToString())
+                {
+                    if (dr["venueID"].ToString() == vID.ToString())
+                    {
+                        return false;
+                    }
+                }
+
+            }
+
+            return true;
+        }
+
+            #endregion
+
+        }
     
 }
