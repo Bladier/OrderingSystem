@@ -566,7 +566,7 @@ namespace sample1
 
                 if (rbInstallment.Checked)
                 {
-                    //if (txtPayment.Text == "") { txtPayment.Focus(); return false; }
+                    if (txtPayment.Text == "") { txtPayment.Focus(); return false; }
                     //if (Convert.ToDouble(txtPayment.Text) < Convert.ToDouble(lblPaidAtleast.Text))
                     //{
                     //    MessageBox.Show("You must pay atleast " + Convert.ToDouble(lblPaidAtleast.Text) + " .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

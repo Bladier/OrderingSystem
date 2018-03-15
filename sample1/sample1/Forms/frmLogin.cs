@@ -52,7 +52,9 @@ namespace sample1
             {
                 (Application.OpenForms["frmMain"] as frmMain).NotYetLogin(true);
                 (Application.OpenForms["frmMain"] as frmMain).toolStripLabel1.Text = "Welcome, " + mod_system.ORuser.Username;
+    
                 (Application.OpenForms["frmMain"] as frmMain).CheckDateStatus();
+                mod_system.CheckExpiry();
             }
             else
             {
@@ -60,6 +62,8 @@ namespace sample1
                 frm2.NotYetLogin(true);
                 frm2.toolStripLabel1.Text = "Welcome, " + mod_system.ORuser.Username;
                 frm2.CheckDateStatus();
+
+                mod_system.CheckExpiry();
             }
         }
 
